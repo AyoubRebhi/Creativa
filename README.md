@@ -5,6 +5,7 @@ Dans le contexte de la mondialisation, la vente de biens et services dans le dom
 "CreaTiva" est une application qui permet aux utilisateurs de participer à des cours d'art et aux artistes de partager leurs créations. C'est un espace où l'apprentissage et la découverte se rejoignent, offrant à chacun la possibilité d'explorer son potentiel artistique et de découvrir de nouveaux talents.
 
 Notre application va :
+
 1)Mettre  en place des fonctionnalités permettant aux artistes d'exposer leurs œuvres de manière plus visible
 
 2)Faciliter les interactions entre artistes et amateurs d'art en favorisant la création de communautés virtuelles dédiées, où les membres peuvent échanger des idées, collaborer sur des projets artistiques. 
