@@ -13,6 +13,6 @@ public class Main {
         System.out.println(connexion);
 
         ProjetServices ps = new ProjetServices();
-        ps.ajouter(new Projet("Acrylic Filbert Brush","A set of 6 Acrylic Filbert Brush",null,12));
+        ps.supprimer(1);
     }
 }

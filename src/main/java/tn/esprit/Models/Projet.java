@@ -3,14 +3,14 @@ package tn.esprit.Models;
 import java.io.File;
 
 public class Projet {
-    private int id;
+    private int id_projet;
     private String titre;
     private String description;
     private File media;
     private double prix;
 
     public Projet(int id,String titre, String description, File media, double prix) {
-        this.id = id;
+        this.id_projet = id;
         this.description = description;
         this.media = media;
         this.prix = prix;
@@ -23,13 +23,13 @@ public class Projet {
         this.media = media;
         this.prix = prix;
     }
-
+    public Projet(){}
     public int getId() {
-        return id;
+        return id_projet;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id_projet = id;
     }
 
     public String getDescription() {
@@ -67,7 +67,7 @@ public class Projet {
     @Override
     public String toString() {
         return "Projet{" +
-                "id=" + id +
+                "id=" + id_projet +
                 "titre="+titre +
                 ", description='" + description + '\'' +
                 ", media=" + media +
