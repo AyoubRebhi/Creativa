@@ -16,8 +16,8 @@ public class Main {
         System.out.println(connexion);
 
         // Créez un objet User pour les tests
-        User testUser = new User("Doe", "John", "ha5", "password123",
-                Role.ADMIN, "A short bio", "123 Main St", "/path/to/image.jpg", "hajerhr7@outlook.fr");
+        User testUser = new User("ayachi", "zeineb", "ha5", "password123",
+                Role.ADMIN, "A short bio", "123 Main St", "/path/to/image.jpg", "zeineb.ayachi@esprit.tn");
 
         // Créez un service utilisateur
         UserService userService = new UserService();

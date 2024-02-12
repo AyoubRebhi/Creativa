@@ -43,34 +43,34 @@ public class UserService implements InterfaceCRUD<User> {
         }
     }
     //ajouter avec mail de confirmation
-    public void ajouter4(User user) {
-        String req = "INSERT INTO user (last_name, first_name, username, password, role, biography, address, ImgPath,email) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
+//    public void ajouter4(User user) {
+//        String req = "INSERT INTO user (last_name, first_name, username, password, role, biography, address, ImgPath,email) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
+//
+//        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+//            // Set values for the prepared statement
+//            preparedStatement.setString(1, user.getLastName());
+//            preparedStatement.setString(2, user.getFirstName());
+//            preparedStatement.setString(3, user.getUsername());
+//            preparedStatement.setString(4, user.getPassword());
+//            preparedStatement.setString(5, user.getRole().name());
+//            preparedStatement.setString(6, user.getBiography());
+//            preparedStatement.setString(7, user.getAddress());
+//            preparedStatement.setString(8, user.getProfileImagePath());
+//            preparedStatement.setString(9, user.getEmail());
+//
+//            // Execute the statement
+//            preparedStatement.executeUpdate();
+//            System.out.println("user Added Successfully!");
+//
+//            // Appeler la fonction envoyerEmailConfirmation
+//            emailUtil.envoyerEmailConfirmation(user);
+//
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
+//    }
 
-        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
-            // Set values for the prepared statement
-            preparedStatement.setString(1, user.getLastName());
-            preparedStatement.setString(2, user.getFirstName());
-            preparedStatement.setString(3, user.getUsername());
-            preparedStatement.setString(4, user.getPassword());
-            preparedStatement.setString(5, user.getRole().name());
-            preparedStatement.setString(6, user.getBiography());
-            preparedStatement.setString(7, user.getAddress());
-            preparedStatement.setString(8, user.getProfileImagePath());
-            preparedStatement.setString(9, user.getEmail());
-
-            // Execute the statement
-            preparedStatement.executeUpdate();
-            System.out.println("user Added Successfully!");
-
-            // Appeler la fonction envoyerEmailConfirmation
-            emailUtil.envoyerEmailConfirmation(user);
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-
+//ajouter avec hashage de mot passe et mail envoyé
     public void ajouter2(User user) {
         String req = "INSERT INTO user (last_name, first_name, username, password, role, biography, address, profile_image_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -92,7 +92,8 @@ public class UserService implements InterfaceCRUD<User> {
             // Execute the statement
             preparedStatement.executeUpdate();
             System.out.println("User Added Successfully!");
-
+// Appeler la fonction envoyerEmailConfirmation
+            emailUtil.envoyerEmailConfirmation(user);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
