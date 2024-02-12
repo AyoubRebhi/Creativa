@@ -1,59 +1,80 @@
 package tn.esprit.Models;
 
 public class User {
-    public int id,age;
-    public String nom,prenom,username,password,email;
-    public enum genre{HOMME,FEMME}
-
-    public User(int id, int age, String nom, String prenom, String username, String password, String email) {
-        this.id = id;
-        this.age = age;
-        this.nom = nom;
-        this.prenom = prenom;
+    private int id_user;
+    private String lastName;
+    private String firstName;
+    private String username;
+    private String password;
+    private Role role;
+    private String biography;
+    private String address;
+    private String profileImagePath;
+    private String email ;
+    public User(String lastName, String firstName, String username, String password, Role role,
+                String biography, String address, String profileImagePath, String email) {
+        this.lastName = lastName;
+        this.firstName = firstName;
         this.username = username;
         this.password = password;
-        this.email = email;
+        this.role = role;
+        this.biography = biography;
+        this.address = address;
+        this.profileImagePath = profileImagePath;
+        this.email=email;
     }
 
-    public User(int age, String nom, String prenom, String username, String password, String email) {
-        this.age = age;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.username = username;
-        this.password = password;
+        // Constructors, getters, setters, toString, etc.
+
+    public User() {
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id_user=" + id_user +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", biography='" + biography + '\'' +
+                ", address='" + address + '\'' +
+                ", profileImagePath='" + profileImagePath + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
         this.email = email;
     }
 
     public int getId() {
-        return id;
+        return id_user;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id_user = id;
     }
 
-    public int getAge() {
-        return age;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getNom() {
-        return nom;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getUsername() {
@@ -72,24 +93,35 @@ public class User {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public Role getRole() {
+        return role;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", age=" + age +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public String getBiography() {
+        return biography;
+    }
+
+    public void setBiography(String biography) {
+        this.biography = biography;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getProfileImagePath() {
+        return profileImagePath;
+    }
+
+    public void setProfileImagePath(String profileImagePath) {
+        this.profileImagePath = profileImagePath;
     }
 }
