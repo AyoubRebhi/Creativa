@@ -12,14 +12,12 @@ import java.util.List;
 
 public class ProjetServices implements InterfaceCRUD <Projet> {
 
-
     Connection conn= MaConnexion.getInstance().getConn();
-
 
     @Override
     public void ajouter(Projet projet) {
         try {
-            String req = "INSERT INTO `projet`(`titre`, `description`, `media`, `prix`) VALUES (?, ?, ?, ?)";
+            String req = "INSERT INTO `projet`(`titre`, `description`, `media`, `prix`, `id_categorie`) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setString(1, projet.getTitre());
             ps.setString(2, projet.getDescription());
@@ -33,6 +31,7 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
             }
 
             ps.setDouble(4, projet.getPrix());
+            ps.setInt(5, projet.getCategorie());
 
             ps.executeUpdate();
             System.out.println("Projet ajouté avec succes");
@@ -46,12 +45,13 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
     @Override
     public void modifier(Projet projet) {
         try{
-            String req ="UPDATE `projet` SET `titre`= ?, `description`= ?, `prix`= ? WHERE `id_projet`= ?";
+            String req ="UPDATE `projet` SET `titre`= ?, `description`= ?, `prix`= ?, `id_categorie`=? WHERE `id_projet`= ?";
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setString(1,projet.getTitre());
             ps.setString(2,projet.getDescription());
             ps.setDouble(3,projet.getPrix());
-            ps.setInt(4,projet.getId());
+            ps.setInt(4,projet.getCategorie());
+            ps.setInt(5,projet.getId());
 
             ps.executeUpdate();
             System.out.println("Projet modifieé avec succes");
@@ -83,6 +83,21 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
         }
     }
 
+    public void modifierCategorie(Projet projet){
+        try{
+            String req = "UPDATE `projet` SET `categorie_id`=? WHERE `id_projet`=?";
+            PreparedStatement ps = conn.prepareStatement(req);
+            ps.setInt(1, projet.getCategorie());
+            ps.setInt(2,projet.getId());
+
+            ps.executeUpdate();
+            System.out.println("Projet modifieé avec succes");
+
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     @Override
     public void supprimer(int id) {
         try {
@@ -109,7 +124,7 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
             projet.setId(rs.getInt("id_projet"));
             projet.setTitre(rs.getString("titre"));
             projet.setDescription(rs.getString("description"));
-
+            projet.setCategorie(rs.getInt("id_categorie"));
 
 
             projet.setPrix(rs.getDouble("prix"));

@@ -12,7 +12,9 @@ public class Main {
         MaConnexion connexion = MaConnexion.getInstance();
         System.out.println(connexion);
 
-        ProjetServices ps = new ProjetServices();
-        ps.supprimer(1);
+        /*ProjetServices ps = new ProjetServices();
+        ps.supprimer(1);*/
+        Projet projet = new Projet();
+
     }
 }

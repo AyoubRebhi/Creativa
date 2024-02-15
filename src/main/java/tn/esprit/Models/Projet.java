@@ -8,21 +8,34 @@ public class Projet {
     private String description;
     private File media;
     private double prix;
+    private int id_categorie;
 
-    public Projet(int id,String titre, String description, File media, double prix) {
+    public Projet(int id, String titre, String description, File media, double prix, int id_categorie) {
         this.id_projet = id;
-        this.description = description;
-        this.media = media;
-        this.prix = prix;
-        this.titre=titre;
-    }
-
-    public Projet(String titre, String description, File media, double prix) {
         this.titre = titre;
         this.description = description;
         this.media = media;
         this.prix = prix;
+        this.id_categorie = id_categorie;
     }
+
+    public Projet(String titre, String description, File media, double prix, int id_categorie) {
+        this.titre = titre;
+        this.description = description;
+        this.media = media;
+        this.prix = prix;
+        this.id_categorie = id_categorie;
+
+    }
+
+    public int getCategorie() {
+        return id_categorie;
+    }
+
+    public void setCategorie(int id_categorie) {
+        this.id_categorie = id_categorie;
+    }
+
     public Projet(){}
     public int getId() {
         return id_projet;
