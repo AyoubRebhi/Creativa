@@ -49,6 +49,7 @@ public class CarteFideliteService implements InterfaceCRUD<CarteFidelite> {
         try (PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
+            System.out.println("supprimé avec succéesS");
         } catch (SQLException e) {
             e.printStackTrace();
         }

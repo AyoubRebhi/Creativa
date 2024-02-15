@@ -73,34 +73,7 @@ public class UserService implements InterfaceCRUD<User> {
         }
     }
 
-//ajouter avec hashage de mot passe et mail envoyé
-//    public void ajouter2(User user) {
-//        String req = "INSERT INTO user (last_name, first_name, username, password, role, biography, address, profile_image_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-//
-//        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
-//            // Set values for the prepared statement
-//            preparedStatement.setString(1, user.getLastName());
-//            preparedStatement.setString(2, user.getFirstName());
-//            preparedStatement.setString(3, user.getUsername());
-//
-//            // Hash the password using BCrypt
-//            String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
-//            preparedStatement.setString(4, hashedPassword);
-//
-//            preparedStatement.setString(5, user.getRole().name());
-//            preparedStatement.setString(6, user.getBiography());
-//            preparedStatement.setString(7, user.getAddress());
-//            preparedStatement.setString(8, user.getProfileImagePath());
-//
-//            // Execute the statement
-//            preparedStatement.executeUpdate();
-//            System.out.println("User Added Successfully!");
-//// Appeler la fonction envoyerEmailConfirmation
-//            emailUtil.envoyerEmailConfirmation(user);
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
+
 
     @Override
     //fonction modifier
@@ -135,6 +108,8 @@ public class UserService implements InterfaceCRUD<User> {
 
             // Execute the statement
             preparedStatement.executeUpdate();
+            System.out.println("supprimé avec succéesS");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -199,7 +174,9 @@ public class UserService implements InterfaceCRUD<User> {
             e.printStackTrace();
         }
         return false;
-    }    public int nombreTotalUtilisateurs() {
+    }
+
+    public int nombreTotalUtilisateurs() {
         String req = "SELECT COUNT(*) FROM user";
 
         try (Statement statement = cnx.createStatement();
@@ -214,40 +191,8 @@ public class UserService implements InterfaceCRUD<User> {
 
         return 0;
     }
-//    public User trouverParID(int id) {
-//        User utilisateur = null;
-//        String req = "SELECT * FROM users WHERE id_user = ?";
-//
-//        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-//             PreparedStatement preparedStatement = connection.prepareStatement(req)) {
-//
-//            // Set the user ID for the prepared statement
-//            preparedStatement.setInt(1, id);
-//
-//            // Execute the statement
-//            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-//                if (resultSet.next()) {
-//                    utilisateur = new User();
-//                    utilisateur.setIdUser(resultSet.getInt("id_user"));
-//                    utilisateur.setLastName(resultSet.getString("last_name"));
-//                    utilisateur.setFirstName(resultSet.getString("first_name"));
-//                    utilisateur.setUsername(resultSet.getString("username"));
-//                    utilisateur.setPassword(resultSet.getString("password"));
-//
-//                    // Utilisation d'une méthode pour convertir la chaîne en enum
-//                    utilisateur.setRole(Role.valueOf(resultSet.getString("role")));
-//
-//                    utilisateur.setBiography(resultSet.getString("biography"));
-//                    utilisateur.setAddress(resultSet.getString("address"));
-//                    utilisateur.setProfileImagePath(resultSet.getString("ImgPath"));
-//                }
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return utilisateur;
-//    }
+
+
 // Fonction pour récupérer un utilisateur par son ID
 public User getById(int id) {
     User utilisateur = null;
