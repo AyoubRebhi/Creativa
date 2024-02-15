@@ -1,12 +1,12 @@
 package tn.esprit.Models;
 
 public class User {
-    public int id,age;
+    public int id_user,age;
     public String nom,prenom,username,password,email;
     public enum genre{HOMME,FEMME}
 
     public User(int id, int age, String nom, String prenom, String username, String password, String email) {
-        this.id = id;
+        this.id_user = id;
         this.age = age;
         this.nom = nom;
         this.prenom = prenom;
@@ -24,12 +24,12 @@ public class User {
         this.email = email;
     }
 
-    public int getId() {
-        return id;
+    public int getId_user() {
+        return id_user;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_user(int id) {
+        this.id_user = id;
     }
 
     public int getAge() {
@@ -83,7 +83,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + id_user +
                 ", age=" + age +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
