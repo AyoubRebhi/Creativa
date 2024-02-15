@@ -1,4 +1,5 @@
 package tn.esprit.Models;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Categorie {
@@ -9,6 +10,7 @@ public class Categorie {
     public Categorie(int id_categorie, String titre) {
         this.id_categorie = id_categorie;
         this.titre = titre;
+        this.projets = new ArrayList<>();
     }
 
 

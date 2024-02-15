@@ -1,6 +1,7 @@
 package tn.esprit.Services;
 
 import tn.esprit.Interfaces.InterfaceCRUD;
+import tn.esprit.Models.Categorie;
 import tn.esprit.Models.Projet;
 import tn.esprit.Utils.MaConnexion;
 
@@ -8,7 +9,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProjetServices implements InterfaceCRUD <Projet> {
 
@@ -115,24 +118,38 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
     @Override
     public List<Projet> afficher() throws SQLException {
         List<Projet> projets = new ArrayList<>();
-        String req="SELECT * FROM projet";
-        Statement st = conn.createStatement();
-        ResultSet rs =st.executeQuery(req);
+        Map<Integer, Categorie> categoriesMap = new HashMap<>(); // Pour stocker les catégories par ID
 
-        while (rs.next()){
-            Projet projet= new Projet();
-            projet.setId(rs.getInt("id_projet"));
-            projet.setTitre(rs.getString("titre"));
-            projet.setDescription(rs.getString("description"));
-            projet.setCategorie(rs.getInt("id_categorie"));
+        String req = "SELECT p.*, c.titre AS categorie_titre FROM projet p JOIN categorie c ON p.id_categorie = c.id_categorie";
+        try (Statement st = conn.createStatement();
+             ResultSet rs = st.executeQuery(req)) {
+            while (rs.next()) {
+                Projet projet = new Projet();
+                projet.setId(rs.getInt("id_projet"));
+                projet.setTitre(rs.getString("titre"));
+                projet.setDescription(rs.getString("description"));
+                projet.setCategorie(rs.getInt("id_categorie"));
+                projet.setPrix(rs.getDouble("prix"));
 
+                int categorieId = rs.getInt("id_categorie");
+                String categorieTitre = rs.getString("categorie_titre");
 
-            projet.setPrix(rs.getDouble("prix"));
+                // Vérifie si la catégorie existe déjà dans la map, sinon, crée une nouvelle catégorie
+                Categorie categorie = categoriesMap.get(categorieId);
+                if (categorie == null) {
+                    categorie = new Categorie(categorieId, categorieTitre);
+                    categoriesMap.put(categorieId, categorie);
+                }
 
-            projets.add(projet);
+                // Ajoute le projet à la liste des projets de la catégorie
+                categorie.getProjets().add(projet);
+
+                projets.add(projet);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
-
-
         return projets;
     }
+
 }
