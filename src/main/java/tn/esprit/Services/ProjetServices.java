@@ -152,4 +152,49 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
         return projets;
     }
 
+    public Projet afficherProjetParId(int id) {
+        Projet projet = null;
+        String req = "SELECT * FROM projet WHERE id_projet = ?";
+        try (PreparedStatement ps = conn.prepareStatement(req)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    projet = new Projet();
+                    projet.setId(rs.getInt("id_projet"));
+                    projet.setTitre(rs.getString("titre"));
+                    projet.setDescription(rs.getString("description"));
+                    projet.setPrix(rs.getDouble("prix"));
+                    projet.setCategorie(rs.getInt("id_categorie"));
+
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return projet;
+    }
+
+    public List<Projet> chercherParTitre(String titre) {
+        List<Projet> projets = new ArrayList<>();
+        String req = "SELECT * FROM projet WHERE titre LIKE ?";
+        try (PreparedStatement ps = conn.prepareStatement(req)) {
+            ps.setString(1, "%" + titre + "%");
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Projet projet = new Projet();
+                    projet.setId(rs.getInt("id_projet"));
+                    projet.setTitre(rs.getString("titre"));
+                    projet.setDescription(rs.getString("description"));
+                    projet.setPrix(rs.getDouble("prix"));
+                    projet.setCategorie(rs.getInt("id_categorie"));
+                    projets.add(projet);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return projets;
+    }
+
+
 }
