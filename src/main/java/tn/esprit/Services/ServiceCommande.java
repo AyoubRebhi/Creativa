@@ -15,12 +15,16 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
 //ajouter commande
     @Override
     public void ajouter(Commande c) {
-        String req ="INSERT INTO commande (id_user, id_projet, date) VALUES (?, ?, ?)";
+        String req ="INSERT INTO commande (id_user, id_projet, date,mt_total,quantite) VALUES (?, ?, ?,?,?)";
         try (PreparedStatement ps = conn.prepareStatement(req)) {
             ps.setInt(1, c.getId_user());
             ps.setInt(2, c.getId_projet());
             ps.setDate(3, c.getDate());
+            ps.setString(4, c.getMt_total());
+            ps.setInt(5, c.getQuantite());
             ps.executeUpdate();
+            System.out.println("commande ajoutée avec succée!");
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -29,13 +33,15 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
 //modifier commande
     @Override
     public void modifier(Commande c){
-        String req = "update commande set id_user=? , id_projet=? , date=? where id_cmd=?";
+        String req = "update commande set id_user=? , id_projet=? , date=? , mt_total=? , quantite=? where id_cmd=?";
         try (PreparedStatement ps = conn.prepareStatement(req)) {
 
-        ps.setInt(1,c.getId_user());
-        ps.setInt(2,c.getId_projet());
-        ps.setDate(3,c.getDate());
-        ps.setInt(4, c.getId_cmd());
+            ps.setInt(1, c.getId_user());
+            ps.setInt(2, c.getId_projet());
+            ps.setDate(3, c.getDate());
+            ps.setString(4, c.getMt_total());
+            ps.setInt(5, c.getQuantite());
+            ps.setInt(6, c.getId_cmd());
         ps.executeUpdate();
             System.out.println("modifiée avec succée");
         } catch (SQLException e) {
@@ -49,6 +55,8 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
         try (PreparedStatement ps = conn.prepareStatement(req)) {
         ps.setInt(1,id);
         ps.executeUpdate();
+            System.out.println("commande supprimée avec succée!");
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -67,6 +75,8 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
             c.setId_user(res.getInt(2));
             c.setId_projet(res.getInt(3));
             c.setDate(res.getDate(4));
+            c.setMt_total(res.getString(5));
+            c.setQuantite(res.getInt(6));
 
 
             commandes.add(c);}

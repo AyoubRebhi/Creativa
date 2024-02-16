@@ -9,6 +9,9 @@ public class Commande {
 
     private Date date;
 
+    private String mt_total;
+    private int quantite;
+
     //getters
     public int getId_cmd() {
         return id_cmd;
@@ -24,6 +27,14 @@ public class Commande {
 
     public Date getDate() {
         return date;
+    }
+
+    public String getMt_total() {
+        return mt_total;
+    }
+
+    public int getQuantite() {
+        return quantite;
     }
 
     //setters
@@ -44,23 +55,39 @@ public class Commande {
         this.date = date;
     }
 
+    public void setMt_total(String mt_total) {
+        this.mt_total = mt_total;
+    }
+
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
+
     //constructeurs
-    public Commande(int id_cmd, int id_user, int id_projet, Date date) {
+    public Commande(int id_cmd, int id_user, int id_projet, Date date,String mt_total, int quantite) {
         this.id_cmd = id_cmd;
         this.id_user = id_user;
         this.id_projet = id_projet;
         this.date = date;
+        this.mt_total = mt_total;
+        this.quantite = quantite;
     }
 
-    public Commande(int id_user, int id_projet, Date date) {
+
+
+    public Commande(int id_user, int id_projet, Date date,String mt_total, int quantite) {
         this.id_user = id_user;
         this.id_projet = id_projet;
         this.date = date;
+        this.mt_total = mt_total;
+        this.quantite = quantite;
     }
 
     public Commande(){}
 
     //tostring
+
+
     @Override
     public String toString() {
         return "Commande{" +
@@ -68,6 +95,8 @@ public class Commande {
                 ", id_user=" + id_user +
                 ", id_projet=" + id_projet +
                 ", date=" + date +
+                ", mt_total=" + mt_total +
+                ", quantite=" + quantite +
                 '}';
     }
 }

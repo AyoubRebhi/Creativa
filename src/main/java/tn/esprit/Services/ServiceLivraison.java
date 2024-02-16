@@ -14,11 +14,13 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
 //ajouter livraison
     @Override
     public void ajouter(Livraison l) {
-        String req = "INSERT INTO livraison (id_cmd, id_user, status) VALUES (?, ?, ?)";
+        String req = "INSERT INTO livraison (id_cmd, id_user, status,adresse,frais_liv) VALUES (?, ?, ?,?,?)";
         try (PreparedStatement ps = conn.prepareStatement(req)) {
             ps.setInt(1, l.getId_cmd());
             ps.setInt(2, l.getId_user());
             ps.setString(3, l.getStatus());
+            ps.setString(4, l.getAdresse());
+            ps.setString(5, l.getFrais_liv());
             ps.executeUpdate();
             System.out.println("Livraison ajoutée avec succée!");
         } catch (SQLException e) {
@@ -30,12 +32,14 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
 //modifier livraison
     @Override
     public void modifier(Livraison l) {
-        String req = "update livraison set id_cmd=? , id_user=? , status=? where id_liv=?";
+        String req = "update livraison set id_cmd=? , id_user=? , status=?, adresse=?,frais_liv=? where id_liv=?";
         try (PreparedStatement ps = conn.prepareStatement(req)) {
-        ps.setInt(1,l.getId_cmd());
-        ps.setInt(2,l.getId_user());
-        ps.setString(3,l.getStatus());
-        ps.setInt(4,l.getId_liv());
+            ps.setInt(1, l.getId_cmd());
+            ps.setInt(2, l.getId_user());
+            ps.setString(3, l.getStatus());
+            ps.setString(4, l.getAdresse());
+            ps.setString(5, l.getFrais_liv());
+            ps.setInt(6, l.getId_liv());
         ps.executeUpdate();
         System.out.println("modifiée avec succée");
         } catch (SQLException e) {
@@ -49,6 +53,7 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
         try (PreparedStatement ps = conn.prepareStatement(req)) {
         ps.setInt(1,id);
         ps.executeUpdate();
+            System.out.println("livraison supprimée avec succée!");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -66,6 +71,8 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
             l.setId_cmd(res.getInt(2));
             l.setId_user(res.getInt(3));
             l.setStatus(res.getString(4));
+            l.setAdresse(res.getString(5));
+            l.setFrais_liv(res.getString(6));
 
 
             livraisons.add(l);}return livraisons;
