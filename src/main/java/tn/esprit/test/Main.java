@@ -1,6 +1,8 @@
-package tn.esprit;
+package tn.esprit.test;
 
+import tn.esprit.Models.Categorie;
 import tn.esprit.Models.Projet;
+import tn.esprit.Services.CategorieServices;
 import tn.esprit.Services.ProjetServices;
 import tn.esprit.Utils.MaConnexion;
 
@@ -37,7 +39,7 @@ public class Main {
         } else {
             System.out.println("Aucun projet trouvé avec cet ID.");
         } */
-        List<Projet> projetsTrouves = projetServices.chercherParTitre("Malouf");
+        /* List<Projet> projetsTrouves = projetServices.chercherParTitre("Malouf");
         for (Projet projet : projetsTrouves) {
             System.out.println("ID: " + projet.getId());
             System.out.println("Titre: " + projet.getTitre());
@@ -45,7 +47,10 @@ public class Main {
             System.out.println("Prix: " + projet.getPrix());
             System.out.println("Catégorie: " + projet.getCategorie());
             System.out.println("-------------------------");
-        }
+        } */
+        CategorieServices cs = new CategorieServices();
+        Categorie c = new Categorie("Theatre");
+        cs.ajouter(c);
 
 
     }

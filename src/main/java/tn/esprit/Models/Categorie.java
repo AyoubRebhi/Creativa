@@ -12,7 +12,10 @@ public class Categorie {
         this.titre = titre;
         this.projets = new ArrayList<>();
     }
-
+    public Categorie(String titre){
+        this.titre=titre;
+    }
+    public Categorie(){};
 
     public int getId_categorie() {
         return id_categorie;
