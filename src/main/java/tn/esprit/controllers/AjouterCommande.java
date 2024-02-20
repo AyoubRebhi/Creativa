@@ -48,7 +48,12 @@ public class AjouterCommande {
 
     @FXML
     void AfficherCommande(ActionEvent event) {
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherCommande.fxml"));
+        try {
+            dateLivTF.getScene().setRoot(loader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
