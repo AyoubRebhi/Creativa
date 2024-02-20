@@ -38,13 +38,13 @@ public class Main {
 
 
         //modifier commande
-      /* ServiceCommande serviceCommande = new ServiceCommande();
+      /*ServiceCommande serviceCommande = new ServiceCommande();
         // Création d'une instance de Commande à modifier
         Commande c = new Commande();
         c.setId_cmd(10); // ID de la commande que je veux modifier
         c.setId_user(1); // ID de l'utilisateur
         c.setId_projet(2); // ID du projet
-        c.setMt_total("8dt");
+        c.setMt_total("9dt");
         c.setQuantite(8);
         c.setCode_promo(2000);
         // Création de la date "2023-02-10" en utilisant java.sql.Date
