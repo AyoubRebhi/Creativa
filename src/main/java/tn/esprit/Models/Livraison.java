@@ -8,11 +8,19 @@ public class Livraison {
     private String status;
     private String adresse;
     private String frais_liv;
+
+    private String moyen_livraison;
     public enum Status {
-        en_attente,
+
         en_cours,
-        expédiée,
         livrée
+
+    }
+
+    public enum moyen_livraison {
+
+        standard,
+        express
 
     }
 
@@ -42,6 +50,11 @@ public class Livraison {
     public String getFrais_liv() {
         return frais_liv;
     }
+
+    public String getMoyen_livraison() {
+        return moyen_livraison;
+    }
+
     //setters
 
 
@@ -68,30 +81,39 @@ public class Livraison {
     public void setFrais_liv(String frais_liv) {
         this.frais_liv = frais_liv;
     }
-    //constructeurs
+
+    public void setMoyen_livraison(String moyen_livraison) {
+        this.moyen_livraison = moyen_livraison;
+    }
+
+//constructeurs
 
 
-    public Livraison(int id_liv, int id_cmd, int id_user, String status,String adresse,String frais_liv) {
+    public Livraison(int id_liv, int id_cmd, int id_user, String status,String adresse,String frais_liv,String moyen_livraison) {
         this.id_liv = id_liv;
         this.id_cmd = id_cmd;
         this.id_user = id_user;
         this.status = status;
         this.adresse = adresse;
         this.frais_liv=frais_liv;
+        this.moyen_livraison = moyen_livraison;
     }
 
 
-    public Livraison(int id_cmd, int id_user, String status,String adresse,String frais_liv) {
+
+    public Livraison(int id_cmd, int id_user, String status, String adresse, String frais_liv,String moyen_livraison) {
         this.id_cmd = id_cmd;
         this.id_user = id_user;
         this.status = status;
         this.adresse = adresse;
         this.frais_liv=frais_liv;
+        this.moyen_livraison = moyen_livraison;
     }
 
     public Livraison(){}
 
 //tostring
+
     @Override
     public String toString() {
         return "Livraison{" +
@@ -100,7 +122,8 @@ public class Livraison {
                 ", id_user=" + id_user +
                 ", status='" + status + '\'' +
                 ", adresse='" + adresse + '\'' +
-                ", frais_liv=" + frais_liv +
+                ", frais_liv='" + frais_liv + '\'' +
+                ", moyen_livraison='" + moyen_livraison + '\'' +
                 '}';
     }
 }

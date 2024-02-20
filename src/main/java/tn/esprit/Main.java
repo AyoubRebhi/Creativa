@@ -1,6 +1,7 @@
 package tn.esprit;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Properties;
 
 import tn.esprit.Models.Commande;
@@ -14,62 +15,69 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         MaConnexion connexion = MaConnexion.getInstance();
         System.out.println(connexion);
 
         //ajouter commande
         /*ServiceCommande serviceCommande = new ServiceCommande();
 
-        Commande c = new Commande(1, 2, new Date(123, 9, 10), "20dt", 30);
+        Commande c = new Commande(2, 3, new Date(123, 9, 26), "8dt", 2, new Date(123,9,15),1600);
 
-        serviceCommande.ajouter(c); // Appel de la méthode sur l'instance serviceCommande
+        serviceCommande.ajouter(c); }// Appel de la méthode sur l'instance serviceCommande
 */
-
         //supprimer commande
 
         /*ServiceCommande serviceCommande = new ServiceCommande();
-        serviceCommande.supprimer(6);}*/
+        serviceCommande.supprimer(24);}*/
 
 
         //modifier commande
-       /*ServiceCommande serviceCommande = new ServiceCommande();
+      /* ServiceCommande serviceCommande = new ServiceCommande();
         // Création d'une instance de Commande à modifier
         Commande c = new Commande();
         c.setId_cmd(10); // ID de la commande que je veux modifier
-        c.setId_user(1); // 'ID de l'utilisateur
+        c.setId_user(1); // ID de l'utilisateur
         c.setId_projet(2); // ID du projet
         c.setMt_total("8dt");
-        c.setQuantite(6);
+        c.setQuantite(8);
+        c.setCode_promo(2000);
         // Création de la date "2023-02-10" en utilisant java.sql.Date
-        Date dateSpecifiee = Date.valueOf("2020-03-13");
+        Date date = Date.valueOf("2020-03-13");
+        Date date_livraison_estimee = Date.valueOf("2020-03-13");
+
+
 
         //affecter date
-        c.setDate(dateSpecifiee);
+        c.setDate(date);
+        c.setDate_livraison_estimee(date_livraison_estimee);
+
         serviceCommande.modifier(c);
-    }
-*/
+    }*/
+
         //ajouter livraison
 
            /*ServiceLivraison serviceLivraison = new ServiceLivraison();
-            Livraison l = new Livraison(3, 2, "en_cours","aaa","8dt");
+            Livraison l = new Livraison(3, 2, "expédiée","aaa","8dt","express");
             serviceLivraison.ajouter(l);
         }*/
 
 
         //modifier livraison
 
-       /* ServiceLivraison serviceLivraison = new ServiceLivraison();
-        Livraison l = new Livraison(7,3, 2, "livrée","aaa","8dt");
+        /*ServiceLivraison serviceLivraison = new ServiceLivraison();
+        Livraison l = new Livraison(4,2, "livrée", "ariana","8dt","standard");
         serviceLivraison.modifier(l);
     }*/
 
         //supprimer livraison
         /*ServiceLivraison serviceLivraison = new ServiceLivraison();
-        serviceLivraison.supprimer(4);}*/
+        serviceLivraison.supprimer(9);}*/
 
 
         //email
@@ -123,4 +131,15 @@ public class Main {
             ex.printStackTrace();
             System.out.println("Une erreur s'est produite: " + ex.getMessage());
         }*/
-    }
+
+        //afficher commande
+        /*ServiceCommande serviceCommande=new ServiceCommande();
+        List<Commande> l = null;
+        try{
+            l=serviceCommande.afficher();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        System.out.println(l);
+    }*/
+    }}

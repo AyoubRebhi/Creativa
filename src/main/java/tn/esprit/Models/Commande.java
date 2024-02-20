@@ -11,6 +11,8 @@ public class Commande {
 
     private String mt_total;
     private int quantite;
+    private Date date_livraison_estimee;
+    private int code_promo;
 
     //getters
     public int getId_cmd() {
@@ -35,6 +37,14 @@ public class Commande {
 
     public int getQuantite() {
         return quantite;
+    }
+
+    public Date getDate_livraison_estimee() {
+        return date_livraison_estimee;
+    }
+
+    public int getCode_promo() {
+        return code_promo;
     }
 
     //setters
@@ -63,24 +73,37 @@ public class Commande {
         this.quantite = quantite;
     }
 
+    public void setCode_promo(int code_promo) {
+        this.code_promo = code_promo;
+    }
+
+    public void setDate_livraison_estimee(Date date_livraison_estimee) {
+        this.date_livraison_estimee = date_livraison_estimee;
+
+
+    }
+
     //constructeurs
-    public Commande(int id_cmd, int id_user, int id_projet, Date date,String mt_total, int quantite) {
+    public Commande(int id_cmd, int id_user, int id_projet, Date date,String mt_total, int quantite,Date date_livraison_estimee,int code_promo) {
         this.id_cmd = id_cmd;
         this.id_user = id_user;
         this.id_projet = id_projet;
         this.date = date;
         this.mt_total = mt_total;
         this.quantite = quantite;
+        this.date_livraison_estimee = date_livraison_estimee;
+        this.code_promo = code_promo;
     }
 
 
-
-    public Commande(int id_user, int id_projet, Date date,String mt_total, int quantite) {
+    public Commande(int id_user, int id_projet, Date date, String mt_total, int quantite, Date date_livraison_estimee,int code_promo) {
         this.id_user = id_user;
         this.id_projet = id_projet;
         this.date = date;
         this.mt_total = mt_total;
         this.quantite = quantite;
+        this.date_livraison_estimee = date_livraison_estimee;
+        this.code_promo = code_promo;
     }
 
     public Commande(){}
@@ -95,8 +118,10 @@ public class Commande {
                 ", id_user=" + id_user +
                 ", id_projet=" + id_projet +
                 ", date=" + date +
-                ", mt_total=" + mt_total +
+                ", mt_total='" + mt_total + '\'' +
                 ", quantite=" + quantite +
+                ", date_livraison_estimee=" + date_livraison_estimee +
+                ", code_promo=" + code_promo +
                 '}';
     }
 }
