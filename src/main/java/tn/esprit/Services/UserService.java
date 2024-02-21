@@ -1,6 +1,8 @@
 package tn.esprit.Services;
 import org.mindrot.jbcrypt.BCrypt;
 
+
+
 import tn.esprit.Interfaces.InterfaceCRUD;
 import tn.esprit.Models.Role;
 import tn.esprit.Models.User;
@@ -42,9 +44,9 @@ public class UserService implements InterfaceCRUD<User> {
             ex.printStackTrace();
         }
     }
-   // ajouter avec mail de confirmation
+    // ajouter avec mail de confirmation
     public void ajouter4(User user) {
-        String req = "INSERT INTO user (last_name, first_name, username, password, role, biography, address, ImgPath,email) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
+        String req = "INSERT INTO user (last_name, first_name, username, password, role, biography, address, ImgPath,email,numTel) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?)";
 
         try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
             // Set values for the prepared statement
@@ -54,12 +56,13 @@ public class UserService implements InterfaceCRUD<User> {
 
             // Hash the password using BCrypt
             String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
-           preparedStatement.setString(4, hashedPassword);
+            preparedStatement.setString(4, hashedPassword);
             preparedStatement.setString(5, user.getRole().name());
             preparedStatement.setString(6, user.getBiography());
             preparedStatement.setString(7, user.getAddress());
             preparedStatement.setString(8, user.getProfileImagePath());
             preparedStatement.setString(9, user.getEmail());
+            preparedStatement.setInt(10, user.getNumTel());
 
             // Execute the statement
             preparedStatement.executeUpdate();
@@ -78,7 +81,7 @@ public class UserService implements InterfaceCRUD<User> {
     @Override
     //fonction modifier
     public void modifier(User user) {
-        String req = "UPDATE user SET last_name = ?, first_name = ?, username = ?, password = ?, role = ?, biography = ?, address = ?, profile_image_path = ? WHERE id = ?";
+        String req = "UPDATE user SET last_name = ?, first_name = ?, username = ?, password = ?, role = ?, biography = ?, address = ?, profile_image_path = ?,email=? WHERE id_user= ?";
 
         try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
             // Set values for the prepared statement
@@ -90,10 +93,12 @@ public class UserService implements InterfaceCRUD<User> {
             preparedStatement.setString(6, user.getBiography());
             preparedStatement.setString(7, user.getAddress());
             preparedStatement.setString(8, user.getProfileImagePath());
-            preparedStatement.setInt(9, user.getId());
+            preparedStatement.setString(9,user.getEmail());
+            preparedStatement.setInt(10, user.getId());
 
             // Execute the statement
             preparedStatement.executeUpdate();
+            System.out.println("modified");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -102,7 +107,7 @@ public class UserService implements InterfaceCRUD<User> {
     @Override
     //fonction supprimer
     public void supprimer(int id) {
-        String DELETE_USER_SQL = "DELETE FROM user WHERE id = ?";
+        String DELETE_USER_SQL = "DELETE FROM user WHERE id_user = ?";
         try (PreparedStatement preparedStatement = cnx.prepareStatement(DELETE_USER_SQL)) {
             preparedStatement.setInt(1, id);
 
@@ -144,6 +149,7 @@ public class UserService implements InterfaceCRUD<User> {
 
                 // Ajoute l'objet User à la liste
                 utilisateur.setEmail(resultSet.getString("email"));
+                utilisateur.setNumTel(Integer.parseInt(resultSet.getString("numTel")));
                 utilisateurs.add(utilisateur);
             }
         } catch (SQLException e) {
@@ -193,35 +199,79 @@ public class UserService implements InterfaceCRUD<User> {
     }
 
 
-// Fonction pour récupérer un utilisateur par son ID
-public User getById(int id) {
-    User utilisateur = null;
-    String req = "SELECT * FROM user WHERE id_user = ?";
+    // Fonction pour récupérer un utilisateur par son ID
+    public User getById(int id) {
+        User utilisateur = null;
+        String req = "SELECT * FROM user WHERE id_user = ?";
 
-    try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
-        // Définir l'ID de l'utilisateur pour la requête préparée
-        preparedStatement.setInt(1, id);
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            // Définir l'ID de l'utilisateur pour la requête préparée
+            preparedStatement.setInt(1, id);
 
-        // Exécuter la requête
-        try (ResultSet resultSet = preparedStatement.executeQuery()) {
-            if (resultSet.next()) {
-                utilisateur = new User();
-                utilisateur.setId(resultSet.getInt("id_user"));
-                utilisateur.setLastName(resultSet.getString("last_name"));
-                utilisateur.setFirstName(resultSet.getString("first_name"));
-                utilisateur.setUsername(resultSet.getString("username"));
-                utilisateur.setPassword(resultSet.getString("password"));
-                utilisateur.setRole(Role.valueOf(resultSet.getString("role")));
-                utilisateur.setBiography(resultSet.getString("biography"));
-                utilisateur.setAddress(resultSet.getString("address"));
-                utilisateur.setProfileImagePath(resultSet.getString("ImgPath"));
-                utilisateur.setEmail(resultSet.getString("email"));
+            // Exécuter la requête
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    utilisateur = new User();
+                    utilisateur.setId(resultSet.getInt("id_user"));
+                    utilisateur.setLastName(resultSet.getString("last_name"));
+                    utilisateur.setFirstName(resultSet.getString("first_name"));
+                    utilisateur.setUsername(resultSet.getString("username"));
+                    utilisateur.setPassword(resultSet.getString("password"));
+                    utilisateur.setRole(Role.valueOf(resultSet.getString("role")));
+                    utilisateur.setBiography(resultSet.getString("biography"));
+                    utilisateur.setAddress(resultSet.getString("address"));
+                    utilisateur.setProfileImagePath(resultSet.getString("ImgPath"));
+                    utilisateur.setEmail(resultSet.getString("email"));
+                }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
+
+        return utilisateur;
     }
 
-    return utilisateur;
-}
+
+    public int getIdUtilisateur (String username, String password) throws SQLException{
+        int k=0;
+        String requete = "select id_user  from user where username=? and password=?";
+
+        PreparedStatement pst = cnx
+                .prepareStatement(requete);
+        pst.setString(1,username );
+        pst.setString(2,password );
+        ResultSet rs=pst.executeQuery();
+        while(rs.next()){
+            k=   rs.getInt("id_utilisateur");}
+
+        return k;
+    }
+
+
+
+    public int getUtilisateurid(String identifiant, String motDePasse) {
+        String req = "SELECT id_user, password FROM user WHERE (username=? OR email=?)";
+
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setString(1, identifiant);
+            preparedStatement.setString(2, identifiant);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    // Récupérer le mot de passe haché de la base de données
+                    String hashedPasswordFromDB = resultSet.getString("password");
+
+                    // Vérifier si le mot de passe fourni correspond au mot de passe haché
+                    if (BCrypt.checkpw(motDePasse, hashedPasswordFromDB)) {
+                        // Retourner l'ID si la vérification du mot de passe est réussie
+                        return resultSet.getInt("id_user");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // Retourner une valeur par défaut en cas d'échec de l'authentification
+        return -1;
+    }
 }

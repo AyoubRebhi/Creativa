@@ -16,7 +16,7 @@ public class Main {
 
      // Créez un objet User pour les tests
         User testUser = new User("ayachi", "zeinedddb", "happppp588", "password123",
-               Role.ADMIN, "A short bio", "123 Main St", "/path/to/image.jpg", "hasssssmrouni.hajer@esprit.tn");
+               Role.ADMIN, "A short bio", "123 Main St", "/path/to/image.jpg", "hasssssmrouni.hajer@esprit.tn",111);
 //
 //        // Créez un service utilisateur
        UserService userService = new UserService();

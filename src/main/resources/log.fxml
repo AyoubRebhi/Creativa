@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="434.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controlleurs.LoginController">
+    <children>
+        <ImageView fitHeight="506.0" fitWidth="876.0" layoutX="7.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../java/tn/esprit/resources/beige.jpg" />
+            </image>
+        </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff5edb1" height="347.0" layoutX="190.0" layoutY="69.0" stroke="WHITE" strokeType="INSIDE" width="428.0" />
+      <Button fx:id="button" ellipsisString="" layoutX="347.0" layoutY="327.0" lineSpacing="12.0" mnemonicParsing="false" onAction="#submit" prefHeight="43.0" prefWidth="121.0" text="Button" textFill="#d7b799" textOverrun="LEADING_WORD_ELLIPSIS">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <TextField fx:id="loginId" alignment="CENTER_RIGHT" layoutX="289.0" layoutY="185.0" prefHeight="43.0" prefWidth="220.0">
+         <font>
+            <Font name="System Bold Italic" size="9.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TextField>
+      <Label layoutX="298.0" layoutY="157.0" text="email ou username      " textFill="#28130066">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="289.0" layoutY="228.0" text="mot de passe" textFill="#361d0770">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="336.0" layoutY="81.0" prefHeight="67.0" prefWidth="164.0" text="login" textFill="#381f07a3">
+         <font>
+            <Font name="System Italic" size="57.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="motpasse" layoutX="290.0" layoutY="264.0" prefHeight="35.0" prefWidth="210.0" />
+    </children>
+</AnchorPane>
