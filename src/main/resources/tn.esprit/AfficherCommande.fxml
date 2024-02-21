@@ -14,7 +14,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="deleteBTN" layoutX="489.0" layoutY="361.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" text="Supprimer" />
+      <Button fx:id="deleteBTN" layoutX="489.0" layoutY="361.0" mnemonicParsing="false" onAction="#suppBTN" prefHeight="26.0" prefWidth="89.0" text="Supprimer" />
       <Button fx:id="updateBTN" layoutX="386.0" layoutY="362.0" mnemonicParsing="false" onAction="#ModifierCommande" prefHeight="26.0" prefWidth="90.0" text="Modifier" />
    </children>
 </AnchorPane>

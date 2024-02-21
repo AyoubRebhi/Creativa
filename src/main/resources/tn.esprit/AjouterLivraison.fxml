@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterLivraison">
+
+   <children>
+      <TextField fx:id="id_cmdTF" layoutX="30.0" layoutY="98.0" promptText="id cmd" />
+      <TextField fx:id="adresseTF" layoutX="358.0" layoutY="166.0" promptText="adresse" />
+      <TextField fx:id="id_userTF" layoutX="358.0" layoutY="98.0" promptText="id user" />
+      <TextField fx:id="statusTF" layoutX="30.0" layoutY="166.0" promptText="status" />
+      <TextField fx:id="fraisTF" layoutX="30.0" layoutY="247.0" promptText="Frais livraison" />
+      <TextField fx:id="moyenLivTF" layoutX="368.0" layoutY="247.0" promptText="Moyen livraison" />
+      <Label fx:id="ajouterL" layoutX="272.0" layoutY="29.0" text="Ajouter livraison" />
+      <Button fx:id="AjouterLivraison" layoutX="518.0" layoutY="360.0" mnemonicParsing="false" onAction="#AjouterLivraison" text="Ajouter" />
+      <RadioButton fx:id="RB1" layoutX="368.0" layoutY="287.0" mnemonicParsing="false" text="Standard" onAction="#handleRB1"/>
+      <RadioButton fx:id="RB2" layoutX="474.0" layoutY="287.0" mnemonicParsing="false" text="Express" onAction="#handleRB2"/>
+
+
+   </children>
+</AnchorPane>
