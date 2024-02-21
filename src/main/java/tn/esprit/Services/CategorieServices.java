@@ -74,6 +74,27 @@ public class CategorieServices implements InterfaceCRUD<Categorie> {
         }
         return categories;
     }
+    public Categorie afficherParId(int id){
+        Categorie categorie = null;
+        String req="SELECT * FROM categorie WHERE `id_categorie`=?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(req);
+            ps.setInt(1,id);
+            try(ResultSet rs = ps.executeQuery()){
+                if(rs.next()){
+                    categorie = new Categorie();
+                    categorie.setId_categorie(rs.getInt("id_categorie"));
+                    categorie.setTitre(rs.getString("titre"));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return categorie;
+    }
+
+
     public Map<String, Integer> calculerNbProjets(int id) {
         Map<String, Integer> nbProjetsParCategorie = new HashMap<>();
         try {
