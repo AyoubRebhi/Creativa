@@ -71,7 +71,7 @@ public class Main {
         //modifier livraison
 
         /*ServiceLivraison serviceLivraison = new ServiceLivraison();
-        Livraison l = new Livraison(4,2, "livrée", "ariana","8dt","standard");
+        Livraison l = new Livraison(13,3,1, "livrée", "ariana","8dt","standard");
         serviceLivraison.modifier(l);
     }*/
 

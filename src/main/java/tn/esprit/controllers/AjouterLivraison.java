@@ -1,12 +1,14 @@
 package tn.esprit.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import tn.esprit.Models.Commande;
 import tn.esprit.Models.Livraison;
 import tn.esprit.Services.ServiceCommande;
 import tn.esprit.Services.ServiceLivraison;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 
@@ -42,6 +44,9 @@ public class AjouterLivraison {
     private RadioButton RB2;
 
     @FXML
+    private Button afficherBTN;
+
+    @FXML
 
     void handleRB1(ActionEvent event) {
         if (RB1.isSelected()) {
@@ -56,6 +61,15 @@ public class AjouterLivraison {
         }
     }
 
+    @FXML
+    void AfficherLivraison(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherLivraison.fxml"));
+        try {
+            moyenLivTF.getScene().setRoot(loader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @FXML
     void AjouterLivraison(ActionEvent event) throws SQLException {
         ServiceLivraison serviceLivraison = new ServiceLivraison();

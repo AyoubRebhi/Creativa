@@ -30,7 +30,7 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
 
 
 }
-//modifier livraison
+    //modifier livraison
     @Override
     public void modifier(Livraison l) {
         String req = "update livraison set id_cmd=? , id_user=? , status=?, adresse=?,frais_liv=?,moyen_livraison=? where id_liv=?";
@@ -43,12 +43,15 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
             ps.setString(6, l.getMoyen_livraison());
             ps.setInt(7, l.getId_liv());
 
-        ps.executeUpdate();
-        System.out.println("modifiée avec succée");
+            // Exécute la requête de mise à jour
+            ps.executeUpdate();
+
+            System.out.println("modifiée avec succée");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
     //supprimer livraison
     @Override
     public void supprimer(int id) {
