@@ -73,5 +73,6 @@ public class CategorieServices implements InterfaceCRUD<Categorie> {
         return categories;
     }
 
+
 }
 

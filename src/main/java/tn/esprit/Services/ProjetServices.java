@@ -196,5 +196,28 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
         return projets;
     }
 
+    public List<Projet> rechercheParCategorie(int id_categorie) {
+        List<Projet> projets = new ArrayList<>();
+        String req = "SELECT * FROM projet WHERE id_categorie = ?";
+        try (PreparedStatement ps = conn.prepareStatement(req)) {
+            ps.setInt(1, id_categorie);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Projet projet = new Projet();
+                    projet.setId(rs.getInt("id_projet"));
+                    projet.setTitre(rs.getString("titre"));
+                    projet.setDescription(rs.getString("description"));
+                    projet.setPrix(rs.getDouble("prix"));
+                    projet.setCategorie(rs.getInt("id_categorie"));
+                    projets.add(projet);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return projets;
+    }
+
+
 
 }

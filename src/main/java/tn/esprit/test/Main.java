@@ -16,10 +16,10 @@ public class Main {
 
         MaConnexion connexion = MaConnexion.getInstance();
         System.out.println(connexion);
-        ProjetServices projetServices = new ProjetServices();
+        ProjetServices ps = new ProjetServices();
+        CategorieServices cs = new CategorieServices();
 
-
-            /*List<Projet> projets = projetServices.afficher();
+        /*List<Projet> projets = projetServices.afficher();
             for (Projet projet : projets) {
                 System.out.println("ID: " + projet.getId());
                 System.out.println("Titre: " + projet.getTitre());
@@ -28,7 +28,7 @@ public class Main {
                 System.out.println("Catégorie: " + projet.getCategorie());
                 System.out.println("-------------------------");
             }*/
-       /* Projet projet =projetServices.afficherProjetParId(6);
+        /* Projet projet =projetServices.afficherProjetParId(6);
         if (projet != null) {
             System.out.println("Informations du projet :");
             System.out.println("ID : " + projet.getId());
@@ -48,9 +48,20 @@ public class Main {
             System.out.println("Catégorie: " + projet.getCategorie());
             System.out.println("-------------------------");
         } */
-        CategorieServices cs = new CategorieServices();
+        /*CategorieServices cs = new CategorieServices();
         Categorie c = new Categorie("Theatre");
-        cs.ajouter(c);
+        cs.ajouter(c); */
+
+        List<Projet> projets=ps.rechercheParCategorie(1);
+        for (Projet projet : projets) {
+            System.out.println("ID: " + projet.getId());
+            System.out.println("Titre: " + projet.getTitre());
+            System.out.println("Description: " + projet.getDescription());
+            System.out.println("Prix: " + projet.getPrix());
+            System.out.println("Catégorie: " + projet.getCategorie());
+            System.out.println("-------------------------");
+        }
+
 
 
     }
