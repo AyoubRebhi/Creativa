@@ -6,25 +6,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controlleurs.updateUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controlleurs.updateUserController">
     <children>
-        <Label layoutX="261.0" layoutY="30.0" text="Modifier Utilisateur" textFill="#c17914">
+        <Label layoutX="208.0" layoutY="39.0" text="Modifier Utilisateur" textFill="#bf5915">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>
         </Label>
-        <Label layoutX="70.0" layoutY="120.0" text="Nom :" />
-        <Label layoutX="70.0" layoutY="180.0" text="Prénom :" />
-        <Label layoutX="70.0" layoutY="240.0" text="Numéro de Téléphone :" />
-        <Label layoutX="70.0" layoutY="300.0" text="Email :" />
+        <Label layoutX="133.0" layoutY="112.0" text="Nom :">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+        <Label layoutX="109.0" layoutY="158.0" text="Prénom :">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+        <Label layoutX="55.0" layoutY="214.0" text="Numéro de Téléphone :">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+        <Label layoutX="116.0" layoutY="270.0" text="Email :">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Label>
         <!-- Add labels for other properties... -->
 
-        <TextField fx:id="lastNameField" layoutX="200.0" layoutY="115.0" prefHeight="25.0" prefWidth="250.0" />
-        <TextField fx:id="firstNameField" layoutX="200.0" layoutY="175.0" prefHeight="25.0" prefWidth="250.0" />
-        <TextField fx:id="numTelField" layoutX="200.0" layoutY="235.0" prefHeight="25.0" prefWidth="250.0" />
-        <TextField fx:id="emailField" layoutX="200.0" layoutY="295.0" prefHeight="25.0" prefWidth="250.0" />
+        <TextField fx:id="lastNameField" layoutX="200.0" layoutY="108.0" prefHeight="25.0" prefWidth="250.0" />
+        <TextField fx:id="firstNameField" layoutX="200.0" layoutY="154.0" prefHeight="25.0" prefWidth="250.0" />
+        <TextField fx:id="numTelField" layoutX="200.0" layoutY="214.0" prefHeight="25.0" prefWidth="250.0" />
+        <TextField fx:id="emailField" layoutX="200.0" layoutY="266.0" prefHeight="25.0" prefWidth="250.0" />
         <!-- Add text fields for other properties... -->
 
-        <Button fx:id="updateButton" layoutX="265.0" layoutY="350.0" mnemonicParsing="false" text="Mettre à jour" />
+        <Button fx:id="updateButton" layoutX="227.0" layoutY="316.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="165.0" text="Mettre à jour" />
     </children>
 </AnchorPane>
