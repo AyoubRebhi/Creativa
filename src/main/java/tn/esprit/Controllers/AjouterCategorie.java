@@ -1,14 +1,17 @@
 package tn.esprit.Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import tn.esprit.Models.Categorie;
 import tn.esprit.Services.CategorieServices;
+import tn.esprit.test.HelloApplication;
 
 public class AjouterCategorie {
 
@@ -21,6 +24,16 @@ public class AjouterCategorie {
     @FXML
     private TextField titreTF;
 
+
+    @FXML
+    void afficherCategories(ActionEvent event){
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherCategories.fxml"));
+        try {
+            titreTF.getScene().setRoot(fxmlLoader.load());
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
     @FXML
     void ajouterCategorie(ActionEvent event) {
         CategorieServices categorieServices = new CategorieServices();

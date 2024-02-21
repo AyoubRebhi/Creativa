@@ -7,6 +7,7 @@ import tn.esprit.Services.ProjetServices;
 import tn.esprit.Utils.MaConnexion;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -62,13 +63,18 @@ public class Main {
             System.out.println("Catégorie: " + projet.getCategorie());
             System.out.println("-------------------------");
         }*/
-        /*int idCategorie = 1;
-        Map<String, Integer> nb = ps.calculerNbProjets(idCategorie);
+        /*int idCategorie = 3;
+        Map<String, Integer> nb = cs.calculerNbProjets(idCategorie);
         for (Map.Entry<String, Integer> entry : nb.entrySet()) {
             String categorieTitre = entry.getKey();
             int nbProjets = entry.getValue();
             System.out.println("- Catégorie : " + categorieTitre + ", Nombre de projets : " + nbProjets);
         }*/
+        List<Categorie> categories = cs.afficher();
+        for(Categorie c : categories){
+            System.out.println("ID : "+ c.getId_categorie());
+            System.out.println("Titre : "+ c.getTitre());
+        }
 
 
 
