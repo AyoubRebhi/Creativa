@@ -10,6 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
+import tn.esprit.Models.session;
 import tn.esprit.Services.UserService;
 
 import java.io.IOException;
@@ -59,7 +60,7 @@ public class  LoginController {
             // Authentification réussie, charger la nouvelle scène
             int p = S.getUtilisateurid(loginId.getText(), motpasse.getText());
             System.out.println("hhh"+S.getUtilisateurid(loginId.getText(), motpasse.getText()));
-
+            session.id_utilisateur=p;
             System.out.println("hajer connectéé" +p);
             redirectToLoginPage(event);
 
@@ -75,7 +76,7 @@ public class  LoginController {
     private void redirectToLoginPage(ActionEvent event) {
         try {
             // Charger la page de connexion à partir du fichier FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/list.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ajouterCarte.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène
@@ -130,5 +131,45 @@ public class  LoginController {
     }
 
 
+    private void redirect(ActionEvent event) {
+        try {
+            // Charger la page de connexion à partir du fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/inscription.fxml"));
+            Parent root = loader.load();
 
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Obtenir la scène actuelle à partir de l'événement
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+            // Changer la scène actuelle vers la nouvelle scène de connexion
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement de la page de connexion
+        }
+    }
+
+    public void redirectto(ActionEvent actionEvent) {
+        try {
+            // Charger la page de connexion à partir du fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/inscription.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Obtenir la scène actuelle à partir de l'événement
+            Stage stage = (Stage) ((javafx.scene.Node) actionEvent.getSource()).getScene().getWindow();
+
+            // Changer la scène actuelle vers la nouvelle scène de connexion
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement de la page de connexion
+        }
+    }
 }

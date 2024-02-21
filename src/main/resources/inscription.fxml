@@ -16,7 +16,7 @@
             <!-- Image de fond -->
             <ImageView fitHeight="507.0" fitWidth="919.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@../java/tn/esprit/resources/beige.jpg" />
+                    <Image url="@images/beige.jpg" />
                 </image>
             </ImageView>
 
@@ -88,12 +88,12 @@
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="30.0" fitWidth="34.0" layoutX="407.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true" rotate="-0.7">
          <image>
-            <Image url="@../java/tn/esprit/resources/img_6.png" />
+            <Image url="@images/img_5.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="50.0" fitWidth="38.0" layoutX="275.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../java/tn/esprit/resources/img_4.png" />
+            <Image url="@images/img_4.png" />
          </image>
       </ImageView>
       <TextField fx:id="username" layoutX="299.0" layoutY="210.0" prefHeight="26.0" prefWidth="200.0" />

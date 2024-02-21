@@ -40,6 +40,18 @@ public class CarteFideliteService implements InterfaceCRUD<CarteFidelite> {
 
     @Override
     public void modifier(CarteFidelite carteFidelite) {
+        CarteFideliteService h=new CarteFideliteService();
+        String sql = "UPDATE cartes_fidelite SET points = ?,id_user? WHERE id_carte = ?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
+            preparedStatement.setInt(1, carteFidelite.getPoints());
+            preparedStatement.setInt(2, h.consulterUtilisateurParIdCarte(carteFidelite.getIdCarteFidelite()).getId());
+            preparedStatement.setInt(1, carteFidelite.getIdCarteFidelite());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
@@ -136,7 +148,7 @@ public class CarteFideliteService implements InterfaceCRUD<CarteFidelite> {
 
 
     public void echangerPoints(int cardId, int pointsToRedeem) {
-        String sql = "UPDATE loyalty_cards SET points = points - ? WHERE id_carte = ?";
+        String sql = "UPDATE cartes_fidelite SET points = points - ? WHERE id_carte = ?";
         try (PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
             preparedStatement.setInt(1, pointsToRedeem);
             preparedStatement.setInt(2, cardId);
@@ -160,6 +172,26 @@ public class CarteFideliteService implements InterfaceCRUD<CarteFidelite> {
             e.printStackTrace();
         }
         return pointsBalance;
+    }
+    public int carteExistsForUser(int userId) {
+        int cardId = -1;
+        String sql = "SELECT id_carte FROM carte_fidelite WHERE user_id = ?";
+
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, userId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                // If the result set has at least one row, get the card ID
+                if (resultSet.next()) {
+                    cardId = resultSet.getInt("id_carte");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your needs
+        }
+
+        return cardId;
     }
 
 
