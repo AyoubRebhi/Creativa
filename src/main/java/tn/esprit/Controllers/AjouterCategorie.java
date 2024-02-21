@@ -3,11 +3,16 @@ package tn.esprit.Controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import tn.esprit.Models.Categorie;
 import tn.esprit.Services.CategorieServices;
@@ -23,6 +28,9 @@ public class AjouterCategorie {
 
     @FXML
     private TextField titreTF;
+    private List<Categorie> categories;
+    private ListView<String> listView;
+
 
 
     @FXML
@@ -36,15 +44,40 @@ public class AjouterCategorie {
     }
     @FXML
     void ajouterCategorie(ActionEvent event) {
-        CategorieServices categorieServices = new CategorieServices();
-        Categorie categorie = new Categorie();
-        categorie.setTitre(titreTF.getText());
-        categorieServices.ajouter(categorie);
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Success");
-        alert.setContentText("Categorie est ajoutée !");
-        alert.showAndWait();
+        String titre = titreTF.getText();
+        if (titre.isEmpty()) {
+            showAlert("Erreur", "Vous devez ajouter le titre de la catégorie !");
+        } else {
+            CategorieServices categorieServices = new CategorieServices();
+            Categorie categorie = new Categorie();
+            categorie.setTitre(titre);
+            categorieServices.ajouter(categorie);
 
+            // Rafraîchir la liste des catégories après l'ajout
+            refreshCategoriesList();
+
+            showAlert("Succès", "La catégorie a été ajoutée avec succès.");
+        }
+    }
+
+    private void refreshCategoriesList() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCategories.fxml"));
+        try {
+            titreTF.getScene().setRoot(loader.load());
+            AfficherCategories controller = loader.getController();
+            controller.initialize(); // Mettre à jour la liste des catégories
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     @FXML

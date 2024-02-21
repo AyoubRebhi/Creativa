@@ -14,7 +14,8 @@
                 <Font name="System Bold Italic" size="27.0" />
             </font>
         </Label>
-        <Button fx:id="updateBTN" layoutX="316.0" layoutY="339.0" mnemonicParsing="false" onAction="#modifierCategorie" text="Modifier" />
-        <Button fx:id="suppBTN" layoutX="215.0" layoutY="339.0" mnemonicParsing="false" text="Supprimer" />
+        <Button fx:id="updateBTN" layoutX="404.0" layoutY="339.0" mnemonicParsing="false" onAction="#modifierCategorie" text="Modifier" />
+        <Button fx:id="suppBTN" layoutX="264.0" layoutY="339.0" mnemonicParsing="false" onAction="#supprimerCategorie" text="Supprimer" />
+      <Button fx:id="AjouterBTN" layoutX="137.0" layoutY="339.0" mnemonicParsing="false" onAction="#ajouterCategorie" text="Ajouter" />
     </children>
 </AnchorPane>
