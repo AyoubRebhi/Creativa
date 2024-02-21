@@ -218,6 +218,28 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
         return projets;
     }
 
+    public Map<String, Integer> calculerNbProjets(int id) {
+        Map<String, Integer> nbProjetsParCategorie = new HashMap<>();
+        try {
+            String req = "SELECT c.titre AS categorie_titre, COUNT(p.id_projet) AS nb_projets " +
+                    "FROM categorie c " +
+                    "LEFT JOIN projet p ON c.id_categorie = p.id_categorie " +
+                    "WHERE c.id_categorie = ? " +
+                    "GROUP BY c.titre";
+            PreparedStatement ps = conn.prepareStatement(req);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String categorieTitre = rs.getString("categorie_titre");
+                int nbProjets = rs.getInt("nb_projets");
+                nbProjetsParCategorie.put(categorieTitre, nbProjets);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return nbProjetsParCategorie;
+    }
+
 
 
 }
