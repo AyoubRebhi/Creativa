@@ -1,0 +1,6 @@
+.root {
+    -fx-background-image: url('images/2.jpg');
+    -fx-background-size: cover; /* ajuste la taille de l'image pour remplir la zone */
+    -fx-background-repeat: no-repeat; /* évite la répétition de l'image */
+    -fx-background-position: center; /* positionne l'image au centre */
+}

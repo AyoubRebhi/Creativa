@@ -25,7 +25,7 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
             ps.setDate(6, c.getDate_livraison_estimee());
             ps.setInt(7, c.getCode_promo());
             ps.executeUpdate();
-            System.out.println("commande ajoutée avec succée!");
+            System.out.println("Commande ajoutée avec succés!");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -47,7 +47,7 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
             ps.setInt(7, c.getCode_promo());
             ps.setInt(8, c.getId_cmd());
         ps.executeUpdate();
-            System.out.println("modifiée avec succée");
+            System.out.println("Commande modifiée avec succès");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -59,7 +59,7 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
         try (PreparedStatement ps = conn.prepareStatement(req)) {
         ps.setInt(1,id);
         ps.executeUpdate();
-            System.out.println("commande supprimée avec succée!");
+            System.out.println("Commande supprimée avec succés!");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -69,24 +69,25 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
     @Override
     public List<Commande> afficher()throws SQLException {
         List<Commande> commandes = new ArrayList<>();
-
-        String req ="select * from commande";
-        Statement st = conn.createStatement();
-        ResultSet res =st.executeQuery(req);
-        while(res.next()){
-            Commande c = new Commande();
-            c.setId_cmd(res.getInt(1));
-            c.setId_user(res.getInt(2));
-            c.setId_projet(res.getInt(3));
-            c.setDate(res.getDate(4));
-            c.setMt_total(res.getString(5));
-            c.setQuantite(res.getInt(6));
-            c.setDate_livraison_estimee(res.getDate(7));
-            c.setCode_promo(res.getInt(8));
-
-
-            commandes.add(c);}
-        return commandes; }
+        String req = "select * from commande";
+        try (Statement st = conn.createStatement();
+             ResultSet res = st.executeQuery(req)) {
+            while (res.next()) {
+                Commande c = new Commande();
+                c.setId_cmd(res.getInt(1));
+                c.setId_user(res.getInt(2));
+                c.setId_projet(res.getInt(3));
+                c.setDate(res.getDate(4));
+                c.setMt_total(res.getString(5));
+                c.setQuantite(res.getInt(6));
+                c.setDate_livraison_estimee(res.getDate(7));
+                c.setCode_promo(res.getInt(8));
 
 
+                commandes.add(c);
+            }
+            return commandes;
+        }
+
+    }
 }

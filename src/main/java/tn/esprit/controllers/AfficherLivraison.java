@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -25,7 +26,7 @@ public class AfficherLivraison implements Initializable{
     @FXML
     private ListView<Livraison> listView;
     @FXML
-    private Button deleteBTN;
+    private Button suppBTN;
 
     @FXML
     private Label labelFX;
@@ -58,9 +59,24 @@ public class AfficherLivraison implements Initializable{
         }
     }
     @FXML
-    void SupprimerCommande(ActionEvent event) {
+    void supprimerLivraison(ActionEvent event) throws SQLException {
+        Livraison selectedLivraison = listView.getSelectionModel().getSelectedItem();
+        if (selectedLivraison != null) {
+            ServiceCommande serviceCommande = new ServiceCommande();
+            serviceCommande.supprimer(selectedLivraison.getId_cmd());
+            listView.getItems().remove(selectedLivraison);
+            showAlert("Succès", "Livraison supprimée avec succès !");
+        } else {
+            showAlert("Erreur", "Veuillez sélectionner une livraison à supprimer.");
+        }
+    }
 
-
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 

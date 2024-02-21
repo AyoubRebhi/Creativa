@@ -23,7 +23,7 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
             ps.setString(5, l.getFrais_liv());
             ps.setString(6, l.getMoyen_livraison());
             ps.executeUpdate();
-            System.out.println("Livraison ajoutée avec succée!");
+            System.out.println("Livraison ajoutée avec succés!");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -46,7 +46,7 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
             // Exécute la requête de mise à jour
             ps.executeUpdate();
 
-            System.out.println("modifiée avec succée");
+            System.out.println("Livraison modifiée avec succès");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -59,7 +59,7 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
         try (PreparedStatement ps = conn.prepareStatement(req)) {
         ps.setInt(1,id);
         ps.executeUpdate();
-            System.out.println("livraison supprimée avec succée!");
+            System.out.println("livraison supprimée avec succés!");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -29,12 +29,23 @@ public class Main {
 
         Commande c = new Commande(2, 3, new Date(123, 9, 26), "8dt", 2, new Date(123,9,15),1600);
 
-        serviceCommande.ajouter(c); }// Appel de la méthode sur l'instance serviceCommande
+        serviceCommande.ajouter(c); }
 */
         //supprimer commande
 
         /*ServiceCommande serviceCommande = new ServiceCommande();
         serviceCommande.supprimer(24);}*/
+
+        //afficher commande
+        /*ServiceCommande serviceCommande=new ServiceCommande();
+        List<Commande> l = null;
+        try{
+            l=serviceCommande.afficher();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        System.out.println(l);
+    }*/
 
 
         //modifier commande
@@ -132,14 +143,5 @@ public class Main {
             System.out.println("Une erreur s'est produite: " + ex.getMessage());
         }*/
 
-        //afficher commande
-        /*ServiceCommande serviceCommande=new ServiceCommande();
-        List<Commande> l = null;
-        try{
-            l=serviceCommande.afficher();
-        }catch (SQLException e){
-            System.out.println(e.getMessage());
-        }
-        System.out.println(l);
-    }*/
-    }}
+    }
+    }

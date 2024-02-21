@@ -5,6 +5,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierLivraison">
 
@@ -15,10 +16,19 @@
         <TextField fx:id="statusTF" layoutX="30.0" layoutY="247.0" promptText="status" />
         <TextField fx:id="fraisTF" layoutX="30.0" layoutY="305.0" promptText="Frais livraison" />
         <TextField fx:id="moyenLivTF" layoutX="368.0" layoutY="247.0" promptText="Moyen livraison" />
-        <Label fx:id="modifierL" layoutX="272.0" layoutY="29.0" text="Modifier livraison" />
+        <Label fx:id="modifierL" layoutX="207.0" layoutY="28.0" prefHeight="39.0" prefWidth="239.0" text="Modifier livraison" textFill="#ffc336">
+         <font>
+            <Font name="System Bold Italic" size="27.0" />
+         </font></Label>
         <Button fx:id="ModifierLivraison" layoutX="518.0" layoutY="360.0" mnemonicParsing="false" onAction="#ModifierLivraison" text="Modifier" />
-        <RadioButton fx:id="RB1" layoutX="368.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleRB1" text="Standard" />
-        <RadioButton fx:id="RB2" layoutX="474.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleRB2" text="Express" />
+        <RadioButton fx:id="RB1" layoutX="368.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleRB1" text="Standard">
+         <font>
+            <Font size="13.0" />
+         </font></RadioButton>
+        <RadioButton fx:id="RB2" layoutX="474.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleRB2" text="Express">
+         <font>
+            <Font size="13.0" />
+         </font></RadioButton>
       <TextField fx:id="idLivTF" layoutX="31.0" layoutY="98.0" promptText="id liv" />
 
 

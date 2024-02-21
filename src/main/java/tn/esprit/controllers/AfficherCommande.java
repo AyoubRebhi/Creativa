@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -22,8 +23,10 @@ import java.util.ResourceBundle;
 public class AfficherCommande implements Initializable{
     @FXML
     private ListView<Commande> listView;
+
     @FXML
-    private Button deleteBTN;
+    private Button suppBTN;
+
 
     @FXML
     private Label labelFX;
@@ -55,10 +58,24 @@ public class AfficherCommande implements Initializable{
         }
     }
     @FXML
-    void SupprimerCommande(ActionEvent event) {
-
-
+    void supprimerCommande(ActionEvent event) throws SQLException {
+        Commande selectedCommande = listView.getSelectionModel().getSelectedItem();
+        if (selectedCommande != null) {
+            ServiceCommande serviceCommande = new ServiceCommande();
+            serviceCommande.supprimer(selectedCommande.getId_cmd());
+            listView.getItems().remove(selectedCommande);
+            showAlert("Succès", "Commande supprimée avec succès !");
+        } else {
+            showAlert("Erreur", "Veuillez sélectionner une commande à supprimer.");
+        }
     }
 
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
 }
