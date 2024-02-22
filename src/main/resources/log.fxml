@@ -14,12 +14,12 @@
 
 <AnchorPane prefHeight="434.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controlleurs.LoginController">
     <children>
-        <ImageView fitHeight="506.0" fitWidth="876.0" layoutX="7.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="510.0" fitWidth="810.0" opacity="0.36" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@images/beige.jpg" />
             </image>
         </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff5edb1" height="347.0" layoutX="190.0" layoutY="69.0" stroke="WHITE" strokeType="INSIDE" width="428.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7d6c7a8" height="347.0" layoutX="190.0" layoutY="69.0" stroke="WHITE" strokeType="INSIDE" width="428.0" />
       <Button fx:id="button" ellipsisString="" layoutX="333.0" layoutY="315.0" lineSpacing="12.0" mnemonicParsing="false" onAction="#submit" prefHeight="43.0" prefWidth="121.0" text="Button" textFill="#d7b799" textOverrun="LEADING_WORD_ELLIPSIS">
          <font>
             <Font size="22.0" />

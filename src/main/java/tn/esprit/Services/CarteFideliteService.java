@@ -40,19 +40,16 @@ public class CarteFideliteService implements InterfaceCRUD<CarteFidelite> {
 
     @Override
     public void modifier(CarteFidelite carteFidelite) {
-        CarteFideliteService h=new CarteFideliteService();
-        String sql = "UPDATE cartes_fidelite SET points = ?,id_user? WHERE id_carte = ?";
+        CarteFideliteService h = new CarteFideliteService();
+        String sql = "UPDATE cartes_fidelite SET points = ? WHERE id_carte = ?";
         try (PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
             preparedStatement.setInt(1, carteFidelite.getPoints());
-            preparedStatement.setInt(2, h.consulterUtilisateurParIdCarte(carteFidelite.getIdCarteFidelite()).getId());
-            preparedStatement.setInt(1, carteFidelite.getIdCarteFidelite());
+            preparedStatement.setInt(2, carteFidelite.getIdCarteFidelite());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 
     @Override
@@ -175,7 +172,7 @@ public class CarteFideliteService implements InterfaceCRUD<CarteFidelite> {
     }
     public int carteExistsForUser(int userId) {
         int cardId = -1;
-        String sql = "SELECT id_carte FROM carte_fidelite WHERE user_id = ?";
+        String sql = "SELECT id_carte FROM cartes_fidelite WHERE id_user = ?";
 
         try (PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
 

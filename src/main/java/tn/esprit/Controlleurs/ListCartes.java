@@ -38,8 +38,16 @@ public class ListCartes implements Initializable {
 
     private CarteFideliteService carteService;
 
-    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadCarteData();
+    }
+
+    public void refreshCarteListView() {
+        carteListView.getItems().clear(); // Clear existing items
+        loadCarteData(); // Reload data into the ListView
+    }
+
+    private void loadCarteData() {
         carteService = new CarteFideliteService(); // Instantiate your CarteFideliteService
 
         // Fetch card data from your service
@@ -49,51 +57,83 @@ public class ListCartes implements Initializable {
         HBox header = new HBox();
         Label idHeader = new Label("ID");
         Label userIdHeader = new Label("IDClient");
+        Label nomIdHeader = new Label("NomClient");
+
         Label pointsHeader = new Label("Points");
+        Label ActionHeader = new Label("action");
+
         // Add labels for other headers...
 
         // Customize the font if needed
         idHeader.setFont(new Font(15));
         userIdHeader.setFont(new Font(16));
         pointsHeader.setFont(new Font(16));
+        pointsHeader.setFont(new Font(16));
+        nomIdHeader.setFont(new Font(16));
+        ActionHeader.setFont(new Font(18));
+
         // Add headers and separators to the header HBox
-        header.getChildren().addAll(idHeader, new Separator(),new Separator(), userIdHeader,new Separator(), new Separator(), pointsHeader,new Separator());
+        header.getChildren().addAll(idHeader, new Separator(), new Separator(), userIdHeader, new Separator(), new Separator(), new Separator(), new Separator(), nomIdHeader, new Separator(), new Separator(), new Separator(), pointsHeader, new Separator(), new Separator(), new Separator(), ActionHeader);
         // Add header to the ListView
         carteListView.getItems().add(header);
 
         // Dynamically create columns based on the number of elements in each row
         for (CarteFidelite carte : carteData) {
-
             HBox carteRow = new HBox();
-CarteFideliteService h=new CarteFideliteService();
+            CarteFideliteService h = new CarteFideliteService();
+
             // Assuming you have getters in your CarteFidelite class, replace them with the actual method names
             Label idLabel = new Label(String.valueOf(carte.getIdCarteFidelite()));
             Label userIdLabel = new Label(String.valueOf(h.consulterUtilisateurParIdCarte(carte.getIdCarteFidelite()).getId()));
             Label pointsLabel = new Label(String.valueOf(carte.getPoints()));
             // Add labels for other properties...
+            Label name = new Label(String.valueOf(h.consulterUtilisateurParIdCarte(carte.getIdCarteFidelite()).getFirstName()));
 
             // Customize the font if needed
             idLabel.setFont(new Font(18));
             userIdLabel.setFont(new Font(15));
             pointsLabel.setFont(new Font(15));
+            name.setFont(new Font(16));
+
             // Add labels and separators to the HBox
-            carteRow.getChildren().addAll(idLabel,new Separator(), new Separator(), userIdLabel,new Separator(), new Separator(), pointsLabel);
+            carteRow.getChildren().addAll(idLabel, new Separator(), new Separator(), userIdLabel, new Separator(), new Separator(), new Separator(), new Separator(), name, new Separator(), new Separator(), new Separator(), pointsLabel, new Separator(), new Separator(), new Separator());
 
             Button updateButton = new Button("Modifier");
+            updateButton.setStyle("-fx-background-color: #8aa2ce;");
+
             updateButton.setOnAction(event -> handleUpdateCarte(carte));
 
             Button deleteButton = new Button("Supprimer");
+            deleteButton.setStyle("-fx-background-color: #c86363;");
+
             deleteButton.setOnAction(event -> handleDeleteCarte(carte)); // Assign the delete action
 
             HBox actionsBox = new HBox(updateButton, deleteButton);
-            carteRow.getChildren().addAll(new Separator(),new Separator(),new Separator(), actionsBox);
+            carteRow.getChildren().addAll(new Separator(), new Separator(), new Separator(), actionsBox);
 
             // Add HBox to the ListView
             carteListView.getItems().add(carteRow);
         }
     }
 
-    private void handleUpdateCarte(CarteFidelite carte) {
+//    public void refreshUserData() {
+//
+//
+//        carteService = new CarteFideliteService(); // Instantiate your CarteFideliteService
+//
+//        // Fetch card data from your service
+//        List<CarteFidelite> carteData = carteService.afficher();
+//        // You can put the logic to refresh your ListView or any other data here
+//        // For example, you might want to clear and reload the data from the database
+//        carteListView.getItems().clear();
+//        carteListView.getItems().addAll((HBox) carteData);
+//    }
+
+
+
+
+
+        private void handleUpdateCarte(CarteFidelite carte) {
         // Similar to handleUpdateUser, create a new FXML file and controller for the update page
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/updatecarte.fxml"));
         Parent updateRoot;

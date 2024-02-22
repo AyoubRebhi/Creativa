@@ -18,7 +18,7 @@ public class UpdateCarteController {
     private Button updateButton;
 
     private CarteFideliteService carteService;
-
+private ListCartes S;
     private CarteFidelite currentCarte; // To store the selected carte for updating
 
     // Method to initialize data when the update page is opened
@@ -49,7 +49,10 @@ public class UpdateCarteController {
     private void handleUpdateCarte() {
         // Get the updated values from the form fields
         String updatedPoints = pointsFields.getText();
-
+        if (pointsFields.getText().isEmpty()) {
+            showValidationError("Points field cannot be empty!");
+            return;
+        }
         // Perform the update logic using your CarteFideliteService
         currentCarte.setPoints(Integer.parseInt(updatedPoints));
 
@@ -58,10 +61,26 @@ public class UpdateCarteController {
 
         // Show a confirmation alert
         showConfirmationAlert("Carte updated successfully!");
+        if (S != null) {
+            S.refreshCarteListView();
+        }
+
+        // Close the update stage
+        closeUpdateStage();
 
         // Close the update stage
         closeUpdateStage();
     }
+
+
+    private void showValidationError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 
     // Method to show a confirmation alert
     private void showConfirmationAlert(String message) {

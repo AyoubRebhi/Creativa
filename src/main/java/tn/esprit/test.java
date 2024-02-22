@@ -14,7 +14,7 @@ public class test extends Application {
 
         @Override
         public void start(Stage stage) throws Exception {
-            Parent root = FXMLLoader.load(getClass().getResource("/ResetPassword.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/log.fxml"));
 
             stage.setScene(new Scene(root, 800, 500));
             stage.show();

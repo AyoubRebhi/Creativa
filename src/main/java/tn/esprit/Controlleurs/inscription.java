@@ -86,10 +86,26 @@ public class inscription {
                 System.out.println("hhhhhhh" + role);
 
             }
+            if (mdp.getText().length() < 8) {
+                showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Le mot de passe doit contenir au moins 8 caractères.");
+                return;
+            }
 
             //Vérification de l'adresse e-mail avec une regex
             if (!validateEmail(email.getText())) {
                 showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Adresse e-mail invalide.");
+                return;
+            }
+
+
+            if (userService.emailExists(email.getText())) {
+                showAlert(Alert.AlertType.ERROR, "Erreur", "L'adresse e-mail existe déjà.");
+                return;
+            }
+
+            // Vérification si le username existe déjà dans la base de données
+            if (userService.usernameExists(username.getText())) {
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Le nom d'utilisateur existe déjà.");
                 return;
             }
 

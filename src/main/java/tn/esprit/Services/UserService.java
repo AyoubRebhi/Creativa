@@ -76,7 +76,32 @@ public class UserService implements InterfaceCRUD<User> {
         }
     }
 
+    public boolean emailExists(String email) {
+        String req = "SELECT * FROM user WHERE email=?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setString(1, email);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                return resultSet.next(); // true if email exists, false otherwise
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
+    // Check if a username already exists in the database
+    public boolean usernameExists(String username) {
+        String req = "SELECT * FROM user WHERE username=?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setString(1, username);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                return resultSet.next(); // true if username exists, false otherwise
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     @Override
     //fonction modifier

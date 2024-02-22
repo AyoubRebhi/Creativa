@@ -27,14 +27,19 @@ public class ajouterCarte implements Initializable {
 
         int userId = session.id_utilisateur;
         System.out.println("hhh"+carteFideliteService.carteExistsForUser(userId));
+        int x=  carteFideliteService.carteExistsForUser(userId);
+    // Check if the ID already exists
+        if (x ==-1) {
 
-        // Check if the ID already exists
-        if (carteFideliteService.carteExistsForUser(userId)==-1) {
-            afficherAlerteErreur("erreur" , "vous avez deja une carte")   ;     } else {
-            // If the ID doesn't exist, proceed with adding the new CarteFidelite
             CarteFidelite carteFidelite = new CarteFidelite(00, userService.getById(userId));
             carteFideliteService.ajouter(carteFidelite);
             showAlert("Carte ajoutée avec succès!");
+
+        } else {
+            afficherAlerteErreur("erreur" , "vous avez deja une carte")   ;
+
+            // If the ID doesn't exist, proceed with adding the new CarteFidelite
+
         }
     }
 

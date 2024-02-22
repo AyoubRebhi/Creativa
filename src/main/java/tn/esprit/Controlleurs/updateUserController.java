@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 import tn.esprit.Models.User;
 import tn.esprit.Services.UserService;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class updateUserController {
     @FXML
     private TextField lastNameField;
@@ -55,6 +58,15 @@ public class updateUserController {
 
         // You can add validation or other setup logic here...
     }
+    private static final String EMAIL_REGEX =
+            "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+
+    private static final Pattern pattern = Pattern.compile(EMAIL_REGEX);
+
+    private boolean validateEmail(String email) {
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
 
     // Method to handle the update logic
     private void handleUpdateUser() {
@@ -64,7 +76,10 @@ public class updateUserController {
         // Get other updated values...
         String updatedNumTel = numTelField.getText();
         String updatedEmail = emailField.getText();
-
+        if (!validateEmail(emailField.getText())) {
+            showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Adresse e-mail invalide.");
+            return;
+        }
         // Perform the update logic using your UserService
         currentUser.setLastName(updatedLastName);
         currentUser.setFirstName(updatedFirstName);
@@ -95,6 +110,14 @@ public class updateUserController {
     private void closeUpdateStage() {
         Stage stage = (Stage) updateButton.getScene().getWindow();
         stage.close();
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
 

@@ -90,9 +90,13 @@ public class ListUserControlleur implements Initializable {
              userRow.getChildren().addAll(idLabel, new Separator(), lastNameLabel, new Separator(), firstNameLabel, new Separator(), emmail, new Separator(), numTelLabel, new Separator(), rolle);
 
    Button updateButton = new Button("Modifier");
-    updateButton.setOnAction(event -> handleUpdateUser(user));
+            updateButton.setStyle("-fx-background-color: #8aa2ce;");
+            updateButton.setOnAction(event -> handleUpdateUser(user));
 
             Button deleteButton = new Button("Supprimer");
+            deleteButton.setStyle("-fx-background-color: #c86363;");
+
+
             deleteButton.setOnAction(event -> handleDeleteUser(user)); // Assign the delete action
 
             HBox actionsBox = new HBox(updateButton, deleteButton);
