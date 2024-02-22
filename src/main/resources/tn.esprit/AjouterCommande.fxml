@@ -7,24 +7,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterCommande">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DFDEDE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterCommande">
     <children>
-        <Label fx:id="ajouter_commandes" layoutX="178.0" layoutY="14.0" text="Ajouter Commandes" textFill="#ffc336">
+        <Label fx:id="ajouter_commandes" layoutX="172.0" layoutY="13.0" text="Ajouter Commandes" textFill="#764949">
             <font>
-                <Font size="27.0" />
+                <Font name="System Bold Italic" size="27.0" />
             </font>
         </Label>
         <TextField fx:id="dateTF" layoutX="27.0" layoutY="176.0" maxWidth="250.0" prefHeight="30.0" promptText="Date de commande" />
         <TextField fx:id="quantiteTF" layoutX="27.0" layoutY="214.0" maxWidth="250.0" prefHeight="30.0" promptText="Quantité" />
         <TextField fx:id="mt_totalTF" layoutX="28.0" layoutY="255.0" maxWidth="250.0" prefHeight="30.0" promptText="Montant total" />
-        <Button fx:id="continuerBTN" layoutX="494.0" layoutY="334.0" mnemonicParsing="false" onAction="#AjouterCommande" text="Continuer">
+        <Button fx:id="continuerBTN" layoutX="494.0" layoutY="334.0" mnemonicParsing="false" onAction="#AjouterCommande" prefHeight="39.0" prefWidth="99.0" style="-fx-background-color: #6DE94C;" text="Ajouter" textFill="WHITE">
             <font>
-                <Font size="13.0" />
+                <Font size="16.0" />
             </font>
         </Button>
-        <Button fx:id="afficherBTN" layoutX="423.0" layoutY="334.0" mnemonicParsing="false" onAction="#AfficherCommande" text="Afficher">
+        <Button fx:id="afficherBTN" layoutX="393.0" layoutY="334.0" mnemonicParsing="false" onAction="#AfficherCommande" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: #EB4040;" text="Afficher" textFill="WHITE">
             <font>
-                <Font size="13.0" />
+                <Font size="16.0" />
             </font>
         </Button>
         <TextField fx:id="dateLivTF" layoutX="27.0" layoutY="295.0" promptText="Date de livraison estimée" />
@@ -32,5 +32,9 @@
         <Text fill="#0000005c" layoutX="401.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avez-vous un code promo?" />
         <TextField fx:id="id_userTF" layoutX="28.0" layoutY="90.0" promptText="id user" />
         <TextField fx:id="id_projetTF" layoutX="29.0" layoutY="135.0" promptText="id projet" />
+      <Button fx:id="PasserLiv" layoutX="444.0" layoutY="15.0" mnemonicParsing="false" onAction="#PasserLiv" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #999999;" text="Passer à la livraison" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
     </children>
 </AnchorPane>

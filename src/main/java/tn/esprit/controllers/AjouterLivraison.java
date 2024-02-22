@@ -47,6 +47,8 @@ public class AjouterLivraison {
     private Button afficherBTN;
 
     @FXML
+    private Button retourBTN;
+    @FXML
 
     void handleRB1(ActionEvent event) {
         if (RB1.isSelected()) {
@@ -91,5 +93,13 @@ public class AjouterLivraison {
         }
     }
 
-
+    @FXML
+    void Retour(ActionEvent event) throws SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AjouterCommande.fxml"));
+        try {
+            moyenLivTF.getScene().setRoot(loader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

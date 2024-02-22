@@ -10,11 +10,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import tn.esprit.Models.Commande;
 import tn.esprit.Models.Livraison;
 import tn.esprit.Services.ServiceCommande;
 import tn.esprit.Services.ServiceLivraison;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -33,6 +31,8 @@ public class AfficherLivraison implements Initializable{
 
     @FXML
     private Button updateBTN;
+    @FXML
+    private Button retourBTN;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -79,5 +79,14 @@ public class AfficherLivraison implements Initializable{
         alert.showAndWait();
     }
 
+    @FXML
+    void Retour(ActionEvent event) throws SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AjouterLivraison.fxml"));
+        try {
+            listView.getScene().setRoot(loader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

@@ -47,6 +47,9 @@ public class AjouterCommande {
     private TextField quantiteTF;
 
     @FXML
+    private Button PasserLiv;
+
+    @FXML
     void AfficherCommande(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherCommande.fxml"));
         try {
@@ -75,6 +78,15 @@ public class AjouterCommande {
             alert.setTitle("Succès");
             alert.setContentText("La commande a été ajoutée avec succès !");
             alert.showAndWait();
+        }
+    }
+    @FXML
+    void PasserLiv(ActionEvent event) throws SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AjouterLivraison.fxml"));
+        try {
+            dateLivTF.getScene().setRoot(loader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

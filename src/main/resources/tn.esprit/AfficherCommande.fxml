@@ -6,15 +6,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherCommande">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DFDEDE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherCommande">
    <children>
       <ListView fx:id="listView" layoutX="32.0" layoutY="36.0" prefHeight="311.0" prefWidth="536.0" />
-      <Label fx:id="labelFX" layoutX="179.0" prefHeight="39.0" prefWidth="270.0" text="Liste des commandes" textAlignment="CENTER" textFill="#ffc336">
+      <Label fx:id="labelFX" layoutX="179.0" prefHeight="39.0" prefWidth="270.0" text="Liste des commandes" textAlignment="CENTER" textFill="#764949">
          <font>
             <Font name="System Bold Italic" size="27.0" />
          </font>
       </Label>
-      <Button fx:id="updateBTN" layoutX="471.0" layoutY="359.0" mnemonicParsing="false" onAction="#ModifierCommande" prefHeight="26.0" prefWidth="90.0" text="Modifier" />
-      <Button fx:id="suppBTN" layoutX="367.0" layoutY="360.0" mnemonicParsing="false" onAction="#supprimerCommande" prefHeight="26.0" prefWidth="83.0" text="Supprimer" />
+      <Button fx:id="updateBTN" layoutX="468.0" layoutY="355.0" mnemonicParsing="false" onAction="#ModifierCommande" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #2F5AE9;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button fx:id="suppBTN" layoutX="349.0" layoutY="355.0" mnemonicParsing="false" onAction="#supprimerCommande" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #6BDBE8;" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button fx:id="retourBTN" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#Retour" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE" />
    </children>
 </AnchorPane>

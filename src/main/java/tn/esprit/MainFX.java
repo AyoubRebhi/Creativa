@@ -12,7 +12,7 @@ public class MainFX extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AjouterCommande.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AjouterCommande.fxml"));
         Scene scene = new Scene(loader.load());
         stage.setTitle("Hello!");
         stage.setScene(scene);

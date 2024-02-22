@@ -7,9 +7,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierCommande">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DFDEDE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierCommande">
     <children>
-        <Label fx:id="modifier_commandes" layoutX="178.0" layoutY="14.0" text="Modifier Commandes" textFill="#ffc336">
+        <Label fx:id="modifier_commandes" layoutX="178.0" layoutY="14.0" text="Modifier Commandes" textFill="#764949">
             <font>
                 <Font name="System Bold Italic" size="27.0" />
             </font>
@@ -23,7 +23,15 @@
         <Text fill="#0000005c" layoutX="401.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avez-vous un code promo?" />
         <TextField fx:id="id_userTF" layoutX="28.0" layoutY="133.0" promptText="id user" />
         <TextField fx:id="id_projetTF" layoutX="28.0" layoutY="174.0" promptText="id projet" />
-      <Button layoutX="494.0" layoutY="351.0" mnemonicParsing="false" onAction="#modifierBTN" prefHeight="26.0" prefWidth="90.0" text="Modifier" />
+      <Button layoutX="494.0" layoutY="351.0" mnemonicParsing="false" onAction="#modifierBTN" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #2F5AE9;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
       <TextField fx:id="id_cmdTF" layoutX="27.0" layoutY="93.0" promptText="id commande" />
+      <Button fx:id="retourBTN" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Retour" prefHeight="30.0" prefWidth="74.0" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterLivraison">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DFDEDE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterLivraison">
 
    <children>
       <TextField fx:id="id_cmdTF" layoutX="30.0" layoutY="98.0" promptText="id cmd" />
@@ -16,14 +16,25 @@
       <TextField fx:id="statusTF" layoutX="30.0" layoutY="166.0" promptText="status" />
       <TextField fx:id="fraisTF" layoutX="30.0" layoutY="247.0" promptText="Frais livraison" />
       <TextField fx:id="moyenLivTF" layoutX="358.0" layoutY="247.0" promptText="Moyen livraison" />
-      <Label fx:id="ajouterL" layoutX="203.0" layoutY="27.0" text="Ajouter livraison" textFill="#ffc336">
+      <Label fx:id="ajouterL" layoutX="203.0" layoutY="27.0" text="Ajouter livraison" textFill="#764949">
          <font>
             <Font name="System Bold Italic" size="27.0" />
          </font></Label>
-      <Button fx:id="AjouterLivraison" layoutX="518.0" layoutY="360.0" mnemonicParsing="false" onAction="#AjouterLivraison" text="Ajouter" />
+      <Button fx:id="AjouterLivraison" layoutX="508.0" layoutY="351.0" mnemonicParsing="false" onAction="#AjouterLivraison" prefHeight="37.0" prefWidth="76.0" style="-fx-background-color: #6DE94C;" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
       <RadioButton fx:id="RB1" layoutX="368.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleRB1" text="Standard" />
       <RadioButton fx:id="RB2" layoutX="474.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleRB2" text="Express" />
-      <Button fx:id="afficherBTN" layoutX="448.0" layoutY="360.0" mnemonicParsing="false" onAction="#AfficherLivraison" text="Afficher" />
+      <Button fx:id="afficherBTN" layoutX="422.0" layoutY="352.0" mnemonicParsing="false" onAction="#AfficherLivraison" style="-fx-background-color: #EB4040;" text="Afficher" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button fx:id="retourBTN" layoutX="22.0" layoutY="15.0" mnemonicParsing="false" onAction="#Retour" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
 
 
    </children>

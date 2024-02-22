@@ -11,11 +11,12 @@ import java.sql.Connection;
 public class ServiceCommande implements InterfaceCRUD<Commande> {
 
 
-    Connection conn= MaConnexion.getInstance().getConn();
-//ajouter commande
+    Connection conn = MaConnexion.getInstance().getConn();
+
+    //ajouter commande
     @Override
-    public void ajouter(Commande c){
-        String req ="INSERT INTO commande (id_user, id_projet, date,mt_total,quantite,date_livraison_estimee,code_promo) VALUES (?, ?, ?,?,?,?,?)";
+    public void ajouter(Commande c) {
+        String req = "INSERT INTO commande (id_user, id_projet, date,mt_total,quantite,date_livraison_estimee,code_promo) VALUES (?, ?, ?,?,?,?,?)";
         try (PreparedStatement ps = conn.prepareStatement(req)) {
             ps.setInt(1, c.getId_user());
             ps.setInt(2, c.getId_projet());
@@ -32,9 +33,9 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
         }
     }
 
-//modifier commande
+    //modifier commande
     @Override
-    public void modifier(Commande c){
+    public void modifier(Commande c) {
         String req = "update commande set id_user=? , id_projet=? , date=? , mt_total=? , quantite=? ,date_livraison_estimee=?,code_promo=? where id_cmd=?";
         try (PreparedStatement ps = conn.prepareStatement(req)) {
 
@@ -46,28 +47,30 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
             ps.setDate(6, c.getDate_livraison_estimee());
             ps.setInt(7, c.getCode_promo());
             ps.setInt(8, c.getId_cmd());
-        ps.executeUpdate();
+            ps.executeUpdate();
             System.out.println("Commande modifiée avec succès");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-//supprimer commande
+
+    //supprimer commande
     @Override
-    public void supprimer(int id){
+    public void supprimer(int id) {
         String req = " delete from commande where id_cmd=?";
         try (PreparedStatement ps = conn.prepareStatement(req)) {
-        ps.setInt(1,id);
-        ps.executeUpdate();
+            ps.setInt(1, id);
+            ps.executeUpdate();
             System.out.println("Commande supprimée avec succés!");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-//afficher commande
+
+    //afficher commande
     @Override
-    public List<Commande> afficher()throws SQLException {
+    public List<Commande> afficher() throws SQLException {
         List<Commande> commandes = new ArrayList<>();
         String req = "select * from commande";
         try (Statement st = conn.createStatement();

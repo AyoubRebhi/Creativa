@@ -2,6 +2,7 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -9,6 +10,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import tn.esprit.Models.Commande;
 import tn.esprit.Services.ServiceCommande;
+
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 
@@ -41,6 +44,9 @@ public class ModifierCommande {
     @FXML
     private TextField quantiteTF;
     @FXML
+    private Button retourBTN;
+
+    @FXML
     void modifierBTN(ActionEvent event) throws SQLException {
         int idCmd = Integer.parseInt(id_cmdTF.getText());
         int idUser = Integer.parseInt(id_userTF.getText());
@@ -67,4 +73,24 @@ public class ModifierCommande {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    @FXML
+    void Retour(ActionEvent event) throws SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherCommande.fxml"));
+        try {
+            mt_totalTF.getScene().setRoot(loader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+

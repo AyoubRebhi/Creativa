@@ -78,4 +78,13 @@ public class AfficherCommande implements Initializable{
         alert.showAndWait();
     }
 
+    @FXML
+    void Retour(ActionEvent event) throws SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AjouterCommande.fxml"));
+        try {
+            listView.getScene().setRoot(loader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
