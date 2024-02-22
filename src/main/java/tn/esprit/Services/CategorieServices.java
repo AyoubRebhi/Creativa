@@ -117,5 +117,8 @@ public class CategorieServices implements InterfaceCRUD<Categorie> {
         return nbProjetsParCategorie;
     }
 
+
+
+
 }
 

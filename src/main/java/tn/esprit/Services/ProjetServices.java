@@ -217,7 +217,21 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
         }
         return projets;
     }
-
+    public String afficherTitreCategorie(int id) {
+        String titreCategorie = null;
+        String req = "SELECT c.titre FROM projet p JOIN categorie c ON p.id_categorie = c.id_categorie WHERE p.id_projet = ?";
+        try (PreparedStatement ps = conn.prepareStatement(req)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    titreCategorie = rs.getString("titre");
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return titreCategorie;
+    }
 
 
 
