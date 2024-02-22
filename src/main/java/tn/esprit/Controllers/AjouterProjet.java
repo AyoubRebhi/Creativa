@@ -11,7 +11,10 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import tn.esprit.Models.Projet;
 import tn.esprit.Services.ProjetServices;
 import tn.esprit.test.HelloApplication;
@@ -72,6 +75,18 @@ public class AjouterProjet {
         projetServices.ajouter(projet);
 
         showAlert("Succès", "Le projet a été ajouté avec succès.");}
+        refreshProjetsList();
+    }
+    public void refreshProjetsList() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherProjets.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) titreTF.getScene().getWindow(); // Récupérer la fenêtre actuelle
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

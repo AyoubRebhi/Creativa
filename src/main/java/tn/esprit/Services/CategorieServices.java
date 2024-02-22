@@ -50,7 +50,7 @@ public class CategorieServices implements InterfaceCRUD<Categorie> {
             ps.setInt(1,id);
 
             ps.executeUpdate();
-            System.out.println("Projet supprimé avec succes");
+            System.out.println("Categorie supprimée avec succes");
     }catch(SQLException ex){
         ex.printStackTrace();
     }

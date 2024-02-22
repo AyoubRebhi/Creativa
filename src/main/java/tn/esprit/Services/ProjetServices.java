@@ -107,7 +107,6 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
             String req = "DELETE FROM `projet` WHERE `id_projet`= ?";
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setInt(1,id);
-
             ps.executeUpdate();
             System.out.println("Projet supprimé avec succes");
         }catch(SQLException ex){
