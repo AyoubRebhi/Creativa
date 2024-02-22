@@ -232,6 +232,21 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
         }
         return titreCategorie;
     }
+    //Utilisé pour Ajouter Projet
+    public List<String> afficherTitresCategories() {
+        List<String> titresCategories = new ArrayList<>();
+        String req = "SELECT titre FROM categorie";
+        try (Statement st = conn.createStatement();
+             ResultSet rs = st.executeQuery(req)) {
+            while (rs.next()) {
+                titresCategories.add(rs.getString("titre"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return titresCategories;
+    }
+
 
 
 
