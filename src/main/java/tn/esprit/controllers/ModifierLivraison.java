@@ -31,7 +31,6 @@ public class ModifierLivraison {
     @FXML
     private TextField idLivTF;
 
-
     @FXML
     private TextField id_userTF;
 

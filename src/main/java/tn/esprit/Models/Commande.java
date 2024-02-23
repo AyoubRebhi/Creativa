@@ -14,6 +14,8 @@ public class Commande {
     private Date date_livraison_estimee;
     private int code_promo;
 
+
+
     //getters
     public int getId_cmd() {
         return id_cmd;
@@ -47,7 +49,8 @@ public class Commande {
         return code_promo;
     }
 
-    //setters
+
+//setters
 
     public void setId_cmd(int id_cmd) {
         this.id_cmd = id_cmd;
@@ -76,6 +79,8 @@ public class Commande {
     public void setCode_promo(int code_promo) {
         this.code_promo = code_promo;
     }
+
+
 
     public void setDate_livraison_estimee(Date date_livraison_estimee) {
         this.date_livraison_estimee = date_livraison_estimee;
@@ -107,6 +112,7 @@ public class Commande {
     }
 
     public Commande(){}
+
 
     //tostring
 

@@ -93,4 +93,5 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
         }
 
     }
+
 }

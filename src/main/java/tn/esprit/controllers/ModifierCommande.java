@@ -46,7 +46,8 @@ public class ModifierCommande {
     @FXML
     private Button retourBTN;
 
-    @FXML
+
+        @FXML
     void modifierBTN(ActionEvent event) throws SQLException {
         int idCmd = Integer.parseInt(id_cmdTF.getText());
         int idUser = Integer.parseInt(id_userTF.getText());
@@ -65,7 +66,6 @@ public class ModifierCommande {
         // message de confirmation
         showAlert(AlertType.INFORMATION, "Succès", "Commande modifiée avec succès !");
     }
-
     // alerte msg
     private void showAlert(AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);

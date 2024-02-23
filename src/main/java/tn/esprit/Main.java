@@ -4,9 +4,11 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
 
+import tn.esprit.Models.Codepromo;
 import tn.esprit.Models.Commande;
 
 import tn.esprit.Models.Livraison;
+import tn.esprit.Services.ServiceCodepromo;
 import tn.esprit.Services.ServiceCommande;
 import tn.esprit.Services.ServiceLivraison;
 import tn.esprit.Utils.MaConnexion;
@@ -143,5 +145,42 @@ public class Main {
             System.out.println("Une erreur s'est produite: " + ex.getMessage());
         }*/
 
+        //ajouter code promo
+
+        /*ServiceCodepromo serviceCodepromo = new ServiceCodepromo();
+            Codepromo c = new Codepromo(6200,"20%");
+            serviceCodepromo.ajouter(c);
+        }*/
+
+//rechercher code promo
+        /*ServiceCodepromo service = new ServiceCodepromo();
+
+        // Créez un objet Codepromo avec le code que vous souhaitez rechercher
+        Codepromo codepromoRecherche = new Codepromo();
+        codepromoRecherche.setCode_promo(1800); // Remplacez 2700 par le code que vous recherchez
+
+        // Utilisez la méthode rechercher pour trouver le code promo
+        Codepromo codepromoTrouve = service.rechercher(codepromoRecherche);
+
+        // Vérifiez si le code promo a été trouvé
+        if (codepromoTrouve != null) {
+            System.out.println("Code promo : " + codepromoTrouve.getCode_promo());
+            System.out.println("Pourcentage : " + codepromoTrouve.getPourcentage());
+        } else {
+            System.out.println("Aucun code promo trouvé avec ce code.");
+        }*/
+
+        //afficher commande
+        /*ServiceCodepromo serviceCodepromo=new ServiceCodepromo();
+        List<Codepromo> l = null;
+        try{
+            l=serviceCodepromo.afficher();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        System.out.println(l);
+    }*/
     }
     }
+
+
