@@ -48,4 +48,13 @@ public class AfficherCodepromo implements Initializable {
         }
 
 }
-}
+
+    public void ajoutercode(ActionEvent actionEvent) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AjouterCodepromo.fxml"));
+        try {
+            labelFX.getScene().setRoot(loader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    }

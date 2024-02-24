@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DFDEDE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierCommande">
     <children>
-        <Label fx:id="modifier_commandes" layoutX="178.0" layoutY="14.0" text="Modifier Commandes" textFill="#764949">
+        <Label fx:id="modifier_commandes" layoutX="202.0" layoutY="12.0" text="Modifier Commandes" textFill="#764949">
             <font>
                 <Font name="System Bold Italic" size="27.0" />
             </font>
@@ -33,5 +33,6 @@
             <Font size="16.0" />
          </font>
       </Button>
+      <TextField fx:id="statusTF" layoutX="252.0" layoutY="93.0" promptText="status" />
     </children>
 </AnchorPane>

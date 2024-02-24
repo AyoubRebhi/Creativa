@@ -24,18 +24,21 @@ public class InterfaceUser implements Initializable {
 
     @FXML
     private Label label;
+    @FXML
+    private Label notificationLabel;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
+
 
     @FXML
     void AfficherC(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherCommande.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherCommandeUser.fxml"));
         try {
             Parent root = loader.load();
-            AfficherCommande controller = loader.getController();
+            AfficherCommandeUser controller = loader.getController();
             ajouterBTN.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
@@ -55,4 +58,10 @@ public class InterfaceUser implements Initializable {
     }
 
 
+    public void afficherNotificationCodePromo(String message) {
+        notificationLabel.setText(message);
+    }
+
+
 }
+

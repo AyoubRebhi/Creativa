@@ -33,6 +33,8 @@ public class AfficherCommande implements Initializable{
 
     @FXML
     private Button updateBTN;
+    @FXML
+    private Button ajouterBTN;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ServiceCommande serviceCommande=new ServiceCommande();
@@ -70,6 +72,8 @@ public class AfficherCommande implements Initializable{
         }
     }
 
+
+
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -87,4 +91,5 @@ public class AfficherCommande implements Initializable{
             throw new RuntimeException(e);
         }
     }
+
 }

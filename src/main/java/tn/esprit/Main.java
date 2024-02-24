@@ -27,12 +27,12 @@ public class Main {
         System.out.println(connexion);
 
         //ajouter commande
-        /*ServiceCommande serviceCommande = new ServiceCommande();
+        ServiceCommande serviceCommande = new ServiceCommande();
 
-        Commande c = new Commande(2, 3, new Date(123, 9, 26), "8dt", 2, new Date(123,9,15),1600);
+        Commande c = new Commande(2, 3, new Date(123, 9, 26), "8dt", 2, new Date(123,9,15),1600,"en_cours");
 
         serviceCommande.ajouter(c); }
-*/
+
         //supprimer commande
 
         /*ServiceCommande serviceCommande = new ServiceCommande();
@@ -180,7 +180,18 @@ public class Main {
         }
         System.out.println(l);
     }*/
+        /*ServiceCommande serviceCommande= new ServiceCommande();
+        System.out.println(serviceCommande.getNomCompletUtilisateur(2));*/
+
+        /*ServiceCommande serviceCommande= new ServiceCommande();
+        System.out.println(serviceCommande.afficherNomsPrenomsUtilisateurs());*/
+
+        /*ServiceCommande serviceCommande= new ServiceCommande();
+        System.out.println(serviceCommande.getIdUtilisateurParNomComplet("ayachi zeineb"));*/
+
+        /*ServiceCommande serviceCommande= new ServiceCommande();
+        System.out.println(serviceCommande.getIdProjetParTitre("Acrylic Filbert Brush"));*/
     }
-    }
+
 
 

@@ -64,7 +64,13 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
             throw new RuntimeException(e);
         }
     }
-//afficher livraison
+
+    @Override
+    public void annulerCommande(int id) throws SQLException {
+
+    }
+
+    //afficher livraison
     @Override
     public List<Livraison> afficher() throws SQLException{
         List<Livraison> livraisons = new ArrayList<>();
@@ -84,4 +90,19 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
 
             livraisons.add(l);}return livraisons;
     }
+
+    public int getIdUtilisateurParNomComplet(String nomComplet) throws SQLException {
+        int idUtilisateur = -1; // Valeur par défaut si aucun utilisateur n'est trouvé
+        String req = "SELECT id_user FROM user WHERE CONCAT(nom, ' ', prenom) = ?";
+        try (PreparedStatement ps = conn.prepareStatement(req)) {
+            ps.setString(1, nomComplet);
+            try (ResultSet res = ps.executeQuery()) {
+                if (res.next()) {
+                    idUtilisateur = res.getInt("id_user");
+                }
+            }
+        }
+        return idUtilisateur;
+    }
+
 }

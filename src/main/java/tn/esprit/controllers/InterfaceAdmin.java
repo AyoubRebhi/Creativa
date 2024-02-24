@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class InterfaceAdmin {
     @FXML
@@ -57,6 +58,5 @@ public class InterfaceAdmin {
             e.printStackTrace();
         }
     }
-
 
 }

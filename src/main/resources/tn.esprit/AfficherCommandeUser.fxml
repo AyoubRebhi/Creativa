@@ -5,11 +5,10 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherCommandeUser">
    <children>
       <Label fx:id="label" layoutX="246.0" layoutY="14.0" prefHeight="38.0" prefWidth="106.0" text="Votre Commandes" />
-      <ListView layoutX="100.0" layoutY="70.0" prefHeight="230.0" prefWidth="422.0" />
+      <ListView fx:id="listView" layoutX="100.0" layoutY="70.0" prefHeight="230.0" prefWidth="422.0" />
       <Button fx:id="retourBTN" layoutX="22.0" layoutY="21.0" mnemonicParsing="false" onAction="#Retour" text="Retour" />
       <Button fx:id="modifierBTN" layoutX="511.0" layoutY="354.0" mnemonicParsing="false" onAction="#Modifier" text="Modifier" />
       <Button fx:id="annulerBTN" layoutX="444.0" layoutY="354.0" mnemonicParsing="false" onAction="#Annuler" text="Annuler" />

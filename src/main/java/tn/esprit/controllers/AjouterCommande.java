@@ -1,21 +1,29 @@
 package tn.esprit.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import tn.esprit.Models.Commande;
 import tn.esprit.Services.ServiceCommande;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Map;
+import java.util.ResourceBundle;
+import javafx.scene.control.DatePicker;
 
-public class AjouterCommande {
+public class AjouterCommande implements Initializable{
+    ServiceCommande sm= new ServiceCommande();
+    @FXML
+    private ComboBox<String> idCombobox;
     @FXML
     private Button afficherBTN;
 
@@ -37,6 +45,7 @@ public class AjouterCommande {
     @FXML
     private TextField id_projetTF;
 
+
     @FXML
     private TextField id_userTF;
 
@@ -48,6 +57,12 @@ public class AjouterCommande {
 
     @FXML
     private Button PasserLiv;
+    @FXML
+    private TextField statusTF;
+
+    @FXML
+    private DatePicker datePicker;
+
 
     @FXML
     void AfficherCommande(ActionEvent event) {
@@ -64,13 +79,25 @@ public class AjouterCommande {
         ServiceCommande serviceCommande = new ServiceCommande();
         Commande c = new Commande();
 
-        c.setId_user(Integer.parseInt(id_userTF.getText()));
-        c.setId_projet(Integer.parseInt(id_projetTF.getText()));
-        c.setDate(Date.valueOf(dateTF.getText()));
+        c.setId_user(serviceCommande.getIdUtilisateurParNomComplet(id_userTF.getText()));
+        c.setId_projet(serviceCommande.getAllProjectTitlesAndIds().get(idCombobox.getValue()));
+        c.setDate(Date.valueOf(datePicker.getValue()));
         c.setQuantite(Integer.parseInt(quantiteTF.getText()));
         c.setMt_total(mt_totalTF.getText());
-        c.setDate_livraison_estimee(Date.valueOf(dateLivTF.getText()));
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date dateLivraison = new Date(dateFormat.parse(dateLivTF.getText()).getTime());
+            c.setDate_livraison_estimee(dateLivraison);
+        } catch (ParseException e) {
+            // Gérer l'erreur de format de date incorrecte
+            e.printStackTrace();
+        }
+
+
         c.setCode_promo(Integer.parseInt(code_promoTF.getText()));
+        c.setStatus(statusTF.getText());
+
         {
             serviceCommande.ajouter(c);
             // Affichage d'une alerte pour indiquer que la commande a été ajoutée avec succès
@@ -80,6 +107,7 @@ public class AjouterCommande {
             alert.showAndWait();
         }
     }
+
     @FXML
     void PasserLiv(ActionEvent event) throws SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AjouterLivraison.fxml"));
@@ -88,6 +116,38 @@ public class AjouterCommande {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    @FXML
+    void Retour(ActionEvent event) throws SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/InterfaceUser.fxml"));
+        try {
+            quantiteTF.getScene().setRoot(loader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            ServiceCommande serviceCommande = new ServiceCommande();
+            Map<String, Integer> projectTitlesAndIds = serviceCommande.getAllProjectTitlesAndIds();
+
+            // Récupérer les titres de projet depuis la map
+            ObservableList<String> projectTitles = FXCollections.observableArrayList();
+            for (String title : projectTitlesAndIds.keySet()) {
+                projectTitles.add(title);
+            }
+
+            // Ajouter les titres de projet à la ComboBox
+            idCombobox.getItems().addAll(projectTitles);
+        } catch (SQLException e) {
+            e.printStackTrace(); // Gérer l'exception selon votre cas
+        }
+    }
+
+    @FXML
+    void datePicker(ActionEvent event) {
+
     }
 
 }

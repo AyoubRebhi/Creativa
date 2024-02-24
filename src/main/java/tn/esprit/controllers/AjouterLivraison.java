@@ -78,7 +78,7 @@ public class AjouterLivraison {
         Livraison l = new Livraison();
 
         l.setId_cmd(Integer.parseInt(id_cmdTF.getText()));
-        l.setId_user(Integer.parseInt(id_userTF.getText()));
+        l.setId_user(serviceLivraison.getIdUtilisateurParNomComplet(id_userTF.getText()));
         l.setStatus((statusTF.getText()));
         l.setAdresse((adresseTF.getText()));
         l.setFrais_liv(fraisTF.getText());

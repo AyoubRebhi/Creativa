@@ -46,7 +46,8 @@ public class ModifierCommande {
     @FXML
     private Button retourBTN;
 
-
+    @FXML
+    private TextField statusTF;
         @FXML
     void modifierBTN(ActionEvent event) throws SQLException {
         int idCmd = Integer.parseInt(id_cmdTF.getText());
@@ -57,9 +58,9 @@ public class ModifierCommande {
         String mtTotal = mt_totalTF.getText();
         int quantite = Integer.parseInt(quantiteTF.getText());
         int codePromo = Integer.parseInt(code_promoTF.getText());
-        Commande c=new Commande(idCmd,idUser,idProjet,date,mtTotal,quantite,dateLivraisonEstimee,codePromo);
+        String status = statusTF.getText();
+        Commande c=new Commande(idCmd,idUser,idProjet,date,mtTotal,quantite,dateLivraisonEstimee,codePromo,status);
         ServiceCommande serviceCommande= new ServiceCommande();
-
         serviceCommande.modifier(c);
 
 

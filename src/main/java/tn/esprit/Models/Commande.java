@@ -13,6 +13,7 @@ public class Commande {
     private int quantite;
     private Date date_livraison_estimee;
     private int code_promo;
+    private String status;
 
 
 
@@ -49,6 +50,9 @@ public class Commande {
         return code_promo;
     }
 
+    public String getStatus() {
+        return status;
+    }
 
 //setters
 
@@ -81,15 +85,17 @@ public class Commande {
     }
 
 
-
     public void setDate_livraison_estimee(Date date_livraison_estimee) {
         this.date_livraison_estimee = date_livraison_estimee;
 
 
     }
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     //constructeurs
-    public Commande(int id_cmd, int id_user, int id_projet, Date date,String mt_total, int quantite,Date date_livraison_estimee,int code_promo) {
+    public Commande(int id_cmd, int id_user, int id_projet, Date date,String mt_total, int quantite,Date date_livraison_estimee,int code_promo,String status) {
         this.id_cmd = id_cmd;
         this.id_user = id_user;
         this.id_projet = id_projet;
@@ -98,10 +104,12 @@ public class Commande {
         this.quantite = quantite;
         this.date_livraison_estimee = date_livraison_estimee;
         this.code_promo = code_promo;
+        this.status = status;
+
     }
 
 
-    public Commande(int id_user, int id_projet, Date date, String mt_total, int quantite, Date date_livraison_estimee,int code_promo) {
+    public Commande(int id_user, int id_projet, Date date, String mt_total, int quantite, Date date_livraison_estimee,int code_promo,String status) {
         this.id_user = id_user;
         this.id_projet = id_projet;
         this.date = date;
@@ -109,6 +117,7 @@ public class Commande {
         this.quantite = quantite;
         this.date_livraison_estimee = date_livraison_estimee;
         this.code_promo = code_promo;
+        this.status = status;
     }
 
     public Commande(){}
@@ -128,8 +137,7 @@ public class Commande {
                 ", quantite=" + quantite +
                 ", date_livraison_estimee=" + date_livraison_estimee +
                 ", code_promo=" + code_promo +
+                ", status='" + status + '\'' +
                 '}';
     }
-
-
 }

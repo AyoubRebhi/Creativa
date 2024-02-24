@@ -10,6 +10,7 @@ public interface InterfaceCRUD <T>{
     void modifier(T t);
 
     void supprimer(int id);
+    void annulerCommande(int id) throws SQLException;
 
     List<T> afficher() throws SQLException;
 

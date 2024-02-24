@@ -22,5 +22,6 @@
             <Image requestedHeight="800" requestedWidth="600" url="@images/istockphoto-1165671399-612x612.jpg" />
          </image>
       </ImageView>
+
    </children>
 </AnchorPane>
