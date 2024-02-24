@@ -1,6 +1,7 @@
 package tn.esprit.Models;
 
 import java.io.File;
+import java.util.Date;
 
 public class Projet {
     private int id_projet;
@@ -9,23 +10,31 @@ public class Projet {
     private File media;
     private double prix;
     private int id_categorie;
+    private Boolean isVisible;
+    private Date createdAt;
+    private Date updatedAt;
 
-    public Projet(int id, String titre, String description, File media, double prix, int id_categorie) {
+    public Projet(int id, String titre, String description, File media, double prix, int id_categorie, Boolean isVisible, Date createdAt, Date updatedAt) {
         this.id_projet = id;
         this.titre = titre;
         this.description = description;
         this.media = media;
         this.prix = prix;
         this.id_categorie = id_categorie;
+        this.isVisible = isVisible;
+        this.createdAt=createdAt;
+        this.updatedAt=updatedAt;
     }
 
-    public Projet(String titre, String description, File media, double prix, int id_categorie) {
+    public Projet(String titre, String description, File media, double prix, int id_categorie,Date createdAt,Date updatedAt) {
         this.titre = titre;
         this.description = description;
         this.media = media;
         this.prix = prix;
         this.id_categorie = id_categorie;
-
+        this.isVisible=isVisible;
+        this.createdAt=createdAt;
+        this.updatedAt=updatedAt;
     }
 
     public int getCategorie() {
@@ -77,6 +86,30 @@ public class Projet {
         this.titre = titre;
     }
 
+    public Boolean getVisible() {
+        return isVisible;
+    }
+
+    public void setVisible(Boolean isVisible) {
+        isVisible = isVisible;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     @Override
     public String toString() {
         return "Projet{" +
@@ -85,6 +118,9 @@ public class Projet {
                 ", description='" + description + '\'' +
                 ", media=" + media +
                 ", prix=" + prix +
+                ", visible="+ isVisible+
+                "createdAt="+ createdAt+
+                "updatedAt="+updatedAt+
                 '}';
     }
 }
