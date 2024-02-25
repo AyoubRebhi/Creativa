@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.animation.TranslateTransition?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+<AnchorPane id="mainPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controlleurs.SideBar" stylesheets="@Styles.css">
+    <HBox id="rootHBox">
+        <VBox id="sidebar" style="-fx-background-color: #333;">
+            <Button text="Home" onAction="#handleHome" />
+            <Button text="Settings" onAction="#handleSettings" />
+            <Button text="About" onAction="#handleAbout" />
+        </VBox>
 
+        <StackPane>
+            <!-- Your main content goes here -->
+            <Pane id="content" style="-fx-background-color: #ccc;">
+                <Button text="Toggle Sidebar" onAction="#toggleSidebar" />
+            </Pane>
+
+            <!-- Animation transition -->
+            <Pane id="overlay" style="-fx-background-color: rgba(0, 0, 0, 0.5); visibility: hidden;">
+                <Pane id="hiddenSidebar" style="-fx-background-color: #333;">
+                    <Button text="Home" onAction="#handleHome" />
+                    <Button text="Settings" onAction="#handleSettings" />
+                    <Button text="About" onAction="#handleAbout" />
+                </Pane>
+            </Pane>
+        </StackPane>
+    </HBox>
 </AnchorPane>

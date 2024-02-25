@@ -36,5 +36,7 @@ public class ForgetpasswordController implements Initializable {
     @FXML
     private void submitok(ActionEvent event) {
     }
-    
+
+    public void handleForgotPassword(ActionEvent actionEvent) {
+    }
 }

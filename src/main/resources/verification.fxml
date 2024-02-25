@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="tn.esprit.Controlleurs.VerificationController">
+<children>
+    <Label layoutX="187.0" layoutY="76.0" prefHeight="21.0" prefWidth="201.0" text="Saisir le code de vérificationr " />
+    <TextField fx:id="verificationCodeField" layoutX="178.0" layoutY="169.0" promptText="code" />
+    <Button fx:id="btnok" layoutX="388.0" layoutY="169.0" mnemonicParsing="false" onAction="#validerCode" prefHeight="31.0" prefWidth="52.0" text="ok" />
+</children>
 </AnchorPane>

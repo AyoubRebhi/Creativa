@@ -61,8 +61,21 @@ public class  LoginController {
             int p = S.getUtilisateurid(loginId.getText(), motpasse.getText());
             System.out.println("hhh"+S.getUtilisateurid(loginId.getText(), motpasse.getText()));
             session.id_utilisateur=p;
+            String userRole = S.getUtilisateurRole(loginId.getText());
+
+            switch (userRole) {
+                case "ADMIN":
+                    redirectToAdminPage(event);
+                    break;
+                case "CLIENT":
+                    redirectToCLIENTPage(event);
+                    break;
+                case "ARTIST":
+                    redirectToARTISTPage(event);
+            }
+
             System.out.println("hajer connectéé" +p);
-            redirectToLoginPage(event);
+
 
         } else {
             // L'authentification a échoué, afficher une alerte d'erreur
@@ -71,6 +84,69 @@ public class  LoginController {
 
     }
 
+    private void redirectToARTISTPage(ActionEvent event) {
+        try {
+            // Charger la page de connexion à partir du fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CarteList.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Obtenir la scène actuelle à partir de l'événement
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+            // Changer la scène actuelle vers la nouvelle scène de connexion
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement de la page de connexion
+        }
+
+    }
+
+    private void redirectToCLIENTPage(ActionEvent event) {
+        try {
+            // Charger la page de connexion à partir du fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/list.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Obtenir la scène actuelle à partir de l'événement
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+            // Changer la scène actuelle vers la nouvelle scène de connexion
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement de la page de connexion
+        }
+    }
+
+    private void redirectToAdminPage(ActionEvent event) {
+        try {
+            // Charger la page de connexion à partir du fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ajouterCarte.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Obtenir la scène actuelle à partir de l'événement
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+            // Changer la scène actuelle vers la nouvelle scène de connexion
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement de la page de connexion
+        }
+    }
 
 
     private void redirectToLoginPage(ActionEvent event) {
@@ -156,6 +232,27 @@ public class  LoginController {
         try {
             // Charger la page de connexion à partir du fichier FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/inscription.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Obtenir la scène actuelle à partir de l'événement
+            Stage stage = (Stage) ((javafx.scene.Node) actionEvent.getSource()).getScene().getWindow();
+
+            // Changer la scène actuelle vers la nouvelle scène de connexion
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement de la page de connexion
+        }
+    }
+
+    public void motpasseoublié(ActionEvent actionEvent) {
+        try {
+            // Charger la page de connexion à partir du fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/emailForPassword.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène

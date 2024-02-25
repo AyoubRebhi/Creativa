@@ -13,7 +13,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserService implements InterfaceCRUD<User> {
+public class  UserService implements InterfaceCRUD<User> {
 
     private Connection connection;
 
@@ -75,6 +75,31 @@ public class UserService implements InterfaceCRUD<User> {
             ex.printStackTrace();
         }
     }
+
+    public String getUtilisateurRole(String identifiant) {
+        String req = "SELECT role FROM user WHERE (username=? OR email=?)";
+
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setString(1, identifiant);
+            preparedStatement.setString(2, identifiant);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    // Récupérer le mot de passe haché de la base de données
+
+                    // Vérifier si le mot de passe fourni correspond au mot de passe haché
+                        // Retourner le rôle si la vérification du mot de passe est réussie
+                        return resultSet.getString("role");
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // Retourner une valeur par défaut en cas d'échec de l'authentification
+        return null;
+    }
+
 
     public boolean emailExists(String email) {
         String req = "SELECT * FROM user WHERE email=?";
@@ -298,5 +323,23 @@ public class UserService implements InterfaceCRUD<User> {
         }
         // Retourner une valeur par défaut en cas d'échec de l'authentification
         return -1;
+    }
+
+
+
+    public boolean resetPassword(String userEmail, String newPassword) {
+        // Implement logic to update the user's password in the database
+        String updateQuery = "UPDATE user SET password = ? WHERE email = ?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(updateQuery)) {
+            // Hash the new password using BCrypt
+            String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            preparedStatement.setString(1, hashedPassword);
+            preparedStatement.setString(2, userEmail);
+            int rowsUpdated = preparedStatement.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

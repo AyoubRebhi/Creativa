@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static tn.esprit.Utils.EmailsUtils.sendVerificationEmail;
+
 public class inscription {
 
 
@@ -51,52 +53,28 @@ public class inscription {
 
     @FXML
     protected void adduser(ActionEvent event) {
-//        // Récupération des données du formulaire
-//        String nomText = nom.getText();
-//        String prenomText = prenom.getText();
-//        String emailText = email.getText();
-//        String mdpText = mdp.getText();
-//        boolean isClient = clientRadioButton.isSelected();
-//        boolean isArtiste = artisteRadioButton.isSelected();
-//        System.out.println("hhhhhhh" + nom.getText() + prenomText+prenomText+emailText+mdp.getText());
-//
-
-//        int tel = Integer.parseInt(numtel.getText());
-//        String usernameText = username.getText();
-//        System.out.println("hhhhhhh" + role);
-
         // Vérification de la saisie
-        if (nom.getText().isEmpty() || prenom.getText().isEmpty() || mdp.getText().isEmpty() || email.getText().isEmpty() || username.getText().isEmpty()  ||numtel.getText().isEmpty()||
+        if (nom.getText().isEmpty() || prenom.getText().isEmpty() || mdp.getText().isEmpty() || email.getText().isEmpty() || username.getText().isEmpty() || numtel.getText().isEmpty() ||
                 (!clientRadioButton.isSelected() && !artisteRadioButton.isSelected())) {
-
-
-            System.out.println("d5al");
-            // Affichage de l'alerte d'erreur
-//            showAlert(Alert.AlertType.ERROR,
-//                    "Form Error!", "Veuillez remplir tous les champs!");}// Arrête l'exécution si des champs sont vides
-            showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "rempliisez tous les champs");
+            showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Remplissez tous les champs.");
         } else {
             String role = "";
             if (clientRadioButton.isSelected()) {
                 role = "CLIENT";
-                System.out.println("hhhhhhh" + role);
-
             } else if (artisteRadioButton.isSelected()) {
                 role = "ARTIST";
-                System.out.println("hhhhhhh" + role);
-
             }
+
             if (mdp.getText().length() < 8) {
                 showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Le mot de passe doit contenir au moins 8 caractères.");
                 return;
             }
 
-            //Vérification de l'adresse e-mail avec une regex
+            // Vérification de l'adresse e-mail avec une regex
             if (!validateEmail(email.getText())) {
                 showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Adresse e-mail invalide.");
                 return;
             }
-
 
             if (userService.emailExists(email.getText())) {
                 showAlert(Alert.AlertType.ERROR, "Erreur", "L'adresse e-mail existe déjà.");
@@ -109,19 +87,64 @@ public class inscription {
                 return;
             }
 
-            // Si tous les champs sont remplis et l'adresse e-mail est valide, appeler la méthode ajouterUser du service
-            userService.ajouter4(new User(nom.getText(), prenom.getText(), username.getText(), mdp.getText(),
-                    Role.valueOf(role), "", "", "", email.getText(), Integer.parseInt(numtel.getText())));
+            String verificationCode = generateVerificationCode();
+            sendVerificationEmail(email.getText(), verificationCode);
 
-            // Afficher une confirmation (vous pouvez personnaliser le contenu de l'alerte)
-            showAlert(Alert.AlertType.INFORMATION, "Succès", "Utilisateur ajouté avec succès!");
+            // Ouvrir la fenêtre de vérification
+            if (openVerificationWindow(email.getText(), verificationCode)) {
+                // La vérification du code est réussie, ajouter l'utilisateur
+                userService.ajouter4(new User(nom.getText(), prenom.getText(), username.getText(), mdp.getText(),
+                        Role.valueOf(role), "", "", "", email.getText(), Integer.parseInt(numtel.getText())));
 
-            redirectToLoginPage(event);
+                // Afficher une confirmation
 
+                redirectToLoginPage(event);
+            } else {
+                // La vérification du code a échoué, afficher un message d'erreur
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Code de vérification incorrect.");
+            }
         }
+    }
+
+
+    private String generateVerificationCode() {
+        // Générez un code aléatoire (vous pouvez personnaliser la logique selon vos besoins)
+        // Dans cet exemple, un code à 6 chiffres
+        int code = 100000 + (int) (Math.random() * 900000);
+        return String.valueOf(code);
+    }
+
+    private boolean openVerificationWindow(String userEmail, String verificationCode) {
+        try {
+            // Charger la page de vérification à partir du fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/verification.fxml"));
+            Parent root = loader.load();
+
+            // Obtenez le contrôleur de la fenêtre de vérification
+            VerificationController verificationController = loader.getController();
+
+            // Passez les informations nécessaires au contrôleur de la fenêtre de vérification
+            verificationController.setUserEmail(userEmail);
+            verificationController.setVerificationCode(verificationCode);
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Créer une nouvelle étape (stage) pour la fenêtre de vérification
+            Stage verificationStage = new Stage();
+            verificationStage.setScene(scene);
+
+            // Afficher la fenêtre de vérification
+            verificationStage.showAndWait();
+
+            // Renvoyer true si la vérification a réussi, false sinon
+            return verificationController.isVerificationSuccessful();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement de la fenêtre de vérification
+            return false;
         }
-
-
+    }
 
     private void redirectToLoginPage(ActionEvent event) {
         try {
