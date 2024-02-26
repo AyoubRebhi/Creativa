@@ -19,7 +19,7 @@
          <font>
             <Font size="16.0" />
          </font></Button>
-      <Button fx:id="suppBTN" layoutX="356.0" layoutY="357.0" mnemonicParsing="false" onAction="#supprimerLivraison" prefHeight="38.0" prefWidth="98.0" style="-fx-background-color: #6BDBE8;" text="Supprimer" textFill="WHITE">
+      <Button fx:id="suppBTN" layoutX="356.0" layoutY="357.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="38.0" prefWidth="98.0" style="-fx-background-color: #6BDBE8;" text="Annuler" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font></Button>

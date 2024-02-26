@@ -86,6 +86,11 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
         }
     }
 
+    @Override
+    public void annulerLivraison(int id) throws SQLException {
+
+    }
+
 
     //afficher commande
     @Override

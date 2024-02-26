@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ServiceLivraison implements InterfaceCRUD<Livraison> {
-    Connection conn= MaConnexion.getInstance().getConn();
+    static Connection conn= MaConnexion.getInstance().getConn();
 //ajouter livraison
     @Override
     public void ajouter(Livraison l) {
@@ -54,17 +54,9 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
         }
     }
 
-    //supprimer livraison
     @Override
     public void supprimer(int id) {
-        String req = " delete from livraison where id_liv=?";
-        try (PreparedStatement ps = conn.prepareStatement(req)) {
-        ps.setInt(1,id);
-        ps.executeUpdate();
-            System.out.println("livraison supprimée avec succés!");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 
     @Override
@@ -72,6 +64,16 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
 
     }
 
+
+    //annuler livraison
+    public void annulerLivraison(int idLivraison) throws SQLException {
+        String req = "UPDATE livraison SET status = 'annulée' WHERE id_liv = ?";
+        try (PreparedStatement ps = conn.prepareStatement(req)) {
+            ps.setInt(1, idLivraison);
+            ps.executeUpdate();
+            System.out.println("Livraison annulée avec succès !");
+        }
+    }
     //afficher livraison
     @Override
     public List<Livraison> afficher() throws SQLException{

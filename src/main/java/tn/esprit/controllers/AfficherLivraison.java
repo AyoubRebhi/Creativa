@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import tn.esprit.Models.Commande;
 import tn.esprit.Models.Livraison;
 import tn.esprit.Services.ServiceCommande;
 import tn.esprit.Services.ServiceLivraison;
@@ -59,17 +60,33 @@ public class AfficherLivraison implements Initializable{
         }
     }
     @FXML
-    void supprimerLivraison(ActionEvent event) throws SQLException {
+    void Annuler(ActionEvent event) {
         Livraison selectedLivraison = listView.getSelectionModel().getSelectedItem();
         if (selectedLivraison != null) {
-            ServiceCommande serviceCommande = new ServiceCommande();
-            serviceCommande.supprimer(selectedLivraison.getId_cmd());
-            listView.getItems().remove(selectedLivraison);
-            showAlert("Succès", "Livraison supprimée avec succès !");
+            try {
+                // Mettre à jour le statut de la livraison avec "annulée"
+                selectedLivraison.setStatus("Annulée");
+
+                // Créer une instance de ServiceLivraison
+                ServiceLivraison serviceLivraison = new ServiceLivraison();
+
+                // Appeler la méthode annulerLivraison sur l'instance serviceLivraison
+                serviceLivraison.annulerLivraison(selectedLivraison.getId_liv());
+
+                // Supprimer la livraison annulée de la ListView
+                listView.getItems().remove(selectedLivraison);
+
+                // Afficher un message de succès
+                System.out.println("Livraison annulée avec succès !");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         } else {
-            showAlert("Erreur", "Veuillez sélectionner une livraison à supprimer.");
+            System.out.println("Aucune livraison sélectionnée !");
         }
     }
+
+
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

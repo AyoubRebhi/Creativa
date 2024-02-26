@@ -18,7 +18,7 @@
          <font>
             <Font size="16.0" />
          </font></Button>
-      <Button fx:id="suppBTN" layoutX="349.0" layoutY="355.0" mnemonicParsing="false" onAction="#supprimerCommande" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #6BDBE8;" text="Supprimer" textFill="WHITE">
+      <Button fx:id="suppBTN" layoutX="349.0" layoutY="355.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #6BDBE8;" text="Annuler" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font></Button>

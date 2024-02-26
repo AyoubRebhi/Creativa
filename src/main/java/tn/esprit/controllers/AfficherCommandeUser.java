@@ -43,11 +43,27 @@ public class AfficherCommandeUser implements Initializable{
     void Annuler(ActionEvent event) {
         Commande selectedCommande = listView.getSelectionModel().getSelectedItem();
         if (selectedCommande != null) {
-            // Mettre en œuvre la logique d'annulation de la commande
+            try {
+                // Mettre à jour le statut de la commande avec "annulée"
+                selectedCommande.setStatus("Annulée");
+                ServiceCommande serviceCommande = new ServiceCommande();
+                serviceCommande.annulerCommande(selectedCommande.getId_cmd());
+
+                // Supprimer la commande annulée de la ListView
+                listView.getItems().remove(selectedCommande);
+
+                // Afficher un message de succès
+                System.out.println("Commande annulée avec succès !");
+            } catch (SQLException e) {
+                // Gérer l'exception en fonction de vos besoins
+                e.printStackTrace();
+            }
         } else {
             // Afficher un message d'erreur indiquant qu'aucune commande n'est sélectionnée
+            System.out.println("Aucune commande sélectionnée !");
         }
     }
+
 
     @FXML
     void Modifier(ActionEvent event) {

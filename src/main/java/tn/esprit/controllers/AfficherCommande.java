@@ -59,20 +59,32 @@ public class AfficherCommande implements Initializable{
             e.printStackTrace();
         }
     }
+
+
     @FXML
-    void supprimerCommande(ActionEvent event) throws SQLException {
+    void Annuler(ActionEvent event) {
         Commande selectedCommande = listView.getSelectionModel().getSelectedItem();
         if (selectedCommande != null) {
-            ServiceCommande serviceCommande = new ServiceCommande();
-            serviceCommande.supprimer(selectedCommande.getId_cmd());
-            listView.getItems().remove(selectedCommande);
-            showAlert("Succès", "Commande supprimée avec succès !");
+            try {
+                // Mettre à jour le statut de la commande avec "annulée"
+                selectedCommande.setStatus("Annulée");
+                ServiceCommande serviceCommande = new ServiceCommande();
+                serviceCommande.annulerCommande(selectedCommande.getId_cmd());
+
+                // Supprimer la commande annulée de la ListView
+                listView.getItems().remove(selectedCommande);
+
+                // Afficher un message de succès
+                System.out.println("Commande annulée avec succès !");
+            } catch (SQLException e) {
+                // Gérer l'exception en fonction de vos besoins
+                e.printStackTrace();
+            }
         } else {
-            showAlert("Erreur", "Veuillez sélectionner une commande à supprimer.");
+            // Afficher un message d'erreur indiquant qu'aucune commande n'est sélectionnée
+            System.out.println("Aucune commande sélectionnée !");
         }
     }
-
-
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
