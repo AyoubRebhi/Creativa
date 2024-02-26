@@ -7,34 +7,29 @@ public class Projet {
     private int id_projet;
     private String titre;
     private String description;
-    private File media;
+    private String media;
     private double prix;
     private int id_categorie;
-    private Boolean isVisible;
-    private Date createdAt;
-    private Date updatedAt;
+    private Boolean isVisible =true;
+    private Date createdAt = new Date();
+    private Date updatedAt = createdAt;
 
-    public Projet(int id, String titre, String description, File media, double prix, int id_categorie, Boolean isVisible, Date createdAt, Date updatedAt) {
+    public Projet(int id, String titre, String description, String media, double prix, int id_categorie) {
         this.id_projet = id;
         this.titre = titre;
         this.description = description;
         this.media = media;
         this.prix = prix;
         this.id_categorie = id_categorie;
-        this.isVisible = isVisible;
-        this.createdAt=createdAt;
-        this.updatedAt=updatedAt;
+        //this.isVisible = true;
     }
 
-    public Projet(String titre, String description, File media, double prix, int id_categorie,Date createdAt,Date updatedAt) {
+    public Projet(String titre, String description, String media, double prix, int id_categorie) {
         this.titre = titre;
         this.description = description;
         this.media = media;
         this.prix = prix;
         this.id_categorie = id_categorie;
-        this.isVisible=isVisible;
-        this.createdAt=createdAt;
-        this.updatedAt=updatedAt;
     }
 
     public int getCategorie() {
@@ -62,11 +57,11 @@ public class Projet {
         this.description = description;
     }
 
-    public File getMedia() {
+    public String getMedia() {
         return media;
     }
 
-    public void setMedia(File media) {
+    public void setMedia(String media) {
         this.media = media;
     }
 
@@ -86,12 +81,13 @@ public class Projet {
         this.titre = titre;
     }
 
-    public Boolean getVisible() {
-        return isVisible;
+    public Boolean getIsVisible() {
+        return isVisible != null ? isVisible : false; // Retourner false si isVisible est null
     }
 
+
     public void setVisible(Boolean isVisible) {
-        isVisible = isVisible;
+        this.isVisible = isVisible;
     }
 
     public Date getCreatedAt() {

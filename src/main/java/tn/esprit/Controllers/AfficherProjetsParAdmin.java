@@ -5,6 +5,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +20,7 @@ import javafx.stage.Modality;
 import tn.esprit.Models.Projet;
 import tn.esprit.Services.ProjetServices;
 
-public class AfficherProjets {
+public class AfficherProjetsParAdmin {
 
     @FXML
     private ResourceBundle resources;
@@ -69,16 +70,13 @@ public class AfficherProjets {
             e.printStackTrace();
         }
     }
-
-
-
     @FXML
-    void supprimerProjet(ActionEvent event) throws SQLException {
+    void changerVisibilte(ActionEvent event) throws SQLException {
         String selectedProjet = listView.getSelectionModel().getSelectedItem();
         if (selectedProjet != null && !selectedProjet.isEmpty()) {
             Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
-            confirmationDialog.setTitle("Confirmation de suppression");
-            confirmationDialog.setHeaderText("Êtes-vous sûr de vouloir supprimer ce projet ?");
+            confirmationDialog.setTitle("Confirmation de visibilité");
+            confirmationDialog.setHeaderText("Êtes-vous sûr de vouloir mettre ce projet invisible ?");
             confirmationDialog.initModality(Modality.APPLICATION_MODAL);
 
             // Ajouter les boutons Oui et Annuler
@@ -86,23 +84,23 @@ public class AfficherProjets {
 
             confirmationDialog.showAndWait().ifPresent(buttonType -> {
                 if (buttonType == ButtonType.YES) {
-                    // Supprimer le projet
+                    // Modifier la visibilité du projet
                     String[] parts = selectedProjet.split(",");
                     if (parts.length > 0) {
                         int projetId = Integer.parseInt(parts[0].trim());
                         ProjetServices projetServices = new ProjetServices();
                         try {
-                            projetServices.supprimer(projetId);
+                            projetServices.modifierVisibilite(projetId,false);
                             refreshProjetsList();
-                            showAlert("Suppression réussie", "Le projet a été supprimé avec succès.");
+                            showAlert("Opération réussite", "La visibilité est modifiée avec succès.");
                         } catch (SQLException e) {
-                            showAlert("Erreur", "Une erreur s'est produite lors de la suppression du projet.");
+                            showAlert("Erreur", "Une erreur s'est produite lors de cette operation.");
                         }
                     }
                 }
             });
         } else {
-            showAlert("Erreur", "Veuillez sélectionner un projet à supprimer.");
+            showAlert("Erreur", "Veuillez sélectionner un projet.");
         }
     }
 
@@ -155,31 +153,35 @@ public class AfficherProjets {
         });
 
         ProjetServices projetServices = new ProjetServices();
-        try{
+        try {
             projets = projetServices.afficher();
+            projets = projets.stream().filter(Projet::getIsVisible).collect(Collectors.toList());
             ObservableList<String> observableList = FXCollections.observableArrayList();
-            String idProjet ="ID,                          ";
-            String titreProjet ="Titre,                                      ";
-            String descriptionProjet ="Description,                            ";
-            String categorie ="Categorie,       ";
-            String prixProjet="Prix,     ";
-            observableList.add(idProjet+titreProjet+descriptionProjet+categorie+prixProjet);
-            for(Projet projet : projets){
-                int id = projet.getId();
-                String titre = minDescription(projet.getTitre());
-                String description = minDescription(projet.getDescription());
-                int idCat = projet.getCategorie();
-                String cat = projetServices.afficherTitreCategorie(idCat);
-                double prix = projet.getPrix();
-                observableList.add(id + ",               "+titre+",                 "+description +",              "+ cat + ",           "+ prix);
+            String idProjet = "ID,                          ";
+            String titreProjet = "Titre,                                      ";
+            String descriptionProjet = "Description,                            ";
+            String categorie = "Categorie,       ";
+            String prixProjet = "Prix,     ";
+            observableList.add(idProjet + titreProjet + descriptionProjet + categorie + prixProjet);
+            for (Projet projet : projets) {
+                // Vérifier si le projet est visible
+                if (projet.getIsVisible()) {
+                    int id = projet.getId();
+                    String titre = minDescription(projet.getTitre());
+                    String description = minDescription(projet.getDescription());
+                    int idCat = projet.getCategorie();
+                    String cat = projetServices.afficherTitreCategorie(idCat);
+                    double prix = projet.getPrix();
+                    observableList.add(id + ",               " + titre + ",                 " + description + ",              " + cat + ",           " + prix);
+                }
             }
             listView.setItems(observableList);
-
-
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
     }
+
+
     private String minDescription(String description) {
         int length = description.length();
         if (length < 22) {

@@ -24,82 +24,40 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setString(1, projet.getTitre());
             ps.setString(2, projet.getDescription());
-
-            // Insérer le contenu du fichier dans la base de données en tant que BLOB
-            if (projet.getMedia() != null) {
-                FileInputStream inputStream = new FileInputStream(projet.getMedia());
-                ps.setBinaryStream(3, inputStream, (int) projet.getMedia().length());
-            } else {
-                ps.setNull(3, java.sql.Types.BLOB);
-            }
-
+            ps.setString(3, projet.getMedia()); // Utiliser le média de type String
             ps.setDouble(4, projet.getPrix());
             ps.setInt(5, projet.getCategorie());
 
             ps.executeUpdate();
-            System.out.println("Projet ajouté avec succes");
-
-        } catch (SQLException | FileNotFoundException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    //NB: statement est plus rapide que prepared statement si on a pas des parametres à passer
-    @Override
-    public void modifier(Projet projet) {
-        try{
-            String req ="UPDATE `projet` SET `titre`= ?, `description`= ?, `prix`= ?, `id_categorie`=? WHERE `id_projet`= ?";
-            PreparedStatement ps = conn.prepareStatement(req);
-            ps.setString(1,projet.getTitre());
-            ps.setString(2,projet.getDescription());
-            ps.setDouble(3,projet.getPrix());
-            ps.setInt(4,projet.getCategorie());
-            ps.setInt(5,projet.getId());
-
-            ps.executeUpdate();
-            System.out.println("Projet modifieé avec succes");
+            System.out.println("Projet ajouté avec succès");
 
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
 
-    public void modifierMedia(Projet projet){
-        try{
-            String req ="UPDATE `projet` SET `media`=? WHERE `id_projet`=?";
+
+    //NB: statement est plus rapide que prepared statement si on a pas des parametres à passer
+    @Override
+    public void modifier(Projet projet) {
+        try {
+            String req = "UPDATE `projet` SET `titre`= ?, `description`= ?, `media`= ?, `prix`= ?, `id_categorie`=?, `updatedAt`=CURRENT_TIMESTAMP WHERE `id_projet`= ?";
             PreparedStatement ps = conn.prepareStatement(req);
-            if (projet.getMedia() != null) {
-                FileInputStream inputStream = new FileInputStream(projet.getMedia());
-                ps.setBinaryStream(1, inputStream, (int) projet.getMedia().length());
-
-            } else {
-                ps.setNull(1, java.sql.Types.BLOB);
-            }
-
-            ps.setInt(2,projet.getId());
+            ps.setString(1, projet.getTitre());
+            ps.setString(2, projet.getDescription());
+            ps.setString(3, projet.getMedia()); // Utiliser le média de type String
+            ps.setDouble(4, projet.getPrix());
+            ps.setInt(5, projet.getCategorie());
+            ps.setInt(6, projet.getId());
 
             ps.executeUpdate();
-            System.out.println("Media modifiée avec succes");
+            System.out.println("Projet modifié avec succès");
 
-        }catch(SQLException | FileNotFoundException ex){
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
 
-    public void modifierCategorie(Projet projet){
-        try{
-            String req = "UPDATE `projet` SET `categorie_id`=? WHERE `id_projet`=?";
-            PreparedStatement ps = conn.prepareStatement(req);
-            ps.setInt(1, projet.getCategorie());
-            ps.setInt(2,projet.getId());
-
-            ps.executeUpdate();
-            System.out.println("Projet modifieé avec succes");
-
-        }catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
 
     @Override
     public void supprimer(int id) {
@@ -129,6 +87,9 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
                 projet.setDescription(rs.getString("description"));
                 projet.setCategorie(rs.getInt("id_categorie"));
                 projet.setPrix(rs.getDouble("prix"));
+                projet.setVisible(rs.getBoolean("isVisible"));
+                projet.setCreatedAt(rs.getTimestamp("createdAt"));
+                projet.setUpdatedAt(rs.getTimestamp("updatedAt"));
 
                 int categorieId = rs.getInt("id_categorie");
                 String categorieTitre = rs.getString("categorie_titre");
@@ -164,7 +125,10 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
                     projet.setDescription(rs.getString("description"));
                     projet.setPrix(rs.getDouble("prix"));
                     projet.setCategorie(rs.getInt("id_categorie"));
-
+                    projet.setMedia(rs.getString("media"));
+                    projet.setVisible(rs.getBoolean("isVisible"));
+                    projet.setCreatedAt(rs.getTimestamp("createdAt"));
+                    projet.setUpdatedAt(rs.getTimestamp("updatedAt"));
                 }
             }
         } catch (SQLException ex) {
@@ -186,6 +150,9 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
                     projet.setDescription(rs.getString("description"));
                     projet.setPrix(rs.getDouble("prix"));
                     projet.setCategorie(rs.getInt("id_categorie"));
+                    projet.setVisible(rs.getBoolean("isVisible"));
+                    projet.setCreatedAt(rs.getTimestamp("createdAt"));
+                    projet.setUpdatedAt(rs.getTimestamp("updatedAt"));
                     projets.add(projet);
                 }
             }
@@ -208,6 +175,9 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
                     projet.setDescription(rs.getString("description"));
                     projet.setPrix(rs.getDouble("prix"));
                     projet.setCategorie(rs.getInt("id_categorie"));
+                    projet.setVisible(rs.getBoolean("isVisible"));
+                    projet.setCreatedAt(rs.getTimestamp("createdAt"));
+                    projet.setUpdatedAt(rs.getTimestamp("updatedAt"));
                     projets.add(projet);
                 }
             }
@@ -216,6 +186,7 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
         }
         return projets;
     }
+    //Utilisé pour la forme AjouterProjet.fxml
     public String afficherTitreCategorie(int id) {
         String titreCategorie = null;
         String req = "SELECT c.titre FROM projet p JOIN categorie c ON p.id_categorie = c.id_categorie WHERE p.id_projet = ?";
@@ -245,6 +216,19 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
         }
         return titresCategories;
     }
+    public void modifierVisibilite(int projetId, boolean isVisible) throws SQLException {
+        String req = "UPDATE projet SET `isVisible` = ? WHERE id_projet = ?";
+        try (PreparedStatement ps = conn.prepareStatement(req)) {
+            ps.setBoolean(1, isVisible);
+            ps.setInt(2, projetId);
+            ps.executeUpdate();
+            System.out.println("Visibilité du projet modifiée avec succès");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
+    }
+
 
 
 

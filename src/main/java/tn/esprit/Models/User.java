@@ -2,6 +2,16 @@ package tn.esprit.Models;
 
 public class User {
     private int id_user;
+    private int numTel;
+
+    public int getNumTel() {
+        return numTel;
+    }
+
+    public void setNumTel(int numTel) {
+        this.numTel = numTel;
+    }
+
     private String lastName;
     private String firstName;
     private String username;
@@ -12,7 +22,7 @@ public class User {
     private String profileImagePath;
     private String email ;
     public User(String lastName, String firstName, String username, String password, Role role,
-                String biography, String address, String profileImagePath, String email) {
+                String biography, String address, String profileImagePath, String email,int num) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.username = username;
@@ -22,8 +32,22 @@ public class User {
         this.address = address;
         this.profileImagePath = profileImagePath;
         this.email=email;
+        this.numTel=num;
     }
-
+    public User(int s,String lastName, String firstName, String username, String password, Role role,
+                String biography, String address, String profileImagePath, String email,int num) {
+        this.id_user=s;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.biography = biography;
+        this.address = address;
+        this.profileImagePath = profileImagePath;
+        this.email=email;
+        this.numTel=num;
+    }
     // Constructors, getters, setters, toString, etc.
 
     public User() {

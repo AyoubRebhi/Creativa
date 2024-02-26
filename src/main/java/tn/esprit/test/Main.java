@@ -71,11 +71,11 @@ public class Main {
             System.out.println("- Catégorie : " + categorieTitre + ", Nombre de projets : " + nbProjets);
         }*/
         List<Categorie> categories = cs.afficher();
-        for(Categorie c : categories){
+        /*for(Categorie c : categories){
             System.out.println("ID : "+ c.getId_categorie());
             System.out.println("Titre : "+ c.getTitre());
-        }
-
+        }*/
+        ps.modifierVisibilite(3,true);
 
 
     }

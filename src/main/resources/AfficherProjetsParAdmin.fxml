@@ -8,16 +8,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="489.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherProjets">
+<AnchorPane prefHeight="489.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherProjetsParAdmin">
    <children>
-      <Label fx:id="labelFX" layoutX="255.0" layoutY="36.0" prefHeight="39.0" prefWidth="212.0" text="Liste des projets" textAlignment="CENTER" textFill="#ffc336">
+      <Label fx:id="labelFX" layoutX="302.0" layoutY="36.0" prefHeight="39.0" prefWidth="212.0" text="Liste des projets" textAlignment="CENTER" textFill="#ffc336">
          <font>
             <Font name="System Bold Italic" size="27.0" />
          </font>
       </Label>
       <ListView fx:id="listView" layoutX="103.0" layoutY="101.0" prefHeight="262.0" prefWidth="609.0" />
       <Button fx:id="updateBTN" layoutX="658.0" layoutY="415.0" mnemonicParsing="false" onAction="#modifierProjet" text="Modifier" />
-      <Button fx:id="suppBTN" layoutX="526.0" layoutY="415.0" mnemonicParsing="false" onAction="#supprimerProjet" text="Supprimer" />
+      <Button fx:id="suppBTN" layoutX="508.0" layoutY="415.0" mnemonicParsing="false" onAction="#changerVisibilte" text="Changer Visibilié" />
       <Button fx:id="AjouterBTN" layoutX="408.0" layoutY="415.0" mnemonicParsing="false" onAction="#ajouterProjet" text="Ajouter" />
       <ImageView fx:id="refreshICON" fitHeight="22.0" fitWidth="22.0" layoutX="754.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>

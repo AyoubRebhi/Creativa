@@ -13,7 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import tn.esprit.Models.Categorie;
 import tn.esprit.Models.Projet;
 import tn.esprit.Services.ProjetServices;
 import tn.esprit.test.HelloApplication;
@@ -49,7 +48,7 @@ public class ModifierProjet {
 
     @FXML
     void afficherProjets(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherProjets.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherProjetsParAdmin.fxml"));
         try {
             titreTF.getScene().setRoot(fxmlLoader.load());
         } catch (IOException e) {
@@ -74,7 +73,7 @@ public class ModifierProjet {
     }
     public void refreshProjetsList() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherProjets.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherProjetsParAdmin.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) titreTF.getScene().getWindow(); // Récupérer la fenêtre actuelle

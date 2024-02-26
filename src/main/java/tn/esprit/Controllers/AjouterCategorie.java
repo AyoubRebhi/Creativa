@@ -2,12 +2,9 @@ package tn.esprit.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +32,7 @@ public class AjouterCategorie {
 
     @FXML
     void afficherCategories(ActionEvent event){
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherCategories.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherCategoriesAdmin.fxml"));
         try {
             titreTF.getScene().setRoot(fxmlLoader.load());
         } catch (IOException e) {
@@ -61,7 +58,7 @@ public class AjouterCategorie {
     }
 
     private void refreshCategoriesList() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCategories.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCategoriesAdmin.fxml"));
         try {
             titreTF.getScene().setRoot(loader.load());
             AfficherCategories controller = loader.getController();
@@ -82,7 +79,7 @@ public class AjouterCategorie {
 
     @FXML
     void initialize() {
-        assert titreTF != null : "fx:id=\"titreTF\" was not injected: check your FXML file 'AjouterCategorie.fxml'.";
+        assert titreTF != null : "fx:id=\"titreTF\" was not injected: check your FXML file 'AjouterCategorieAdmin.fxml'.";
 
     }
 

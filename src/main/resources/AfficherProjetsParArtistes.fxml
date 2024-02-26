@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.Controllers.AfficherProjetsParArtistes"
+            prefHeight="489.0" prefWidth="802.0">
+    <children>
+        <Label fx:id="labelFX" layoutX="302.0" layoutY="36.0" prefHeight="39.0" prefWidth="212.0" text="Liste des projets" textAlignment="CENTER" textFill="#ffc336">
+            <font>
+                <Font name="System Bold Italic" size="27.0" />
+            </font>
+        </Label>
+        <ListView fx:id="listView" layoutX="103.0" layoutY="101.0" prefHeight="262.0" prefWidth="609.0" />
+        <Button fx:id="updateBTN" layoutX="658.0" layoutY="415.0" mnemonicParsing="false" onAction="#modifierProjet" text="Modifier" />
+        <Button fx:id="AjouterBTN" layoutX="408.0" layoutY="415.0" mnemonicParsing="false" onAction="#ajouterProjet" text="Ajouter" />
+        <ImageView fx:id="refreshICON" fitHeight="22.0" fitWidth="22.0" layoutX="754.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@img/refreshIcone.png" />
+            </image>
+        </ImageView>
+    </children>
+
+</AnchorPane>
