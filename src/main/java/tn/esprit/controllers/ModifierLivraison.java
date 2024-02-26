@@ -5,9 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import tn.esprit.Models.Livraison;
+import tn.esprit.Services.ServiceCommande;
 import tn.esprit.Services.ServiceLivraison;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ModifierLivraison {
@@ -47,9 +50,11 @@ public class ModifierLivraison {
 
     @FXML
     void ModifierLivraison(ActionEvent event)throws SQLException {
+        ServiceCommande serviceCommande = new ServiceCommande();
         int idLiv = Integer.parseInt(idLivTF.getText());
         int idCmd = Integer.parseInt(id_cmdTF.getText());
-        int idUser = Integer.parseInt(id_userTF.getText());
+        int idUser = serviceCommande.getIdUtilisateurParNomComplet(id_userTF.getText());
+
         String status = statusTF.getText();
         String adresse = adresseTF.getText();
         String frais = fraisTF.getText();
@@ -97,4 +102,5 @@ public class ModifierLivraison {
             throw new RuntimeException(e);
         }
     }
+
 }

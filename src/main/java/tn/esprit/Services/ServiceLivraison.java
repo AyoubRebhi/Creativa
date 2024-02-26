@@ -7,7 +7,9 @@ import tn.esprit.Utils.MaConnexion;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ServiceLivraison implements InterfaceCRUD<Livraison> {
     Connection conn= MaConnexion.getInstance().getConn();
@@ -104,5 +106,18 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
         }
         return idUtilisateur;
     }
-
+    // ServiceCommande
+    public Map<String, Integer> getAllProjectTitlesAndIds() throws SQLException {
+        Map<String, Integer> projectTitlesAndIds = new HashMap<>();
+        String req = "SELECT id_projet, titre FROM projet";
+        try (PreparedStatement ps = conn.prepareStatement(req);
+             ResultSet res = ps.executeQuery()) {
+            while (res.next()) {
+                int id_projet = res.getInt("id_projet");
+                String titre = res.getString("titre");
+                projectTitlesAndIds.put(titre, id_projet);
+            }
+        }
+        return projectTitlesAndIds;
+    }
 }

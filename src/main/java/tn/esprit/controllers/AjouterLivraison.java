@@ -1,4 +1,7 @@
 package tn.esprit.controllers;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,13 +12,17 @@ import tn.esprit.Services.ServiceCommande;
 import tn.esprit.Services.ServiceLivraison;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.Map;
+import java.util.ResourceBundle;
 
-public class AjouterLivraison {
+public class AjouterLivraison{
     @FXML
     private TextField adresseTF;
-
+    @FXML
+    private ComboBox<String> idCombobox;
     @FXML
     private Button ajouterBTN;
 
@@ -102,4 +109,5 @@ public class AjouterLivraison {
             throw new RuntimeException(e);
         }
     }
+
 }

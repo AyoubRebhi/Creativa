@@ -29,7 +29,7 @@ public class Main {
         //ajouter commande
         ServiceCommande serviceCommande = new ServiceCommande();
 
-        Commande c = new Commande(2, 3, new Date(123, 9, 26), "8dt", 2, new Date(123,9,15),1600,"en_cours");
+        Commande c = new Commande(2, 3, new Date(123, 9, 26), "8dt",  new Date(123,9,15),1600,"en_cours");
 
         serviceCommande.ajouter(c); }
 
@@ -58,7 +58,6 @@ public class Main {
         c.setId_user(1); // ID de l'utilisateur
         c.setId_projet(2); // ID du projet
         c.setMt_total("9dt");
-        c.setQuantite(8);
         c.setCode_promo(2000);
         // Création de la date "2023-02-10" en utilisant java.sql.Date
         Date date = Date.valueOf("2020-03-13");

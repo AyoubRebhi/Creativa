@@ -10,7 +10,6 @@ public class Commande {
     private Date date;
 
     private String mt_total;
-    private int quantite;
     private Date date_livraison_estimee;
     private int code_promo;
     private String status;
@@ -38,9 +37,6 @@ public class Commande {
         return mt_total;
     }
 
-    public int getQuantite() {
-        return quantite;
-    }
 
     public Date getDate_livraison_estimee() {
         return date_livraison_estimee;
@@ -76,9 +72,6 @@ public class Commande {
         this.mt_total = mt_total;
     }
 
-    public void setQuantite(int quantite) {
-        this.quantite = quantite;
-    }
 
     public void setCode_promo(int code_promo) {
         this.code_promo = code_promo;
@@ -95,13 +88,13 @@ public class Commande {
     }
 
     //constructeurs
-    public Commande(int id_cmd, int id_user, int id_projet, Date date,String mt_total, int quantite,Date date_livraison_estimee,int code_promo,String status) {
+    public Commande(int id_cmd, int id_user, int id_projet, Date date,String mt_total,Date date_livraison_estimee,int code_promo,String status) {
         this.id_cmd = id_cmd;
         this.id_user = id_user;
         this.id_projet = id_projet;
         this.date = date;
         this.mt_total = mt_total;
-        this.quantite = quantite;
+
         this.date_livraison_estimee = date_livraison_estimee;
         this.code_promo = code_promo;
         this.status = status;
@@ -109,12 +102,11 @@ public class Commande {
     }
 
 
-    public Commande(int id_user, int id_projet, Date date, String mt_total, int quantite, Date date_livraison_estimee,int code_promo,String status) {
+    public Commande(int id_user, int id_projet, Date date, String mt_total, Date date_livraison_estimee,int code_promo,String status) {
         this.id_user = id_user;
         this.id_projet = id_projet;
         this.date = date;
         this.mt_total = mt_total;
-        this.quantite = quantite;
         this.date_livraison_estimee = date_livraison_estimee;
         this.code_promo = code_promo;
         this.status = status;
@@ -134,7 +126,6 @@ public class Commande {
                 ", id_projet=" + id_projet +
                 ", date=" + date +
                 ", mt_total='" + mt_total + '\'' +
-                ", quantite=" + quantite +
                 ", date_livraison_estimee=" + date_livraison_estimee +
                 ", code_promo=" + code_promo +
                 ", status='" + status + '\'' +

@@ -14,8 +14,7 @@
                 <Font name="System Bold Italic" size="27.0" />
             </font>
         </Label>
-      <Button fx:id="retourBTN" layoutX="21.0" layoutY="7.0" mnemonicParsing="false" onAction="#Retour" text="Retour" />
-      <Button fx:id="ajouterBTN" layoutX="462.0" layoutY="354.0" mnemonicParsing="false" onAction="#ajoutercode" text="Ajouter code promo" />
-
+        <Button fx:id="retourBTN" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#Retour" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE" />
+      <Button fx:id="ajouterBTN" layoutX="462.0" layoutY="354.0" mnemonicParsing="false" onAction="#ajoutercode" prefHeight="18.0" prefWidth="125.0" style="-fx-background-color: #999999;" text="Ajouter code promo" textFill="WHITE" />
     </children>
 </AnchorPane>

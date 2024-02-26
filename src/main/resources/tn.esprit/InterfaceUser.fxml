@@ -16,7 +16,7 @@
             <Image requestedHeight="900" requestedWidth="800" url="@images/imageUser.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="notificationLabel" layoutX="39.0" layoutY="274.0" prefHeight="91.0" prefWidth="169.0" text="Label" />
+      <Button fx:id="notificationBTN" layoutX="65.0" layoutY="307.0" mnemonicParsing="false" onAction="#notificationBTN" text="Nouvelles notifications" />
 
 
    </children>

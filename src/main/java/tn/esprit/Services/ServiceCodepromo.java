@@ -66,5 +66,31 @@ public class ServiceCodepromo implements InterfaceCodePromo<Codepromo> {
             return codepromo;
         }
     }
+
+    public boolean codePromoExiste(String codePromo) {
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        boolean codeExiste = false;
+
+        try {
+            // Requête SQL pour vérifier l'existence du code promo
+            String sql = "SELECT COUNT(*) AS count FROM code_promo WHERE code_promo = ?";
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, codePromo);
+
+            // Exécution de la requête
+            resultSet = statement.executeQuery();
+
+            // Récupération du résultat
+            if (resultSet.next()) {
+                int count = resultSet.getInt("count");
+                codeExiste = (count > 0); // Le code existe si le résultat est supérieur à zéro
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return codeExiste;
+    }
+
 }
 

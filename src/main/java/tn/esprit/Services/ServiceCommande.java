@@ -19,16 +19,15 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
     //ajouter commande
     @Override
     public void ajouter(Commande c) {
-        String req = "INSERT INTO commande (id_user, id_projet, date,mt_total,quantite,date_livraison_estimee,code_promo,status) VALUES (?, ?, ?,?,?,?,?,?)";
+        String req = "INSERT INTO commande (id_user, id_projet, date,mt_total,date_livraison_estimee,code_promo,status) VALUES (?, ?, ?,?,?,?,?)";
         try (PreparedStatement ps = conn.prepareStatement(req)) {
             ps.setInt(1, c.getId_user());
             ps.setInt(2, c.getId_projet());
             ps.setDate(3, c.getDate());
             ps.setString(4, c.getMt_total());
-            ps.setInt(5, c.getQuantite());
-            ps.setDate(6, c.getDate_livraison_estimee());
-            ps.setInt(7, c.getCode_promo());
-            ps.setString(8, c.getStatus());
+            ps.setDate(5, c.getDate_livraison_estimee());
+            ps.setInt(6, c.getCode_promo());
+            ps.setString(7, c.getStatus());
 
             ps.executeUpdate();
             System.out.println("Commande ajoutée avec succés!");
@@ -41,18 +40,17 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
     //modifier commande
     @Override
     public void modifier(Commande c) {
-        String req = "update commande set id_user=? , id_projet=? , date=? , mt_total=? , quantite=? ,date_livraison_estimee=?,code_promo=?,status=? where id_cmd=?";
+        String req = "update commande set id_user=? , id_projet=? , date=? , mt_total=? ,date_livraison_estimee=?,code_promo=?,status=? where id_cmd=?";
         try (PreparedStatement ps = conn.prepareStatement(req)) {
 
             ps.setInt(1, c.getId_user());
             ps.setInt(2, c.getId_projet());
             ps.setDate(3, c.getDate());
             ps.setString(4, c.getMt_total());
-            ps.setInt(5, c.getQuantite());
-            ps.setDate(6, c.getDate_livraison_estimee());
-            ps.setInt(7, c.getCode_promo());
-            ps.setString(8, c.getStatus());
-            ps.setInt(9, c.getId_cmd());
+            ps.setDate(5, c.getDate_livraison_estimee());
+            ps.setInt(6, c.getCode_promo());
+            ps.setString(7, c.getStatus());
+            ps.setInt(8, c.getId_cmd());
             ps.executeUpdate();
             System.out.println("Commande modifiée avec succès");
         } catch (SQLException e) {
@@ -103,10 +101,9 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
                 c.setId_projet(res.getInt(3));
                 c.setDate(res.getDate(4));
                 c.setMt_total(res.getString(5));
-                c.setQuantite(res.getInt(6));
-                c.setDate_livraison_estimee(res.getDate(7));
-                c.setCode_promo(res.getInt(8));
-                c.setStatus(res.getString(9));
+                c.setDate_livraison_estimee(res.getDate(6));
+                c.setCode_promo(res.getInt(7));
+                c.setStatus(res.getString(8));
 
                 commandes.add(c);
             }
@@ -127,7 +124,6 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
                     c.setId_projet(res.getInt(3));
                     c.setDate(res.getDate(4));
                     c.setMt_total(res.getString(5));
-                    c.setQuantite(res.getInt(6));
                     c.setDate_livraison_estimee(res.getDate(7));
                     c.setCode_promo(res.getInt(8));
                     c.setStatus(res.getString(9));

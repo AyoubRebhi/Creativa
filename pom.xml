@@ -37,6 +37,19 @@
             <artifactId>javax.mail</artifactId>
             <version>1.6.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>11.1.0</version> <!-- Assurez-vous de spécifier la version appropriée -->
+        </dependency>
+
+        <dependency>
+            <groupId>com.twilio.sdk</groupId>
+            <artifactId>twilio</artifactId>
+            <version>8.25.0</version> <!-- Mettez à jour la version en fonction de la dernière version disponible -->
+        </dependency>
+
     </dependencies>
 
     <build>

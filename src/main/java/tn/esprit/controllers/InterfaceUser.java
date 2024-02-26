@@ -4,14 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import tn.esprit.Models.Commande;
-import tn.esprit.Services.ServiceCommande;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.scene.control.Label;
 
@@ -58,9 +60,16 @@ public class InterfaceUser implements Initializable {
     }
 
 
-    public void afficherNotificationCodePromo(String message) {
-        notificationLabel.setText(message);
+    @FXML
+    void notificationBTN(ActionEvent event) {
+        Notifications.create()
+                .title("Notification")
+                .text("Un nouveau code promo a été ajouté !")
+                .hideAfter(Duration.seconds(5))
+                .position(Pos.BOTTOM_RIGHT)
+                .show();
     }
+
 
 
 }

@@ -16,30 +16,27 @@
                 <Font name="System Bold Italic" size="27.0" />
             </font>
         </Label>
-        <TextField fx:id="quantiteTF" layoutX="27.0" layoutY="214.0" maxWidth="250.0" prefHeight="30.0" promptText="Quantité" />
-        <TextField fx:id="mt_totalTF" layoutX="28.0" layoutY="255.0" maxWidth="250.0" prefHeight="30.0" promptText="Montant total" />
+        <TextField fx:id="mt_totalTF" layoutX="28.0" layoutY="271.0" maxWidth="250.0" prefHeight="30.0" promptText="Montant total" />
         <Button fx:id="continuerBTN" layoutX="494.0" layoutY="334.0" mnemonicParsing="false" onAction="#AjouterCommande" prefHeight="39.0" prefWidth="99.0" style="-fx-background-color: #6DE94C;" text="Ajouter" textFill="WHITE">
             <font>
                 <Font size="16.0" />
             </font>
         </Button>
-        <Button fx:id="afficherBTN" layoutX="393.0" layoutY="334.0" mnemonicParsing="false" onAction="#AfficherCommande" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: #EB4040;" text="Afficher" textFill="WHITE">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Button>
-        <TextField fx:id="dateLivTF" layoutX="27.0" layoutY="295.0" promptText="Date de livraison estimée" />
-        <TextField fx:id="code_promoTF" layoutX="409.0" layoutY="278.0" prefHeight="30.0" prefWidth="90.0" promptText="Code promo" />
-        <Text fill="#0000005c" layoutX="401.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avez-vous un code promo?" />
-        <TextField fx:id="id_userTF" layoutX="28.0" layoutY="90.0" promptText="Nom complet" />
+        <TextField fx:id="code_promoTF" layoutX="444.0" layoutY="286.0" prefHeight="30.0" prefWidth="90.0" promptText="Code promo" />
+        <Text fill="#0000005c" layoutX="429.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avez-vous un code promo?" />
+        <TextField fx:id="id_userTF" layoutX="28.0" layoutY="90.0" promptText="Nom et prénom" />
       <Button fx:id="PasserLiv" layoutX="444.0" layoutY="15.0" mnemonicParsing="false" onAction="#PasserLiv" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #999999;" text="Passer à la livraison" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font></Button>
         <Button fx:id="retourBTN" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#Retour" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE" />
-      <ComboBox fx:id="idCombobox" layoutX="27.0" layoutY="122.0" prefWidth="150.0" promptText="Titre du projet" />
-      <TextField fx:id="statusTF" layoutX="409.0" layoutY="148.0" promptText="status" />
-      <DatePicker fx:id="datePicker" layoutX="213.0" layoutY="90.0" onAction="#datePicker" />
+      <ComboBox fx:id="idCombobox" layoutX="28.0" layoutY="135.0" prefWidth="150.0" promptText="Titre du projet" />
+      <TextField fx:id="statusTF" disable="true" layoutX="394.0" layoutY="109.0" promptText="status" />
+      <DatePicker fx:id="datePicker" layoutX="28.0" layoutY="205.0" prefHeight="26.0" prefWidth="158.0" />
+      <DatePicker fx:id="datePicker2" layoutX="217.0" layoutY="205.0" prefHeight="26.0" prefWidth="158.0" />
+        <Text fill="#0000005c" layoutX="27.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de la commande" />
+        <Text fill="#0000005c" layoutX="219.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date estimée de la livraison" wrappingWidth="150.39999999999986" />
+
 
     </children>
 </AnchorPane>
