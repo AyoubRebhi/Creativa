@@ -124,9 +124,9 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
                     c.setId_projet(res.getInt(3));
                     c.setDate(res.getDate(4));
                     c.setMt_total(res.getString(5));
-                    c.setDate_livraison_estimee(res.getDate(7));
-                    c.setCode_promo(res.getInt(8));
-                    c.setStatus(res.getString(9));
+                    c.setDate_livraison_estimee(res.getDate(6));
+                    c.setCode_promo(res.getInt(7));
+                    c.setStatus(res.getString(8));
                     commandes.add(c);
                 }
             }

@@ -147,11 +147,11 @@ public class AjouterCommande implements Initializable{
         datePicker.setValue(LocalDate.now());
 
         // Définir la date estimée de livraison comme 5 jours après la date de passation de commande
-        LocalDate datePassationCommande = datePicker.getValue();
-        LocalDate dateEstimeeLivraison = datePassationCommande.plusDays(5);
+        LocalDate date = datePicker.getValue();
+        LocalDate date_Livraison_Estimee = date.plusDays(5);
 
 // Définir la date estimée de livraison dans le DatePicker
-        datePicker2.setValue(dateEstimeeLivraison);
+        datePicker2.setValue(date_Livraison_Estimee);
 
     }
 

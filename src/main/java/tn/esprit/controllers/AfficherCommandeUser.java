@@ -73,7 +73,7 @@ public class AfficherCommandeUser implements Initializable{
         ServiceCommande serviceCommande=new ServiceCommande();
         List<Commande> l = null;
         try{
-            l=serviceCommande.afficherCommandesUtilisateur(2);
+            l=serviceCommande.afficherCommandesUtilisateur(1);
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }
