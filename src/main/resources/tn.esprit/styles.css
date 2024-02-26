@@ -1,0 +1,85 @@
+/* Styles pour AnchorPane */
+.anchor-pane {
+    -fx-background-color: #f4f4f4;
+}
+
+/* Styles pour Label */
+.label {
+    -fx-font-size: 24px;
+    -fx-font-family: "Arial";
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold; /* Gras */
+    -fx-font-style: italic; /* Italique */
+    -fx-text-fill: #764949; /* Couleur du texte */
+}
+
+/* Styles pour TextField */
+.text-field {
+    -fx-pref-height: 40px;
+    -fx-pref-width: 300px;
+    -fx-font-size: 14px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+}
+
+.text-field:hover {
+    -fx-border-color: #999999;
+}
+
+/* Styles pour ComboBox */
+.combo-box {
+    -fx-pref-width: 300px;
+    -fx-font-size: 14px;
+}
+
+/* Styles pour Button */
+.button {
+    -fx-background-color: #4CAF50; /* Vert */
+    -fx-text-fill: #ffffff;
+}
+.button:pressed {
+    -fx-background-color: #333333; /* Couleur de fond lorsque le bouton est enfoncé */
+}
+
+.button:hover {
+    -fx-background-color: #45a049; /* Vert foncé au survol */
+}
+
+
+/* Styles pour DatePicker */
+.date-picker {
+    -fx-pref-height: 40px;
+    -fx-pref-width: 150px;
+    -fx-font-size: 14px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+}
+
+.date-picker:hover {
+    -fx-border-color: #999999;
+    -layoutX:"14.0";
+    -layoutY:"6.0";
+}
+.list-view {
+    -fx-control-inner-background: #ffffff; /* Couleur de fond */
+    -fx-control-inner-background-alt: #f0f0f0; /* Couleur de fond alternative */
+    -fx-font-size: 14px; /* Taille de la police */
+}
+
+.label {
+    -fx-font-size: 20px; /* Taille de la police */
+    -fx-text-fill: #333333; /* Couleur du texte */
+}
+
+/* Style de l'image */
+.image-view {
+    -fx-effect: dropshadow(three-pass-box, #999999, 10, 0, 0, 0); /* Ombre portée */
+    -fx-border-color: #999999; /* Couleur de la bordure */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+}
+#notificationBTN {
+    -fx-background-color: #D25454; /* Vert */
+    -fx-text-fill: #ffffff;
+}

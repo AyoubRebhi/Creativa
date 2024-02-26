@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DFDEDE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierCommande">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DFDEDE;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierCommande">
     <children>
         <Label fx:id="modifier_commandes" layoutX="202.0" layoutY="12.0" text="Modifier Commandes" textFill="#764949">
             <font>
@@ -35,8 +35,8 @@
       <ComboBox fx:id="idCombobox" layoutX="379.0" layoutY="93.0" prefWidth="150.0" promptText="Titre du projet" />
         <DatePicker fx:id="datePicker" layoutX="22.0" layoutY="197.0" prefHeight="26.0" prefWidth="158.0" />
         <DatePicker fx:id="datePicker2" layoutX="202.0" layoutY="197.0" prefHeight="26.0" prefWidth="158.0" />
-        <Text fill="#0000005c" layoutX="23.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de la commande" />
-        <Text fill="#0000005c" layoutX="206.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date estimée de la livraison" wrappingWidth="150.39999999999986" />
+        <Text fill="#0000005c" layoutX="22.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de la commande" />
+        <Text fill="#0000005c" layoutX="201.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date estimée de la livraison" wrappingWidth="150.39999999999986" />
 
     </children>
 </AnchorPane>
