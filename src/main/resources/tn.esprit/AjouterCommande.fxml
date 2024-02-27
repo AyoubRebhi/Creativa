@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DFDEDE;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterCommande">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterCommande">
     <children>
         <Label fx:id="ajouter_commandes" layoutX="172.0" layoutY="19.0" text="Ajouter Commandes" textFill="#764949">
             <font>
@@ -17,15 +17,15 @@
             </font>
         </Label>
         <TextField fx:id="mt_totalTF" layoutX="28.0" layoutY="271.0" maxWidth="250.0" prefHeight="30.0" promptText="Montant total" />
-        <Button fx:id="continuerBTN" layoutX="494.0" layoutY="334.0" mnemonicParsing="false" onAction="#AjouterCommande" prefHeight="39.0" prefWidth="99.0" style="-fx-background-color: #6DE94C;" text="Ajouter" textFill="WHITE">
+        <Button fx:id="continuerBTN" layoutX="494.0" layoutY="340.0" mnemonicParsing="false" onAction="#AjouterCommande" prefHeight="39.0" prefWidth="99.0" style="-fx-background-color: #6DE94C;" text="Ajouter" textFill="WHITE">
             <font>
                 <Font size="16.0" />
             </font>
         </Button>
-        <TextField fx:id="code_promoTF" layoutX="444.0" layoutY="286.0" prefHeight="30.0" prefWidth="90.0" promptText="Code promo" />
-        <Text fill="#0000005c" layoutX="429.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avez-vous un code promo?" />
+        <TextField fx:id="code_promoTF" layoutX="394.0" layoutY="277.0" prefHeight="30.0" prefWidth="274.0" promptText="Code promo" />
+        <Text fill="#0000005c" layoutX="408.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avez-vous un code promo?" />
         <TextField fx:id="id_userTF" layoutX="28.0" layoutY="90.0" promptText="Nom et prénom" />
-      <Button fx:id="PasserLiv" layoutX="519.0" layoutY="23.0" mnemonicParsing="false" onAction="#PasserLiv" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #999999;" text="Passer à la livraison" textFill="WHITE">
+      <Button fx:id="PasserLiv" layoutX="469.0" layoutY="23.0" mnemonicParsing="false" onAction="#PasserLiv" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #999999;" text="Passer à la livraison" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font></Button>

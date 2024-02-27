@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DFDEDE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterLivraison" stylesheets="@styles.css">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DFDEDE;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterLivraison">
 
    <children>
       <TextField fx:id="id_cmdTF" layoutX="30.0" layoutY="98.0" promptText="id cmd" />
       <TextField fx:id="adresseTF" layoutX="358.0" layoutY="166.0" promptText="adresse" />
       <TextField fx:id="id_userTF" layoutX="358.0" layoutY="98.0" promptText="Nom et prénom" />
-      <TextField fx:id="statusTF" layoutX="30.0" layoutY="166.0" promptText="status" />
-      <TextField fx:id="fraisTF" layoutX="30.0" layoutY="247.0" promptText="Frais livraison" />
+      <TextField fx:id="statusTF" layoutX="30.0" layoutY="166.0" promptText="status" disable="true" />
+      <TextField fx:id="fraisTF" layoutX="30.0" layoutY="247.0" promptText="Frais livraison" disable="true"/>
       <TextField fx:id="moyenLivTF" layoutX="358.0" layoutY="247.0" promptText="Moyen livraison" />
-      <Label fx:id="ajouterL" layoutX="203.0" layoutY="27.0" text="Ajouter livraison" textFill="#764949">
+      <Label fx:id="ajouterL" layoutX="263.0" layoutY="35.0" text="Ajouter livraison" textFill="#764949">
          <font>
             <Font name="System Bold Italic" size="27.0" />
          </font></Label>

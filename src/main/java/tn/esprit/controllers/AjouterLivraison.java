@@ -13,6 +13,7 @@ import tn.esprit.Models.Commande;
 import tn.esprit.Models.Livraison;
 import tn.esprit.Services.ServiceCommande;
 import tn.esprit.Services.ServiceLivraison;
+import javafx.fxml.Initializable;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,7 +24,7 @@ import java.util.ResourceBundle;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
-public class AjouterLivraison{
+public class AjouterLivraison implements Initializable{
     @FXML
     private TextField adresseTF;
     @FXML
@@ -141,4 +142,10 @@ public class AjouterLivraison{
         }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        statusTF.setText("En cours");
+        fraisTF.setText("8dt");
+
+    }
 }

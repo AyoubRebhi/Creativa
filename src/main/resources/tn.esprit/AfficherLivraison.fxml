@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DFDEDE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherLivraison" stylesheets="@styles.css">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherLivraison">
     <children>
         <ListView fx:id="listView" layoutX="32.0" layoutY="36.0" prefHeight="311.0" prefWidth="536.0" />
         <Label fx:id="labelFX" layoutX="210.0" layoutY="-4.0" prefHeight="36.0" prefWidth="216.0" text="Liste des Livraisons" textAlignment="CENTER" textFill="#764949">

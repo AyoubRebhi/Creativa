@@ -6,17 +6,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DFDEDE;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.InterfaceUser">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.InterfaceUser">
    <children>
       <Button fx:id="ajouterBTN" layoutX="72.0" layoutY="100.0" mnemonicParsing="false" onAction="#AjouterC" prefHeight="42.0" prefWidth="149.0" text="Ajouter Commande" />
       <Button fx:id="AfficherBTN" layoutX="72.0" layoutY="177.0" mnemonicParsing="false" onAction="#AfficherC" prefHeight="42.0" prefWidth="150.0" text="Afficher Commande" />
       <Label fx:id="label" layoutX="91.0" layoutY="27.0" prefHeight="42.0" prefWidth="170.0" text="Interface User" />
-      <ImageView fitHeight="401.0" fitWidth="357.0" layoutX="304.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="401.0" fitWidth="357.0" layoutX="343.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image requestedHeight="900" requestedWidth="800" url="@images/imageUser.jpg" />
+            <Image requestedHeight="350" requestedWidth="250" url="@images/imageUser.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="notificationBTN" layoutX="25.0" layoutY="334.0" mnemonicParsing="false" onAction="#notificationBTN" prefHeight="34.0" prefWidth="150.0" text="Nouvelles notifications" />
+      <Button fx:id="notificationBTN" layoutX="125.0" layoutY="335.0" mnemonicParsing="false" onAction="#notificationBTN" prefHeight="34.0" prefWidth="150.0" text="Nouvelles notifications" />
 
 
    </children>
