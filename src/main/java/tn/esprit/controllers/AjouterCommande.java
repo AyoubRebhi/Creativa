@@ -64,14 +64,18 @@ public class AjouterCommande implements Initializable{
     private DatePicker datePicker2;
 
 
-
-
-
     @FXML
     void AjouterCommande(ActionEvent event) throws SQLException {
+        // Vérifier si tous les champs obligatoires sont remplis
+        if (code_promoTF.getText().isEmpty() || id_userTF.getText().isEmpty() || mt_totalTF.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur de saisie");
+            alert.setContentText("Veuillez remplir tous les champs !");
+            alert.showAndWait();
+            return;
+        }
 
         // Vérifier si le code promo est disponible dans la base de données
-
         ServiceCodepromo serviceCodepromo = new ServiceCodepromo();
         String codePromo = code_promoTF.getText();
         if (!serviceCodepromo.codePromoExiste(codePromo)) {
@@ -97,13 +101,14 @@ public class AjouterCommande implements Initializable{
         c.setCode_promo(Integer.parseInt(codePromo));
         c.setStatus(statusTF.getText());
 
-            serviceCommande.ajouter(c);
-            // Affichage d'une alerte pour indiquer que la commande a été ajoutée avec succès
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Succès");
-            alert.setContentText("La commande a été ajoutée avec succès !");
-            alert.showAndWait();
-        }
+        serviceCommande.ajouter(c);
+        // Affichage d'une alerte pour indiquer que la commande a été ajoutée avec succès
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Succès");
+        alert.setContentText("La commande a été ajoutée avec succès !");
+        alert.showAndWait();
+    }
+
 
 
 

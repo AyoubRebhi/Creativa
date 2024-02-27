@@ -34,21 +34,37 @@ public class AjouterCodepromo {
 
     @FXML
     void ajouter(ActionEvent event) {
-        ServiceCodepromo serviceCodepromo = new ServiceCodepromo();
-        Codepromo c = new Codepromo();
-
-        c.setCode_promo(Integer.parseInt(codepromoTF.getText()));
-        c.setPourcentage(pourcentageTF.getText());
-
-        {
-            serviceCodepromo.ajouter(c);
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Succès");
-            alert.setContentText("Code promo a été ajouté avec succès !");
+        // Vérification du format du code promo
+        String codePromoText = codepromoTF.getText();
+        if (!codePromoText.matches("\\d{4}")) { // Vérifie si le code promo est composé de 4 chiffres
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur de saisie");
+            alert.setContentText("Veuillez saisir un code promo composé de 4 chiffres !");
             alert.showAndWait();
-            notificationBTN(null);
+            return;
         }
+
+        // Le code promo est valide, vous pouvez maintenant l'ajouter
+        int codePromo = Integer.parseInt(codePromoText);
+        String pourcentage = pourcentageTF.getText();
+        Codepromo c = new Codepromo();
+        c.setCode_promo(codePromo);
+        c.setPourcentage(pourcentage);
+
+        // Ajout du code promo
+        ServiceCodepromo serviceCodepromo = new ServiceCodepromo();
+        serviceCodepromo.ajouter(c);
+
+        // Affichage d'une confirmation
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Succès");
+        alert.setContentText("Code promo ajouté avec succès !");
+        alert.showAndWait();
+
+        // Réinitialisation des champs et mise à jour des notifications
+        notificationBTN(null);
     }
+
     @FXML
     void notificationBTN(ActionEvent event) {
         Notifications.create()

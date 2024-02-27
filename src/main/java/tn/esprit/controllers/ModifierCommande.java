@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.ResourceBundle;
+import tn.esprit.Services.ServiceCodepromo;
 
 public class ModifierCommande implements Initializable{
     @FXML
@@ -67,7 +68,15 @@ public class ModifierCommande implements Initializable{
             Date date = Date.valueOf(datePicker.getValue());
             Date dateLivraisonEstimee = Date.valueOf(datePicker2.getValue());
             String mtTotal = mt_totalTF.getText();
+            ServiceCodepromo serviceCodepromo = new ServiceCodepromo();
             int codePromo = Integer.parseInt(code_promoTF.getText());
+            if (!serviceCodepromo.codePromoExiste(String.valueOf(codePromo))) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur de saisie");
+                alert.setContentText("Le code promo saisi n'existe pas !");
+                alert.showAndWait();
+                return;
+            }
             String status = statusTF.getText();
             Commande c = new Commande(idCmd, idUser, idProjet, date, mtTotal, dateLivraisonEstimee, codePromo, status);
             serviceCommande = new ServiceCommande();
