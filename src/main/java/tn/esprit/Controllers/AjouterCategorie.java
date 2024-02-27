@@ -32,7 +32,7 @@ public class AjouterCategorie {
 
     @FXML
     void afficherCategories(ActionEvent event){
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/sidebarAdmin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/sidebarAdminCategories.fxml"));
         try {
             titreTF.getScene().setRoot(fxmlLoader.load());
         } catch (IOException e) {
@@ -58,7 +58,7 @@ public class AjouterCategorie {
     }
 
     private void refreshCategoriesList() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarAdmin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarAdminCategories.fxml"));
         try {
             titreTF.getScene().setRoot(loader.load());
             AfficherCategories controller = loader.getController();

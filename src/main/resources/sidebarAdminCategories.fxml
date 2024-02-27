@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.sidebarAdmin">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -59,7 +59,7 @@
                                     <Image url="@img/AdminIcon.png" />
                                  </image>
                               </ImageView>
-                              <Label layoutX="61.0" layoutY="57.0" text="Bienvenue," textFill="WHITE">
+                              <Label fx:id="labelFX" layoutX="61.0" layoutY="57.0" text="Bienvenue," textFill="WHITE">
                                  <font>
                                     <Font name="Tahoma" size="17.0" />
                                  </font>
@@ -70,7 +70,7 @@
                                  </font>
                               </Label>
                               <Line endX="104.99998474121094" endY="-7.62939453125E-6" layoutX="95.0" layoutY="115.0" startX="-100.0" />
-                              <Button layoutX="11.0" layoutY="123.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text="Acceuil">
+                              <Button layoutX="11.0" layoutY="123.0" mnemonicParsing="false" onAction="#redirectVersAcceuil" prefHeight="30.0" prefWidth="180.0" text="Acceuil">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -79,7 +79,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button layoutX="11.0" layoutY="158.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text=" Projets">
+                              <Button layoutX="11.0" layoutY="158.0" mnemonicParsing="false" onAction="#redirectVersAfficherProjets" prefHeight="30.0" prefWidth="180.0" text=" Projets">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -88,7 +88,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button layoutX="11.0" layoutY="194.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text="Catégories">
+                              <Button layoutX="11.0" layoutY="194.0" mnemonicParsing="false" onAction="#redirectVersAfficherCategories" prefHeight="30.0" prefWidth="180.0" text="Catégories">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -116,6 +116,24 @@
                                  </graphic>
                               </Button>
                               <Label layoutX="42.0" layoutY="390.0" text="Se déconnecter " textFill="WHITE" />
+                              <Button layoutX="11.0" layoutY="268.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text="Commandes">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@img/commande.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="10.0" layoutY="304.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text="Livraisons">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@img/livraison.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
                            </children>
                         </AnchorPane>
                      </children>
@@ -124,7 +142,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="21.0" layoutY="39.0" prefHeight="366.4" prefWidth="398.4" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="anchorContainerID" layoutX="21.0" layoutY="39.0" prefHeight="366.4" prefWidth="398.4" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <fx:include source="AfficherCategoriesAdmin.fxml" />
                         </AnchorPane>
                      </children>
