@@ -18,6 +18,7 @@ import tn.esprit.Services.ProjetServices;
 import tn.esprit.test.HelloApplication;
 
 public class ModifierProjet {
+    private int id;
 
     @FXML
     private ResourceBundle resources;
@@ -41,14 +42,19 @@ public class ModifierProjet {
     @FXML
     private TextField titreTF;
     private ListView<String> listView;
+    private Projet projet;
 
-    @FXML
-    private TextField idTF;
+    public void setProjet(Projet projet) {
+        this.projet = projet;
+    }
+
+
+
 
 
     @FXML
     void afficherProjets(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherProjetsParAdmin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/sidebarArtisteProjets.fxml"));
         try {
             titreTF.getScene().setRoot(fxmlLoader.load());
         } catch (IOException e) {
@@ -59,12 +65,7 @@ public class ModifierProjet {
 
     @FXML
     void modifierProjet(ActionEvent event) {
-        int idProjet = Integer.parseInt(idTF.getText());
-        String nouveauTitre = titreTF.getText();
-        String nouvelleDescription = descriptionTF.getText();
-        double nouveauPrix = Double.parseDouble(prixTF.getText());
-        int idCategorie = categorieChoiceBox.getSelectionModel().getSelectedIndex() + 1; // L'indice de la liste commence à partir de 0
-        Projet nouveauProjet = new Projet(idProjet, nouveauTitre, nouvelleDescription, null, nouveauPrix, idCategorie);
+        Projet nouveauProjet = getProjet();
         ProjetServices projetServices = new ProjetServices();
         projetServices.modifier(nouveauProjet);
         showAlert("Succès", "Le projet a été modifié avec succès.");
@@ -73,7 +74,7 @@ public class ModifierProjet {
     }
     public void refreshProjetsList() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherProjetsParAdmin.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarArtisteProjets.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) titreTF.getScene().getWindow(); // Récupérer la fenêtre actuelle
@@ -91,12 +92,24 @@ public class ModifierProjet {
         alert.showAndWait();
     }
 
-    @FXML
-    void initialize() {
+    void setParametre(int id,Projet projet){
+        this.projet=projet;
+        this.id=id;
         ProjetServices projetServices = new ProjetServices();
         List<String> titresCategories = projetServices.afficherTitresCategories();
         categorieChoiceBox.setItems(FXCollections.observableArrayList(titresCategories));
+        titreTF.setText( projet.getTitre());
+        descriptionTF.setText( projet.getDescription());
+        prixTF.setText(String.valueOf(projet.getPrix()));
+        categorieChoiceBox.getSelectionModel().select(projet.getCategorie());
+    }
 
+    private Projet getProjet(){
+        String nouveauTitre = titreTF.getText();
+        String nouvelleDescription = descriptionTF.getText();
+        double nouveauPrix = Double.parseDouble(prixTF.getText());
+        int idCategorie = categorieChoiceBox.getSelectionModel().getSelectedIndex() + 1;
+        return new Projet(id, nouveauTitre, nouvelleDescription, null, nouveauPrix, idCategorie);
     }
 
 }

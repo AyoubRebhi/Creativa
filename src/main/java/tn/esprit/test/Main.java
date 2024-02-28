@@ -1,8 +1,10 @@
 package tn.esprit.test;
 
 import tn.esprit.Models.Categorie;
+import tn.esprit.Models.Jaime;
 import tn.esprit.Models.Projet;
 import tn.esprit.Services.CategorieServices;
+import tn.esprit.Services.JaimeServices;
 import tn.esprit.Services.ProjetServices;
 import tn.esprit.Utils.MaConnexion;
 
@@ -75,8 +77,23 @@ public class Main {
             System.out.println("ID : "+ c.getId_categorie());
             System.out.println("Titre : "+ c.getTitre());
         }*/
-        ps.modifierVisibilite(3,true);
+        //ps.modifierVisibilite(3,true);
+        /*Jaime jaime = new Jaime();
+        jaime.setId_user(1);
+        jaime.setId_projet(1);
 
+        // Créer un objet JaimeServices
+        JaimeServices jaimeServices = new JaimeServices();
+
+        // Appeler la méthode insererJaime pour insérer le "like" dans la base de données
+        jaimeServices.insererJaime(jaime);*/
+        List<Projet> projets = ps.afficher();
+        for (Projet projet : projets) {
+            ps.calculerNombreJaimePourProjet(projet);
+            System.out.println("ID: " + projet.getId());
+            System.out.println("Titre: " + projet.getTitre());
+            System.out.println("jaimes " + projet.getNombreJaime());
+        }
 
     }
 }

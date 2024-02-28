@@ -14,12 +14,12 @@
                 <Font name="System Bold Italic" size="27.0" />
             </font>
         </Label>
-        <TextField fx:id="titreTF" layoutX="61.0" layoutY="152.0" prefHeight="47.0" prefWidth="150.0" promptText="Titre">
+        <TextField fx:id="titreTF" layoutX="78.0" layoutY="92.0" prefHeight="47.0" prefWidth="150.0" promptText="Titre">
             <font>
                 <Font name="System Italic" size="17.0" />
             </font>
         </TextField>
-        <TextField fx:id="prixTF" layoutX="61.0" layoutY="211.0" prefHeight="47.0" prefWidth="150.0" promptText="Prix">
+        <TextField fx:id="prixTF" layoutX="78.0" layoutY="150.0" prefHeight="47.0" prefWidth="150.0" promptText="Prix">
             <font>
                 <Font name="System Italic" size="17.0" />
             </font>
@@ -29,13 +29,8 @@
                 <Font name="System Italic" size="17.0" />
             </font>
         </TextField>
-        <ChoiceBox fx:id="categorieChoiceBox" layoutX="61.0" layoutY="271.0" prefHeight="47.0" prefWidth="150.0" />
+        <ChoiceBox fx:id="categorieChoiceBox" layoutX="78.0" layoutY="209.0" prefHeight="47.0" prefWidth="150.0" />
         <Button layoutX="372.0" layoutY="319.0" mnemonicParsing="false" onAction="#modifierProjet" prefHeight="39.0" prefWidth="103.0" text="Continuer" />
         <Button layoutX="522.0" layoutY="319.0" mnemonicParsing="false" onAction="#afficherProjets" prefHeight="39.0" prefWidth="103.0" text="Annuler" />
-      <TextField fx:id="idTF" layoutX="61.0" layoutY="92.0" prefHeight="47.0" prefWidth="150.0" promptText="ID">
-         <font>
-            <Font name="System Italic" size="17.0" />
-         </font>
-      </TextField>
     </children>
 </AnchorPane>

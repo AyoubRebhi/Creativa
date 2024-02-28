@@ -1,40 +1,48 @@
 package tn.esprit.Controllers;
 
+import java.awt.*;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import tn.esprit.Models.Projet;
 
 public class CardController {
 
     @FXML
-    private VBox card;
+    private ResourceBundle resources;
 
     @FXML
-    private Label titleLabel;
+    private URL location;
 
     @FXML
-    private Label descriptionLabel;
-
-    private String title;
-    private String description;
-
-    public void initialize() {
-        titleLabel.setText(title);
-        descriptionLabel.setText(description);
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    private HBox box;
 
     @FXML
-    private void handleShowProject() {
-        // Action when "Show Project" button is clicked
-        // You can define what happens here, for example opening a new window or navigating to another view
+    private Label boxDescription;
+
+    @FXML
+    private Label boxTitre;
+
+    @FXML
+    private ImageView imageProjet;
+
+    @FXML
+    private Label nbJaimeNB;
+
+    private String [] colors = {"#ab824e","#b78f5b"};
+
+    public void setData(Projet projet){
+        Image image = new Image(getClass().getResourceAsStream(projet.getMedia()));
+        imageProjet.setImage(image);
+        boxTitre.setText(projet.getTitre());
+        boxDescription.setText(projet.getDescription());
+
     }
+
+
+
 }

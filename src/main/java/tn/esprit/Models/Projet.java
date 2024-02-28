@@ -1,6 +1,5 @@
 package tn.esprit.Models;
 
-import java.io.File;
 import java.util.Date;
 
 public class Projet {
@@ -13,6 +12,8 @@ public class Projet {
     private Boolean isVisible =true;
     private Date createdAt = new Date();
     private Date updatedAt = createdAt;
+    private int nombreJaime;
+
 
     public Projet(int id, String titre, String description, String media, double prix, int id_categorie) {
         this.id_projet = id;
@@ -21,6 +22,7 @@ public class Projet {
         this.media = media;
         this.prix = prix;
         this.id_categorie = id_categorie;
+        //this.nombreJaime=nombreJaime;
         //this.isVisible = true;
     }
 
@@ -106,6 +108,13 @@ public class Projet {
         this.updatedAt = updatedAt;
     }
 
+    public int getNombreJaime() {
+        return nombreJaime;
+    }
+
+    public void setNombreJaime(int nombreJaime) {
+        this.nombreJaime = nombreJaime;
+    }
     @Override
     public String toString() {
         return "Projet{" +
@@ -117,6 +126,7 @@ public class Projet {
                 ", visible="+ isVisible+
                 "createdAt="+ createdAt+
                 "updatedAt="+updatedAt+
+                "Nombre des jaimes= "+ nombreJaime+
                 '}';
     }
 }

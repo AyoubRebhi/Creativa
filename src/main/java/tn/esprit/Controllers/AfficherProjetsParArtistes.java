@@ -12,6 +12,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tn.esprit.Models.Categorie;
@@ -32,6 +33,8 @@ public class AfficherProjetsParArtistes extends Application {
     @FXML
     private ListView<String> listView;
     private List<Projet> projets;
+    @FXML
+    private ImageView refreshICON;
 
 
     public static void main(String[] args) {
@@ -42,7 +45,7 @@ public class AfficherProjetsParArtistes extends Application {
     public void start(Stage primaryStage) {
 
     }
-
+    private ProjetServices ps = new ProjetServices();
     @FXML
     void ajouterProjet(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterProjet.fxml"));
@@ -57,10 +60,23 @@ public class AfficherProjetsParArtistes extends Application {
 
     @FXML
     void modifierProjet(ActionEvent event) {
+        if(listView.getSelectionModel().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aucun projet sélectionné");
+            alert.setContentText("Veuillez sélectionnez un projet à modifier");
+            alert.showAndWait();
+            return;
+        }
+        String  selectedProjet = listView.getSelectionModel().getSelectedItem();
+        String[] parts = selectedProjet.split(",");
+        int projetId = Integer.parseInt(parts[0].trim());
+
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierProjet.fxml"));
         try {
             Parent root = loader.load();
             ModifierProjet controller = loader.getController();
+            controller.setParametre(projetId,ps.afficherProjetParId(projetId));
             labelFX.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,7 +91,6 @@ public class AfficherProjetsParArtistes extends Application {
             confirmationDialog.setTitle("Confirmation de suppression");
             confirmationDialog.setHeaderText("Êtes-vous sûr de vouloir supprimer ce projet ?");
             confirmationDialog.initModality(Modality.APPLICATION_MODAL);
-
             confirmationDialog.getButtonTypes().setAll(ButtonType.YES, ButtonType.CANCEL);
             confirmationDialog.showAndWait().ifPresent(buttonType -> {
                 if (buttonType == ButtonType.YES) {
@@ -142,6 +157,21 @@ public class AfficherProjetsParArtistes extends Application {
     }
     @FXML
     void initialize() {
+        DropShadow shadow = new DropShadow();
+        refreshICON.setOnMouseEntered(event -> {
+            refreshICON.setEffect(shadow);
+        });
+
+        // Retirer l'effet d'ombre lorsque la souris quitte l'ImageView
+        refreshICON.setOnMouseExited(event -> {
+            refreshICON.setEffect(null);
+        });
+
+        // Rafraîchir l'affichage lorsqu'on clique sur l'ImageView
+        refreshICON.setOnMouseClicked(event -> {
+            // Rafraîchir l'affichage en rappelant la méthode initialize()
+            initialize();
+        });
         ProjetServices projetServices = new ProjetServices();
         try {
             projets = projetServices.afficher();
@@ -152,7 +182,8 @@ public class AfficherProjetsParArtistes extends Application {
             String descriptionProjet = "Description,                            ";
             String categorie = "Categorie,       ";
             String prixProjet = "Prix,     ";
-            observableList.add(idProjet + titreProjet + descriptionProjet + categorie + prixProjet);
+            String nbJaimes = "Jaimes,    ";
+            observableList.add(idProjet + titreProjet + descriptionProjet + categorie + prixProjet + nbJaimes);
             for (Projet projet : projets) {
                 // Vérifier si le projet est visible
                 if (projet.getIsVisible()) {
@@ -162,7 +193,8 @@ public class AfficherProjetsParArtistes extends Application {
                     int idCat = projet.getCategorie();
                     String cat = projetServices.afficherTitreCategorie(idCat);
                     double prix = projet.getPrix();
-                    observableList.add(id + ",               " + titre + ",                 " + description + ",              " + cat + ",           " + prix);
+                    int nbj = projet.getNombreJaime();
+                    observableList.add(id + ",               " + titre + ",                 " + description + ",              " + cat + ",           " + prix+",       "+nbj);
                 }
             }
             listView.setItems(observableList);

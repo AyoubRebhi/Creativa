@@ -24,7 +24,7 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setString(1, projet.getTitre());
             ps.setString(2, projet.getDescription());
-            ps.setString(3, projet.getMedia()); // Utiliser le média de type String
+            ps.setString(3, projet.getMedia());
             ps.setDouble(4, projet.getPrix());
             ps.setInt(5, projet.getCategorie());
 
@@ -45,7 +45,7 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setString(1, projet.getTitre());
             ps.setString(2, projet.getDescription());
-            ps.setString(3, projet.getMedia()); // Utiliser le média de type String
+            ps.setString(3, projet.getMedia());
             ps.setDouble(4, projet.getPrix());
             ps.setInt(5, projet.getCategorie());
             ps.setInt(6, projet.getId());
@@ -226,6 +226,19 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw ex;
+        }
+    }
+    public void calculerNombreJaimePourProjet(Projet projet) {
+        String req = "SELECT COUNT(*) AS nombreJaime FROM jaime WHERE id_projet = ?";
+        try (PreparedStatement ps = conn.prepareStatement(req)) {
+            ps.setInt(1, projet.getId());
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    projet.setNombreJaime(rs.getInt("nombreJaime"));
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
