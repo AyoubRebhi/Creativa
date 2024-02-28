@@ -1,8 +1,19 @@
 package tn.esprit.Models;
 
 public class Codepromo {
+    private int id;
     private int code_promo;
     private String pourcentage;
+
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getCode_promo() {
         return code_promo;
@@ -20,18 +31,19 @@ public class Codepromo {
         this.pourcentage = pourcentage;
     }
 
-    public Codepromo(int code_promo, String pourcentage) {
+    public Codepromo(int id, int code_promo, String pourcentage) {
+        this.id = id;
         this.code_promo = code_promo;
         this.pourcentage = pourcentage;
     }
-
     public Codepromo() {}
 
     @Override
     public String toString() {
         return "Codepromo{" +
-                "code_promo=" + code_promo +
-                ", pourcentage=" + pourcentage +
+                "id=" + id +
+                ", code_promo=" + code_promo +
+                ", pourcentage='" + pourcentage + '\'' +
                 '}';
     }
 }

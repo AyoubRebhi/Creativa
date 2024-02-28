@@ -61,6 +61,8 @@ public class AjouterLivraison implements Initializable{
 
     @FXML
     private Button retourBTN;
+
+
     @FXML
 
     void handleRB1(ActionEvent event) {
@@ -118,8 +120,8 @@ public class AjouterLivraison implements Initializable{
         alert.showAndWait();
 
         // Envoi du message Twilio
-        String messageText = "Nous sommes heureux de vous informer que votre commande est actuellement en cours de traitement. Notre équipe s'affaire à préparer vos articles avec le plus grand soin afin de vous garantir une satisfaction totale.";
-       final String ACCOUNT_SID = "AC54e9aa0a574aae8b664854b28ca0cab2";
+        String messageText = "Nous sommes heureux de vous informer que votre commande est actuellement en cours de traitement.\nNotre équipe s'affaire à préparer vos articles avec le plus grand soin afin de vous garantir une satisfaction totale.";
+        final String ACCOUNT_SID = "AC54e9aa0a574aae8b664854b28ca0cab2";
        final String AUTH_TOKEN = "dcb6fe67dd51d548e3a9df5b83a5fc55";
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Message message = Message.creator(
@@ -147,5 +149,12 @@ public class AjouterLivraison implements Initializable{
         statusTF.setText("En cours");
         fraisTF.setText("8dt");
 
+    }
+
+    private int idCommande;
+
+    // Méthode pour initialiser les données (l'identifiant de la commande)
+    public void initData(int idCommande) {
+        this.idCommande = idCommande;
     }
 }

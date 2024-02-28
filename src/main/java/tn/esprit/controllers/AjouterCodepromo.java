@@ -67,13 +67,27 @@ public class AjouterCodepromo {
 
     @FXML
     void notificationBTN(ActionEvent event) {
+        // Créer une instance de ServiceCodepromo
+        ServiceCodepromo serviceCodepromo = new ServiceCodepromo();
+
+        // Récupérer le dernier code promo
+        Codepromo dernierCodePromo = serviceCodepromo.lastCodePromo();
+
+        // Construire le texte de la notification en fonction du dernier code promo
+        String texteNotification = "Un nouveau code promo a été ajouté";
+        if (dernierCodePromo != null) {
+            texteNotification += ": " + dernierCodePromo.getCode_promo() + ", " + dernierCodePromo.getPourcentage();
+        }
+
+        // Afficher la notification
         Notifications.create()
                 .title("Notification")
-                .text("Un nouveau code promo a été ajouté !")
+                .text(texteNotification)
                 .hideAfter(Duration.seconds(5))
                 .position(Pos.BOTTOM_RIGHT)
                 .show();
     }
+
     @FXML
     void Retour(ActionEvent event) throws SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherCodepromo.fxml"));

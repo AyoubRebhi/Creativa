@@ -63,19 +63,6 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
 
     }
 
-    //supprimer commande
-    /*@Override
-    public void supprimer(int id) {
-        String req = " delete from commande where id_cmd=?";
-        try (PreparedStatement ps = conn.prepareStatement(req)) {
-            ps.setInt(1, id);
-            ps.executeUpdate();
-            System.out.println("Commande supprimée avec succés!");
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
 
     public void annulerCommande(int idCommande) throws SQLException {
         String req = "UPDATE commande SET status = 'annulée' WHERE id_cmd = ?";

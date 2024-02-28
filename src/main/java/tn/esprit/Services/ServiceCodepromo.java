@@ -14,10 +14,11 @@ public class ServiceCodepromo implements InterfaceCodePromo<Codepromo> {
 
     @Override
     public void ajouter(Codepromo c) {
-        String req = "INSERT INTO code_promo (code_promo,pourcentage) VALUES (?, ?)";
+        String req = "INSERT INTO code_promo (id,code_promo,pourcentage) VALUES (?, ?,?)";
         try (PreparedStatement ps = conn.prepareStatement(req)) {
-            ps.setInt(1, c.getCode_promo());
-            ps.setString(2, c.getPourcentage());
+            ps.setInt(1, c.getId());
+            ps.setInt(2, c.getCode_promo());
+            ps.setString(3, c.getPourcentage());
             ps.executeUpdate();
             System.out.println("Code promo ajouté avec succés!");
 
@@ -43,7 +44,7 @@ public class ServiceCodepromo implements InterfaceCodePromo<Codepromo> {
                 // Si un code promo est trouvé, créer un nouvel objet Codepromo avec les détails et le retourner
                 String pourcentage = rs.getString("pourcentage");
 
-                Codepromo codepromoTrouve = new Codepromo(c.getCode_promo(), pourcentage);
+                Codepromo codepromoTrouve = new Codepromo(c.getId(), c.getCode_promo(), pourcentage);
                 return codepromoTrouve;
             }
         } catch (SQLException e) {
@@ -59,8 +60,9 @@ public class ServiceCodepromo implements InterfaceCodePromo<Codepromo> {
              ResultSet res = st.executeQuery(req)) {
             while (res.next()) {
                 Codepromo c = new Codepromo();
-                c.setCode_promo(res.getInt(1));
-                c.setPourcentage(res.getString(2));
+                c.setId(res.getInt(1));
+                c.setCode_promo(res.getInt(2));
+                c.setPourcentage(res.getString(3));
                 codepromo.add(c);
             }
             return codepromo;
@@ -92,5 +94,23 @@ public class ServiceCodepromo implements InterfaceCodePromo<Codepromo> {
         return codeExiste;
     }
 
-}
+    public Codepromo lastCodePromo() {
+        String req = "SELECT * FROM code_promo ORDER BY id DESC LIMIT 1";
+        try (Statement st = conn.createStatement();
+             ResultSet res = st.executeQuery(req)) {
+            if (res.next()) {
+                Codepromo c = new Codepromo();
+                c.setId(res.getInt(1));
+                c.setCode_promo(res.getInt(2));
+                c.setPourcentage(res.getString(3));
+                return c;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // Ajoutez un return null à la fin de la méthode pour gérer les cas où aucun code promo n'est trouvé ou s'il y a une exception SQL.
+        System.out.println("Aucun code promo trouvé.");
+        return null;
 
+    }
+}
