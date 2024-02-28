@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 
-public class sidebarAdmin {
+public class sidebarArtiste {
 
     @FXML
     private ResourceBundle resources;
@@ -19,24 +19,13 @@ public class sidebarAdmin {
     @FXML
     private Label labelFX;
 
-    @FXML
-    void redirectVersAfficherCategories(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarAdminCategories.fxml"));
-            Parent root = loader.load();
-            sidebarAdmin controller = loader.getController();
-            labelFX.getScene().setRoot(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     void redirectVersAfficherProjets(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarAdminProjets.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarArtisteProjets.fxml"));
             Parent root = loader.load();
-            sidebarAdmin controller = loader.getController();
+            sidebarArtiste controller = loader.getController();
             labelFX.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,9 +40,9 @@ public class sidebarAdmin {
 
     public void redirectVersAcceuil(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarAdmin.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarArtiste.fxml"));
             Parent root = loader.load();
-            sidebarAdmin controller = loader.getController();
+            sidebarArtiste controller = loader.getController();
             labelFX.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
