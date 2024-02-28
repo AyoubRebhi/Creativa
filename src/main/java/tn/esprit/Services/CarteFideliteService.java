@@ -170,6 +170,22 @@ public class CarteFideliteService implements InterfaceCRUD<CarteFidelite> {
         }
         return pointsBalance;
     }
+
+    public int soldecarteiduser(int iduser) {
+        int pointsBalance = 0;
+        String sql = "SELECT points FROM cartes_fidelite  WHERE id_user = ?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
+            preparedStatement.setInt(1, iduser);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    pointsBalance = resultSet.getInt("points");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pointsBalance;
+    }
     public int carteExistsForUser(int userId) {
         int cardId = -1;
         String sql = "SELECT id_carte FROM cartes_fidelite WHERE id_user = ?";

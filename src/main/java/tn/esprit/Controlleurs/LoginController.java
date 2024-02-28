@@ -109,7 +109,7 @@ public class  LoginController {
     private void redirectToCLIENTPage(ActionEvent event) {
         try {
             // Charger la page de connexion à partir du fichier FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/list.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Cartefedilite.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène

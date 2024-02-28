@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controlleurs.changemdpClient">
+    <fx:include source="sidebarClient.fxml" />
+   <AnchorPane layoutX="222.0" layoutY="63.0" prefHeight="367.0" prefWidth="415.0">
+      <children>
+         <Label layoutX="76.0" layoutY="21.0" text="changement du mot de passe" textFill="#a16d34">
+            <font>
+               <Font name="System Italic" size="21.0" />
+            </font>
+         </Label>
+         <PasswordField fx:id="oldmdp" layoutX="173.0" layoutY="86.0" prefHeight="31.0" prefWidth="266.0" />
+         <PasswordField fx:id="newmdp" layoutX="180.0" layoutY="136.0" prefHeight="31.0" prefWidth="257.0" />
+         <PasswordField fx:id="newmdp1" layoutX="208.0" layoutY="184.0" prefHeight="31.0" prefWidth="226.0" />
+         <Button layoutX="158.0" layoutY="254.0" mnemonicParsing="false" onAction="#handlePasswordChange" prefHeight="26.0" prefWidth="126.0" text="modifier" />
+         <Label layoutX="14.0" layoutY="93.0" text="votre ancien mot de passe" />
+         <Label layoutX="6.0" layoutY="143.0" text="votre nouveaux mot de passe" />
+         <Label layoutX="-8.0" layoutY="194.0" prefHeight="31.0" prefWidth="213.0" text="confirmer votre nouveaux mot de passe" />
+      </children>
+   </AnchorPane>
+
+
+</AnchorPane>

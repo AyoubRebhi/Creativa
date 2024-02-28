@@ -1,10 +1,12 @@
 package tn.esprit.Controlleurs;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import tn.esprit.Interfaces.UpdateListener;
 import tn.esprit.Models.User;
 import tn.esprit.Services.UserService;
 
@@ -31,12 +33,22 @@ public class updateUserController {
     private UserService userService;
 
     private User currentUser; // To store the selected user for updating
+    private profileUser profileController;
 
+    public void setProfileController(profileUser profileController) {
+        this.profileController = profileController;
+    }
+    private UpdateListener updateListener;
+
+    public void setUpdateListener(UpdateListener updateListener) {
+        this.updateListener = updateListener;
+    }
     // Method to initialize data when the update page is opened
     public void initData(User user) {
         currentUser = user;
         populateFields(); // Populate the form fields with the user data
     }
+    profileUser r=new profileUser();
 
     // Method to populate the form fields with user data
     private void populateFields() {
@@ -89,6 +101,9 @@ public class updateUserController {
 
         // Update the user using your UserService
         userService.modifier(currentUser);
+        if (updateListener != null) {
+            updateListener.onUpdate(currentUser);
+        }
 
         // Show a confirmation alert
         showConfirmationAlert("User updated successfully!");

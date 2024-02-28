@@ -14,93 +14,98 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controlleurs.inscription">
         <children>
             <!-- Image de fond -->
-            <ImageView fitHeight="507.0" fitWidth="919.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="692.0" fitWidth="899.0" layoutY="-47.0" opacity="0.45" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@images/beige.jpg" />
+                    <Image url="@images/img.png" />
                 </image>
             </ImageView>
 
             <!-- Zone du formulaire -->
-            <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#fff5edf1" height="450.0" layoutX="168.0" layoutY="21.0" stroke="WHITE" strokeType="INSIDE" width="463.0" />
+            <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="548.0" layoutX="434.0" layoutY="2.0" stroke="WHITE" strokeType="INSIDE" width="462.0" />
 
             <!-- Titre du formulaire -->
-            <Label layoutX="300.0" prefHeight="50.0" prefWidth="228.0" text="Inscription" textFill="#5709099c">
+            <Label layoutX="575.0" layoutY="20.0" prefHeight="50.0" prefWidth="228.0" text="Inscription" textFill="#5709099c">
                 <font>
-                    <Font name="Bold Italic Art" size="40.0" />
+                    <Font name="System Italic" size="40.0" />
                 </font>
             </Label>
 
             <!-- Champs du formulaire -->
-            <Label layoutX="228.0" layoutY="100.0" text="Nom">
+            <Label layoutX="482.0" layoutY="80.0" text="Nom">
                 <font>
                     <Font name="Bold Italic Art" size="18.0" />
                 </font>
             </Label>
-            <TextField fx:id="nom" layoutX="299.0" layoutY="117.0" prefHeight="30.0" prefWidth="200.0" />
+            <TextField fx:id="nom" layoutX="551.0" layoutY="84.0" prefHeight="38.0" prefWidth="250.0" />
 
-            <Label layoutX="219.0" layoutY="167.0" text="Prénom">
+            <Label layoutX="472.0" layoutY="128.0" text="Prénom">
                 <font>
                     <Font name="Bold Italic Art" size="17.0" />
                 </font>
             </Label>
-            <TextField fx:id="prenom" layoutX="299.0" layoutY="172.0" prefHeight="30.0" prefWidth="200.0" />
+            <TextField fx:id="prenom" layoutX="551.0" layoutY="134.0" prefHeight="38.0" prefWidth="250.0" />
 
-            <Label layoutX="228.0" layoutY="236.0" text="Email">
+            <Label layoutX="485.0" layoutY="238.0" text="Email">
                 <font>
                     <Font name="Bold Italic Art" size="17.0" />
                 </font>
             </Label>
-            <TextField fx:id="email" layoutX="299.0" layoutY="248.0" prefHeight="30.0" prefWidth="200.0" />
+            <TextField fx:id="email" layoutX="554.0" layoutY="241.0" prefHeight="38.0" prefWidth="250.0" />
 
-            <Label layoutX="195.0" layoutY="284.0" text="Mot de passe">
+            <Label layoutX="454.0" layoutY="297.0" text="Mot de passe">
                 <font>
                     <Font name="Bold Italic Art" size="18.0" />
                 </font>
             </Label>
-            <PasswordField fx:id="mdp" layoutX="300.0" layoutY="292.0" prefHeight="30.0" prefWidth="200.0" />
+            <PasswordField fx:id="mdp" layoutX="560.0" layoutY="298.0" prefHeight="43.0" prefWidth="242.0" />
 
-            <Label layoutX="179.0" layoutY="338.0" text="vous etés ?">
+            <Label layoutX="449.0" layoutY="352.0" text="vous etés ?">
                 <font>
                     <Font size="18.0" />
                 </font>
             </Label>
-            <RadioButton fx:id="clientRadioButton" layoutX="316.0" layoutY="328.0" mnemonicParsing="false" text="CLIENT">
+            <RadioButton fx:id="clientRadioButton" layoutX="575.0" layoutY="342.0" mnemonicParsing="false" text="CLIENT">
          <font>
             <Font name="Bold Italic Art" size="18.0" />
          </font></RadioButton>
-            <RadioButton fx:id="artisteRadioButton" layoutX="452.0" layoutY="329.0" mnemonicParsing="false" text="ARTIST">
+            <RadioButton fx:id="artisteRadioButton" layoutX="726.0" layoutY="344.0" mnemonicParsing="false" text="ARTIST">
          <font>
             <Font name="Bold Italic Art" size="17.0" />
          </font></RadioButton>
 
-            <Label layoutX="178.0" layoutY="366.0" prefHeight="26.0" prefWidth="168.0" text="Numéro tel">
+            <Label layoutX="432.0" layoutY="387.0" prefHeight="26.0" prefWidth="168.0" text="Numéro tel">
                 <font>
                     <Font name="Bold Italic Art" size="18.0" />
                 </font>
             </Label>
-            <TextField fx:id="numtel" layoutX="306.0" layoutY="374.0" prefHeight="30.0" prefWidth="200.0" />
+            <TextField fx:id="numtel" layoutX="556.0" layoutY="388.0" prefHeight="43.0" prefWidth="250.0" />
 
             <!-- Bouton d'inscription -->
-            <Button layoutX="339.0" layoutY="412.0" onAction="#adduser" prefHeight="46.0" prefWidth="119.0" text="S'inscrire" textFill="#7e1818">
+            <Button layoutX="600.0" layoutY="483.0" onAction="#adduser" prefHeight="54.0" prefWidth="149.0" text="S'inscrire" textFill="#7e1818">
          <font>
             <Font name="Bold Italic Art" size="17.0" />
          </font></Button>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="30.0" fitWidth="34.0" layoutX="407.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true" rotate="-0.7">
+      <ImageView fitHeight="30.0" fitWidth="34.0" layoutX="673.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true" rotate="-0.7">
          <image>
             <Image url="@images/img_5.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="38.0" layoutX="275.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="50.0" fitWidth="38.0" layoutX="532.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/img_4.png" />
          </image>
       </ImageView>
-      <TextField fx:id="username" layoutX="299.0" layoutY="210.0" prefHeight="26.0" prefWidth="200.0" />
-      <Label layoutX="212.0" layoutY="201.0" text="username">
+      <TextField fx:id="username" layoutX="551.0" layoutY="187.0" prefHeight="38.0" prefWidth="250.0" />
+      <Label layoutX="469.0" layoutY="184.0" text="username">
          <font>
             <Font name="Bold Italic Art" size="17.0" />
          </font>
       </Label>
+      <ImageView fitHeight="478.0" fitWidth="448.0" layoutX="-17.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/creativa-removebg-preview.png" />
+         </image>
+      </ImageView>
         </children>
     </AnchorPane>

@@ -272,6 +272,7 @@ public class  UserService implements InterfaceCRUD<User> {
                     utilisateur.setAddress(resultSet.getString("address"));
                     utilisateur.setProfileImagePath(resultSet.getString("ImgPath"));
                     utilisateur.setEmail(resultSet.getString("email"));
+                    utilisateur.setNumTel(resultSet.getInt("numTel"));
                 }
             }
         } catch (SQLException e) {
@@ -335,6 +336,21 @@ public class  UserService implements InterfaceCRUD<User> {
             String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
             preparedStatement.setString(1, hashedPassword);
             preparedStatement.setString(2, userEmail);
+            int rowsUpdated = preparedStatement.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean resetPasswordparid(int idUser, String newPassword) {
+        // Implement logic to update the user's password in the database
+        String updateQuery = "UPDATE user SET password = ? WHERE id_user = ?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(updateQuery)) {
+            // Hash the new password using BCrypt
+            String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            preparedStatement.setString(1, hashedPassword);
+            preparedStatement.setInt(2, idUser);
             int rowsUpdated = preparedStatement.executeUpdate();
             return rowsUpdated > 0;
         } catch (SQLException e) {

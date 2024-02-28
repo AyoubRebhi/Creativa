@@ -12,20 +12,20 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="434.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controlleurs.LoginController">
+<AnchorPane prefHeight="492.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controlleurs.LoginController">
     <children>
-        <ImageView fitHeight="510.0" fitWidth="810.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="517.0" fitWidth="825.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/beige.jpg" />
+                <Image url="@images/img.png" />
             </image>
         </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e5d6c800" height="347.0" layoutX="214.0" layoutY="68.0" stroke="WHITE" strokeType="INSIDE" width="428.0" />
-      <Button fx:id="button" ellipsisString="" layoutX="342.0" layoutY="326.0" lineSpacing="12.0" mnemonicParsing="false" onAction="#submit" prefHeight="46.0" prefWidth="171.0" text="connecter" textFill="#d7b799" textOverrun="LEADING_WORD_ELLIPSIS">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="517.0" layoutX="402.0" layoutY="-7.0" stroke="WHITE" strokeType="INSIDE" width="421.0" />
+      <Button fx:id="button" ellipsisString="" layoutX="521.0" layoutY="340.0" lineSpacing="12.0" mnemonicParsing="false" onAction="#submit" prefHeight="46.0" prefWidth="171.0" text="connecter" textFill="#d7b799" textOverrun="LEADING_WORD_ELLIPSIS">
          <font>
             <Font size="22.0" />
          </font>
       </Button>
-      <TextField fx:id="loginId" alignment="CENTER_RIGHT" layoutX="326.0" layoutY="181.0" prefHeight="43.0" prefWidth="220.0">
+      <TextField fx:id="loginId" alignment="CENTER_RIGHT" layoutX="486.0" layoutY="182.0" prefHeight="43.0" prefWidth="242.0">
          <font>
             <Font name="System Bold Italic" size="9.0" />
          </font>
@@ -33,23 +33,28 @@
             <Insets />
          </opaqueInsets>
       </TextField>
-      <Label layoutX="290.0" layoutY="153.0" text="email ou username      " textFill="#28130066">
+      <Label layoutX="486.0" layoutY="154.0" text="email ou username      " textFill="#28130066">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <Label layoutX="289.0" layoutY="228.0" text="mot de passe" textFill="#361d0770">
+      <Label layoutX="488.0" layoutY="231.0" text="mot de passe" textFill="#361d0770">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="336.0" layoutY="69.0" prefHeight="67.0" prefWidth="164.0" text="login" textFill="#381f07a3">
+      <Label layoutX="521.0" layoutY="56.0" prefHeight="84.0" prefWidth="235.0" text="login" textFill="#361d07b5">
          <font>
             <Font name="System Italic" size="57.0" />
          </font>
       </Label>
-      <PasswordField fx:id="motpasse" layoutX="326.0" layoutY="253.0" prefHeight="46.0" prefWidth="220.0" />
-      <Hyperlink layoutX="256.0" layoutY="373.0" onAction="#redirectto" text="vous n'avez pas un compte ?" />
-      <Hyperlink layoutX="326.0" layoutY="299.0" onAction="#motpasseoublié" prefHeight="28.0" prefWidth="107.0" text="mot passe oublié" textAlignment="CENTER" />
+      <PasswordField fx:id="motpasse" layoutX="486.0" layoutY="258.0" prefHeight="46.0" prefWidth="242.0" />
+      <Hyperlink layoutX="488.0" layoutY="408.0" onAction="#redirectto" text="vous n'avez pas un compte ?" />
+      <Hyperlink layoutX="486.0" layoutY="312.0" onAction="#motpasseoublié" prefHeight="28.0" prefWidth="107.0" text="mot passe oublié" textAlignment="CENTER" />
+      <ImageView fitHeight="488.0" fitWidth="532.0" layoutX="-38.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/creativa-removebg-preview.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
