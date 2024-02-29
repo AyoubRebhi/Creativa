@@ -37,7 +37,7 @@ public class EmailsUtils {
 
             // Part 1: Text content
             MimeBodyPart textPart = new MimeBodyPart();
-            textPart.setText("");
+            textPart.setText(verificationCode);
 
             // Part 2: HTML content
             MimeBodyPart htmlPart = new MimeBodyPart();
@@ -82,7 +82,7 @@ public class EmailsUtils {
 
             Transport.send(message);
 
-            System.out.println("E-mail de vérification envoyé avec succès.");
+            System.out.println("E-mail de vérification envoyé avec succès."+verificationCode);
 
         } catch (MessagingException e) {
             e.printStackTrace();
@@ -113,7 +113,7 @@ public class EmailsUtils {
 
             // Part 1: Text content
             MimeBodyPart textPart = new MimeBodyPart();
-            textPart.setText("");
+            textPart.setText(resetPasswordToken);
 
             // Part 2: HTML content
             MimeBodyPart htmlPart = new MimeBodyPart();
@@ -158,6 +158,7 @@ public class EmailsUtils {
             message.setContent(multipart);
 
             Transport.send(message);
+            System.out.println("E-mail de vérification envoyé avec succès."+resetPasswordToken);
 
         } catch (MessagingException e) {
             e.printStackTrace();

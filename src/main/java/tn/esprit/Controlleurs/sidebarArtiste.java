@@ -7,7 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import tn.esprit.Models.User;
 import tn.esprit.Models.session;
 import tn.esprit.Services.UserService;
@@ -76,5 +78,28 @@ public class sidebarArtiste {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void directologin(ActionEvent event) {
+        try {
+            // Charger la page de connexion à partir du fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/log.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Obtenir la scène actuelle à partir de l'événement
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+            // Changer la scène actuelle vers la nouvelle scène de connexion
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement de la page de connexion
+        }
+        session.id_utilisateur = 0; // Assurez-vous de réinitialiser la session ou l'utilisateur approprié
+
     }
 }
