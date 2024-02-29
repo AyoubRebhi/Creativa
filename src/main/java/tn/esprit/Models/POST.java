@@ -4,8 +4,8 @@ import java.sql.Blob;
 
 public class POST {
     private int Id,Topic_id;
-    private String Editeur,Titre,Description;
-            private String Media;
+    private String Editeur,Titre,Description,Media;
+
 
 
     public POST() {
@@ -78,13 +78,7 @@ public class POST {
 
     @Override
     public String toString() {
-        return "POST{" +
-                "Id=" + Id +
-                ", Topic_id=" + Topic_id +
-                ", Editeur='" + Editeur + '\'' +
-                ", Titre='" + Titre + '\'' +
-                ", Description='" + Description + '\'' +
-                ", Media=" + Media +
-                '}';
+        return  Editeur +"   "+ Titre +"   "+  Description
+                ;
     }
 }

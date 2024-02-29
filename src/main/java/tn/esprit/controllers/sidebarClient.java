@@ -1,2 +1,4 @@
-package tn.esprit.controllers;public class sidebarClient {
+package tn.esprit.controllers;
+
+public class sidebarClient {
 }

@@ -40,6 +40,8 @@ public class PostService implements InterfaceCRUD<POST> {
             pr.setString(1, post.getEditeur());
             pr.setString(3,post.getTitre());
             pr.setString(4, post.getDescription());
+            pr.setString(2,post.getMedia());
+            pr.setInt(6,post.getId());
             pr.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -78,11 +80,11 @@ public class PostService implements InterfaceCRUD<POST> {
         return topics;
     };
     public List<POST> recherche_by_topic(){
-        List<POST> topics = new ArrayList<>();
+        List<POST> posts = new ArrayList<>();
         try {
             Statement ste=connexion.getConn().createStatement();
             String sql = "SELECT t.Nom as topicTitle, p.Description as content " +
-                    "FROM 'topic' t INNER JOIN 'post' p ON t.Id = p.Topic_id";
+                    "FROM 'topic' t INNER JOIN 'post' p ON p.Topic_id = t.id";
             ResultSet res=ste.executeQuery(sql);
             while (res.next()){
                 POST t=new POST();
@@ -91,11 +93,33 @@ public class PostService implements InterfaceCRUD<POST> {
                 t.setEditeur(res.getString(2));
                 t.setTitre(res.getString(4));
                 t.setDescription(res.getString(5));
-                topics.add(t);
+                posts.add(t);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return topics;
+        return posts;
+    }
+    public List<POST> rechercher(int t_id) {
+        List<POST> posts = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM post WHERE Topic_id = ?";
+            PreparedStatement statement = connexion.getConn().prepareStatement(sql);
+            statement.setInt(1, t_id);
+            ResultSet res = statement.executeQuery();
+            while (res.next()) {
+                POST post = new POST();
+                post.setId(res.getInt(1));
+                post.setEditeur(res.getString(2));
+                post.setTitre(res.getString(4));
+                post.setDescription(res.getString(5));
+                post.setTopic_id(res.getInt(6));
+                post.setMedia(res.getString(3));
+                posts.add(post);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return posts;
     }
 }

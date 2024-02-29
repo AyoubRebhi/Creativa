@@ -4,22 +4,24 @@ public class TOPIC {
 int id;
 int catego_ID;
 String Nom;
-String Subject;
+String Subject,Image;
 
     public TOPIC() {
     }
 
-    public TOPIC(int catego_ID, String nom, String subject) {
+    public TOPIC(int catego_ID, String nom, String subject,String image) {
         this.catego_ID = catego_ID;
         Nom = nom;
         Subject = subject;
+Image=image;
     }
 
-    public TOPIC(int id, int catego_ID, String nom, String subject) {
+    public TOPIC(int id, int catego_ID, String nom, String subject,String image) {
         this.id = id;
         this.catego_ID = catego_ID;
         Nom = nom;
         Subject = subject;
+        Image=image;
     }
 
     public int getId() {
@@ -53,14 +55,12 @@ String Subject;
     public void setSubject(String subject) {
         Subject = subject;
     }
-
+    public String getImage(){return Image;}
+public void setImage(String image){Image=image;}
     @Override
     public String toString() {
-        return "TOPIC{" +
-                "id=" + id +
-                ", catego_ID=" + catego_ID +
-                ", Nom='" + Nom + '\'' +
-                ", Subject='" + Subject + '\'' +
-                '}';
+        return
+               "                              "+Nom + "    " +Subject  ;
+
     }
 }

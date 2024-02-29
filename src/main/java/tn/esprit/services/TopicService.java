@@ -15,10 +15,11 @@ public class TopicService implements InterfaceCRUD<TOPIC>{
     @Override
     public void ajouter (TOPIC topic){
         try {
-            PreparedStatement pr = connexion.getConn().prepareStatement("INSERT INTO `topic`(`Catego_ID`, `Nom`, `Subject`) VALUES (?,?,?)");
+            PreparedStatement pr = connexion.getConn().prepareStatement("INSERT INTO `topic`(`Catego_ID`, `Nom`, `Subject`, `Image`) VALUES (?,?,?,?)");
             pr.setInt(1,topic.getCatego_ID());
             pr.setString(2, topic.getNom());
             pr.setString(3, topic.getSubject());
+            pr.setString(4, topic.getImage());
             pr.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -27,10 +28,11 @@ public class TopicService implements InterfaceCRUD<TOPIC>{
     @Override
     public void modifier(TOPIC topic) {
         try {
-         PreparedStatement   pr = connexion.getConn().prepareStatement("UPDATE `topic` SET `Nom`=?,`Subject`=? WHERE Id=?");
+         PreparedStatement   pr = connexion.getConn().prepareStatement("UPDATE `topic` SET `Nom`=?,`Subject`=?,`Image`=? WHERE Id=?");
             pr.setString(1, topic.getNom());
             pr.setString(2, topic.getSubject());
-            pr.setInt(3, topic.getId());
+            pr.setString(3, topic.getImage());
+            pr.setInt(4, topic.getId());
             pr.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -60,6 +62,7 @@ while (res.next()){
     t.setCatego_ID(res.getInt(2));
     t.setNom(res.getString(3));
     t.setSubject(res.getString(4));
+    t.setImage(res.getString(5));
     topics.add(t);
 }
     } catch (SQLException e) {

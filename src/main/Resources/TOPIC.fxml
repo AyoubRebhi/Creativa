@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="455.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ADDTOPIC">
+   <AnchorPane><fx:include source="sidebarArtist.fxml" />
+      <AnchorPane layoutX="123.0" layoutY="40.0" prefHeight="375.0" prefWidth="416.0">
+         <children>
+         <Label alignment="TOP_CENTER" layoutX="192.0" layoutY="30.0" prefHeight="34.0" prefWidth="217.0" text="Ajouter Un sujet" textAlignment="CENTER" textFill="#faaf5d">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+         <TextField fx:id="Nom_u" alignment="TOP_CENTER" layoutX="225.0" layoutY="82.0" promptText="Nom" stylesheets="@Test.css" />
+         <TextField fx:id="Desc_top" alignment="CENTER" layoutX="224.0" layoutY="166.0" prefHeight="54.0" prefWidth="172.0" promptText="Description de sujet" stylesheets="@Test.css" />
+         <Button layoutX="208.0" layoutY="348.0" mnemonicParsing="false" onAction="#AjouterSujet" stylesheets="@Test.css" text="Ajouter" textFill="WHITE" />
+         <Button layoutX="357.0" layoutY="348.0" mnemonicParsing="false" onAction="#AfficherSujet" stylesheets="@Test.css" text="Afficher" textFill="WHITE" />
+         <TextField fx:id="catego_id" alignment="TOP_CENTER" layoutX="226.0" layoutY="126.0" promptText="Catego-nom" stylesheets="@Test.css" />
+         <Button layoutX="266.0" layoutY="310.0" mnemonicParsing="false" onAction="#selectImage" stylesheets="@Test.css" text="Choisir Image" textFill="WHITE" />
+         <ImageView fx:id="Img" fitHeight="65.0" fitWidth="89.0" layoutX="268.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" />
+      </children>
+      </AnchorPane>
+   </AnchorPane>
+
+</AnchorPane>

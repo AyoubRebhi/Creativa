@@ -17,13 +17,13 @@ public class Main {
     public static void main(String[] args) {
 
         MaConnexion connexion = MaConnexion.getInstance();
-        System.out.println("yes");
+        System.out.println("Connexion avec succés");
        //TopicService test= new TopicService();
-      // TOPIC t1= new TOPIC(1,3,"MUSIC","KTYBON");
+       //TOPIC t1= new TOPIC(1,3,"MUSICAAAA","KTYBON");
         //TOPIC t2= new TOPIC(4,"CINEMA","NOUBA");
         //TOPIC t3= new TOPIC(3,"GRAPHIQUE","POWER");
         //TOPIC t4= new TOPIC(3,"MUSIC","GULTRAH");
-        //test.modifier(t1);
+       // test.modifier(t1);
        //test.ajouter(t2);
        //test.ajouter(t3);
        //test.ajouter(t4);
@@ -32,9 +32,23 @@ public class Main {
        //for( TOPIC topic : res ){
        //    System.out.println(topic.toString());
        //}
-        //PostService post=new PostService();
 
+
+
+        PostService post=new PostService();
         //POST p1= new POST(2,"BRUNO MARS","THAT4S WHAT I LIKE IT","FISRT ATTEMPT","https://www.youtube.com/watch?v=PMivT7MJ41M&list=RDSR6iYWJxHqs&index=13");
-      // post.ajouter(p1);
+        //POST p2= new POST(3,"LABESS","DANCE ME","SECOND ATTEMPT","https://www.youtube.com/watch?v=PMivT7MJ41M&list=RDSR6iYWJxHqs&index=13");
+        //POST p3= new POST(2,"GULTRAH","WIN","THIRD ATTEMPT","https://www.youtube.com/watch?v=PMivT7MJ41M&list=RDSR6iYWJxHqs&index=13");
+        //POST p4= new POST(1,"KTYBON","INFRARED","FOURTH ATTEMPT","https://www.youtube.com/watch?v=PMivT7MJ41M&list=RDSR6iYWJxHqs&index=13");
+
+        // post.ajouter(p2);
+        // post.ajouter(p3);
+        // post.ajouter(p4);
+        //post.modifier(p1);
+        // post.ajouter(p2);
+        List<POST> list=post.rechercher(2);
+        for( POST p : list ){
+           System.out.println(p.toString());
+        }
     }
 }
