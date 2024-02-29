@@ -19,6 +19,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static java.lang.Integer.parseInt;
+
 
 public class AfficherCommande implements Initializable{
     @FXML
@@ -50,15 +52,40 @@ public class AfficherCommande implements Initializable{
     }
     @FXML
     void ModifierCommande(ActionEvent event) {
+        if(listView.getSelectionModel().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aucune commande sélectionnée");
+            alert.setContentText("Veuillez sélectionner une commande à modifier");
+            alert.showAndWait();
+            return;
+        }
+
+        // Récupérer la commande sélectionnée
+        Commande selectedCommande = listView.getSelectionModel().getSelectedItem();
+        int idCmd = selectedCommande.getId_cmd();
+        int iduser = selectedCommande.getId_user();
+
+        // Charger la vue ModifierCommande.fxml
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/ModifierCommande.fxml"));
         try {
             Parent root = loader.load();
+
+            // Obtenir le contrôleur ModifierCommande
             ModifierCommande controller = loader.getController();
+
+            // Passer l'ID de la commande et user sélectionnée au contrôleur ModifierCommande
+            controller.setIdCommande(idCmd);
+            controller.setIdUtilisateur(iduser);
+
+
+            // Changer la scène pour afficher la vue ModifierCommande.fxml
             labelFX.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 
 
     @FXML

@@ -50,10 +50,25 @@ public class AfficherLivraison implements Initializable{
     }
     @FXML
     void ModifierLivraison(ActionEvent event) {
+        if(listView.getSelectionModel().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aucune commande sélectionnée");
+            alert.setContentText("Veuillez sélectionner une commande à modifier");
+            alert.showAndWait();
+            return;
+        }
+
+        // Récupérer la commande sélectionnée
+        Livraison selectedLivraison = listView.getSelectionModel().getSelectedItem();
+        int idCmd = selectedLivraison.getId_cmd();
+        int idLiv = selectedLivraison.getId_liv();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/ModifierLivraison.fxml"));
         try {
             Parent root = loader.load();
             ModifierLivraison controller = loader.getController();
+            // Passer l'ID de la commande et user sélectionnée au contrôleur ModifierCommande
+            controller.setIdCommande(idCmd);
+            controller.setIdlivraison(idLiv);
             labelFX.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();

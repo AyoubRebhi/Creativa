@@ -125,6 +125,7 @@ public class ModifierCommande implements Initializable{
 // Définir la date estimée de livraison dans le DatePicker
         datePicker2.setValue(dateEstimeeLivraison);
     }
+
     @FXML
     void Retour(ActionEvent event) throws SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherCommande.fxml"));
@@ -134,4 +135,14 @@ public class ModifierCommande implements Initializable{
             throw new RuntimeException(e);
         }
     }
+
+
+    public void setIdCommande(int idCmd) {
+        id_cmdTF.setText(String.valueOf(idCmd));
+    }
+    public void setIdUtilisateur(int idUser) {
+        id_userTF.setText(String.valueOf(idUser));
+    }
+
+
 }

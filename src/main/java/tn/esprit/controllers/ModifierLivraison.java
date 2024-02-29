@@ -111,4 +111,10 @@ public class ModifierLivraison implements Initializable {
         statusTF.setText("En cours");
         fraisTF.setText("8dt");
     }
+    public void setIdCommande(int idCmd) {
+        id_cmdTF.setText(String.valueOf(idCmd));
+    }
+    public void setIdlivraison(int idLiv) {
+        idLivTF.setText(String.valueOf(idLiv));
+    }
 }
