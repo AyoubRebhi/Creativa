@@ -6,10 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import tn.esprit.Models.Commande;
 import tn.esprit.Models.Livraison;
 import tn.esprit.Services.ServiceCommande;
@@ -78,28 +75,43 @@ public class AfficherLivraison implements Initializable{
     void Annuler(ActionEvent event) {
         Livraison selectedLivraison = listView.getSelectionModel().getSelectedItem();
         if (selectedLivraison != null) {
-            try {
-                // Mettre à jour le statut de la livraison avec "annulée"
-                selectedLivraison.setStatus("Annulée");
+            // Créer une boîte de dialogue de confirmation
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Confirmation");
+            confirmationAlert.setHeaderText(null);
+            confirmationAlert.setContentText("Êtes-vous sûr de vouloir annuler cette livraison ?");
 
-                // Créer une instance de ServiceLivraison
-                ServiceLivraison serviceLivraison = new ServiceLivraison();
+            // Afficher la boîte de dialogue et attendre la réponse de l'utilisateur
+            confirmationAlert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    try {
+                        // Mettre à jour le statut de la livraison avec "annulée"
+                        selectedLivraison.setStatus("Annulée");
 
-                // Appeler la méthode annulerLivraison sur l'instance serviceLivraison
-                serviceLivraison.annulerLivraison(selectedLivraison.getId_liv());
+                        // Créer une instance de ServiceLivraison
+                        ServiceLivraison serviceLivraison = new ServiceLivraison();
 
-                // Supprimer la livraison annulée de la ListView
-                listView.getItems().remove(selectedLivraison);
+                        // Appeler la méthode annulerLivraison sur l'instance serviceLivraison
+                        serviceLivraison.annulerLivraison(selectedLivraison.getId_liv());
 
-                // Afficher un message de succès
-                System.out.println("Livraison annulée avec succès !");
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+                        // Supprimer la livraison annulée de la ListView
+                        listView.getItems().remove(selectedLivraison);
+
+                        // Afficher un message de succès
+                        System.out.println("Livraison annulée avec succès !");
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    // L'utilisateur a appuyé sur le bouton Annuler ou a fermé la boîte de dialogue, ne rien faire
+                    System.out.println("Opération d'annulation de livraison annulée.");
+                }
+            });
         } else {
             System.out.println("Aucune livraison sélectionnée !");
         }
     }
+
 
 
 
@@ -113,7 +125,7 @@ public class AfficherLivraison implements Initializable{
 
     @FXML
     void Retour(ActionEvent event) throws SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/InterfaceAdmin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AjouterLivraison.fxml"));
         try {
             listView.getScene().setRoot(loader.load());
         } catch (IOException e) {

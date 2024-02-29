@@ -107,6 +107,8 @@ public class AjouterCommande implements Initializable{
         alert.setTitle("Succès");
         alert.setContentText("La commande a été ajoutée avec succès !");
         alert.showAndWait();
+
+
     }
 
 
@@ -115,6 +117,7 @@ public class AjouterCommande implements Initializable{
 
     @FXML
     void PasserLiv(ActionEvent event) throws SQLException {
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AjouterLivraison.fxml"));
         try {
             datePicker2.getScene().setRoot(loader.load());
@@ -159,6 +162,7 @@ public class AjouterCommande implements Initializable{
         datePicker2.setValue(date_Livraison_Estimee);
 
     }
+
 
 
 }

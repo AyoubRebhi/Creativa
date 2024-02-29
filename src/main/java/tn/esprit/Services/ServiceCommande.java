@@ -1,6 +1,9 @@
 package tn.esprit.Services;
 import java.sql.SQLException;
 import java.sql.*;
+
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import tn.esprit.Interfaces.InterfaceCRUD;
 import tn.esprit.Models.Commande;
 import tn.esprit.Utils.MaConnexion;
@@ -65,14 +68,34 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
 
 
     public void annulerCommande(int idCommande) throws SQLException {
-        String req = "UPDATE commande SET status = 'annulée' WHERE id_cmd = ?";
-        try (PreparedStatement ps = conn.prepareStatement(req)) {
-            ps.setInt(1, idCommande);
-            ps.executeUpdate();
-            System.out.println("Commande annulée avec succès !");
-        }
-    }
+        // Créer une boîte de dialogue de confirmation
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationAlert.setTitle("Confirmation");
+        confirmationAlert.setHeaderText(null);
+        confirmationAlert.setContentText("Êtes-vous sûr de vouloir annuler cette commande ?");
 
+        // Afficher la boîte de dialogue et attendre la réponse de l'utilisateur
+        confirmationAlert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                // L'utilisateur a appuyé sur le bouton OK, annuler la commande
+                String req = "UPDATE commande SET status = 'annulée' WHERE id_cmd = ?";
+                try (PreparedStatement ps = conn.prepareStatement(req)) {
+                    ps.setInt(1, idCommande);
+                    ps.executeUpdate();
+                    System.out.println("Commande annulée avec succès !");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                if (response == ButtonType.CANCEL) {
+                    // L'utilisateur a appuyé sur le bouton Annuler, ne rien faire
+                    System.out.println("Opération d'annulation de commande annulée par l'utilisateur.");
+                }
+            } else {
+                // L'utilisateur a appuyé sur le bouton Annuler ou a fermé la boîte de dialogue, ne rien faire
+                System.out.println("Opération d'annulation de commande annulée par l'utilisateur.");
+            }
+        });
+    }
     @Override
     public void annulerLivraison(int id) throws SQLException {
 

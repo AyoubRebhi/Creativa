@@ -10,7 +10,6 @@
       <Label fx:id="label" layoutX="208.0" layoutY="14.0" prefHeight="38.0" prefWidth="184.0" text="Votre Commande" />
       <ListView fx:id="listView" layoutX="100.0" layoutY="70.0" prefHeight="230.0" prefWidth="422.0" />
       <Button fx:id="retourBTN" layoutX="22.0" layoutY="21.0" mnemonicParsing="false" onAction="#Retour" text="Retour" />
-      <Button fx:id="modifierBTN" layoutX="511.0" layoutY="354.0" mnemonicParsing="false" onAction="#Modifier" text="Modifier" />
-      <Button fx:id="annulerBTN" layoutX="444.0" layoutY="354.0" mnemonicParsing="false" onAction="#Annuler" text="Annuler" />
+      <Button fx:id="annulerBTN" layoutX="448.0" layoutY="333.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="38.0" prefWidth="73.0" text="Annuler" />
    </children>
 </AnchorPane>

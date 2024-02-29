@@ -28,9 +28,6 @@ public class AfficherCommandeUser implements Initializable{
     private Label label;
 
     @FXML
-    private Button modifierBTN;
-
-    @FXML
     private Button retourBTN;
 
     private int idUtilisateurConnecte; // Variable pour stocker l'identifiant de l'utilisateur connecté
@@ -65,15 +62,7 @@ public class AfficherCommandeUser implements Initializable{
     }
 
 
-    @FXML
-    void Modifier(ActionEvent event) {
-        Commande selectedCommande = listView.getSelectionModel().getSelectedItem();
-        if (selectedCommande != null) {
-            // Mettre en œuvre la logique de modification de la commande
-        } else {
-            // Afficher un message d'erreur indiquant qu'aucune commande n'est sélectionnée
-        }
-    }
+
 
     @FXML
     void Retour(ActionEvent event) {
