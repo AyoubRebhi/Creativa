@@ -87,7 +87,7 @@ public class  LoginController {
     private void redirectToARTISTPage(ActionEvent event) {
         try {
             // Charger la page de connexion à partir du fichier FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CarteList.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileArtist.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène

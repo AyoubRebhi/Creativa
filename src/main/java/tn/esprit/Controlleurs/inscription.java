@@ -39,6 +39,8 @@ public class inscription {
 
     @FXML
     private RadioButton artisteRadioButton;
+    @FXML
+    private PasswordField mdp1;
 
     @FXML
     private TextField numtel;
@@ -51,12 +53,16 @@ public class inscription {
 
     private UserService userService = new UserService(); // Injection du service
 
-    @FXML
-    protected void adduser(ActionEvent event) {
+    public void adduser(ActionEvent event) {
         // Vérification de la saisie
-        if (nom.getText().isEmpty() || prenom.getText().isEmpty() || mdp.getText().isEmpty() || email.getText().isEmpty() || username.getText().isEmpty() || numtel.getText().isEmpty() ||
+        if (nom.getText().isEmpty() || prenom.getText().isEmpty() || mdp.getText().isEmpty() || mdp1.getText().isEmpty()
+                || email.getText().isEmpty() || username.getText().isEmpty() || numtel.getText().isEmpty() ||
                 (!clientRadioButton.isSelected() && !artisteRadioButton.isSelected())) {
             showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Remplissez tous les champs.");
+        } else if (!mdp.getText().equals(mdp1.getText())) {
+            showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Les mots de passe ne correspondent pas.");
+        } else if (!isNumeric(numtel.getText()) || numtel.getText().length() != 8) {
+            showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Le numéro de téléphone doit être numérique et contenir 8 chiffres.");
         } else {
             String role = "";
             if (clientRadioButton.isSelected()) {
@@ -97,7 +103,6 @@ public class inscription {
                         Role.valueOf(role), "", "", "", email.getText(), Integer.parseInt(numtel.getText())));
 
                 // Afficher une confirmation
-
                 redirectToLoginPage(event);
             } else {
                 // La vérification du code a échoué, afficher un message d'erreur
@@ -106,6 +111,9 @@ public class inscription {
         }
     }
 
+    private boolean isNumeric(String str) {
+        return str.matches("\\d+");
+    }
 
     private String generateVerificationCode() {
         // Générez un code aléatoire (vous pouvez personnaliser la logique selon vos besoins)

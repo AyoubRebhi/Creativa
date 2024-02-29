@@ -3,40 +3,55 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controlleurs.updateUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="369.0" prefWidth="436.0" style=" -fx-background-color: F0E5CE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controlleurs.updateUserController">
     <children>
-        <Label layoutX="208.0" layoutY="39.0" text="Modifier Utilisateur" textFill="#bf5915">
+        <Label layoutX="125.0" layoutY="28.0" text="Modifier vos informations" textFill="#36261c85">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>
         </Label>
-        <Label layoutX="133.0" layoutY="112.0" text="Nom :">
+        <Label layoutX="55.0" layoutY="112.0" text="Nom :" textFill="#000000a4">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="16.0" />
          </font></Label>
-        <Label layoutX="109.0" layoutY="158.0" text="Prénom :">
+        <Label layoutX="57.0" layoutY="156.0" text="Prénom :" textAlignment="CENTER" textFill="#000000b5">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-        <Label layoutX="55.0" layoutY="214.0" text="Numéro de Téléphone :">
+        <Label layoutX="57.0" layoutY="202.0" prefHeight="18.0" prefWidth="64.0" text="num tel:" textFill="#000000b5">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="16.0" />
          </font></Label>
-        <Label layoutX="116.0" layoutY="270.0" text="Email :">
+        <Label layoutX="59.0" layoutY="238.0" text="adresse" textFill="#000000c4">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></Label>
         <!-- Add labels for other properties... -->
 
-        <TextField fx:id="lastNameField" layoutX="200.0" layoutY="108.0" prefHeight="25.0" prefWidth="250.0" />
-        <TextField fx:id="firstNameField" layoutX="200.0" layoutY="154.0" prefHeight="25.0" prefWidth="250.0" />
-        <TextField fx:id="numTelField" layoutX="200.0" layoutY="214.0" prefHeight="25.0" prefWidth="250.0" />
-        <TextField fx:id="emailField" layoutX="200.0" layoutY="266.0" prefHeight="25.0" prefWidth="250.0" />
+        <TextField fx:id="lastNameField" layoutX="136.0" layoutY="109.0" prefHeight="30.0" prefWidth="262.0" />
+        <TextField fx:id="firstNameField" layoutX="142.0" layoutY="151.0" prefHeight="30.0" prefWidth="250.0" />
+        <TextField fx:id="numTelField" layoutX="142.0" layoutY="202.0" prefHeight="30.0" prefWidth="250.0" />
+        <TextField fx:id="emailField" layoutX="144.0" layoutY="237.0" prefHeight="30.0" prefWidth="246.0"  />
         <!-- Add text fields for other properties... -->
 
-        <Button fx:id="updateButton" layoutX="227.0" layoutY="316.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="165.0" text="Mettre à jour" />
+        <Button fx:id="updateButton" layoutX="184.0" layoutY="294.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="165.0" text="Mettre à jour" textFill="#4b3d3d" />
+      <TextField fx:id="username" layoutX="133.0" layoutY="73.0" prefHeight="30.0" prefWidth="268.0" disable="true" />
+      <Label layoutX="50.0" layoutY="76.0" text="username:" textFill="#00000095">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#916d11" height="457.0" layoutX="-99.0" layoutY="-86.0" stroke="BLACK" strokeType="INSIDE" width="140.0" />
+      <ImageView fitHeight="57.0" fitWidth="104.0" layoutX="60.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/UserIcon.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

@@ -16,6 +16,8 @@ import java.util.regex.Pattern;
 public class updateUserController {
     @FXML
     private TextField lastNameField;
+    @FXML
+    private TextField username;
 
     @FXML
     private TextField firstNameField;
@@ -55,8 +57,8 @@ public class updateUserController {
         lastNameField.setText(currentUser.getLastName());
         firstNameField.setText(currentUser.getFirstName());
         numTelField.setText((String.valueOf(currentUser.getNumTel())));
-        emailField.setText(currentUser.getEmail());
-
+        emailField.setText(currentUser.getAddress());
+username.setText((currentUser.getUsername()));
 
         // Populate other fields...
     }
@@ -66,7 +68,7 @@ public class updateUserController {
         userService = new UserService(); // Instantiate your UserService
 
         // Set action for the update button
-        updateButton.setOnAction(event -> handleUpdateUser());
+        updateButton.setOnAction(event -> handleUpdateUser1());
 
         // You can add validation or other setup logic here...
     }
@@ -92,6 +94,7 @@ public class updateUserController {
             showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Adresse e-mail invalide.");
             return;
         }
+
         // Perform the update logic using your UserService
         currentUser.setLastName(updatedLastName);
         currentUser.setFirstName(updatedFirstName);
@@ -134,6 +137,49 @@ public class updateUserController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
+
+
+    private void handleUpdateUser1() {
+        // Get the updated values from the form fields
+        String updatedLastName = lastNameField.getText();
+        String updatedFirstName = firstNameField.getText();
+        // Get other updated values...
+        String updatedNumTel = numTelField.getText();
+        String updatedEmail = emailField.getText();
+        if (lastNameField.getText().isEmpty() || firstNameField.getText().isEmpty() || numTelField.getText().isEmpty() || updatedEmail.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Remplissez tous les champs.");
+            return;
+        }
+        else if (!isNumeric( numTelField.getText()) ||  numTelField.getText().length() != 8) {
+            showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Le numéro de téléphone doit être numérique et contenir 8 chiffres.");
+            return;
+        }
+
+
+        // Perform the update logic using your UserService
+        currentUser.setLastName(updatedLastName);
+        currentUser.setFirstName(updatedFirstName);
+        // Set other updated values...
+        currentUser.setNumTel(Integer.parseInt(updatedNumTel));
+        currentUser.setAddress(updatedEmail);
+
+        // Update the user using your UserService
+        userService.modifier(currentUser);
+        if (updateListener != null) {
+            updateListener.onUpdate(currentUser);
+        }
+
+        // Show a confirmation alert
+        showConfirmationAlert("User updated successfully!");
+
+        // Close the update stage
+        closeUpdateStage();
+    }
+    private boolean isNumeric(String str) {
+        return str.matches("\\d+");
+    }
+
 }
 
 

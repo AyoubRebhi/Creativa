@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controlleurs.changemdpClient">
-    <fx:include source="sidebarClient.fxml" />
-   <AnchorPane layoutX="222.0" layoutY="64.0" prefHeight="367.0" prefWidth="415.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controlleurs.changemdpArtist">
+    <fx:include source="sidebarArtiste.fxml" />
+   <AnchorPane layoutX="249.0" layoutY="64.0" prefHeight="367.0" prefWidth="415.0">
       <children>
          <Label layoutX="76.0" layoutY="21.0" text="changement du mot de passe" textFill="#a16d34">
             <font>
@@ -26,9 +26,9 @@
          <Label layoutX="-8.0" layoutY="194.0" prefHeight="31.0" prefWidth="213.0" text="confirmer votre nouveaux mot de passe" />
       </children>
    </AnchorPane>
-   <Button fx:id="bttn" layoutX="207.0" layoutY="44.0" mnemonicParsing="false" onAction="#directtoclient">
+   <Button fx:id="btn" layoutX="210.0" layoutY="44.0" mnemonicParsing="false" onAction="#directtoprofile">
       <graphic>
-         <ImageView fitHeight="31.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="31.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/privious.png" />
             </image>
