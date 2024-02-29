@@ -47,11 +47,6 @@ public class ModifierProjet {
     public void setProjet(Projet projet) {
         this.projet = projet;
     }
-
-
-
-
-
     @FXML
     void afficherProjets(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/sidebarArtisteProjets.fxml"));

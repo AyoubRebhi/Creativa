@@ -37,9 +37,7 @@ public class AfficherProjetsParArtistes extends Application {
     private ImageView refreshICON;
 
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+
 
     @Override
     public void start(Stage primaryStage) {

@@ -61,7 +61,7 @@
                                                 <Image url="@img/UserIcon.png" />
                                             </image>
                                         </ImageView>
-                                        <Label layoutX="61.0" layoutY="57.0" text="Bienvenue," textFill="WHITE">
+                                        <Label fx:id="labelFX" layoutX="61.0" layoutY="57.0" text="Bienvenue," textFill="WHITE">
                                             <font>
                                                 <Font name="Tahoma" size="17.0" />
                                             </font>

@@ -3,39 +3,35 @@ package tn.esprit.Controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.layout.HBox;
 import tn.esprit.Models.Projet;
 import tn.esprit.Services.ProjetServices;
 
 public class sidebarClients {
 
-    @FXML
-    private ResourceBundle resources;
 
     @FXML
-    private URL location;
-
-    @FXML
-    private HBox cardLayoout;
+    private Label labelFX;
     private List<Projet> projets;
     @FXML
     private ListView<String> listView;
+    private ProjetServices ps = new ProjetServices();
 
 
     @FXML
     void initialize() {
-
         ProjetServices projetServices = new ProjetServices();
         try {
             projets = projetServices.afficher();
@@ -103,4 +99,32 @@ public class sidebarClients {
         }
     }
 
+    public void afficherProjet(ActionEvent event) {
+        if(listView.getSelectionModel().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aucun projet sélectionné");
+            alert.setContentText("Veuillez sélectionnez un projet à modifier");
+            alert.showAndWait();
+            return;
+        }
+        String  selectedProjet = listView.getSelectionModel().getSelectedItem();
+        String[] parts = selectedProjet.split(",");
+        int projetId = Integer.parseInt(parts[0].trim());
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarClientProjets.fxml"));
+
+        try {
+            System.out.println("test");
+            Parent root = loader.load();
+            AfficherProjetClient controller = loader.getController();
+            System.out.println("test");
+            controller.setParametre(projetId,ps.afficherProjetParId(projetId));
+            System.out.println("test");
+            labelFX.getScene().setRoot(root);
+            System.out.println("test");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
