@@ -80,7 +80,7 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Button layoutX="11.0" layoutY="158.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text=" Projets">
+                                        <Button layoutX="11.0" layoutY="158.0" mnemonicParsing="false" onAction="#redirectVersProjets" prefHeight="30.0" prefWidth="180.0" text=" Projets">
                                             <graphic>
                                                 <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
@@ -136,7 +136,7 @@
                             <children>
                                 <AnchorPane layoutX="21.0" layoutY="39.0" prefHeight="366.4" prefWidth="398.4" style="-fx-background-color: ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Label fx:id="titreLabel" alignment="CENTER" layoutX="41.0" layoutY="86.0" prefHeight="71.0" prefWidth="305.0" text="Titre">
+                              <Label fx:id="titreLabel" alignment="TOP_LEFT" layoutX="38.0" layoutY="91.0" prefHeight="71.0" prefWidth="453.0" text="Titre">
                                  <font>
                                     <Font name="Berlin Sans FB" size="27.0" />
                                  </font>
@@ -144,7 +144,7 @@
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </padding>
                               </Label>
-                              <Label fx:id="descriptionLabel" alignment="TOP_CENTER" layoutX="38.0" layoutY="173.0" prefHeight="263.0" prefWidth="305.0" text="Description">
+                              <Label fx:id="descriptionLabel" alignment="TOP_LEFT" layoutX="38.0" layoutY="173.0" prefHeight="263.0" prefWidth="451.0" text="Description">
                                  <font>
                                     <Font name="Berlin Sans FB" size="20.0" />
                                  </font>
@@ -157,7 +157,7 @@
                                     <Image url="@img/imageVideIcon.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="createdAtLablel" alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="43.0" prefWidth="162.0" text="Created At : ">
+                              <Label fx:id="createdAtLablel" alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="55.0" prefWidth="262.0" text="Created At : ">
                                  <font>
                                     <Font name="Berlin Sans FB" size="13.0" />
                                  </font>
@@ -165,7 +165,7 @@
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </padding>
                               </Label>
-                              <Label fx:id="categorieLabel" alignment="TOP_LEFT" layoutX="194.0" layoutY="14.0" prefHeight="43.0" prefWidth="162.0" text="#Categorie">
+                              <Label fx:id="categorieLabel" alignment="TOP_LEFT" layoutX="272.0" layoutY="14.0" prefHeight="43.0" prefWidth="162.0" text="#Categorie">
                                  <font>
                                     <Font name="Berlin Sans FB" size="13.0" />
                                  </font>

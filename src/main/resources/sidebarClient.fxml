@@ -81,7 +81,7 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Button layoutX="11.0" layoutY="158.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text=" Projets">
+                                        <Button layoutX="11.0" layoutY="158.0" mnemonicParsing="false" onAction="#redirectVersProjets" prefHeight="30.0" prefWidth="180.0" text=" Projets">
                                             <graphic>
                                                 <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>

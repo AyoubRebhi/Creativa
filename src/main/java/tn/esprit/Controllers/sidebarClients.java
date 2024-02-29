@@ -99,6 +99,17 @@ public class sidebarClients {
         }
     }
 
+    public void redirectVersProjets(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarClient.fxml"));
+            Parent root = loader.load();
+            sidebarClients controller = loader.getController();
+            labelFX.getScene().setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void afficherProjet(ActionEvent event) {
         if(listView.getSelectionModel().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.WARNING);

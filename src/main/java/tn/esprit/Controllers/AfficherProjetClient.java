@@ -1,13 +1,18 @@
 package tn.esprit.Controllers;
 
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import tn.esprit.Models.Projet;
 import tn.esprit.Services.ProjetServices;
 
-import java.util.Date;
+import java.io.IOException;
 
 public class AfficherProjetClient {
     @FXML
@@ -30,23 +35,64 @@ public class AfficherProjetClient {
 
     @FXML
     private Label titreLabel;
+    @FXML
+    private ImageView retourIcon;
     private Projet projet;
     private int id;
+    @FXML
+    private Label labelFX;
 
 
     public void setProjet(Projet projet) {
         this.projet = projet;
     }
+    public void redirectVersAfficherProjets(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarClient.fxml"));
+            Parent root = loader.load();
+            sidebarClients controller = loader.getController();
+            labelFX.getScene().setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void redirectVersProjets(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarClient.fxml"));
+            Parent root = loader.load();
+            sidebarClients controller = loader.getController();
+            labelFX.getScene().setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 
     void setParametre(int id, Projet projet){
+        DropShadow shadow = new DropShadow();
+        retourIcon.setOnMouseEntered(event -> {
+            retourIcon.setEffect(shadow);
+        });
+
+        retourIcon.setOnMouseExited(event -> {
+            retourIcon.setEffect(null);
+        });
+
+        retourIcon.setOnMouseClicked(event -> {
+            redirectVersAfficherProjets(event);
+        });
+
         this.projet=projet;
         this.id = id;
         ProjetServices ps = new ProjetServices();
         titreLabel.setText(projet.getTitre());
         descriptionLabel.setText(projet.getDescription());
-        prixLabel.setText(String.valueOf(projet.getPrix()));
-        createdAtLablel.setText(String.valueOf(projet.getCreatedAt()));
-        categorieLabel.setText(ps.afficherTitreCategorie(projet.getCategorie()));
+        prixLabel.setText(String.valueOf(projet.getPrix())+"Dt");
+        createdAtLablel.setText("Ajouté le:"+String.valueOf(projet.getCreatedAt()));
+        categorieLabel.setText("#"+ps.afficherTitreCategorie(projet.getCategorie()));
 
     }
 }
