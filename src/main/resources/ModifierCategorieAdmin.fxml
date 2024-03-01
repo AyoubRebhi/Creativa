@@ -13,8 +13,11 @@
                 <Font name="System Bold Italic" size="27.0" />
             </font>
         </Label>
-        <Button layoutX="160.0" layoutY="276.0" mnemonicParsing="false" onAction="#modifierCategorie" prefHeight="38.0" prefWidth="110.0" text="Continuer" />
-        <Button layoutX="330.0" layoutY="276.0" mnemonicParsing="false" onAction="#afficherCategories" prefHeight="38.0" prefWidth="109.0" text="Annuler" />
+        <Button layoutX="160.0" layoutY="276.0" mnemonicParsing="false" onAction="#modifierCategorie" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #4a85c4;" text="Continuer" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+        <Button layoutX="330.0" layoutY="276.0" mnemonicParsing="false" onAction="#afficherCategories" prefHeight="38.0" prefWidth="109.0" style="-fx-background-color: #C62111;" text="Annuler" textFill="WHITE" />
       <TextField fx:id="titreTF" layoutX="225.0" layoutY="127.0" prefHeight="47.0" prefWidth="150.0" promptText="Titre">
          <font>
             <Font name="System Italic" size="17.0" />

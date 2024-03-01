@@ -13,12 +13,18 @@
             <Font size="25.0" />
          </font>
       </TextField>
-      <Text layoutX="190.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Catégorie">
+      <Text fill="#ffc336" fontSmoothingType="LCD" layoutX="190.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Catégorie">
          <font>
-            <Font size="28.0" />
+            <Font name="System Bold Italic" size="27.0" />
          </font>
       </Text>
-      <Button layoutX="204.0" layoutY="276.0" mnemonicParsing="false" onAction="#ajouterCategorie" prefHeight="37.0" prefWidth="66.0" text="Ajouter" />
-      <Button layoutX="341.0" layoutY="276.0" mnemonicParsing="false" onAction="#afficherCategories" prefHeight="37.0" prefWidth="66.0" text="Annuler" />
+      <Button layoutX="204.0" layoutY="276.0" mnemonicParsing="false" onAction="#ajouterCategorie" prefHeight="37.0" prefWidth="66.0" style="-fx-background-color: #11C613;" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <Button layoutX="341.0" layoutY="276.0" mnemonicParsing="false" onAction="#afficherCategories" prefHeight="37.0" prefWidth="66.0" style="-fx-background-color: #C62111;" text="Annuler" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>
