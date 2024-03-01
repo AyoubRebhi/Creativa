@@ -32,7 +32,7 @@ public class AfficherCategories {
     @FXML
     private Label labelFX;
     private List<Categorie> categories;
-    private ModifierCategorie controller;
+
 
     @FXML
     void initialize() {
@@ -56,12 +56,26 @@ public class AfficherCategories {
             System.err.println(e.getMessage());
         }
     }
+    CategorieServices cs = new CategorieServices();
 
     public void modifierCategorie(ActionEvent event) {
+        if(listView.getSelectionModel().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aucun projet sélectionné");
+            alert.setContentText("Veuillez sélectionnez un projet à modifier");
+            alert.showAndWait();
+            return;
+        }
+
+        String  selectedCategorie = listView.getSelectionModel().getSelectedItem();
+        String[] parts = selectedCategorie.split(",");
+        int categorieId = Integer.parseInt(parts[0].trim());
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierCategorieAdmin.fxml"));
         try {
             Parent root = loader.load();
             ModifierCategorie controller = loader.getController();
+            controller.setParametre(categorieId,cs.afficherParId(categorieId));
             labelFX.getScene().setRoot(root);
         }catch (IOException e){
             e.printStackTrace();

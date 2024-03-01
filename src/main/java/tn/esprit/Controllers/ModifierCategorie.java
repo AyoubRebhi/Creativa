@@ -3,10 +3,14 @@ package tn.esprit.Controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import tn.esprit.Models.Categorie;
+import tn.esprit.Models.Projet;
 import tn.esprit.Services.CategorieServices;
 import tn.esprit.test.HelloApplication;
 
@@ -22,32 +26,47 @@ public class ModifierCategorie {
 
     @FXML
     private TextField titreTF;
-    private int categorieId;
+    private int id;
+    private Categorie categorie;
 
-    public void setCategorieId(int id) {
-        this.categorieId = id;
-    }
     public TextField getTitreTF() {
         return titreTF;
     }
 
+    void setParametre(int id, Categorie categorie){
+        this.id = id;
+        this.categorie=categorie;
+        CategorieServices cs = new CategorieServices();
+        titreTF.setText(categorie.getTitre());
+    }
+    private Categorie getCategorie(){
+        if(!titreTF.getText().isEmpty()) {
+            categorie.setTitre(titreTF.getText());
+        }else{
+            showAlert(Alert.AlertType.ERROR, "Erreur","Vous devez ajouter le titre !");
+        }
+        return categorie;
+    }
+
     @FXML
     void modifierCategorie(ActionEvent event) {
-        int idCategorie = Integer.parseInt(idTF.getText());
-        String titreCategorie = titreTF.getText();
-
-        Categorie c = new Categorie(idCategorie,titreCategorie);
-        CategorieServices categorieServices = new CategorieServices();
-        categorieServices.modifier(c);
-        showAlert(Alert.AlertType.INFORMATION, "Succès", "Catégorie modifiée avec succès !");
-
+        Categorie nouvelleCategorie= getCategorie();
+        CategorieServices cs = new CategorieServices();
+        cs.modifier(nouvelleCategorie);
+        showAlert(Alert.AlertType.CONFIRMATION,"Succès","La categorie est modifiée avec succes !");
+        refreshCategoriesList();
     }
-
-    @FXML
-    void initialize() {
-
+    public void refreshCategoriesList() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarAdminCategories.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) titreTF.getScene().getWindow(); // Récupérer la fenêtre actuelle
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
     @FXML
     void afficherCategories(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/sidebarAdminCategories.fxml"));

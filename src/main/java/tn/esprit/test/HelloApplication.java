@@ -10,10 +10,10 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
     public static EmbeddedWindow primaryStage;
-
+    //
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/sidebarClient.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/sidebarAdmin.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Projets");
         stage.setScene(scene);
