@@ -30,7 +30,13 @@
             </font>
         </TextField>
         <ChoiceBox fx:id="categorieChoiceBox" layoutX="78.0" layoutY="209.0" prefHeight="47.0" prefWidth="150.0" />
-        <Button layoutX="372.0" layoutY="319.0" mnemonicParsing="false" onAction="#modifierProjet" prefHeight="39.0" prefWidth="103.0" text="Continuer" />
-        <Button layoutX="522.0" layoutY="319.0" mnemonicParsing="false" onAction="#afficherProjets" prefHeight="39.0" prefWidth="103.0" text="Annuler" />
+        <Button layoutX="372.0" layoutY="319.0" mnemonicParsing="false" onAction="#modifierProjet" prefHeight="39.0" prefWidth="103.0" style="-fx-background-color: #11C613;" text="Continuer" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+        <Button layoutX="522.0" layoutY="319.0" mnemonicParsing="false" onAction="#afficherProjets" prefHeight="39.0" prefWidth="103.0" style="-fx-background-color: #C62111;" text="Annuler" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
     </children>
 </AnchorPane>

@@ -181,7 +181,7 @@
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </padding>
                               </Label>
-                              <ImageView fx:id="jaimeIcon" fitHeight="45.0" fitWidth="45.0" layoutX="631.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="jaimeIcon" fitHeight="45.0" fitWidth="45.0" layoutX="682.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@img/heartIcon.png" />
                                  </image>
@@ -189,6 +189,11 @@
                               <ImageView fx:id="retourIcon" fitHeight="28.0" fitWidth="28.0" layoutX="704.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@img/retourIcon.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="563.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/commanderIcon.png" />
                                  </image>
                               </ImageView>
                            </children></AnchorPane>
