@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import tn.esprit.Models.Commande;
 import tn.esprit.Services.ServiceCodepromo;
 import tn.esprit.Services.ServiceCommande;
@@ -49,9 +50,12 @@ public class AjouterCommande implements Initializable{
     private TextField id_userTF;
 
     @FXML
-    private TextField mt_totalTF;
+    private Label MTtotalLabel;
 
-
+    @FXML
+    private Label prixProduitLabel;
+    @FXML
+    private Label fraisLivLabel;
     @FXML
     private Button PasserLiv;
     @FXML
@@ -62,12 +66,25 @@ public class AjouterCommande implements Initializable{
 
     @FXML
     private DatePicker datePicker2;
+    @FXML
+    private Text MTtext;
+
+    @FXML
+    private Text MTtext1;
+
+    @FXML
+    private Text MTtext2;
+
+
+
+
+
 
 
     @FXML
     void AjouterCommande(ActionEvent event) throws SQLException {
         // Vérifier si tous les champs obligatoires sont remplis
-        if (code_promoTF.getText().isEmpty() || id_userTF.getText().isEmpty() || mt_totalTF.getText().isEmpty()) {
+        if (code_promoTF.getText().isEmpty() || id_userTF.getText().isEmpty() || MTtotalLabel.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");
             alert.setContentText("Veuillez remplir tous les champs !");
@@ -86,20 +103,32 @@ public class AjouterCommande implements Initializable{
             return;
         }
 
-        //ajouter la commande si le code promo existe dans la base de données
+        // Vérifier si le code promo a déjà été utilisé par le même utilisateur
         ServiceCommande serviceCommande = new ServiceCommande();
+        String utilisateur = id_userTF.getText(); // Récupérer le nom de l'utilisateur
+        if (serviceCommande.codePromoDejaUtiliseParUtilisateur(codePromo, utilisateur)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setContentText("Ce code promo a déjà été utilisé par le même utilisateur !");
+            alert.showAndWait();
+            return;
+        }
+
+        //ajouter la commande si le code promo existe dans la base de données et n'a pas été utilisé par le même utilisateur
         Commande c = new Commande();
 
-        c.setId_user(serviceCommande.getIdUtilisateurParNomComplet(id_userTF.getText()));
+        c.setId_user(serviceCommande.getIdUtilisateurParNomComplet(utilisateur));
         c.setId_projet(serviceCommande.getAllProjectTitlesAndIds().get(idCombobox.getValue()));
         c.setDate(Date.valueOf(datePicker.getValue()));
-        c.setMt_total(mt_totalTF.getText());
-
+        c.setMt_total(String.valueOf(MTtotalLabel.getText()));
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         c.setDate(Date.valueOf(datePicker2.getValue()));
-
+        c.setMt_total(MTtotalLabel.getText());
         c.setCode_promo(Integer.parseInt(codePromo));
         c.setStatus(statusTF.getText());
+        c.setPrix_produit( Float.parseFloat(prixProduitLabel.getText()));
+        float fraisLivraison = 8.0f; // Définition du frais de livraison à 8dt
+        c.setFrais_livraison(fraisLivraison);
 
         serviceCommande.ajouter(c);
         // Affichage d'une alerte pour indiquer que la commande a été ajoutée avec succès
@@ -107,9 +136,8 @@ public class AjouterCommande implements Initializable{
         alert.setTitle("Succès");
         alert.setContentText("La commande a été ajoutée avec succès !");
         alert.showAndWait();
-
-
     }
+
 
 
 
@@ -117,7 +145,16 @@ public class AjouterCommande implements Initializable{
 
     @FXML
     void PasserLiv(ActionEvent event) throws SQLException {
+        // Vérifier si tous les champs obligatoires pour ajouter une commande sont remplis
+        if (code_promoTF.getText().isEmpty() || id_userTF.getText().isEmpty() || MTtotalLabel.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setContentText("Veuillez ajouter une commande avant de passer à la livraison !");
+            alert.showAndWait();
+            return;
+        }
 
+        // Si tous les champs sont remplis, passer à la scène d'ajout de livraison
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AjouterLivraison.fxml"));
         try {
             datePicker2.getScene().setRoot(loader.load());
@@ -125,15 +162,38 @@ public class AjouterCommande implements Initializable{
             throw new RuntimeException(e);
         }
     }
+
     @FXML
     void Retour(ActionEvent event) throws SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/InterfaceUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/sidebarClient.fxml"));
         try {
             statusTF.getScene().setRoot(loader.load());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
+
+
+    @FXML
+    void select(ActionEvent event) {
+        String titreProjet = idCombobox.getSelectionModel().getSelectedItem().toString();
+        try {
+            float prixFloat = Float.parseFloat(sm.getPrixParTitreProjet(titreProjet));
+            prixFloat =prixFloat +8;
+            float prix_produit = Float.parseFloat(sm.getprixproduit(titreProjet));
+
+            // Ajouter le symbole de la devise (8) avant le prix
+            String prix = String.valueOf(prixFloat);
+            String prixProduit = String.valueOf(prix_produit);
+            MTtotalLabel.setText(prix);
+            prixProduitLabel.setText(prixProduit);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {

@@ -6,10 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import tn.esprit.Models.Commande;
 import tn.esprit.Services.ServiceCommande;
 
@@ -17,6 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static java.lang.Integer.parseInt;
@@ -92,38 +90,50 @@ public class AfficherCommande implements Initializable{
     void Annuler(ActionEvent event) {
         Commande selectedCommande = listView.getSelectionModel().getSelectedItem();
         if (selectedCommande != null) {
-            try {
-                // Mettre à jour le statut de la commande avec "annulée"
-                selectedCommande.setStatus("Annulée");
-                ServiceCommande serviceCommande = new ServiceCommande();
-                serviceCommande.annulerCommande(selectedCommande.getId_cmd());
+            // Créer une boîte de dialogue de confirmation
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Confirmation");
+            confirmationAlert.setHeaderText("Confirmation de l'annulation de la commande");
+            confirmationAlert.setContentText("Voulez-vous vraiment annuler cette commande ?");
 
-                // Supprimer la commande annulée de la ListView
-                listView.getItems().remove(selectedCommande);
+            // Ajouter les boutons personnalisés à la boîte de dialogue
+            ButtonType btnOui = new ButtonType("Oui");
+            ButtonType btnNon = new ButtonType("Non", ButtonBar.ButtonData.CANCEL_CLOSE);
+            confirmationAlert.getButtonTypes().setAll(btnOui, btnNon);
 
-                // Afficher un message de succès
-                System.out.println("Commande annulée avec succès !");
-            } catch (SQLException e) {
-                // Gérer l'exception en fonction de vos besoins
-                e.printStackTrace();
+            // Afficher la boîte de dialogue et attendre la réponse de l'utilisateur
+            Optional<ButtonType> result = confirmationAlert.showAndWait();
+            if (result.isPresent() && result.get() == btnOui) {
+                try {
+                    // Mettre à jour le statut de la commande avec "annulée"
+                    selectedCommande.setStatus("Annulée");
+                    ServiceCommande serviceCommande = new ServiceCommande();
+                    serviceCommande.annulerCommande(selectedCommande.getId_cmd());
+
+                    // Supprimer la commande annulée de la ListView
+                    listView.getItems().remove(selectedCommande);
+
+                    // Afficher un message de succès
+                    System.out.println("Commande annulée avec succès !");
+                } catch (SQLException e) {
+                    // Gérer l'exception en fonction de vos besoins
+                    e.printStackTrace();
+                }
             }
         } else {
-            // Afficher un message d'erreur indiquant qu'aucune commande n'est sélectionnée
-            System.out.println("Aucune commande sélectionnée !");
+            // Afficher un message d'erreur dans une boîte de dialogue
+            Alert erreurAlert = new Alert(Alert.AlertType.ERROR);
+            erreurAlert.setTitle("Erreur");
+            erreurAlert.setHeaderText("Aucune commande sélectionnée !");
+            erreurAlert.setContentText("Veuillez sélectionner une commande à annuler.");
+            erreurAlert.showAndWait();
         }
     }
 
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 
     @FXML
     void Retour(ActionEvent event) throws SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/InterfaceAdmin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/sidebarAdmin.fxml"));
         try {
             listView.getScene().setRoot(loader.load());
         } catch (IOException e) {

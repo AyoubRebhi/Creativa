@@ -12,7 +12,7 @@
       <Button fx:id="afficherBTN" layoutX="37.0" layoutY="167.0" mnemonicParsing="false" onAction="#AfficherCommande" prefHeight="42.0" prefWidth="140.0" style="-fx-background-color: #D25454;" text="Afficher Commandes" />
       <Button fx:id="afficherLivBTN" layoutX="37.0" layoutY="237.0" mnemonicParsing="false" onAction="#AfficherLivraison" prefHeight="42.0" prefWidth="140.0" style="-fx-background-color: #D25454;" text="Afficher Livraisons" />
       <Button fx:id="affichercodeBTN" layoutX="37.0" layoutY="315.0" mnemonicParsing="false" onAction="#AfficherCode" prefHeight="42.0" prefWidth="140.0" style="-fx-background-color: #D25454;" text="Afficher Code promo" />
-      <Label fx:id="interfaceAdmin" layoutX="87.0" layoutY="41.0" prefHeight="42.0" prefWidth="153.0" text="Interface admin">
+      <Label fx:id="interfaceAdmin" layoutX="46.0" layoutY="41.0" prefHeight="42.0" prefWidth="195.0" text="Interface admin">
          <font>
             <Font size="18.0" />
          </font>

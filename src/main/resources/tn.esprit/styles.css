@@ -10,7 +10,6 @@
     -fx-text-fill: #333333;
     -fx-font-weight: bold; /* Gras */
     -fx-font-style: italic; /* Italique */
-    -fx-text-fill: #764949; /* Couleur du texte */
 }
 
 /* Styles pour TextField */
@@ -68,11 +67,6 @@
     -fx-font-size: 14px; /* Taille de la police */
 }
 
-.label {
-    -fx-font-size: 20px; /* Taille de la police */
-    -fx-text-fill: #333333; /* Couleur du texte */
-}
-
 /* Style de l'image */
 .image-view {
     -fx-effect: dropshadow(three-pass-box, #999999, 10, 0, 0, 0); /* Ombre portée */
@@ -82,4 +76,27 @@
 #notificationBTN {
     -fx-background-color: #D25454; /* Vert */
     -fx-text-fill: #ffffff;
+}
+
+.MTtotalLabel {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-color: white; /* Couleur de fond */
+    -fx-padding: 5px; /* Ajout d'un espacement intérieur pour le texte */
+    -fx-background-radius: 5px; /* Rayon des coins du fond */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0.5, 0, 0); /* Effet d'ombre portée */
+}
+
+.cadre {
+    -fx-border-color: red;
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+}
+
+#comboboxId{
+    -fx-pref-width: 180px;
+    -fx-font-size: 14px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
 }

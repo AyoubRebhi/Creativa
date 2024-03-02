@@ -29,7 +29,7 @@ public class Main {
         //ajouter commande
         ServiceCommande serviceCommande = new ServiceCommande();
 
-        Commande c = new Commande(2, 3, new Date(123, 9, 26), "8dt",  new Date(123,9,15),1600,"en_cours");
+        Commande c = new Commande(2, 3, new Date(123, 9, 26), "8dt",  new Date(123,9,15),1600,"en_cours", 20F, 8F);
 
         serviceCommande.ajouter(c); }
 

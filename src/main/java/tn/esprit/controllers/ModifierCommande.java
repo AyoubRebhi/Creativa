@@ -36,6 +36,12 @@ public class ModifierCommande implements Initializable{
 
     @FXML
     private TextField id_cmdTF;
+    @FXML
+    private Label prixProduitLabel;
+    @FXML
+    private Label fraisLivLabel;
+    @FXML
+    private Button PasserLiv;
 
     @FXML
     private Label modifier_commandes;
@@ -78,7 +84,9 @@ public class ModifierCommande implements Initializable{
                 return;
             }
             String status = statusTF.getText();
-            Commande c = new Commande(idCmd, idUser, idProjet, date, mtTotal, dateLivraisonEstimee, codePromo, status);
+            float prixProduit = Float.parseFloat(prixProduitLabel.getText());
+            float fraisLivraison = Float.parseFloat(fraisLivLabel.getText());
+            Commande c = new Commande(idCmd, idUser, idProjet, date, mtTotal, dateLivraisonEstimee, codePromo, status ,prixProduit,fraisLivraison);
             serviceCommande = new ServiceCommande();
             serviceCommande.modifier(c);
 
@@ -113,7 +121,7 @@ public class ModifierCommande implements Initializable{
             // Ajouter les titres de projet à la ComboBox
             idCombobox.getItems().addAll(projectTitles);
         } catch (SQLException e) {
-            e.printStackTrace(); // Gérer l'exception selon votre cas
+            e.printStackTrace();
         }
         statusTF.setText("En cours");
         datePicker.setValue(LocalDate.now());

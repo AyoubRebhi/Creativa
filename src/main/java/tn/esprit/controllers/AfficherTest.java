@@ -1,6 +1,5 @@
 package tn.esprit.controllers;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,15 +10,17 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import tn.esprit.Models.Livraison;
 import tn.esprit.Services.ServiceLivraison;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+public class AfficherTest implements Initializable {
 
-public class AfficherLivraison implements Initializable{
     @FXML
     private ListView<Livraison> listView;
 
@@ -174,5 +175,4 @@ public class AfficherLivraison implements Initializable{
             listView.getItems().addAll(livraisons);
         }
     }
-
 }

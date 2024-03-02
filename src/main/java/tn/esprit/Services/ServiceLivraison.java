@@ -12,8 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 public class ServiceLivraison implements InterfaceCRUD<Livraison> {
-    static Connection conn= MaConnexion.getInstance().getConn();
-//ajouter livraison
+    static Connection conn = MaConnexion.getInstance().getConn();
+
+    //ajouter livraison
     @Override
     public void ajouter(Livraison l) {
         String req = "INSERT INTO livraison (id_cmd, id_user, status,adresse,frais_liv,moyen_livraison) VALUES (?, ?, ?,?,?,?)";
@@ -31,7 +32,8 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
         }
 
 
-}
+    }
+
     //modifier livraison
     @Override
     public void modifier(Livraison l) {
@@ -74,14 +76,15 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
             System.out.println("Livraison annulée avec succès !");
         }
     }
+
     //afficher livraison
     @Override
-    public List<Livraison> afficher() throws SQLException{
+    public List<Livraison> afficher() throws SQLException {
         List<Livraison> livraisons = new ArrayList<>();
-        String req ="select * from livraison";
+        String req = "select * from livraison";
         Statement st = conn.createStatement();
-        ResultSet res =st.executeQuery(req);
-        while(res.next()){
+        ResultSet res = st.executeQuery(req);
+        while (res.next()) {
             Livraison l = new Livraison();
             l.setId_liv(res.getInt(1));
             l.setId_cmd(res.getInt(2));
@@ -92,7 +95,9 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
             l.setMoyen_livraison(res.getString(6));
 
 
-            livraisons.add(l);}return livraisons;
+            livraisons.add(l);
+        }
+        return livraisons;
     }
 
     public int getIdUtilisateurParNomComplet(String nomComplet) throws SQLException {
@@ -108,6 +113,7 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
         }
         return idUtilisateur;
     }
+
     // ServiceCommande
     public Map<String, Integer> getAllProjectTitlesAndIds() throws SQLException {
         Map<String, Integer> projectTitlesAndIds = new HashMap<>();
@@ -122,4 +128,50 @@ public class ServiceLivraison implements InterfaceCRUD<Livraison> {
         }
         return projectTitlesAndIds;
     }
+
+
+    public List<Livraison> afficherLivraisonUtilisateur(int idUtilisateur) throws SQLException {
+        List<Livraison> livraisons = new ArrayList<>();
+        String req = "SELECT * FROM livraison WHERE id_user = ?";
+        try (PreparedStatement ps = conn.prepareStatement(req)) {
+            ps.setInt(1, idUtilisateur);
+            try (ResultSet res = ps.executeQuery()) {
+                while (res.next()) {
+                    Livraison l = new Livraison();
+                    l.setId_liv(res.getInt(1));
+                    l.setId_cmd(res.getInt(2));
+                    l.setId_user(res.getInt(3));
+                    l.setStatus(res.getString(4));
+                    l.setAdresse(res.getString(5));
+                    l.setFrais_liv(res.getString(6));
+                    l.setMoyen_livraison(res.getString(7));
+                    livraisons.add(l);
+                }
+            }
+        }
+        return livraisons;
+    }
+
+    public List<Livraison> FilterByStatus(String status) throws SQLException {
+        List<Livraison> filteredLivraisons = new ArrayList<>();
+        String req = "SELECT * FROM livraison WHERE status = ?";
+        try (PreparedStatement ps = conn.prepareStatement(req)) {
+            ps.setString(1, status);
+            try (ResultSet res = ps.executeQuery()) {
+                while (res.next()) {
+                    Livraison livraison = new Livraison();
+                    livraison.setId_liv(res.getInt("id_liv"));
+                    livraison.setId_cmd(res.getInt("id_cmd"));
+                    livraison.setId_user(res.getInt("id_user"));
+                    livraison.setStatus(res.getString("status"));
+                    livraison.setAdresse(res.getString("adresse"));
+                    livraison.setFrais_liv(res.getString("frais_liv"));
+                    livraison.setMoyen_livraison(res.getString("moyen_livraison"));
+                    filteredLivraisons.add(livraison);
+                }
+            }
+        }
+        return filteredLivraisons;
+    }
+
 }

@@ -10,6 +10,8 @@ public class Commande {
     private Date date;
 
     private String mt_total;
+    private Float prix_produit;
+    private Float frais_livraison;
     private Date date_livraison_estimee;
     private int code_promo;
     private String status;
@@ -50,7 +52,14 @@ public class Commande {
         return status;
     }
 
-//setters
+    public Float getPrix_produit() {
+        return prix_produit;
+    }
+
+    public Float getFrais_livraison() {
+        return frais_livraison;
+    }
+    //setters
 
     public void setId_cmd(int id_cmd) {
         this.id_cmd = id_cmd;
@@ -78,6 +87,14 @@ public class Commande {
     }
 
 
+    public void setPrix_produit(Float prix_produit) {
+        this.prix_produit = prix_produit;
+    }
+
+    public void setFrais_livraison(Float frais_livraison) {
+        this.frais_livraison = frais_livraison;
+    }
+
     public void setDate_livraison_estimee(Date date_livraison_estimee) {
         this.date_livraison_estimee = date_livraison_estimee;
 
@@ -88,7 +105,7 @@ public class Commande {
     }
 
     //constructeurs
-    public Commande(int id_cmd, int id_user, int id_projet, Date date,String mt_total,Date date_livraison_estimee,int code_promo,String status) {
+    public Commande(int id_cmd, int id_user, int id_projet, Date date,String mt_total,Date date_livraison_estimee,int code_promo,String status,Float prix_produit, Float frais_livraison) {
         this.id_cmd = id_cmd;
         this.id_user = id_user;
         this.id_projet = id_projet;
@@ -98,11 +115,13 @@ public class Commande {
         this.date_livraison_estimee = date_livraison_estimee;
         this.code_promo = code_promo;
         this.status = status;
-
+        this.prix_produit = prix_produit;
+        this.frais_livraison = frais_livraison;
     }
 
 
-    public Commande(int id_user, int id_projet, Date date, String mt_total, Date date_livraison_estimee,int code_promo,String status) {
+
+    public Commande(int id_user, int id_projet, Date date, String mt_total, Date date_livraison_estimee, int code_promo, String status,Float prix_produit, Float frais_livraison) {
         this.id_user = id_user;
         this.id_projet = id_projet;
         this.date = date;
@@ -110,6 +129,8 @@ public class Commande {
         this.date_livraison_estimee = date_livraison_estimee;
         this.code_promo = code_promo;
         this.status = status;
+        this.prix_produit = prix_produit;
+        this.frais_livraison = frais_livraison;
     }
 
     public Commande(){}
@@ -126,6 +147,8 @@ public class Commande {
                 ", id_projet=" + id_projet +
                 ", date=" + date +
                 ", mt_total='" + mt_total + '\'' +
+                ", prix_produit='" + prix_produit + '\'' +
+                ", frais_livraison='" + frais_livraison + '\'' +
                 ", date_livraison_estimee=" + date_livraison_estimee +
                 ", code_promo=" + code_promo +
                 ", status='" + status + '\'' +

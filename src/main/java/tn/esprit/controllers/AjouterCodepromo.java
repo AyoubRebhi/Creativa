@@ -44,15 +44,26 @@ public class AjouterCodepromo {
             return;
         }
 
-        // Le code promo est valide, vous pouvez maintenant l'ajouter
+        // Le code promo est valide, vous pouvez maintenant vérifier s'il existe déjà
         int codePromo = Integer.parseInt(codePromoText);
+
+        // Vérifier si le code promo existe déjà dans la base de données
+        ServiceCodepromo serviceCodepromo = new ServiceCodepromo();
+        if (serviceCodepromo.codePromoExiste(String.valueOf(codePromo))) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur d'ajout");
+            alert.setContentText("Le code promo saisi existe déjà !");
+            alert.showAndWait();
+            return;
+        }
+
+        // Le code promo n'existe pas encore, vous pouvez l'ajouter
         String pourcentage = pourcentageTF.getText();
         Codepromo c = new Codepromo();
         c.setCode_promo(codePromo);
         c.setPourcentage(pourcentage);
 
         // Ajout du code promo
-        ServiceCodepromo serviceCodepromo = new ServiceCodepromo();
         serviceCodepromo.ajouter(c);
 
         // Affichage d'une confirmation
@@ -64,6 +75,7 @@ public class AjouterCodepromo {
         // Réinitialisation des champs et mise à jour des notifications
         notificationBTN(null);
     }
+
 
     @FXML
     void notificationBTN(ActionEvent event) {
