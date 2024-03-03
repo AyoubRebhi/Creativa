@@ -12,7 +12,7 @@
    <children>
       <ImageView fx:id="imageProjet" fitHeight="151.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/imageVideIcon.png" />
+            <Image url="@images/imageVideIcon.png" />
          </image>
          <HBox.margin>
             <Insets bottom="10.0" left="5.0" top="10.0" />
@@ -40,7 +40,7 @@
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/likeIcon.png" />
+                        <Image url="@images/likeIcon.png" />
                      </image>
                      <HBox.margin>
                         <Insets bottom="2.0" left="5.0" top="2.0" />

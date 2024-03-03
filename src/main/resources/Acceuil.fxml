@@ -9,7 +9,7 @@
    <children>
       <ImageView fitHeight="284.0" fitWidth="503.0" layoutX="33.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/creativaBackGroundImg.png" />
+            <Image url="@images/creativaBackGroundImg.png" />
          </image>
          <effect>
             <Glow />

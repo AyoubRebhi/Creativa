@@ -36,7 +36,7 @@
             </HBox>
             <ImageView fx:id="imageCatLabel" fitHeight="115.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/MusiqueIcone.png" />
+                  <Image url="@images/MusiqueIcone.png" />
                </image>
                <VBox.margin>
                   <Insets top="7.0" />
@@ -51,7 +51,7 @@
                      <graphic>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/editIcon.png" />
+                              <Image url="@images/editIcon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -66,7 +66,7 @@
                      <graphic>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/deleteIcon.png" />
+                              <Image url="@images/deleteIcon.png" />
                            </image>
                         </ImageView>
                      </graphic>

@@ -23,7 +23,7 @@
             <graphic>
                 <ImageView fitHeight="22.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@img/editIcon.png" />
+                        <Image url="@images/editIcon.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -34,7 +34,7 @@
             <graphic>
                 <ImageView fitHeight="22.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@img/deleteIcon.png" />
+                        <Image url="@images/deleteIcon.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -45,13 +45,13 @@
             <graphic>
                 <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@img/AddIcon.png" />
+                        <Image url="@images/AddIcon.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
         <ImageView fx:id="refreshICON" fitHeight="22.0" fitWidth="22.0" layoutX="754.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@img/refreshIcone.png" />
+                <Image url="@images/refreshIcone.png" />
             </image>
         </ImageView>
     </children>
