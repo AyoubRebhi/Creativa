@@ -11,6 +11,7 @@ import tn.esprit.Models.Role;
 import tn.esprit.Models.User;
 import tn.esprit.Services.UserService;
 import javafx.scene.control.TextField;
+import tn.esprit.Utils.EmailsUtils;
 
 import java.io.IOException;
 import java.util.regex.Matcher;
@@ -103,6 +104,8 @@ public class inscription {
 
                 // Afficher une confirmation
                 redirectToLoginPage(event);
+                EmailsUtils.envoyerEmailConfirmation(new User(nom.getText(), prenom.getText(), username.getText(), mdp.getText(),
+                        Role.valueOf(role), "", "", "", email.getText(), Integer.parseInt(numtel.getText())));
             } else {
                 // La vérification du code a échoué, afficher un message d'erreur
                 showAlert(Alert.AlertType.ERROR, "Erreur", "Code de vérification incorrect.");
@@ -168,6 +171,7 @@ public class inscription {
             // Changer la scène actuelle vers la nouvelle scène de connexion
             stage.setScene(scene);
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
             // Gérer les erreurs de chargement de la page de connexion

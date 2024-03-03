@@ -6,6 +6,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import tn.esprit.Interfaces.InterfaceCRUD;
 import tn.esprit.Models.Role;
 import tn.esprit.Models.User;
+import tn.esprit.Utils.EmailsUtils;
 import tn.esprit.Utils.MaConnexion;
 import tn.esprit.Utils.emailUtil;
 
@@ -70,7 +71,7 @@ public class  UserService implements InterfaceCRUD<User> {
             System.out.println("user Added Successfully!");
 
             // Appeler la fonction envoyerEmailConfirmation
-            emailUtil.envoyerEmailConfirmation(user);
+
 
         } catch (SQLException ex) {
             ex.printStackTrace();
