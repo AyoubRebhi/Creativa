@@ -1,5 +1,6 @@
 package tn.esprit.Controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -12,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import tn.esprit.Models.Projet;
 import tn.esprit.Services.ProjetServices;
@@ -42,6 +44,8 @@ public class AjouterProjet {
 
     @FXML
     private TextField titreTF;
+    private Projet projet = new Projet();
+
 
     @FXML
     void afficherProjets(ActionEvent event) {
@@ -55,8 +59,15 @@ public class AjouterProjet {
 
     @FXML
     void ajouterMedia(ActionEvent event) {
-
-
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif"));
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            // Récupérer le chemin du fichier sélectionné
+            String mediaPath = selectedFile.getAbsolutePath();
+            // Stocker le chemin du média dans la variable du projet
+            projet.setMedia(mediaPath);
+        }
     }
 
     @FXML
@@ -65,16 +76,25 @@ public class AjouterProjet {
         Double prix = Double.parseDouble(prixTF.getText());
         String description = descriptionTF.getText();
         int idCategorie = categorieChoiceBox.getSelectionModel().getSelectedIndex() + 1; // L'indice de la liste commence à partir de 0
-        if(titre.isEmpty()&& description.isEmpty()){
-            showAlert("Erreur", "Vous devez remplir le formulaire !");
-        }else{
-        Projet projet = new Projet(titre, description, null, prix, idCategorie);
-        ProjetServices projetServices = new ProjetServices();
-        projetServices.ajouter(projet);
 
-        showAlert("Succès", "Le projet a été ajouté avec succès.");}
+        if (titre.isEmpty() || description.isEmpty() ) {
+            showAlert("Erreur", "Vous devez remplir le formulaire !");
+        } else {
+            // Récupérer le média depuis le projet
+            String media = projet.getMedia();
+
+            // Créer le projet avec le média récupéré
+            Projet projet = new Projet(titre, description, media, prix, idCategorie);
+
+            // Ajouter le projet
+            ProjetServices projetServices = new ProjetServices();
+            projetServices.ajouter(projet);
+
+            showAlert("Succès", "Le projet a été ajouté avec succès.");
+        }
         refreshProjetsList();
     }
+
     public void refreshProjetsList() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarArtisteProjets.fxml"));

@@ -22,12 +22,6 @@ import java.util.ResourceBundle;
 public class AfficherCategories {
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
     private ListView<String> listView;
     @FXML
     private Label labelFX;

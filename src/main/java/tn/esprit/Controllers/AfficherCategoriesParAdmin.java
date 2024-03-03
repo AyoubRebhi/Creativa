@@ -1,8 +1,6 @@
 package tn.esprit.Controllers;
 
-import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -11,7 +9,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
-import javafx.stage.Stage;
 import tn.esprit.Models.Categorie;
 import tn.esprit.Services.CategorieServices;
 

@@ -1,10 +1,8 @@
 package tn.esprit.Controllers;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
@@ -21,12 +19,6 @@ import tn.esprit.Models.Projet;
 import tn.esprit.Services.ProjetServices;
 
 public class AfficherProjetsParAdmin {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button AjouterBTN;

@@ -15,9 +15,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import tn.esprit.Models.Categorie;
 import tn.esprit.Models.Projet;
-import tn.esprit.Services.CategorieServices;
 import tn.esprit.Services.ProjetServices;
 
 import java.io.IOException;
@@ -172,6 +170,7 @@ public class AfficherProjetsParArtistes extends Application {
         });
         ProjetServices projetServices = new ProjetServices();
         try {
+            System.out.println("test");
             projets = projetServices.afficher();
             projets = projets.stream().filter(Projet::getIsVisible).collect(Collectors.toList());
             ObservableList<String> observableList = FXCollections.observableArrayList();

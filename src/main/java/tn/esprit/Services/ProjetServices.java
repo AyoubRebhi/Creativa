@@ -93,7 +93,7 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
 
                 int categorieId = rs.getInt("id_categorie");
                 String categorieTitre = rs.getString("categorie_titre");
-                String categorieImage = rs.getString("image");
+                String categorieImage = rs.getString("media");
                 // Vérifie si la catégorie existe déjà dans la map, sinon, crée une nouvelle catégorie
                 Categorie categorie = categoriesMap.get(categorieId);
                 if (categorie == null) {
