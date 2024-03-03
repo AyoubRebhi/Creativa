@@ -7,11 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import tn.esprit.Models.Projet;
 import tn.esprit.Services.ProjetServices;
 
+import java.io.File;
 import java.io.IOException;
 
 public class AfficherProjetClient {
@@ -93,6 +95,16 @@ public class AfficherProjetClient {
         prixLabel.setText(String.valueOf(projet.getPrix())+"Dt");
         createdAtLablel.setText("Ajouté le:"+String.valueOf(projet.getCreatedAt()));
         categorieLabel.setText("#"+ps.afficherTitreCategorie(projet.getCategorie()));
+        // Récupérer le chemin du média depuis le projet
+        String media = projet.getMedia();
 
+        // Créer un objet File avec le chemin du média
+        File file = new File(media);
+
+        // Créer une nouvelle image avec le fichier
+        Image image = new Image(file.toURI().toString());
+
+        // Définir l'image de projetImage avec l'image créée
+        projetImage.setImage(image);
     }
 }
