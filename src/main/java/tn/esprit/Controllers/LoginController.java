@@ -1,4 +1,4 @@
-package tn.esprit.Controlleurs;
+package tn.esprit.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -57,31 +57,35 @@ public class  LoginController {
         System.out.println(" connectéé"+authentifie);
         // Ajouter le reste de la logique selon le résultat de l'authentification
         if (authentifie) {
-            // Authentification réussie, charger la nouvelle scène
-            int p = S.getUtilisateurid(loginId.getText(), motpasse.getText());
-            System.out.println("hhh"+S.getUtilisateurid(loginId.getText(), motpasse.getText()));
-            session.id_utilisateur=p;
-            String userRole = S.getUtilisateurRole(loginId.getText());
+            // Authentification réussie, vérifier si l'utilisateur est bloqué
+            int userId = S.getUtilisateurid(loginId.getText(), motpasse.getText());
+            if (S.isBlocked(userId)) {
+                // Si l'utilisateur est bloqué, afficher une alerte
+                afficherAlerteErreur("Utilisateur bloqué", "Votre compte est actuellement bloqué.");
+            } else {
+                // Si l'utilisateur n'est pas bloqué, continuer avec le reste de la logique
+                int p = userId;
+                session.id_utilisateur = p;
+                String userRole = S.getUtilisateurRole(loginId.getText());
 
-            switch (userRole) {
-                case "ADMIN":
-                    redirectToAdminPage(event);
-                    break;
-                case "CLIENT":
-                    redirectToCLIENTPage(event);
-                    break;
-                case "ARTIST":
-                    redirectToARTISTPage(event);
+                switch (userRole) {
+                    case "ADMIN":
+                        redirectToAdminPage(event);
+                        break;
+                    case "CLIENT":
+                        redirectToCLIENTPage(event);
+                        break;
+                    case "ARTIST":
+                        redirectToARTISTPage(event);
+                        break;
+                }
+
+                System.out.println("hajer connectéé" + p);
             }
-
-            System.out.println("hajer connectéé" +p);
-
-
         } else {
             // L'authentification a échoué, afficher une alerte d'erreur
             afficherAlerteErreur("Authentification échouée", "Veuillez vérifier vos identifiants.");
         }
-
     }
 
     private void redirectToARTISTPage(ActionEvent event) {
@@ -169,13 +173,13 @@ public class  LoginController {
             // Gérer les erreurs de chargement de la page de connexion
         }
     }
-        private void afficherAlerteErreur(String titre, String contenu) {
-            Alert alerte = new Alert(Alert.AlertType.ERROR);
-            alerte.setTitle(titre);
-            alerte.setHeaderText(null);
-            alerte.setContentText(contenu);
-            alerte.showAndWait();
-        }
+    private void afficherAlerteErreur(String titre, String contenu) {
+        Alert alerte = new Alert(Alert.AlertType.ERROR);
+        alerte.setTitle(titre);
+        alerte.setHeaderText(null);
+        alerte.setContentText(contenu);
+        alerte.showAndWait();
+    }
 
 
 

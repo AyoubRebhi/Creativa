@@ -12,6 +12,7 @@ import tn.esprit.Utils.emailUtil;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class  UserService implements InterfaceCRUD<User> {
 
@@ -88,8 +89,8 @@ public class  UserService implements InterfaceCRUD<User> {
                     // Récupérer le mot de passe haché de la base de données
 
                     // Vérifier si le mot de passe fourni correspond au mot de passe haché
-                        // Retourner le rôle si la vérification du mot de passe est réussie
-                        return resultSet.getString("role");
+                    // Retourner le rôle si la vérification du mot de passe est réussie
+                    return resultSet.getString("role");
 
                 }
             }
@@ -200,6 +201,7 @@ public class  UserService implements InterfaceCRUD<User> {
                 // Ajoute l'objet User à la liste
                 utilisateur.setEmail(resultSet.getString("email"));
                 utilisateur.setNumTel(Integer.parseInt(resultSet.getString("numTel")));
+                utilisateur.setBlocked(resultSet.getBoolean("blocked"));
                 utilisateurs.add(utilisateur);
             }
         } catch (SQLException e) {
@@ -358,4 +360,75 @@ public class  UserService implements InterfaceCRUD<User> {
         }
         return false;
     }
+
+    // Bloquer un utilisateur par son ID
+    public void blockUserById(int userId, Timestamp blockEndDate) {
+        String req = "UPDATE user SET blocked = true, block_end_date = ? WHERE id_user = ?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setTimestamp(1, blockEndDate);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Débloquer un utilisateur par son ID
+    public void unblockUserById(int userId) {
+        String req = "UPDATE user SET blocked = false, block_end_date = null WHERE id_user = ?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setInt(1, userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public long getRemainingBlockTime(String identifiant) {
+        String req = "SELECT block_end_date FROM user WHERE (username=? OR email=?)";
+
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setString(1, identifiant);
+            preparedStatement.setString(2, identifiant);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    Timestamp blockEndDate = resultSet.getTimestamp("block_end_date");
+                    if (blockEndDate != null && blockEndDate.after(new Timestamp(System.currentTimeMillis()))) {
+                        // Si la date de fin de blocage est dans le futur, calculer le temps restant
+                        long remainingTimeMillis = blockEndDate.getTime() - System.currentTimeMillis();
+                        return TimeUnit.MILLISECONDS.toSeconds(remainingTimeMillis);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0; // Retourne 0 si l'utilisateur n'est pas bloqué ou la date de fin de blocage est dépassée
+    }
+
+    public boolean isBlocked(int userId) {
+        String req = "SELECT blocked, block_end_date FROM user WHERE id_user = ?";
+
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setInt(1, userId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    boolean isBlocked = resultSet.getBoolean("blocked");
+                    Timestamp blockEndDate = resultSet.getTimestamp("block_end_date");
+                    System.out.println("resultat");
+                    System.out.println( isBlocked && (blockEndDate == null || blockEndDate.before(new Timestamp(System.currentTimeMillis()))));
+// Vérifier si l'utilisateur est bloqué et si la date de blocage a expiré
+                    return isBlocked && (blockEndDate != null && blockEndDate.after(new Timestamp(System.currentTimeMillis())));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // En cas d'erreur ou si l'utilisateur n'est pas trouvé, considérer qu'il n'est pas bloqué
+        return false;
+    }
+
 }

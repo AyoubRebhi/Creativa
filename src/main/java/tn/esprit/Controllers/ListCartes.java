@@ -1,4 +1,4 @@
-package tn.esprit.Controlleurs;
+package tn.esprit.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +18,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tn.esprit.Models.CarteFidelite;
 import tn.esprit.Services.CarteFideliteService;
-import tn.esprit.Services.UserService;
 
 import java.io.IOException;
 import java.net.URL;

@@ -1,4 +1,4 @@
-package tn.esprit.Controlleurs;
+package tn.esprit.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,8 +15,7 @@ import tn.esprit.Services.UserService;
 
 import java.io.IOException;
 
-public class changemdpArtist {
-
+public class changemdpClient {
     @FXML
     public PasswordField oldmdp;
 
@@ -29,7 +28,7 @@ public class changemdpArtist {
 
     @FXML
     private void handlePasswordChange(ActionEvent ActionEvent) {
-        System.out.println("1"+newmdp.getText());
+System.out.println("1"+newmdp.getText());
         System.out.println("2"+newmdp1.getText());
 
 
@@ -50,7 +49,6 @@ public class changemdpArtist {
 
         // Affichez une alerte de succès
         showAlert(Alert.AlertType.INFORMATION, "Succès", "Mot de passe mis à jour avec succès.");
-        directTomdp(ActionEvent);
     }
 
     // Vérifie si l'ancien mot de passe est correct
@@ -84,11 +82,10 @@ public class changemdpArtist {
         alert.setContentText(content);
         alert.showAndWait();
     }
-
     public void directTomdp(ActionEvent event) {
         try {
             // Charger la page de connexion à partir du fichier FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileArtist.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileClient.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène
@@ -106,10 +103,10 @@ public class changemdpArtist {
         }
     }
 
-    public void directtoprofile(ActionEvent event) {
+    public void directtoclient(ActionEvent event) {
         try {
             // Charger la page de connexion à partir du fichier FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileArtist.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileClient.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène

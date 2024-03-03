@@ -1,4 +1,4 @@
-package tn.esprit.Controlleurs;
+package tn.esprit.Controllers;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
-import com.jfoenix.controls.JFXButton;
 
 import java.net.URL;
 import java.util.ResourceBundle;

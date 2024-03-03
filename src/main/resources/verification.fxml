@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="236.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controlleurs.VerificationController">
+<AnchorPane id="AnchorPane" prefHeight="236.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.VerificationController">
 <children>
     <Label layoutX="187.0" layoutY="76.0" prefHeight="28.0" prefWidth="266.0" text="Saisir le code de vérification">
          <font>

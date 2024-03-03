@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox prefHeight="14.0" prefWidth="493.0" spacing="10" style="-fx-background-color: #f0f0f0; -fx-border-color: #c0c0c0; -fx-border-width: 1; -fx-border-radius: 5; -fx-padding: 10; -fx-margin-bottom: 0; -fx-margin-top: 0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.usercellule">
+   <ImageView fitHeight="120.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@images/UserIcon.png" />
+      </image>
+   </ImageView>
+   <VBox prefHeight="200.0" prefWidth="100.0">
+      <children>
+         <Label prefHeight="18.0" prefWidth="103.0" text="username" textFill="#997575">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font>
+         </Label>
+         <Label prefHeight="18.0" prefWidth="90.0" text="email" textFill="#997575">
+            <font>
+               <Font name="System Bold" size="20.0" />
+            </font>
+         </Label>
+         <Label text="num tel:" textFill="#997575">
+            <font>
+               <Font name="System Bold" size="19.0" />
+            </font>
+         </Label>
+      </children>
+   </VBox>
+   <VBox prefHeight="86.0" prefWidth="183.0">
+      <children>
+         <Label fx:id="usernam" prefHeight="27.0" prefWidth="174.0" text="5">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label fx:id="email" prefHeight="28.0" prefWidth="181.0" text="hajerhamrouni@gmail.com">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Label>
+         <Label fx:id="num" prefHeight="28.0" prefWidth="140.0" text="55">
+            <font>
+               <Font size="21.0" />
+            </font>
+         </Label>
+      </children>
+   </VBox>
+   <VBox prefHeight="89.0" prefWidth="106.0">
+      <children>
+         <Button fx:id="bloquer" mnemonicParsing="false" onAction="#bloquerUtulisateur" prefHeight="21.0" prefWidth="95.0" style="-fx-background-color: #C62111;" text="bloquer" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="17.0" />
+            </font>
+         </Button>
+         <Label />
+         <Button fx:id="debloquer" mnemonicParsing="false" onAction="#debloquerutulisateur" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #4a85c4;" text="débloquer" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="16.0" />
+            </font>
+         </Button>
+      </children>
+   </VBox>
+
+</HBox>

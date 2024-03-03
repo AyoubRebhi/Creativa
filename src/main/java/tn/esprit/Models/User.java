@@ -1,8 +1,12 @@
 package tn.esprit.Models;
 
+import java.sql.Timestamp;
+
 public class User {
     private int id_user;
     private int numTel;
+    private boolean blocked;
+    private Timestamp blockEndDate ;
 
     public int getNumTel() {
         return numTel;
@@ -33,6 +37,9 @@ public class User {
         this.profileImagePath = profileImagePath;
         this.email=email;
         this.numTel=num;
+        this.blocked = false; // Par défaut, l'utilisateur n'est pas bloqué
+        this.blockEndDate = null; // Par défaut, pas de date de fin de blocage
+
     }
     public User(int s,String lastName, String firstName, String username, String password, Role role,
                 String biography, String address, String profileImagePath, String email,int num) {
@@ -47,6 +54,9 @@ public class User {
         this.profileImagePath = profileImagePath;
         this.email=email;
         this.numTel=num;
+        this.blocked = false; // Par défaut, l'utilisateur n'est pas bloqué
+        this.blockEndDate = null; // Par défaut, pas de date de fin de blocage
+
     }
     // Constructors, getters, setters, toString, etc.
 
@@ -147,5 +157,20 @@ public class User {
 
     public void setProfileImagePath(String profileImagePath) {
         this.profileImagePath = profileImagePath;
+    }
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
+
+    public Timestamp getBlockEndDate() {
+        return blockEndDate;
+    }
+
+    public void setBlockEndDate(Timestamp blockEndDate) {
+        this.blockEndDate = blockEndDate;
     }
 }

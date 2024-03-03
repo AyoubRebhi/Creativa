@@ -1,4 +1,4 @@
-package tn.esprit.Controlleurs;
+package tn.esprit.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 import tn.esprit.Models.Role;
 import tn.esprit.Models.User;
 import tn.esprit.Services.UserService;
-import javafx.stage.Window;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
