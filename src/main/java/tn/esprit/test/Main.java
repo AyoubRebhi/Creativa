@@ -65,13 +65,13 @@ public class Main {
             System.out.println("Catégorie: " + projet.getCategorie());
             System.out.println("-------------------------");
         }*/
-        /*int idCategorie = 3;
+        int idCategorie = 3;
         Map<String, Integer> nb = cs.calculerNbProjets(idCategorie);
         for (Map.Entry<String, Integer> entry : nb.entrySet()) {
             String categorieTitre = entry.getKey();
             int nbProjets = entry.getValue();
-            System.out.println("- Catégorie : " + categorieTitre + ", Nombre de projets : " + nbProjets);
-        }*/
+            System.out.println( nbProjets);
+        }
         List<Categorie> categories = cs.afficher();
         /*for(Categorie c : categories){
             System.out.println("ID : "+ c.getId_categorie());
@@ -87,13 +87,13 @@ public class Main {
 
         // Appeler la méthode insererJaime pour insérer le "like" dans la base de données
         jaimeServices.insererJaime(jaime);*/
-        List<Projet> projets = ps.afficher();
+        /*List<Projet> projets = ps.afficher();
         for (Projet projet : projets) {
             ps.calculerNombreJaimePourProjet(projet);
             System.out.println("ID: " + projet.getId());
             System.out.println("Titre: " + projet.getTitre());
             System.out.println("jaimes " + projet.getNombreJaime());
-        }
+        }*/
 
     }
 }

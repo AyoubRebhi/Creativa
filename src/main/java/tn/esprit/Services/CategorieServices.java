@@ -16,9 +16,10 @@ public class CategorieServices implements InterfaceCRUD<Categorie> {
     @Override
     public void ajouter(Categorie categorie) {
         try{
-            String req="INSERT INTO `categorie`(`titre`) VALUES(?)";
+            String req="INSERT INTO `categorie`(`titre`,`image`) VALUES(?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setString(1,categorie.getTitre());
+            ps.setString(2,categorie.getCategorieImage());
 
             ps.executeUpdate();
             System.out.println("Categorie ajoutée avec succes");
@@ -30,10 +31,11 @@ public class CategorieServices implements InterfaceCRUD<Categorie> {
     @Override
     public void modifier(Categorie categorie) {
         try{
-            String req="UPDATE `categorie` SET `titre`=? WHERE `id_categorie`= ?";
+            String req="UPDATE `categorie` SET `titre`=? ,`image`=? WHERE `id_categorie`= ?";
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setString(1,categorie.getTitre());
-            ps.setInt(2,categorie.getId_categorie());
+            ps.setString(2, categorie.getCategorieImage());
+            ps.setInt(3,categorie.getId_categorie());
 
             ps.executeUpdate();
             System.out.println("Categorie modifiée avec succes");
@@ -51,9 +53,9 @@ public class CategorieServices implements InterfaceCRUD<Categorie> {
 
             ps.executeUpdate();
             System.out.println("Categorie supprimée avec succes");
-    }catch(SQLException ex){
-        ex.printStackTrace();
-    }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
     }
 
 
@@ -66,7 +68,8 @@ public class CategorieServices implements InterfaceCRUD<Categorie> {
             while (rs.next()) {
                 int id = rs.getInt("id_categorie");
                 String titre = rs.getString("titre");
-                Categorie categorie = new Categorie(id, titre);
+                String image = rs.getString("image");
+                Categorie categorie = new Categorie(id, titre,image);
                 categories.add(categorie);
             }
         } catch (SQLException ex) {
@@ -85,6 +88,7 @@ public class CategorieServices implements InterfaceCRUD<Categorie> {
                     categorie = new Categorie();
                     categorie.setId_categorie(rs.getInt("id_categorie"));
                     categorie.setTitre(rs.getString("titre"));
+                    categorie.setCategorieImage(rs.getString("image"));
                 }
             }
 
@@ -116,9 +120,6 @@ public class CategorieServices implements InterfaceCRUD<Categorie> {
         }
         return nbProjetsParCategorie;
     }
-
-
-
 
 }
 
