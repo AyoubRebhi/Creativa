@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.InterfaceAdmin">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.InterfaceAdmin">
    <children>
       <Button fx:id="afficherBTN" layoutX="37.0" layoutY="167.0" mnemonicParsing="false" onAction="#AfficherCommande" prefHeight="42.0" prefWidth="140.0" style="-fx-background-color: #D25454;" text="Afficher Commandes" />
       <Button fx:id="afficherLivBTN" layoutX="37.0" layoutY="237.0" mnemonicParsing="false" onAction="#AfficherLivraison" prefHeight="42.0" prefWidth="140.0" style="-fx-background-color: #D25454;" text="Afficher Livraisons" />

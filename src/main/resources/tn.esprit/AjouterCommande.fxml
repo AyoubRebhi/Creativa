@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterCommande">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjouterCommande">
     <children>
         <Label fx:id="ajouter_commandes" layoutX="172.0" layoutY="19.0" text="Ajouter Commandes" textFill="#764949">
             <font>
@@ -22,10 +22,10 @@
                 <Font size="16.0" />
             </font>
         </Button>
-        <TextField fx:id="code_promoTF" layoutX="394.0" layoutY="277.0" prefHeight="30.0" prefWidth="274.0" promptText="Code promo" />
-        <Text fill="#0000005c" layoutX="408.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avez-vous un code promo?" />
+        <TextField fx:id="code_promoTF" layoutX="299.0" layoutY="286.0" prefHeight="30.0" prefWidth="217.0" promptText="Code promo" />
+        <Text fill="#0000005c" layoutX="296.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avez-vous un code promo?" />
         <TextField fx:id="id_userTF" layoutX="22.0" layoutY="69.0" promptText="Nom et prénom" />
-      <Button fx:id="PasserLiv" layoutX="469.0" layoutY="23.0" mnemonicParsing="false" onAction="#PasserLiv" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #999999;" text="Passer à la livraison" textFill="WHITE">
+      <Button fx:id="PasserLiv" layoutX="441.0" layoutY="13.0" mnemonicParsing="false" onAction="#PasserLiv" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #999999;" text="Passer à la livraison" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font></Button>
@@ -36,14 +36,17 @@
       <DatePicker fx:id="datePicker2" layoutX="217.0" layoutY="180.0" prefHeight="26.0" prefWidth="158.0" />
         <Text fill="#0000005c" layoutX="22.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de la commande" />
         <Text fill="#0000005c" layoutX="206.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date estimée de la livraison" wrappingWidth="150.39999999999986" />
-        <Pane layoutX="17.0" layoutY="250.0" prefHeight="180.0" prefWidth="300.0" styleClass="cadre">
-            <Label fx:id="prixProduitLabel" layoutX="10.0" layoutY="23.0" prefHeight="23.0" prefWidth="180.0" styleClass="MTtotalLabel" />
-            <Label fx:id="fraisLivLabel" layoutX="10.0" layoutY="77.0" prefHeight="23.0" prefWidth="180.0" styleClass="MTtotalLabel" />
-            <Text fx:id="MTtext1" layoutX="10.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frais de livraison:" wrappingWidth="180.0" />
-            <Text fx:id="MTtext2" layoutX="10.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix du produit:" wrappingWidth="180.0" />
-            <Text fx:id="MTtext" layoutX="10.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant total:" wrappingWidth="180.0" />
-            <Label fx:id="MTtotalLabel" layoutX="10.0" layoutY="140.0" prefHeight="23.0" prefWidth="180.0" styleClass="MTtotalLabel" />
+        <Pane layoutY="244.0" prefHeight="180.0" prefWidth="300.0" styleClass="cadre">
+            <Label fx:id="prixProduitLabel" layoutY="21.0" prefHeight="23.0" prefWidth="180.0" styleClass="MTtotalLabel" />
+            <Label fx:id="fraisLivLabel" layoutX="10.0" layoutY="97.0" prefHeight="23.0" prefWidth="145.0" styleClass="MTtotalLabel" text="8" />
+            <Text fx:id="MTtext1" layoutX="10.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frais de livraison:" wrappingWidth="180.0" />
+            <Text fx:id="MTtext" layoutX="10.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant total:" wrappingWidth="180.0" />
+            <Label fx:id="MTtotalLabel" layoutY="148.0" prefHeight="23.0" prefWidth="180.0" styleClass="MTtotalLabel" />
+         <Text fx:id="MTtext3" layoutX="10.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remise" wrappingWidth="86.0625" />
+            <Text fx:id="MTtext2" layoutX="10.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix du produit:" wrappingWidth="180.0" />
+         <Label fx:id="RemiseLabel" layoutX="10.0" layoutY="60.0" prefHeight="17.0" prefWidth="86.0" />
         </Pane>
+      <Button fx:id="appliquerID" layoutX="528.0" layoutY="288.0" mnemonicParsing="false" onAction="#AppliquerCode" prefHeight="26.0" prefWidth="71.0" text="Appliquer" />
 
     </children>
 </AnchorPane>

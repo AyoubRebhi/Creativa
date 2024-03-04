@@ -1,29 +1,20 @@
-package tn.esprit.controllers;
+package tn.esprit.Controllers;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
-import tn.esprit.Models.Commande;
 import tn.esprit.Models.Livraison;
-import tn.esprit.Services.ServiceCommande;
 import tn.esprit.Services.ServiceLivraison;
-import javafx.fxml.Initializable;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.util.Map;
 import java.util.ResourceBundle;
-import com.twilio.Twilio;
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
+
 public class AjouterLivraison implements Initializable{
     @FXML
     private TextField adresseTF;

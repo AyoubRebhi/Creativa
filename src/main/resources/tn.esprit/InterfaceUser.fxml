@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.InterfaceUser">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.InterfaceUser">
    <children>
       <Button fx:id="ajouterBTN" layoutX="72.0" layoutY="100.0" mnemonicParsing="false" onAction="#AjouterC" prefHeight="42.0" prefWidth="149.0" style="-fx-background-color: #F0B27A;" text="Ajouter Commande" />
       <Button fx:id="AfficherBTN" layoutX="72.0" layoutY="177.0" mnemonicParsing="false" onAction="#AfficherC" prefHeight="42.0" prefWidth="150.0" style="-fx-background-color: #F0B27A;" text="Afficher Commande" />

@@ -1,4 +1,4 @@
-package tn.esprit.controllers;
+package tn.esprit.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class InterfaceAdmin {
     @FXML
@@ -40,7 +39,7 @@ public class InterfaceAdmin {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherCommande.fxml"));
         try {
             Parent root = loader.load();
-            AfficherCommande controller = loader.getController();
+            AfficherCommande Controller = loader.getController();
             interfaceAdmin.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();

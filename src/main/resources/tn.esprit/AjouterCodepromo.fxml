@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterCodepromo">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjouterCodepromo">
    <children>
       <Label fx:id="label" layoutX="163.0" layoutY="14.0" prefHeight="42.0" prefWidth="258.0" text="Ajouter code promo" />
       <TextField fx:id="codepromoTF" layoutX="42.0" layoutY="122.0" promptText="code promo" />

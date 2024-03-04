@@ -5,9 +5,15 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.TilePane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherCommande">
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherCommande">
    <children>
+      <TilePane fx:id="tilePane" orientation="HORIZONTAL" prefWidth="600.0" prefHeight="400.0">
+         <!-- Les éléments de la liste seront ajoutés ici dynamiquement -->
+      </TilePane>
       <ListView fx:id="listView" layoutX="32.0" layoutY="36.0" prefHeight="311.0" prefWidth="536.0" />
       <Label fx:id="labelFX" layoutX="179.0" prefHeight="39.0" prefWidth="270.0" text="Liste des commandes" textAlignment="CENTER" textFill="#764949">
          <font>

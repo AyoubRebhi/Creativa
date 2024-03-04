@@ -1,4 +1,4 @@
-package tn.esprit.controllers;
+package tn.esprit.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Map;
@@ -45,6 +44,8 @@ public class AjouterCommande implements Initializable{
     @FXML
     private TextField id_projetTF;
 
+    @FXML
+    private Button appliquerID;
 
     @FXML
     private TextField id_userTF;
@@ -75,7 +76,10 @@ public class AjouterCommande implements Initializable{
     @FXML
     private Text MTtext2;
 
-
+    @FXML
+    private Text MTtext3;
+    @FXML
+    private Label RemiseLabel;
 
 
 
@@ -180,20 +184,69 @@ public class AjouterCommande implements Initializable{
         String titreProjet = idCombobox.getSelectionModel().getSelectedItem().toString();
         try {
             float prixFloat = Float.parseFloat(sm.getPrixParTitreProjet(titreProjet));
-            prixFloat =prixFloat +8;
             float prix_produit = Float.parseFloat(sm.getprixproduit(titreProjet));
 
-            // Ajouter le symbole de la devise (8) avant le prix
-            String prix = String.valueOf(prixFloat);
-            String prixProduit = String.valueOf(prix_produit);
-            MTtotalLabel.setText(prix);
-            prixProduitLabel.setText(prixProduit);
+            // Récupérer le texte du RemiseLabel
+            String remiseLabel = RemiseLabel.getText();
+
+            // Vérifier si le texte du RemiseLabel n'est pas vide
+            if (!remiseLabel.isEmpty()) {
+                // Supprimer le symbole de pourcentage (%) du texte de remise et convertir en entier
+                int pourcentage = Integer.parseInt(remiseLabel.replace("%", ""));
+
+                // Calculer le montant de la remise
+                float remise = (pourcentage / 100.0f) * prixFloat;
+
+                // Calculer le prix après remise
+                float prixApresRemise = prixFloat - remise;
+
+                // Mettre à jour les labels avec les nouveaux prix
+                MTtotalLabel.setText(String.valueOf(prixApresRemise));
+                prixProduitLabel.setText(String.valueOf(prix_produit));
+            } else {
+                // Si le texte du RemiseLabel est vide, ajouter 8 au prixFloat
+                prixFloat += 8;
+
+                // Mettre à jour les labels avec les nouveaux prix
+                MTtotalLabel.setText(String.valueOf(prixFloat));
+                prixProduitLabel.setText(String.valueOf(prix_produit));
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (NumberFormatException e) {
+            // Gérer le cas où le texte du RemiseLabel n'est pas un nombre valide
+            // Peut-être afficher un message d'erreur à l'utilisateur
+            e.printStackTrace();
         }
     }
 
 
+
+    @FXML
+    void AppliquerCode(ActionEvent event) {
+        // Récupérer le code promo saisi par l'utilisateur
+        String codePromo = code_promoTF.getText(); // Supposons que le TextField contenant le code promo s'appelle codePromoTextField
+
+        // Vérifier si le code promo est valide
+        ServiceCodepromo serviceCodePromo = new ServiceCodepromo();
+        String pourcentageStr = serviceCodePromo.getPourcentageByCodePromo(Integer.parseInt(codePromo));
+
+        if (pourcentageStr != null) {
+            // Extraire la valeur numérique du pourcentage en supprimant le symbole de pourcentage (%)
+            int pourcentage = Integer.parseInt(pourcentageStr.replace("%", ""));
+
+            // Le code promo est valide, afficher le pourcentage de réduction dans le label Remiselabel
+            RemiseLabel.setText("Réduction: " + pourcentage + "%");
+
+            // Mettre à jour le label MTtotalLabel avec le nouveau prix après remise
+            float prixFloat = Float.parseFloat(MTtotalLabel.getText());
+            float nouveauPrix = prixFloat - (prixFloat * (pourcentage / 100.0f));
+            MTtotalLabel.setText(String.valueOf(nouveauPrix));
+        } else {
+            // Le code promo n'est pas valide, afficher un message d'erreur
+            RemiseLabel.setText("Code promo invalide");
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {

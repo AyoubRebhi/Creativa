@@ -1,4 +1,4 @@
-package tn.esprit.controllers;
+package tn.esprit.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,12 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import tn.esprit.Models.Codepromo;
-import tn.esprit.Models.Commande;
 import tn.esprit.Services.ServiceCodepromo;
-import tn.esprit.Services.ServiceCommande;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 
 public class AjouterCodepromo {

@@ -114,5 +114,20 @@ public class ServiceCodepromo implements InterfaceCodePromo<Codepromo> {
 
     }
 
+    public String getPourcentageByCodePromo(int codePromo) {
+        String pourcentage = null;
+        String req = "SELECT pourcentage FROM code_promo WHERE code_promo = ?";
+        try (PreparedStatement ps = conn.prepareStatement(req)) {
+            ps.setInt(1, codePromo);
+            try (ResultSet res = ps.executeQuery()) {
+                if (res.next()) {
+                    pourcentage = res.getString("pourcentage");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pourcentage;
+    }
 
 }
