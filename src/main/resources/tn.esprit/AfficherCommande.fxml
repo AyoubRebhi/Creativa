@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
 
-
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherCommande">
+<AnchorPane prefHeight="690.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherCommande">
    <children>
-      <TilePane fx:id="tilePane" orientation="HORIZONTAL" prefWidth="600.0" prefHeight="400.0">
-         <!-- Les éléments de la liste seront ajoutés ici dynamiquement -->
-      </TilePane>
-      <ListView fx:id="listView" layoutX="32.0" layoutY="36.0" prefHeight="311.0" prefWidth="536.0" />
-      <Label fx:id="labelFX" layoutX="179.0" prefHeight="39.0" prefWidth="270.0" text="Liste des commandes" textAlignment="CENTER" textFill="#764949">
-         <font>
-            <Font name="System Bold Italic" size="27.0" />
-         </font>
-      </Label>
-      <Button fx:id="updateBTN" layoutX="468.0" layoutY="355.0" mnemonicParsing="false" onAction="#ModifierCommande" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #2F5AE9;" text="Modifier" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font></Button>
-      <Button fx:id="suppBTN" layoutX="349.0" layoutY="355.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #6BDBE8;" text="Annuler" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font></Button>
-      <Button fx:id="retourBTN" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#Retour" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE" />
+      <ScrollPane layoutX="33.0" layoutY="113.0" prefHeight="280.0" prefWidth="708.0">
+         <content>
+            <HBox fx:id="EMPHBox" prefHeight="232.0" prefWidth="1039.0" styleClass="hBox_main" stylesheets="@styles.css" />
+         </content>
+      </ScrollPane>
+      <ComboBox fx:id="sortOrderComBox" layoutX="149.0" layoutY="55.0" prefHeight="25.0" prefWidth="105.0" styleClass="side_left" stylesheets="@styles.css" />
+      <ComboBox fx:id="criteriaComBox" layoutX="33.0" layoutY="55.0" prefHeight="25.0" prefWidth="105.0" styleClass="side_left" stylesheets="@styles.css" />
+      <Button fx:id="sortButton" layoutX="266.0" layoutY="55.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="86.0" styleClass="btn_conf" stylesheets="@styles.css" text="sort" />
+      <TextField fx:id="searchBarEvents" layoutX="509.0" layoutY="53.0" prefHeight="29.0" prefWidth="236.0" styleClass="pane_navBar" stylesheets="@styles.css" />
+      <Label layoutX="461.0" layoutY="59.0" text="Search" />
+      <DatePicker fx:id="date1" layoutX="35.0" layoutY="529.0" />
+      <DatePicker fx:id="date222" layoutX="222.0" layoutY="529.0" />
+      <TextField fx:id="text1" layoutX="423.0" layoutY="529.0" />
+      <TextField fx:id="text2" layoutX="584.0" layoutY="529.0" />
+      <TextField fx:id="text3" layoutX="755.0" layoutY="529.0" />
+      <Text layoutX="45.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date" />
+      <Text layoutX="232.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date estimée" />
+      <Text layoutX="423.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="mt total" />
+      <Text layoutX="592.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="code promo" />
+      <Text layoutX="769.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="status" />
+      <Button fx:id="modifierBTN" layoutX="804.0" layoutY="621.0" mnemonicParsing="false" onAction="#ModifyResUserBtn" text="Button" />
+      <TextField fx:id="id_user" layoutX="33.0" layoutY="609.0" visible="false" />
+      <TextField fx:id="id_projet" layoutX="255.0" layoutY="609.0" visible="false" />
+      <Text layoutX="46.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text layoutX="266.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <TextField fx:id="prix1" layoutX="486.0" layoutY="609.0" visible="false" />
+      <TextField fx:id="frais" layoutX="643.0" layoutY="608.0" visible="false" />
+      <TextField fx:id="id_cmd" layoutX="45.0" layoutY="437.0" visible="false" />
    </children>
+
 </AnchorPane>

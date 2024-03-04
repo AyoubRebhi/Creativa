@@ -4,10 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import tn.esprit.Models.Codepromo;
@@ -71,6 +74,17 @@ public class AjouterCodepromo {
 
         // Réinitialisation des champs et mise à jour des notifications
         notificationBTN(null);
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/Time.fxml"));
+            Parent root = loader.load();
+            Time timeController = loader.getController();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

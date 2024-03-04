@@ -6,7 +6,10 @@ import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import tn.esprit.Models.Livraison;
 import tn.esprit.Services.ServiceLivraison;
 
@@ -110,7 +113,7 @@ public class AjouterLivraison implements Initializable{
         alert.setContentText("La livraison a été ajoutée avec succès !");
         alert.showAndWait();
 
-        // Envoi du message Twilio
+       /* // Envoi du message Twilio
         String messageText = "Nous sommes heureux de vous informer que votre commande est actuellement en cours de traitement.\nNotre équipe s'affaire à préparer vos articles avec le plus grand soin afin de vous garantir une satisfaction totale.";
         final String ACCOUNT_SID = "AC54e9aa0a574aae8b664854b28ca0cab2";
         final String AUTH_TOKEN = "dcb6fe67dd51d548e3a9df5b83a5fc55";
@@ -121,7 +124,10 @@ public class AjouterLivraison implements Initializable{
                         messageText)
                 .create();
         System.out.println(message.getSid());
+
+*/
     }
+
 
 
 

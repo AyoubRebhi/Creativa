@@ -33,6 +33,13 @@
       <Text layoutX="592.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="code promo" />
       <Text layoutX="769.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="status" />
       <Button fx:id="modifierBTN" layoutX="804.0" layoutY="621.0" mnemonicParsing="false" onAction="#ModifyResUserBtn" text="Button" />
+      <TextField fx:id="id_user" layoutX="33.0" layoutY="609.0" visible="false" />
+      <TextField fx:id="id_projet" layoutX="255.0" layoutY="609.0" visible="false" />
+      <Text layoutX="46.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text layoutX="266.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <TextField fx:id="prix1" layoutX="486.0" layoutY="609.0" />
+      <TextField fx:id="frais" layoutX="643.0" layoutY="608.0" />
+      <TextField fx:id="id_cmd" layoutX="45.0" layoutY="437.0" visible="false" />
     </children>
 
 </AnchorPane>

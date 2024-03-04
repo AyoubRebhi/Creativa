@@ -1,11 +1,43 @@
-/* Style pour la HBox */
-.hBox_main {
-    -fx-spacing: 10px; /* Espace entre les éléments */
+/* Style pour la ListView */
+.list-view {
+    -fx-background-color: #f2f2f2; /* Couleur de fond */
+    -fx-padding: 10px; /* Espacement intérieur */
 }
 
-/* Style pour chaque élément dans la HBox */
-.hBox_main > * {
-    -fx-border-color: black; /* Couleur de la bordure */
+/* Style pour les cellules de la ListView */
+.list-cell {
+    -fx-background-color: transparent; /* Couleur de fond transparente */
+    -fx-text-fill: #333333; /* Couleur du texte */
+    -fx-font-size: 14px; /* Taille de la police */
+}
+
+/* Style pour les cellules sélectionnées */
+.list-cell:selected {
+    -fx-background-color: #cce6ff; /* Couleur de fond lors de la sélection */
+}
+
+/* Style pour la bordure des cellules */
+.list-cell {
+    -fx-border-color: #cccccc; /* Couleur de la bordure */
     -fx-border-width: 1px; /* Largeur de la bordure */
-    -fx-padding: 5px; /* Espace à l'intérieur de chaque élément */
+    -fx-border-radius: 5px; /* Rayon des coins de la bordure */
+}
+
+/* Style pour le séparateur entre les cellules */
+.list-cell {
+    -fx-separator-color: #dddddd; /* Couleur du séparateur */
+}
+
+/* Style pour la barre de défilement de la ListView */
+.list-view .scroll-bar {
+    -fx-background-color: #f2f2f2; /* Couleur de fond */
+    -fx-background-radius: 5px; /* Rayon des coins */
+}
+
+/* Style pour le sélecteur de la ListView */
+.list-view .virtual-flow {
+    -fx-background-color: #f2f2f2; /* Couleur de fond */
+    -fx-border-color: #cccccc; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-border-radius: 5px; /* Rayon des coins */
 }

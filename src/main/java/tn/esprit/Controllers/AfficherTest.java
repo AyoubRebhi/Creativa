@@ -10,6 +10,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import tn.esprit.Models.Commande;
 import tn.esprit.Services.ServiceCommande;
 
@@ -47,12 +48,26 @@ public class AfficherTest implements Initializable {
 
     @FXML
     private TextField text3;
+    @FXML
+    private TextField prix1;
+
+    @FXML
+    private TextField frais;
 
     @FXML
     private DatePicker date1;
 
     @FXML
     private DatePicker date222;
+
+    @FXML
+    private TextField id_projet;
+
+    @FXML
+    private TextField id_user;
+
+    @FXML
+    private TextField id_cmd;
 
     @FXML
     private ListView<Commande> listView;
@@ -95,20 +110,25 @@ public class AfficherTest implements Initializable {
             montantTotal = 0.0;
         }
 
-        double prixProduit = commande.getPrix_produit();
-        double fraisLivraison = commande.getFrais_livraison();
+        Double prixProduit = Double.valueOf(commande.getPrix_produit()); // Prix du produit peut être null
+        double prixProduitValue = prixProduit != null ? prixProduit.floatValue() : 0.0; // Défaut à 0.0 si null
+
         int codePromo = commande.getCode_promo();
         String status = commande.getStatus();
+        float prix = commande.getPrix_produit();
+        float fraisLivraison= commande.getFrais_livraison();
 
         Label dateLabel = new Label("Date de la commande: " + date);
         Label dateLivraisonEstimeeLabel = new Label("Date de livraison estimée: " + dateLivraisonEstimee);
         Label presenterLabel3 = new Label("Montant total: " + montantTotal);
-        Label presenterLabel4 = new Label("Prix produit: " + prixProduit);
+        Label presenterLabel4 = new Label("Prix produit: " + prixProduitValue); // Utilisation de prixProduitValue
         Label presenterLabel5 = new Label("Frais de livraison: " + fraisLivraison);
         Label presenterLabel6 = new Label("Code promo: " + codePromo);
         Label presenterLabel7 = new Label("Statut: " + status);
+        Label presenterLabel8 = new Label("Prix: " + prix);
+        Label presenterLabel9 = new Label("Frais de livraison: " + fraisLivraison);
 
-        card.getChildren().addAll(dateLabel, dateLivraisonEstimeeLabel, presenterLabel3, presenterLabel4, presenterLabel5, presenterLabel6, presenterLabel7);
+        card.getChildren().addAll(dateLabel, dateLivraisonEstimeeLabel, presenterLabel3, presenterLabel4, presenterLabel5, presenterLabel6, presenterLabel7, presenterLabel8, presenterLabel9);
 
         card.setSpacing(10);
         card.setPadding(new Insets(10));
@@ -123,35 +143,70 @@ public class AfficherTest implements Initializable {
             text1.setText(String.valueOf(finalMontantTotal));
             text2.setText(String.valueOf(codePromo));
             text3.setText(status);
+            id_user.setText(String.valueOf(commande.getId_user()));
+            id_projet.setText(String.valueOf(commande.getId_projet()));
+            prix1.setText(String.valueOf(prixProduitValue));
+            frais.setText(String.valueOf(fraisLivraison));
+            id_cmd.setText(String.valueOf(commande.getId_cmd()));
         });
         return card;
     }
 
+
     @FXML
     void ModifyResUserBtn(ActionEvent event) {
         try {
-            if (listView.getSelectionModel().getSelectedItem() == null) {
-                System.out.println("Veuillez sélectionner une commande à modifier.");
-            } else {
-                int selectedCommandId = listView.getSelectionModel().getSelectedItem().getId_cmd();
+            int idUser = Integer.parseInt(id_user.getText());
+            int idProjet = Integer.parseInt(id_projet.getText());
 
-                Commande newCommande = new Commande();
-                newCommande.setId_cmd(selectedCommandId);
-                newCommande.setMt_total(text1.getText());
-                newCommande.setCode_promo(Integer.parseInt(text2.getText()));
-                newCommande.setStatus(text3.getText());
-                newCommande.setDate(java.sql.Date.valueOf(date1.getValue()));
-                newCommande.setDate_livraison_estimee(java.sql.Date.valueOf(date222.getValue()));
+            String mtTotal = text1.getText();
+            int codePromo = Integer.parseInt(text2.getText());
+            String status = text3.getText();
+            LocalDate date = date1.getValue();
+            LocalDate dateLivraisonEstimee = date222.getValue();
 
-                SR.modifier(newCommande);
+            float prix = 0.0f; // Initialisation du prix
+            float fraisLivraison = 0.0f; // Initialisation du frais de livraison
 
-                listView.getItems().clear();
-                listView.getItems().addAll(SR.afficher());
+            // Vérification et conversion du prix
+            if (!prix1.getText().isEmpty()) {
+                prix = Float.parseFloat(prix1.getText());
+            }
+
+            // Vérification et conversion des frais de livraison
+            if (!frais.getText().isEmpty()) {
+                fraisLivraison = Float.parseFloat(frais.getText());
+            }
+
+            Commande newCommande = new Commande();
+            newCommande.setMt_total(mtTotal);
+            newCommande.setCode_promo(codePromo);
+            newCommande.setStatus(status);
+            newCommande.setDate(java.sql.Date.valueOf(date));
+            newCommande.setDate_livraison_estimee(java.sql.Date.valueOf(dateLivraisonEstimee));
+            newCommande.setId_user(idUser);
+            newCommande.setId_projet(idProjet);
+            newCommande.setPrix_produit(prix);
+            newCommande.setFrais_livraison(fraisLivraison);
+            newCommande.setId_cmd(Integer.parseInt(id_cmd.getText()));
+            System.out.println(newCommande);
+
+            SR.modifier(newCommande);
+
+            EMPHBox.getChildren().clear(); // Effacer les anciennes cartes
+            List<Commande> commandes = SR.afficher(); // Récupérer les nouvelles commandes
+            for (Commande commande : commandes) {
+                VBox card = createCardView(commande); // Créer une nouvelle carte pour chaque commande
+                EMPHBox.getChildren().add(card); // Ajouter la carte à la HBox
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (NumberFormatException e) {
+            // Gérer l'exception si la conversion en float échoue
+            System.err.println("Erreur de format pour le prix ou les frais de livraison : " + e.getMessage());
         }
     }
+
 
 
     @FXML

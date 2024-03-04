@@ -215,6 +215,92 @@ public class ServiceCommande implements InterfaceCRUD<Commande> {
         }
         return codePromoDejaUtilise;
     }
+public int getidbyotherFields(int idUser, int idProjet, Date date, String mtTotal, Date dateLivraisonEstimee, int codePromo, String status, float prixProduit, float fraisLivraison) throws SQLException {
+    int id = -1;
+    String req = "SELECT id_cmd FROM commande WHERE id_user = ? AND id_projet = ? AND date = ? AND mt_total = ? AND date_livraison_estimee = ? AND code_promo = ? AND status = ? AND prix = ? AND frais_liv = ?";
+    try (PreparedStatement ps = conn.prepareStatement(req)) {
+        ps.setInt(1, idUser);
+        ps.setInt(2, idProjet);
+        ps.setDate(3, date);
+        ps.setString(4, mtTotal);
+        ps.setDate(5, dateLivraisonEstimee);
+        ps.setInt(6, codePromo);
+        ps.setString(7, status);
+        ps.setFloat(8, prixProduit);
+        ps.setFloat(9, fraisLivraison);
+        System.out.println(ps.toString());
+        try (ResultSet res = ps.executeQuery()) {
+            if (res.next()) {
+                id = res.getInt(1);
+            }
+        }
+    }
+    return id;
+}
+
+public Commande getCommandeByotherFields(int idUser, int idProjet, Date date, String mtTotal, Date dateLivraisonEstimee, int codePromo, String status, float prixProduit, float fraisLivraison) throws SQLException {
+    Commande c = new Commande();
+    String req = "SELECT * FROM commande WHERE id_user = ? AND id_projet = ? AND date = ? AND mt_total = ? AND date_livraison_estimee = ? AND code_promo = ? AND status = ? AND prix = ? AND frais_liv = ?";
+    try (PreparedStatement ps = conn.prepareStatement(req)) {
+        ps.setInt(1, idUser);
+        ps.setInt(2, idProjet);
+        ps.setDate(3, date);
+        ps.setString(4, mtTotal);
+        ps.setDate(5, dateLivraisonEstimee);
+        ps.setInt(6, codePromo);
+        ps.setString(7, status);
+        ps.setFloat(8, prixProduit);
+        ps.setFloat(9, fraisLivraison);
+        try (ResultSet res = ps.executeQuery()) {
+            if (res.next()) {
+                c.setId_cmd(res.getInt(1));
+                c.setId_user(res.getInt(2));
+                c.setId_projet(res.getInt(3));
+                c.setDate(res.getDate(4));
+                c.setMt_total(res.getString(5));
+                c.setDate_livraison_estimee(res.getDate(6));
+                c.setCode_promo(res.getInt(7));
+                c.setStatus(res.getString(8));
+                c.setPrix_produit(res.getFloat(9));
+                c.setFrais_livraison(res.getFloat(10));
+            }
+        }
+    }
+    return c;
+}
+    public List<Commande> searchCommand(String searchText) throws SQLException {
+        String query = "SELECT * FROM Commande WHERE id_cmd LIKE ? OR id_user LIKE ? OR id_projet LIKE ? OR date LIKE ? OR mt_total LIKE ? OR date_livraison_estimee LIKE ? OR code_promo LIKE ? OR status LIKE ? OR prix LIKE ? OR frais_liv LIKE ?";
+        List<Commande> searchResults = new ArrayList<>();
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            String wildcardSearch = "%" + searchText + "%";
+            for (int i = 1; i <= 10; i++) {
+                pstmt.setString(i, wildcardSearch);
+            }
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    Commande commande = new Commande(
+                            rs.getInt("id_cmd"),
+                            rs.getInt("id_user"),
+                            rs.getInt("id_projet"),
+                            rs.getDate("date"),
+                            rs.getString("mt_total"),
+                            rs.getDate("date_livraison_estimee"),
+                            rs.getInt("code_promo"),
+                            rs.getString("status"),
+                            rs.getFloat("prix"),
+                            rs.getFloat("frais_liv")
+                    );
+                    searchResults.add(commande);
+                }
+            }
+        }
+
+        return searchResults;
+    }
+
+
 
 
 }

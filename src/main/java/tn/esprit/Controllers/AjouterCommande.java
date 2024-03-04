@@ -126,7 +126,7 @@ public class AjouterCommande implements Initializable{
         c.setDate(Date.valueOf(datePicker.getValue()));
         c.setMt_total(String.valueOf(MTtotalLabel.getText()));
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        c.setDate(Date.valueOf(datePicker2.getValue()));
+        c.setDate_livraison_estimee(Date.valueOf(datePicker2.getValue()));
         c.setMt_total(MTtotalLabel.getText());
         c.setCode_promo(Integer.parseInt(codePromo));
         c.setStatus(statusTF.getText());
