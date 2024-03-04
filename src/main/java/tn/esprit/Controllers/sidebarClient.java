@@ -9,14 +9,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import tn.esprit.Models.User;
 import tn.esprit.Models.session;
+import tn.esprit.Services.UserService;
 
 import java.io.IOException;
 
 public class sidebarClient {
 
     @FXML
-    private Label nom;
+    private Label name;
     @FXML
     private Button acceuil;
 
@@ -28,7 +30,7 @@ public class sidebarClient {
 
     @FXML
     private Hyperlink out;
-
+UserService userService=new UserService();
     @FXML
     private void redirectAcceuil(ActionEvent event) {
         try {
@@ -50,7 +52,10 @@ public class sidebarClient {
             // Gérer les erreurs de chargement de la page de connexion
         }
     }
-
+    @FXML
+    void initialize() {
+        updateLabels();
+    }
     @FXML
     private void directToProfile(ActionEvent event) {
         try {
@@ -116,5 +121,15 @@ public class sidebarClient {
             // Gérer les erreurs de chargement de la page de connexion
         }
         session.id_utilisateur = 0; // Assurez-vous de réinitialiser la session ou l'utilisateur approprié
+    }
+    private void updateLabels() {
+        User utilisateur = userService.getById(session.id_utilisateur);
+
+
+        // Mettez à jour les labels avec les données de l'utilisateur
+        name.setText(utilisateur.getUsername());
+
+
+
     }
 }

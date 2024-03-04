@@ -47,7 +47,10 @@ public class ResetPasswordController implements Initializable {
             showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Veuillez saisir le nouveau mot de passe et confirmer.");
             return;
         }
-
+        if (newPassword.length() < 8) {
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Le nouveau mot de passe doit contenir au moins 8 caractères.");
+            return;
+        }
         if (!newPassword.equals(confirmPassword)) {
             showAlert(Alert.AlertType.ERROR, "Erreur", "Les mots de passe ne correspondent pas.");
             return;
