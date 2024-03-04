@@ -12,7 +12,7 @@
    <children>
       <TextField fx:id="id_cmdTF" layoutX="30.0" layoutY="98.0" promptText="id cmd" />
       <TextField fx:id="adresseTF" layoutX="358.0" layoutY="166.0" promptText="adresse" />
-      <TextField fx:id="id_userTF" layoutX="358.0" layoutY="98.0" promptText="Nom et prénom" />
+      <TextField fx:id="id_userTF" layoutX="207.0" layoutY="98.0" promptText="Nom et prénom" />
       <TextField fx:id="statusTF" disable="true" layoutX="30.0" layoutY="166.0" promptText="status" />
       <TextField fx:id="fraisTF" disable="true" layoutX="30.0" layoutY="247.0" promptText="Frais livraison" />
       <TextField fx:id="moyenLivTF" layoutX="358.0" layoutY="247.0" promptText="Moyen livraison" />

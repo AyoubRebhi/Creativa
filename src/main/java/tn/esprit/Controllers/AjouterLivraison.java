@@ -148,7 +148,4 @@ public class AjouterLivraison implements Initializable{
 
     }
 
-    public void setIdCommande(int idCmd) {
-        id_cmdTF.setText(String.valueOf(idCmd));
-    }
 }

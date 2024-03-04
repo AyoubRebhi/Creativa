@@ -238,6 +238,7 @@ public int getidbyotherFields(int idUser, int idProjet, Date date, String mtTota
     return id;
 }
 
+//
 public Commande getCommandeByotherFields(int idUser, int idProjet, Date date, String mtTotal, Date dateLivraisonEstimee, int codePromo, String status, float prixProduit, float fraisLivraison) throws SQLException {
     Commande c = new Commande();
     String req = "SELECT * FROM commande WHERE id_user = ? AND id_projet = ? AND date = ? AND mt_total = ? AND date_livraison_estimee = ? AND code_promo = ? AND status = ? AND prix = ? AND frais_liv = ?";
@@ -268,6 +269,7 @@ public Commande getCommandeByotherFields(int idUser, int idProjet, Date date, St
     }
     return c;
 }
+//pour faire la recherche dans la partie afficher commande
     public List<Commande> searchCommand(String searchText) throws SQLException {
         String query = "SELECT * FROM Commande WHERE id_cmd LIKE ? OR id_user LIKE ? OR id_projet LIKE ? OR date LIKE ? OR mt_total LIKE ? OR date_livraison_estimee LIKE ? OR code_promo LIKE ? OR status LIKE ? OR prix LIKE ? OR frais_liv LIKE ?";
         List<Commande> searchResults = new ArrayList<>();

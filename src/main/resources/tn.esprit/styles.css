@@ -1,43 +1,82 @@
-/* Style pour la ListView */
-.list-view {
-    -fx-background-color: #f2f2f2; /* Couleur de fond */
-    -fx-padding: 10px; /* Espacement intérieur */
+
+.date-picker {
+    -fx-font-size: 12pt;
+    -fx-pref-width: 158px;
+    -fx-pref-height: 26px;
 }
 
-/* Style pour les cellules de la ListView */
-.list-cell {
-    -fx-background-color: transparent; /* Couleur de fond transparente */
-    -fx-text-fill: #333333; /* Couleur du texte */
-    -fx-font-size: 14px; /* Taille de la police */
+.cadre {
+    -fx-border-color: #999999;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-color: #f2f2f2;
+    -fx-padding: 10px;
+
+}
+#RemiseLabel{
+    -fx-font-size: 10pt;
+    -fx-text-fill: #333333;
+}
+#MTtotalLabel{
+    -fx-font-size: 10pt;
+    -fx-text-fill: #333333;
+}
+#RemiseLabel{
+    -fx-font-size: 10pt;
+    -fx-text-fill: #333333;
+}
+#prixProduitLabel{
+    -fx-font-size: 10pt;
+    -fx-text-fill: #333333;
+}
+#fraisLivLabel{
+    -fx-font-size: 10pt;
+    -fx-text-fill: #333333;
 }
 
-/* Style pour les cellules sélectionnées */
-.list-cell:selected {
-    -fx-background-color: #cce6ff; /* Couleur de fond lors de la sélection */
+/* Appliquer des styles à la barre de recherche */
+#searchBarEvents {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #999999;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-pref-height: 30px;
+    -fx-font-size: 14px;
 }
 
-/* Style pour la bordure des cellules */
-.list-cell {
-    -fx-border-color: #cccccc; /* Couleur de la bordure */
-    -fx-border-width: 1px; /* Largeur de la bordure */
-    -fx-border-radius: 5px; /* Rayon des coins de la bordure */
+/* Appliquer des styles aux date pickers */
+#date1, #date222 {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #999999;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-pref-height: 30px;
+    -fx-font-size: 14px;
 }
 
-/* Style pour le séparateur entre les cellules */
-.list-cell {
-    -fx-separator-color: #dddddd; /* Couleur du séparateur */
+/* Appliquer des styles aux champs de texte */
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #999999;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-pref-height: 30px;
+    -fx-font-size: 14px;
 }
 
-/* Style pour la barre de défilement de la ListView */
-.list-view .scroll-bar {
-    -fx-background-color: #f2f2f2; /* Couleur de fond */
-    -fx-background-radius: 5px; /* Rayon des coins */
+
+/* Appliquer des styles au bouton modifierBTN */
+#modifierBTN {
+    -fx-background-color: #6DE94C;
+    -fx-text-fill: white;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 30px;
+    -fx-font-size: 14px;
+    -fx-border-radius: 3px;
 }
 
-/* Style pour le sélecteur de la ListView */
-.list-view .virtual-flow {
-    -fx-background-color: #f2f2f2; /* Couleur de fond */
-    -fx-border-color: #cccccc; /* Couleur de la bordure */
-    -fx-border-width: 1px; /* Largeur de la bordure */
-    -fx-border-radius: 5px; /* Rayon des coins */
+/* Appliquer des styles à la boîte HBox à l'intérieur de la ScrollPane */
+#EMPHBox {
+    -fx-spacing: 10px;
 }
+

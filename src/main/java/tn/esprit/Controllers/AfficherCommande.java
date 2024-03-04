@@ -29,16 +29,8 @@ public class AfficherCommande implements Initializable {
     private HBox EMPHBox;
 
     @FXML
-    private ComboBox<?> criteriaComBox;
-
-    @FXML
     private TextField searchBarEvents;
 
-    @FXML
-    private Button sortButton;
-
-    @FXML
-    private ComboBox<?> sortOrderComBox;
 
     @FXML
     private TextField text1;
@@ -71,6 +63,9 @@ public class AfficherCommande implements Initializable {
 
     @FXML
     private ListView<Commande> listView;
+
+    @FXML
+    private Button back;
 
     private final ServiceCommande SR = new ServiceCommande();
     private ObservableList<String> types;
@@ -228,9 +223,9 @@ public class AfficherCommande implements Initializable {
 
 
     @FXML
-    void backToBackBtn1(ActionEvent event) {
+    void back(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/interfaceAdmin.fxml"));
             loader.load();
         } catch (IOException e) {
             e.printStackTrace();

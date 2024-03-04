@@ -12,31 +12,31 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjouterCommande">
     <children>
-        <Label fx:id="ajouter_commandes" layoutX="172.0" layoutY="19.0" text="Ajouter Commandes" textFill="#764949">
+        <Label fx:id="ajouter_commandes" layoutX="151.0" layoutY="12.0" prefHeight="27.0" prefWidth="180.0" text="Ajouter Commandes" textFill="#764949">
             <font>
-                <Font name="System Bold Italic" size="27.0" />
+                <Font name="System Bold Italic" size="18.0" />
             </font>
         </Label>
-        <Button fx:id="continuerBTN" layoutX="494.0" layoutY="340.0" mnemonicParsing="false" onAction="#AjouterCommande" prefHeight="39.0" prefWidth="99.0" style="-fx-background-color: #6DE94C;" text="Ajouter" textFill="WHITE">
+        <Button fx:id="continuerBTN" layoutX="494.0" layoutY="340.0" mnemonicParsing="false" onAction="#AjouterCommande" prefHeight="39.0" prefWidth="99.0" text="Ajouter" textFill="WHITE">
             <font>
                 <Font size="16.0" />
             </font>
         </Button>
         <TextField fx:id="code_promoTF" layoutX="299.0" layoutY="286.0" prefHeight="30.0" prefWidth="217.0" promptText="Code promo" />
         <Text fill="#0000005c" layoutX="296.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avez-vous un code promo?" />
-        <TextField fx:id="id_userTF" layoutX="22.0" layoutY="69.0" promptText="Nom et prénom" />
-      <Button fx:id="PasserLiv" layoutX="441.0" layoutY="13.0" mnemonicParsing="false" onAction="#PasserLiv" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #999999;" text="Passer à la livraison" textFill="WHITE">
+        <TextField fx:id="id_userTF" layoutX="21.0" layoutY="95.0" promptText="Nom et prénom" />
+      <Button fx:id="PasserLiv" layoutX="480.0" layoutY="16.0" mnemonicParsing="false" onAction="#PasserLiv" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #999999;" text="Livraison" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font></Button>
         <Button fx:id="retourBTN" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#Retour" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE" />
-      <ComboBox fx:id="idCombobox" layoutX="22.0" layoutY="114.0" onAction="#select" prefWidth="150.0" promptText="Titre du projet" />
-      <TextField fx:id="statusTF" disable="true" layoutX="394.0" layoutY="109.0" promptText="status" />
-      <DatePicker fx:id="datePicker" layoutX="27.0" layoutY="180.0" prefHeight="26.0" prefWidth="158.0" />
-      <DatePicker fx:id="datePicker2" layoutX="217.0" layoutY="180.0" prefHeight="26.0" prefWidth="158.0" />
-        <Text fill="#0000005c" layoutX="22.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de la commande" />
-        <Text fill="#0000005c" layoutX="206.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date estimée de la livraison" wrappingWidth="150.39999999999986" />
-        <Pane layoutY="244.0" prefHeight="180.0" prefWidth="300.0" styleClass="cadre">
+      <ComboBox fx:id="idCombobox" layoutX="22.0" layoutY="141.0" onAction="#select" prefWidth="150.0" promptText="Titre du projet" />
+      <TextField fx:id="statusTF" disable="true" layoutX="408.0" layoutY="95.0" promptText="status" visible="false" />
+      <DatePicker fx:id="datePicker" layoutX="16.0" layoutY="215.0" prefHeight="26.0" prefWidth="158.0" />
+      <DatePicker fx:id="datePicker2" layoutX="18.0" layoutY="288.0" prefHeight="26.0" prefWidth="158.0" />
+        <Text fill="#0000005c" layoutX="20.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de la commande" />
+        <Text fill="#0000005c" layoutX="20.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date estimée de la livraison" wrappingWidth="150.39999999999986" />
+        <Pane layoutX="305.0" layoutY="82.0" prefHeight="180.0" prefWidth="272.0" styleClass="cadre">
             <Label fx:id="prixProduitLabel" layoutY="21.0" prefHeight="23.0" prefWidth="180.0" styleClass="MTtotalLabel" />
             <Label fx:id="fraisLivLabel" layoutX="10.0" layoutY="97.0" prefHeight="23.0" prefWidth="145.0" styleClass="MTtotalLabel" text="8" />
             <Text fx:id="MTtext1" layoutX="10.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frais de livraison:" wrappingWidth="180.0" />
@@ -44,9 +44,9 @@
             <Label fx:id="MTtotalLabel" layoutY="148.0" prefHeight="23.0" prefWidth="180.0" styleClass="MTtotalLabel" />
          <Text fx:id="MTtext3" layoutX="10.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remise" wrappingWidth="86.0625" />
             <Text fx:id="MTtext2" layoutX="10.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix du produit:" wrappingWidth="180.0" />
-         <Label fx:id="RemiseLabel" layoutX="10.0" layoutY="60.0" prefHeight="17.0" prefWidth="86.0" />
+         <Label fx:id="RemiseLabel" layoutX="10.0" layoutY="61.0" prefHeight="27.0" prefWidth="150.0" />
         </Pane>
-      <Button fx:id="appliquerID" layoutX="528.0" layoutY="288.0" mnemonicParsing="false" onAction="#AppliquerCode" prefHeight="26.0" prefWidth="71.0" text="Appliquer" />
+      <Button fx:id="appliquerID" layoutX="522.0" layoutY="288.0" mnemonicParsing="false" onAction="#AppliquerCode" prefHeight="26.0" prefWidth="71.0" text="Appliquer" />
 
     </children>
 </AnchorPane>
