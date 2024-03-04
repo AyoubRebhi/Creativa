@@ -103,8 +103,13 @@ public class usercellule {
             if (result.isPresent()) {
                 try {
                     int dureeEnMinutes = Integer.parseInt(result.get());
-                    bloquerUtilisateurAvecDuree(dureeEnMinutes);
-                    validInput = true;
+                    if (dureeEnMinutes > 0) {
+                        bloquerUtilisateurAvecDuree(dureeEnMinutes);
+                        validInput = true;
+                    } else {
+                        // Display an alert for invalid input
+                        afficherAlerteErreur("Erreur de Saisie", "Veuillez entrer un nombre entier positif pour la durée.");
+                    }
                 } catch (NumberFormatException e) {
                     // Display an alert for invalid input
                     afficherAlerteErreur("Erreur de Saisie", "Veuillez entrer un nombre entier pour la durée.");
