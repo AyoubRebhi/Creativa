@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
 import tn.esprit.Models.User;
@@ -36,6 +37,11 @@ public class changemdpArtist {
         // Vérifiez si le nouveau mot de passe et la confirmation correspondent
         if (!newmdp.getText().equals(newmdp1.getText())) {
             showAlert(Alert.AlertType.ERROR, "Erreur", "Le nouveau mot de passe ne correspond pas à la confirmation.");
+            return;
+        }
+
+        if (newmdp1.getText().length() < 8) {
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Le nouveau mot de passe doit contenir au moins 8 caractères.");
             return;
         }
 
@@ -106,7 +112,7 @@ public class changemdpArtist {
         }
     }
 
-    public void directtoprofile(ActionEvent event) {
+    public void directtoprofile(MouseEvent mouseEvent) {
         try {
             // Charger la page de connexion à partir du fichier FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileArtist.fxml"));
@@ -116,7 +122,7 @@ public class changemdpArtist {
             Scene scene = new Scene(root);
 
             // Obtenir la scène actuelle à partir de l'événement
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((javafx.scene.Node) mouseEvent.getSource()).getScene().getWindow();
 
             // Changer la scène actuelle vers la nouvelle scène de connexion
             stage.setScene(scene);

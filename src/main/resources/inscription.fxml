@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -113,5 +115,14 @@
             <Font name="Bold Italic Art" size="14.0" />
          </font>
       </Label>
+      <ProgressIndicator fx:id="progressIndicator" layoutX="411.0" layoutY="204.0" prefHeight="169.0" prefWidth="180.0" progress="0.0" visible="false" />
+      <ProgressIndicator fx:id="progressIndicator1" layoutX="423.0" layoutY="492.0" prefHeight="114.0" prefWidth="126.0" progress="0.0" />
+      <ProgressBar fx:id="progressBar" layoutX="349.0" layoutY="236.0" prefHeight="27.0" prefWidth="200.0" progress="0.0" visible="false" />
+      <Button layoutX="453.0" layoutY="9.0" mnemonicParsing="false" prefHeight="4.0" prefWidth="0.0" />
+      <ImageView fitHeight="159.0" fitWidth="28.0" layoutX="447.0" layoutY="8.0" onMouseClicked="#directToLogin" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/privious.png" />
+         </image>
+      </ImageView>
         </children>
     </AnchorPane>

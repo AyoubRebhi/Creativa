@@ -26,15 +26,11 @@
          <Label layoutX="-8.0" layoutY="194.0" prefHeight="31.0" prefWidth="213.0" text="confirmer votre nouveaux mot de passe" />
       </children>
    </AnchorPane>
-   <Button fx:id="btn" layoutX="210.0" layoutY="44.0" mnemonicParsing="false" onAction="#directtoprofile">
-      <graphic>
-         <ImageView fitHeight="31.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/privious.png" />
-            </image>
-         </ImageView>
-      </graphic>
-   </Button>
+   <ImageView fitHeight="31.0" fitWidth="74.0" layoutX="207.0" layoutY="41.0" onMouseClicked="#directtoprofile" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@images/privious.png" />
+      </image>
+   </ImageView>
 
 
 </AnchorPane>

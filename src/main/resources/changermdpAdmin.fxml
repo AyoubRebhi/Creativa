@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.Controllers.chageMdpAdmin"
+            prefHeight="400.0" prefWidth="600.0">
+    <fx:include source="sidebarAdmin.fxml" />
+    <AnchorPane layoutX="249.0" layoutY="64.0" prefHeight="367.0" prefWidth="415.0">
+        <children>
+            <Label layoutX="76.0" layoutY="21.0" text="changement du mot de passe" textFill="#a16d34">
+                <font>
+                    <Font name="System Italic" size="21.0" />
+                </font>
+            </Label>
+            <PasswordField fx:id="oldmdp" layoutX="173.0" layoutY="86.0" prefHeight="31.0" prefWidth="266.0" />
+            <PasswordField fx:id="newmdp" layoutX="180.0" layoutY="136.0" prefHeight="31.0" prefWidth="257.0" />
+            <PasswordField fx:id="newmdp1" layoutX="208.0" layoutY="184.0" prefHeight="31.0" prefWidth="226.0" />
+            <Button layoutX="158.0" layoutY="254.0" mnemonicParsing="false" onAction="#handlePasswordChange" prefHeight="26.0" prefWidth="126.0" text="modifier" />
+            <Label layoutX="14.0" layoutY="93.0" text="votre ancien mot de passe" />
+            <Label layoutX="6.0" layoutY="143.0" text="votre nouveaux mot de passe" />
+            <Label layoutX="-8.0" layoutY="194.0" prefHeight="31.0" prefWidth="213.0" text="confirmer votre nouveaux mot de passe" />
+        </children>
+    </AnchorPane>
+    <Button fx:id="btn" layoutX="210.0" layoutY="44.0" mnemonicParsing="false" onAction="#directtoprofile">
+        <graphic>
+            <ImageView fitHeight="31.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@images/privious.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+
+</AnchorPane>

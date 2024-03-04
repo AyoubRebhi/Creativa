@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import tn.esprit.Models.Role;
 import tn.esprit.Models.User;
@@ -50,7 +51,7 @@ public class inscription {
 
     @FXML
     private Button inscriptionButton;
-
+   public String verificationCode1;
     private UserService userService = new UserService(); // Injection du service
 
     public void adduser(ActionEvent event) {
@@ -94,7 +95,8 @@ public class inscription {
             }
 
             String verificationCode = generateVerificationCode();
-            sendVerificationEmail(email.getText(), verificationCode);
+             verificationCode1 = verificationCode;
+
 
             // Ouvrir la fenêtre de vérification
             if (openVerificationWindow(email.getText(), verificationCode)) {
@@ -126,13 +128,14 @@ public class inscription {
 
     private boolean openVerificationWindow(String userEmail, String verificationCode) {
         try {
+
             // Charger la page de vérification à partir du fichier FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/verification.fxml"));
             Parent root = loader.load();
 
             // Obtenez le contrôleur de la fenêtre de vérification
             VerificationController verificationController = loader.getController();
-
+            sendVerificationEmail(email.getText(), verificationCode1);
             // Passez les informations nécessaires au contrôleur de la fenêtre de vérification
             verificationController.setUserEmail(userEmail);
             verificationController.setVerificationCode(verificationCode);
@@ -194,5 +197,28 @@ public class inscription {
     private boolean validateEmail(String email) {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+    public void directToLogin(MouseEvent mouseEvent) {
+
+        try {
+            // Charger la page de connexion à partir du fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/log.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Obtenir la scène actuelle à partir de l'événement
+            Stage stage = (Stage) ((javafx.scene.Node) mouseEvent .getSource()).getScene().getWindow();
+
+            // Changer la scène actuelle vers la nouvelle scène de connexion
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement de la page de connexion
+        }
     }
 }

@@ -16,7 +16,8 @@ import tn.esprit.Services.UserService;
 
 import java.io.IOException;
 
-public class changemdpClient {
+public class chageMdpAdmin {
+
     @FXML
     public PasswordField oldmdp;
 
@@ -29,7 +30,7 @@ public class changemdpClient {
 
     @FXML
     private void handlePasswordChange(ActionEvent ActionEvent) {
-System.out.println("1"+newmdp.getText());
+        System.out.println("1"+newmdp.getText());
         System.out.println("2"+newmdp1.getText());
 
 
@@ -39,21 +40,23 @@ System.out.println("1"+newmdp.getText());
             return;
         }
 
-        if (newmdp1.getText().length() < 8) {
-            showAlert(Alert.AlertType.ERROR, "Erreur", "Le nouveau mot de passe doit contenir au moins 8 caractères.");
-            return;
-        }
         // Vérifiez si l'ancien mot de passe est correct
         if (!checkOldPassword(oldmdp.getText())) {
             showAlert(Alert.AlertType.ERROR, "Erreur", "Ancien mot de passe incorrect.");
             return;
         }
+        if (newmdp1.getText().length() < 8) {
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Le nouveau mot de passe doit contenir au moins 8 caractères.");
+            return;
+        }
+
 
         // Mettez à jour le mot de passe dans la base de données
         updatePassword(newmdp1.getText());
 
         // Affichez une alerte de succès
         showAlert(Alert.AlertType.INFORMATION, "Succès", "Mot de passe mis à jour avec succès.");
+        directTomdp(ActionEvent);
     }
 
     // Vérifie si l'ancien mot de passe est correct
@@ -87,10 +90,11 @@ System.out.println("1"+newmdp.getText());
         alert.setContentText(content);
         alert.showAndWait();
     }
+
     public void directTomdp(ActionEvent event) {
         try {
             // Charger la page de connexion à partir du fichier FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileClient.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileAdmin.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène
@@ -111,7 +115,7 @@ System.out.println("1"+newmdp.getText());
     public void directtoprofile(MouseEvent mouseEvent) {
         try {
             // Charger la page de connexion à partir du fichier FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileClient.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileAdmin.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène

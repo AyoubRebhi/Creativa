@@ -154,7 +154,16 @@ public class CarteFideliteService implements InterfaceCRUD<CarteFidelite> {
             e.printStackTrace();
         }
     }
-
+    public void AJOUTERPoints(int idUser, int pointsToRedeem) {
+        String sql = "UPDATE cartes_fidelite SET points = points + ? WHERE id_user = ?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(sql)) {
+            preparedStatement.setInt(1, pointsToRedeem);
+            preparedStatement.setInt(2, idUser);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public int soldecarte(int cardId) {
         int pointsBalance = 0;
         String sql = "SELECT points FROM cartes_fidelite  WHERE card_id = ?";

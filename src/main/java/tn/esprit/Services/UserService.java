@@ -432,4 +432,97 @@ public class  UserService implements InterfaceCRUD<User> {
         return false;
     }
 
+
+
+    public List<User> searchUsers(String keyword) {
+        List<User> users = new ArrayList<>();
+        String req = "SELECT * FROM user WHERE username LIKE ? OR email LIKE ?";
+
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setString(1, "%" + keyword + "%");
+            preparedStatement.setString(2, "%" + keyword + "%");
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    User user = new User();
+                    user.setId(resultSet.getInt("id_user"));
+                    user.setLastName(resultSet.getString("last_name"));
+                    user.setFirstName(resultSet.getString("first_name"));
+                    user.setUsername(resultSet.getString("username"));
+                    user.setPassword(resultSet.getString("password"));
+                    user.setRole(Role.valueOf(resultSet.getString("role")));
+                    user.setBiography(resultSet.getString("biography"));
+                    user.setAddress(resultSet.getString("address"));
+                    user.setProfileImagePath(resultSet.getString("ImgPath"));
+                    user.setEmail(resultSet.getString("email"));
+                    user.setNumTel(resultSet.getInt("numTel"));
+                    user.setBlocked(resultSet.getBoolean("blocked"));
+
+                    users.add(user);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return users;
+    }
+
+    public long getRemainingBlockTimeInMinutes(String identifiant) {
+        String req = "SELECT block_end_date FROM user WHERE (username=? OR email=?)";
+
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setString(1, identifiant);
+            preparedStatement.setString(2, identifiant);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    Timestamp blockEndDate = resultSet.getTimestamp("block_end_date");
+                    if (blockEndDate != null && blockEndDate.after(new Timestamp(System.currentTimeMillis()))) {
+                        // If the block end date is in the future, calculate the remaining time
+                        long remainingTimeMillis = blockEndDate.getTime() - System.currentTimeMillis();
+                        return TimeUnit.MILLISECONDS.toMinutes(remainingTimeMillis);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0; // Return 0 if the user is not blocked or the block end date is exceeded
+    }
+
+    public List<User> getBlockedUsers() {
+        List<User> blockedUsers = new ArrayList<>();
+        String req = "SELECT * FROM user WHERE blocked = true";
+
+        try (Statement statement = cnx.createStatement();
+             ResultSet resultSet = statement.executeQuery(req)) {
+
+            while (resultSet.next()) {
+                User utilisateur = new User();
+
+                utilisateur.setId(resultSet.getInt("id_user"));
+                utilisateur.setLastName(resultSet.getString("last_name"));
+                utilisateur.setFirstName(resultSet.getString("first_name"));
+                utilisateur.setUsername(resultSet.getString("username"));
+                utilisateur.setPassword(resultSet.getString("password"));
+                utilisateur.setRole(Role.valueOf(resultSet.getString("role")));
+                utilisateur.setBiography(resultSet.getString("biography"));
+                utilisateur.setAddress(resultSet.getString("address"));
+                utilisateur.setProfileImagePath(resultSet.getString("ImgPath"));
+                utilisateur.setEmail(resultSet.getString("email"));
+                utilisateur.setNumTel(resultSet.getInt("numTel"));
+                utilisateur.setBlocked(resultSet.getBoolean("blocked"));
+utilisateur.setBlockEndDate(resultSet.getTimestamp("block_end_date"));
+                blockedUsers.add(utilisateur);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Gestion des exceptions SQL
+        }
+
+        return blockedUsers;
+    }
+
+
 }

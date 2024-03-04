@@ -61,7 +61,7 @@ public class CarteListController {
 
         // Obtenez le solde après avoir ajouté la carte
         double solde = carteFideliteService.soldecarteiduser(session.id_utilisateur);
-        showAlert(Alert.AlertType.INFORMATION, "Succès", "Mot de passe mis à jour avec succès.");
+        showAlert(Alert.AlertType.INFORMATION, "Succès", "Carte de fédelité est ajouté avec succès.");
 
         soldeLabel.setText("Solde: " + solde+"  points");
         soldeLabel.setVisible(true);

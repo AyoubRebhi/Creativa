@@ -13,6 +13,15 @@ import java.sql.Timestamp;
 import java.util.Optional;
 
 public class usercellule {
+    public Button getMonBouton() {
+        // Remplacez "monBouton" par le nom réel de votre bouton
+        return bloquer;
+    }
+    public Button getMonBouton1() {
+        // Remplacez "monBouton" par le nom réel de votre bouton
+        return debloquer;
+    }
+
 
     // Reference to the UserListController
     private UserListContoller userListController;

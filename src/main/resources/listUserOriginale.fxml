@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="422.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.UserListContoller">
-    <fx:include source="sidebarClient.fxml" />
+<AnchorPane prefHeight="453.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.UserListContoller">
+    <fx:include source="sidebarAdmin.fxml" />
 
-    <ListView fx:id="usersListView" layoutX="205.0" layoutY="37.0" prefHeight="404.0" prefWidth="480.0" />
+    <ListView fx:id="usersListView" layoutX="205.0" layoutY="74.0" prefHeight="380.0" prefWidth="566.0" />
+   <TextField fx:id="searchBar" layoutX="455.0" layoutY="39.0" prefHeight="26.0" prefWidth="220.0" />
+   <Label layoutX="227.0" layoutY="39.0" prefHeight="26.0" prefWidth="227.0" text="chercher a partir de username ou email">
+      <font>
+         <Font name="System Bold" size="11.0" />
+      </font>
+   </Label>
 </AnchorPane>

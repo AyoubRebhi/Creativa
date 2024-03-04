@@ -61,7 +61,7 @@ public class  LoginController {
             int userId = S.getUtilisateurid(loginId.getText(), motpasse.getText());
             if (S.isBlocked(userId)) {
                 // Si l'utilisateur est bloqué, afficher une alerte
-                afficherAlerteErreur("Utilisateur bloqué", "Votre compte est actuellement bloqué.");
+                afficherAlerteErreur("Utilisateur bloqué", "Votre compte est actuellement bloqué de durée de "+S.getRemainingBlockTime(loginId.getText())/60+"minutes");
             } else {
                 // Si l'utilisateur n'est pas bloqué, continuer avec le reste de la logique
                 int p = userId;
@@ -134,7 +134,7 @@ public class  LoginController {
     private void redirectToAdminPage(ActionEvent event) {
         try {
             // Charger la page de connexion à partir du fichier FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ajouterCarte.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarAdmin.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène
