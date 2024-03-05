@@ -3,7 +3,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -16,21 +19,26 @@
         </Label>
         <TextField fx:id="titreTF" layoutX="61.0" layoutY="92.0" prefHeight="47.0" prefWidth="150.0" promptText="Titre">
             <font>
-                <Font name="System Italic" size="17.0" />
+                <Font name="System Italic" size="20.0" />
             </font>
         </TextField>
         <TextField fx:id="prixTF" layoutX="61.0" layoutY="156.0" prefHeight="47.0" prefWidth="150.0" promptText="Prix">
             <font>
-                <Font name="System Italic" size="17.0" />
-            </font>
-        </TextField>
-        <TextField fx:id="descriptionTF" alignment="TOP_LEFT" layoutX="307.0" layoutY="92.0" prefHeight="151.0" prefWidth="319.0" promptText="Description">
-            <font>
-                <Font name="System Italic" size="17.0" />
+                <Font name="System Italic" size="20.0" />
             </font>
         </TextField>
         <ChoiceBox fx:id="categorieChoiceBox" layoutX="61.0" layoutY="230.0" prefHeight="47.0" prefWidth="150.0" />
-        <Button fx:id="mediaBTN" layoutX="84.0" layoutY="319.0" mnemonicParsing="false" onAction="#ajouterMedia" prefHeight="39.0" prefWidth="103.0" text="Ajouter Média" />
+        <Button fx:id="mediaBTN" layoutX="84.0" layoutY="319.0" mnemonicParsing="false" onAction="#ajouterMedia" prefHeight="39.0" prefWidth="127.0" style="-fx-background-color: #eeeee4;" text="Ajouter Média" textFill="#030303">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/uploadIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
       <Button layoutX="415.0" layoutY="319.0" mnemonicParsing="false" onAction="#ajouterProjet" prefHeight="39.0" prefWidth="103.0" style="-fx-background-color: #11C613;" text="Continuer" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
@@ -39,5 +47,10 @@
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font></Button>
+      <TextArea fx:id="descriptionTF" layoutX="306.0" layoutY="92.0" prefHeight="186.0" prefWidth="322.0" promptText="Description">
+         <font>
+            <Font name="System Italic" size="20.0" />
+         </font>
+      </TextArea>
     </children>
 </AnchorPane>

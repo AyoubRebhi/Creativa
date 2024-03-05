@@ -1,6 +1,5 @@
 package tn.esprit.Controllers;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,8 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
@@ -20,8 +18,7 @@ import tn.esprit.Services.ProjetServices;
 
 public class AfficherProjetsParAdmin {
 
-    @FXML
-    private Button AjouterBTN;
+
 
     @FXML
     private Label labelFX;
@@ -29,39 +26,14 @@ public class AfficherProjetsParAdmin {
     @FXML
     private ListView<String> listView;
 
-    @FXML
-    private Button suppBTN;
+
     @FXML
     private ImageView refreshICON;
 
-    @FXML
-    private Button updateBTN;
+
     private List<Projet> projets;
 
 
-    @FXML
-    void ajouterProjet(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterProjet.fxml"));
-        try{
-            Parent root = loader.load();
-            AjouterProjet controller = loader.getController();
-            labelFX.getScene().setRoot(root);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    void modifierProjet(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierProjet.fxml"));
-        try {
-            Parent root = loader.load();
-            ModifierProjet controller = loader.getController();
-            labelFX.getScene().setRoot(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     @FXML
     void changerVisibilte(ActionEvent event) throws SQLException {
         String selectedProjet = listView.getSelectionModel().getSelectedItem();

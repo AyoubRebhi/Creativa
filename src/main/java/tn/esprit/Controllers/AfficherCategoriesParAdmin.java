@@ -39,7 +39,7 @@ public class AfficherCategoriesParAdmin  {
             categories = categorieServices.afficher();
             for (int i=0;i<categories.size();i++){
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/Categorie.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/CategorieCard.fxml"));
                 this.anchorContainerID = fxmlLoader.load();
                 CategorieController categorieController = fxmlLoader.getController();
                 int id=categories.get(i).getId_categorie();

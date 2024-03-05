@@ -72,28 +72,28 @@ public class Main {
             int nbProjets = entry.getValue();
             System.out.println( nbProjets);
         }*/
-        List<Categorie> categories = cs.afficher();
+        /*List<Categorie> categories = cs.afficher();
         for(Categorie c : categories){
             System.out.println(c.getId_categorie());
             System.out.println( c.getTitre());
-        }
+        }*/
         //ps.modifierVisibilite(3,true);
-        /*Jaime jaime = new Jaime();
+        Jaime jaime = new Jaime();
         jaime.setId_user(1);
-        jaime.setId_projet(1);
+        jaime.setId_projet(5);
 
         // Créer un objet JaimeServices
         JaimeServices jaimeServices = new JaimeServices();
 
         // Appeler la méthode insererJaime pour insérer le "like" dans la base de données
-        jaimeServices.insererJaime(jaime);*/
-        /*List<Projet> projets = ps.afficher();
+        jaimeServices.insererJaime(jaime);
+        List<Projet> projets = ps.afficher();
         for (Projet projet : projets) {
             ps.calculerNombreJaimePourProjet(projet);
             System.out.println("ID: " + projet.getId());
             System.out.println("Titre: " + projet.getTitre());
             System.out.println("jaimes " + projet.getNombreJaime());
-        }*/
+        }
 
     }
 }

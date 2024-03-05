@@ -4,11 +4,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
 
-<HBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.CardController">
+<AnchorPane style="-fx-background-color: FFFFFF; -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.ProjetCard">
+   <children>
+<HBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="186.0" prefWidth="536.0">
    <children>
       <ImageView fx:id="imageProjet" fitHeight="151.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -18,24 +22,20 @@
             <Insets bottom="10.0" left="5.0" top="10.0" />
          </HBox.margin>
       </ImageView>
-      <VBox prefHeight="186.0" prefWidth="219.0" spacing="15.0">
+      <VBox prefHeight="186.0" prefWidth="412.0" spacing="15.0">
          <HBox.margin>
-            <Insets left="15.0" right="15.0" />
+            <Insets left="15.0" right="10.0" />
          </HBox.margin>
          <children>
-            <Label fx:id="boxTitre" prefHeight="55.0" prefWidth="219.0" text="Titre">
+            <Label fx:id="boxTitre" prefHeight="27.0" prefWidth="336.0" text="Titre">
                <font>
                   <Font name="Berlin Sans FB" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="boxDescription" prefHeight="87.0" prefWidth="219.0" text="Description">
-               <font>
-                  <Font name="Berlin Sans FB" size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="-10.0" />
-               </VBox.margin>
-            </Label>
+            <TextFlow fx:id="boxDescription" prefHeight="94.0" prefWidth="270.0">
+                     <VBox.margin>
+                        <Insets right="10.0" />
+                     </VBox.margin></TextFlow>
             <HBox prefHeight="38.0" prefWidth="219.0">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -46,7 +46,7 @@
                         <Insets bottom="2.0" left="5.0" top="2.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label fx:id="nbJaimeNB" prefHeight="30.0" prefWidth="28.0" text="nb">
+                  <Label fx:id="nbJaimeNB" prefHeight="30.0" prefWidth="21.0" text="nb">
                      <HBox.margin>
                         <Insets bottom="2.0" left="10.0" top="2.0" />
                      </HBox.margin>
@@ -65,3 +65,5 @@
       </VBox>
    </children>
 </HBox>
+   </children>
+        </AnchorPane>
