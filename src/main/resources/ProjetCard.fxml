@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,11 +9,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.TextFlow?>
 
 <AnchorPane style="-fx-background-color: FFFFFF; -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.ProjetCard">
    <children>
-<HBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="186.0" prefWidth="536.0">
+<HBox fx:id="box" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="186.0" prefWidth="587.0">
    <children>
       <ImageView fx:id="imageProjet" fitHeight="151.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -31,11 +31,20 @@
                <font>
                   <Font name="Berlin Sans FB" size="24.0" />
                </font>
-            </Label>
-            <TextFlow fx:id="boxDescription" prefHeight="94.0" prefWidth="270.0">
                      <VBox.margin>
-                        <Insets right="10.0" />
-                     </VBox.margin></TextFlow>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+            </Label>
+                  <Label fx:id="categorieLabel" prefHeight="27.0" prefWidth="249.0" text="#Catégorie">
+                     <font>
+                        <Font name="Berlin Sans FB" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="prixLabel" prefHeight="27.0" prefWidth="214.0" text="Prix">
+                     <font>
+                        <Font name="Berlin Sans FB" size="18.0" />
+                     </font>
+                  </Label>
             <HBox prefHeight="38.0" prefWidth="219.0">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -46,23 +55,38 @@
                         <Insets bottom="2.0" left="5.0" top="2.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label fx:id="nbJaimeNB" prefHeight="30.0" prefWidth="21.0" text="nb">
+                  <Label fx:id="nbJaimeNB" prefHeight="30.0" prefWidth="32.0" text="nb">
                      <HBox.margin>
                         <Insets bottom="2.0" left="10.0" top="2.0" />
                      </HBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
                   </Label>
                   <Label prefHeight="30.0" prefWidth="55.0" text="Likes">
                      <HBox.margin>
-                        <Insets bottom="2.0" left="5.0" top="2.0" />
+                        <Insets bottom="2.0" left="3.0" top="2.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="Berlin Sans FB Bold" size="12.0" />
+                        <Font name="Berlin Sans FB" size="18.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
          </children>
       </VBox>
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="78.0" prefWidth="110.0" style="-fx-background-color: ffffff;">
+               <HBox.margin>
+                  <Insets right="20.0" top="45.0" />
+               </HBox.margin>
+               <graphic>
+                  <ImageView fx:id="viewMoreBTN" fitHeight="50.0" fitWidth="72.0" onDragDetected="#afficherProjetById" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/ViewDetailsIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
    </children>
 </HBox>
    </children>

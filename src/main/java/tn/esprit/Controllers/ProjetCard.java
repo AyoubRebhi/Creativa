@@ -1,9 +1,12 @@
 package tn.esprit.Controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.TextFlow;
 import tn.esprit.Models.Projet;
@@ -15,7 +18,9 @@ public class ProjetCard {
 
 
     @FXML
-    private TextFlow boxDescription;
+    private Label prixLabel;
+    @FXML
+    private Label categorieLabel;
 
     @FXML
     private Label boxTitre;
@@ -25,6 +30,8 @@ public class ProjetCard {
 
     @FXML
     private Label nbJaimeNB;
+    @FXML
+    private ImageView viewMoreBTN;
     private Projet projet;
     private ProjetServices ps;
     public ProjetCard(){
@@ -32,14 +39,25 @@ public class ProjetCard {
     }
 
     public void setData(Projet projet, int id){
+        DropShadow shadow = new DropShadow();
+        viewMoreBTN.setOnMouseEntered(event -> {
+            viewMoreBTN.setEffect(shadow);
+        });
+
+        viewMoreBTN.setOnMouseExited(event -> {
+            viewMoreBTN.setEffect(null);
+        });
+
+        viewMoreBTN.setOnMouseClicked(event -> {
+            afficherProjetById(event);
+        });
+        
         this.projet = projet;
         boxTitre.setText(projet.getTitre());
         ps.calculerNombreJaimePourProjet(projet);
         nbJaimeNB.setText(String.valueOf(projet.getNombreJaime()));
-        boxDescription.getChildren().clear(); // Clear existing content
-        boxDescription.getChildren().add(new Label(projet.getDescription()));
-
-        boxDescription.setStyle("-fx-text-alignment: justify;");
+        prixLabel.setText(String.valueOf(projet.getPrix())+" Dt");
+        categorieLabel.setText("#"+ps.afficherTitreCategorie(projet.getCategorie()));
         String media = projet.getMedia();
 
         if (media != null && !media.isEmpty()) { // Check if media path is not null or empty
@@ -60,5 +78,10 @@ public class ProjetCard {
             // If media path is null or empty, load a default image
             imageProjet.setImage(new Image(getClass().getResourceAsStream("/images/imageVideIcon.png")));
         }
+
+    }
+    @FXML
+    void afficherProjetById(MouseEvent event) {
+
     }
 }

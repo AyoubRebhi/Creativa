@@ -187,6 +187,82 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
         }
         return projets;
     }
+    //Fonctions de filtrage
+    public List<Projet> afficherProjetParNbJaime() {
+        List<Projet> projets = new ArrayList<>();
+        String req = "SELECT p.*, COUNT(j.id_projet) AS nombreJaime " +
+                "FROM projet p LEFT JOIN jaime j ON p.id_projet = j.id_projet " +
+                "GROUP BY p.id_projet " +
+                "ORDER BY COUNT(j.id_projet) DESC ";
+        try (Statement st = conn.createStatement();
+             ResultSet rs = st.executeQuery(req)) {
+            while (rs.next()) {
+                Projet projet = new Projet();
+                projet.setId(rs.getInt("id_projet"));
+                projet.setTitre(rs.getString("titre"));
+                projet.setDescription(rs.getString("description"));
+                projet.setPrix(rs.getDouble("prix"));
+                projet.setCategorie(rs.getInt("id_categorie"));
+                projet.setMedia(rs.getString("media"));
+                projet.setVisible(rs.getBoolean("isVisible"));
+                projet.setCreatedAt(rs.getTimestamp("createdAt"));
+                projet.setUpdatedAt(rs.getTimestamp("updatedAt"));
+                projet.setNombreJaime(rs.getInt("nombreJaime"));
+                projets.add(projet);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return projets;
+    }
+    public List<Projet> afficherProjetParDateCreation() {
+        List<Projet> projets = new ArrayList<>();
+        String req = "SELECT * FROM projet ORDER BY createdAt DESC ";
+        try (Statement st = conn.createStatement();
+             ResultSet rs = st.executeQuery(req)) {
+            while (rs.next()) {
+                Projet projet = new Projet();
+                projet.setId(rs.getInt("id_projet"));
+                projet.setTitre(rs.getString("titre"));
+                projet.setDescription(rs.getString("description"));
+                projet.setPrix(rs.getDouble("prix"));
+                projet.setCategorie(rs.getInt("id_categorie"));
+                projet.setMedia(rs.getString("media"));
+                projet.setVisible(rs.getBoolean("isVisible"));
+                projet.setCreatedAt(rs.getTimestamp("createdAt"));
+                projet.setUpdatedAt(rs.getTimestamp("updatedAt"));
+                projets.add(projet);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return projets;
+    }
+    public List<Projet> afficherProjetParPrix() {
+        List<Projet> projets = new ArrayList<>();
+        String req = "SELECT * FROM projet ORDER BY prix DESC";
+        try (Statement st = conn.createStatement();
+             ResultSet rs = st.executeQuery(req)) {
+            while (rs.next()) {
+                Projet projet = new Projet();
+                projet.setId(rs.getInt("id_projet"));
+                projet.setTitre(rs.getString("titre"));
+                projet.setDescription(rs.getString("description"));
+                projet.setPrix(rs.getDouble("prix"));
+                projet.setCategorie(rs.getInt("id_categorie"));
+                projet.setMedia(rs.getString("media"));
+                projet.setVisible(rs.getBoolean("isVisible"));
+                projet.setCreatedAt(rs.getTimestamp("createdAt"));
+                projet.setUpdatedAt(rs.getTimestamp("updatedAt"));
+                projets.add(projet);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return projets;
+    }
+
+
     //Utilisé pour la forme AjouterProjet.fxml
     public String afficherTitreCategorie(int id) {
         String titreCategorie = null;

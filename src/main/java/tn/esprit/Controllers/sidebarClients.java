@@ -1,10 +1,8 @@
 package tn.esprit.Controllers;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
@@ -122,7 +120,7 @@ public class sidebarClients {
         String[] parts = selectedProjet.split(",");
         int projetId = Integer.parseInt(parts[0].trim());
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarClientProjets.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GetOneProjectByIdClient.fxml"));
 
         try {
             System.out.println("test");
