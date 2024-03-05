@@ -65,18 +65,18 @@ public class Main {
             System.out.println("Catégorie: " + projet.getCategorie());
             System.out.println("-------------------------");
         }*/
-        int idCategorie = 3;
+        /*int idCategorie = 3;
         Map<String, Integer> nb = cs.calculerNbProjets(idCategorie);
         for (Map.Entry<String, Integer> entry : nb.entrySet()) {
             String categorieTitre = entry.getKey();
             int nbProjets = entry.getValue();
             System.out.println( nbProjets);
-        }
-        List<Categorie> categories = cs.afficher();
-        /*for(Categorie c : categories){
-            System.out.println("ID : "+ c.getId_categorie());
-            System.out.println("Titre : "+ c.getTitre());
         }*/
+        List<Categorie> categories = cs.afficher();
+        for(Categorie c : categories){
+            System.out.println(c.getId_categorie());
+            System.out.println( c.getTitre());
+        }
         //ps.modifierVisibilite(3,true);
         /*Jaime jaime = new Jaime();
         jaime.setId_user(1);

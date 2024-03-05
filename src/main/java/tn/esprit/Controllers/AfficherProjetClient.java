@@ -100,9 +100,14 @@ public class AfficherProjetClient {
 
         // Créer un objet File avec le chemin du média
         File file = new File(media);
-
-        // Créer une nouvelle image avec le fichier
-        Image image = new Image(file.toURI().toString());
+        Image image;
+        if (file != null && file.exists()) {
+            // Si le fichier n'est pas null et existe, charger l'image à partir du fichier
+             image = new Image(file.toURI().toString());
+        } else {
+            // Si le fichier est null ou n'existe pas, charger une image par défaut
+             image = new Image(getClass().getResourceAsStream("/images/imageVideIcon.png"));
+        }
 
         // Définir l'image de projetImage avec l'image créée
         projetImage.setImage(image);

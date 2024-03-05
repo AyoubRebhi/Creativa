@@ -22,7 +22,7 @@ public class sidebarAdmin {
     @FXML
     void redirectVersAfficherCategories(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarAdminCategories.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarAdminCategories2.fxml"));
             Parent root = loader.load();
             sidebarAdmin controller = loader.getController();
             labelFX.getScene().setRoot(root);

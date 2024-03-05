@@ -1,9 +1,11 @@
 package tn.esprit.Controllers;
 
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
@@ -63,6 +65,17 @@ public class AfficherCategoriesParAdmin  {
 
         } catch (SQLException | IOException e  ) {
             System.err.println(e.getMessage());
+        }
+    }
+
+    public void ajouterCategorie(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCategorieAdmin.fxml"));
+        try{
+            Parent root = loader.load();
+            AjouterCategorie controller = loader.getController();
+            labelFX.getScene().setRoot(root);
+        }catch (IOException e){
+            e.printStackTrace();
         }
     }
 }

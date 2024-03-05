@@ -16,10 +16,11 @@ public class CategorieServices implements InterfaceCRUD<Categorie> {
     @Override
     public void ajouter(Categorie categorie) {
         try{
-            String req="INSERT INTO `categorie`(`titre`,`image`) VALUES(?,?)";
+            String req="INSERT INTO `categorie`(`titre`,`image`,`description`) VALUES(?,?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setString(1,categorie.getTitre());
             ps.setString(2,categorie.getCategorieImage());
+            ps.setString(3,categorie.getDescription());
 
             ps.executeUpdate();
             System.out.println("Categorie ajoutée avec succes");
@@ -69,7 +70,8 @@ public class CategorieServices implements InterfaceCRUD<Categorie> {
                 int id = rs.getInt("id_categorie");
                 String titre = rs.getString("titre");
                 String image = rs.getString("image");
-                Categorie categorie = new Categorie(id, titre,image);
+                String categorieDescription=rs.getString("description");
+                Categorie categorie = new Categorie(id, titre,image,categorieDescription);
                 categories.add(categorie);
             }
         } catch (SQLException ex) {
@@ -89,6 +91,7 @@ public class CategorieServices implements InterfaceCRUD<Categorie> {
                     categorie.setId_categorie(rs.getInt("id_categorie"));
                     categorie.setTitre(rs.getString("titre"));
                     categorie.setCategorieImage(rs.getString("image"));
+                    categorie.setDescription(rs.getString("description"));
                 }
             }
 

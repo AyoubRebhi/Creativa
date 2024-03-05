@@ -1,5 +1,6 @@
 package tn.esprit.Controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -8,9 +9,14 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import tn.esprit.Models.Categorie;
 import tn.esprit.Services.CategorieServices;
 import tn.esprit.test.HelloApplication;
@@ -18,51 +24,58 @@ import tn.esprit.test.HelloApplication;
 public class AjouterCategorie {
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
     private TextField titreTF;
+    @FXML
+    private TextArea descriptionTF;
     private List<Categorie> categories;
     private ListView<String> listView;
-
-
+    private Categorie categorie1 = new Categorie();
 
     @FXML
     void afficherCategories(ActionEvent event){
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/sidebarAdminCategories.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherCategoriesAdmin2.fxml"));
         try {
             titreTF.getScene().setRoot(fxmlLoader.load());
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
     }
+    public void ajouterImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif"));
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            // Récupérer le chemin du fichier sélectionné
+            String mediaPath = selectedFile.getAbsolutePath();
+            // Stocker le chemin du média dans la variable du projet
+            categorie1.setCategorieImage(mediaPath);
+        }
+    }
     @FXML
     void ajouterCategorie(ActionEvent event) {
         String titre = titreTF.getText();
-        if (titre.isEmpty()) {
-            showAlert("Erreur", "Vous devez ajouter le titre de la catégorie !");
+        String description = descriptionTF.getText();
+        if (titre.isEmpty() || description.isEmpty()) {
+            showAlert("Erreur", "Vous devez remplir le formulaire !");
         } else {
+            String image = categorie1.getCategorieImage();
+            Categorie categorie = new Categorie(titre,image,description);
             CategorieServices categorieServices = new CategorieServices();
-            Categorie categorie = new Categorie();
-            categorie.setTitre(titre);
             categorieServices.ajouter(categorie);
 
+            showAlert("Succès", "La catégorie a été ajoutée avec succès.");
             // Rafraîchir la liste des catégories après l'ajout
             refreshCategoriesList();
-
-            showAlert("Succès", "La catégorie a été ajoutée avec succès.");
         }
     }
 
     private void refreshCategoriesList() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarAdminCategories.fxml"));
         try {
-            titreTF.getScene().setRoot(loader.load());
-            AfficherCategories controller = loader.getController();
-            controller.initialize(); // Mettre à jour la liste des catégories
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCategoriesAdmin2.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) titreTF.getScene().getWindow(); // Récupérer la fenêtre actuelle
+            stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -82,5 +95,6 @@ public class AjouterCategorie {
         assert titreTF != null : "fx:id=\"titreTF\" was not injected: check your FXML file 'AjouterCategorieAdmin.fxml'.";
 
     }
+
 
 }

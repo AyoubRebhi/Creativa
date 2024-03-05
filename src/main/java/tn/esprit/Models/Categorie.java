@@ -6,20 +6,31 @@ public class Categorie {
     private int id_categorie;
     private String titre;
     private String categorieImage;
+    private String description;
     private List<Projet> projets;
 
 
-    public Categorie(int id_categorie, String titre,String categorieImage) {
+    public Categorie(int id_categorie, String titre,String categorieImage, String description) {
         this.id_categorie = id_categorie;
         this.titre = titre;
         this.projets = new ArrayList<>();
         this.categorieImage = categorieImage;
+        this.description=description;
     }
-    public Categorie(String titre,String categorieImage){
+    public Categorie(String titre,String categorieImage,String description){
         this.titre=titre;
         this.categorieImage=categorieImage;
+        this.description=description;
     }
     public Categorie(){};
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getCategorieImage() {
         return categorieImage;
