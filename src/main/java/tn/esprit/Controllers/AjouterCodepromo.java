@@ -32,6 +32,7 @@ public class AjouterCodepromo {
     @FXML
     private TextField pourcentageTF;
 
+
     @FXML
     void ajouter(ActionEvent event) {
         // Vérification du format du code promo
@@ -87,7 +88,6 @@ public class AjouterCodepromo {
         }
     }
 
-
     @FXML
     void notificationBTN(ActionEvent event) {
         // Créer une instance de ServiceCodepromo
@@ -120,4 +120,5 @@ public class AjouterCodepromo {
             throw new RuntimeException(e);
         }
     }
+
 }

@@ -4,48 +4,59 @@ import tn.esprit.Models.Codepromo;
 import tn.esprit.Utils.MaConnexion;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public class ServiceCodepromo implements InterfaceCodePromo<Codepromo> {
-    Connection conn = MaConnexion.getInstance().getConn();
+    static Connection conn = MaConnexion.getInstance().getConn();
 
 
     @Override
     public void ajouter(Codepromo c) {
-        String req = "INSERT INTO code_promo (id,code_promo,pourcentage) VALUES (?, ?,?)";
+        String req = "INSERT INTO code_promo (id, code_promo, pourcentage, date,date_expiration) VALUES (?, ?, ?, ?,?)";
         try (PreparedStatement ps = conn.prepareStatement(req)) {
             ps.setInt(1, c.getId());
             ps.setInt(2, c.getCode_promo());
             ps.setString(3, c.getPourcentage());
-            ps.executeUpdate();
-            System.out.println("Code promo ajouté avec succés!");
+            ps.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
+            ps.setTimestamp(5, Timestamp.valueOf(LocalDateTime.now().plusDays(4))); // Date d'expiration = date actuelle + 2 minutes
 
+            ps.executeUpdate();
+            System.out.println("Code promo ajouté avec succès !");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
+
+
     @Override
     public Codepromo rechercher(Codepromo c) {
         String req = "SELECT * FROM code_promo WHERE code_promo = ?";
         try (PreparedStatement ps = conn.prepareStatement(req)) {
-            ps.setInt(1, c.getCode_promo()); // Utilisez getCode_promo() de l'objet c pour obtenir le code promo
+            ps.setInt(1, c.getCode_promo());
 
-            // Exécuter la requête de recherche
             ResultSet rs = ps.executeQuery();
 
-            // Vérifier si le résultat de la requête est vide
             if (!rs.next()) {
                 System.out.println("Aucun code promo trouvé avec ce code.");
-                return null; // Aucun code promo trouvé, renvoie null
+                return null;
             } else {
-                // Si un code promo est trouvé, créer un nouvel objet Codepromo avec les détails et le retourner
                 String pourcentage = rs.getString("pourcentage");
+                Date dateExpiration = rs.getDate("date_expiration");
+                Date date = rs.getDate("date");
 
-                Codepromo codepromoTrouve = new Codepromo(c.getId(), c.getCode_promo(), pourcentage);
-                return codepromoTrouve;
+                // Vérifie si la date actuelle est avant la date d'expiration
+                if (LocalDate.now().isBefore(dateExpiration.toLocalDate())) {
+                    Codepromo codepromoTrouve = new Codepromo(c.getId(), c.getCode_promo(), pourcentage,date, dateExpiration);
+                    return codepromoTrouve;
+                } else {
+                    System.out.println("Le code promo n'est plus valide.");
+                    return null;
+                }
             }
         } catch (SQLException e) {
             throw new RuntimeException("Erreur lors de la recherche du code promo", e);
@@ -63,6 +74,7 @@ public class ServiceCodepromo implements InterfaceCodePromo<Codepromo> {
                 c.setId(res.getInt(1));
                 c.setCode_promo(res.getInt(2));
                 c.setPourcentage(res.getString(3));
+                c.setDate(res.getDate(4));
                 codepromo.add(c);
             }
             return codepromo;
@@ -103,6 +115,8 @@ public class ServiceCodepromo implements InterfaceCodePromo<Codepromo> {
                 c.setId(res.getInt(1));
                 c.setCode_promo(res.getInt(2));
                 c.setPourcentage(res.getString(3));
+                c.setDate(res.getDate(4));
+                c.setDate_expiration(res.getDate(5));
                 return c;
             }
         } catch (SQLException e) {
@@ -113,7 +127,7 @@ public class ServiceCodepromo implements InterfaceCodePromo<Codepromo> {
         return null;
 
     }
-
+//pour calculer le pourcentage
     public String getPourcentageByCodePromo(int codePromo) {
         String pourcentage = null;
         String req = "SELECT pourcentage FROM code_promo WHERE code_promo = ?";
@@ -130,4 +144,17 @@ public class ServiceCodepromo implements InterfaceCodePromo<Codepromo> {
         return pourcentage;
     }
 
+    public static boolean codePromoValide(int codePromo) {
+        String req = "SELECT * FROM code_promo WHERE code_promo = ? AND date_expiration > ?";
+        try (PreparedStatement ps = conn.prepareStatement(req)) {
+            ps.setInt(1, codePromo);
+            ps.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+            try (ResultSet res = ps.executeQuery()) {
+                return res.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

@@ -26,13 +26,15 @@ public class Main {
         MaConnexion connexion = MaConnexion.getInstance();
         System.out.println(connexion);
 
+        /*ServiceCodepromo serviceCodepromo = new ServiceCodepromo();
+        System.out.println(ServiceCodepromo.codePromoValide(9510));*/
         //ajouter commande
-        ServiceCommande serviceCommande = new ServiceCommande();
+        /*0ServiceCommande serviceCommande = new ServiceCommande();
 
         Commande c = new Commande(2, 3, new Date(123, 9, 26), "8dt",  new Date(123,9,15),1600,"en_cours", 20F, 8F);
 
         serviceCommande.ajouter(c); }
-
+*/
         //supprimer commande
 
         /*ServiceCommande serviceCommande = new ServiceCommande();
@@ -191,6 +193,7 @@ public class Main {
         /*ServiceCommande serviceCommande= new ServiceCommande();
         System.out.println(serviceCommande.getIdProjetParTitre("Acrylic Filbert Brush"));*/
     }
+}
 
 
 

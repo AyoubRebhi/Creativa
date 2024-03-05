@@ -225,28 +225,31 @@ public class AjouterCommande implements Initializable{
     @FXML
     void AppliquerCode(ActionEvent event) {
         // Récupérer le code promo saisi par l'utilisateur
-        String codePromo = code_promoTF.getText(); // Supposons que le TextField contenant le code promo s'appelle codePromoTextField
+        String codePromo = code_promoTF.getText();
 
         // Vérifier si le code promo est valide
         ServiceCodepromo serviceCodePromo = new ServiceCodepromo();
-        String pourcentageStr = serviceCodePromo.getPourcentageByCodePromo(Integer.parseInt(codePromo));
-
-        if (pourcentageStr != null) {
-            // Extraire la valeur numérique du pourcentage en supprimant le symbole de pourcentage (%)
-            int pourcentage = Integer.parseInt(pourcentageStr.replace("%", ""));
-
-            // Le code promo est valide, afficher le pourcentage de réduction dans le label Remiselabel
-            RemiseLabel.setText("Réduction: " + pourcentage + "%");
-
-            // Mettre à jour le label MTtotalLabel avec le nouveau prix après remise
-            float prixFloat = Float.parseFloat(MTtotalLabel.getText());
-            float nouveauPrix = prixFloat - (prixFloat * (pourcentage / 100.0f));
-            MTtotalLabel.setText(String.valueOf(nouveauPrix));
+        if (serviceCodePromo.codePromoValide(Integer.parseInt(codePromo))) {
+            // Le code promo est valide, procéder à l'application de la réduction
+            String pourcentageStr = serviceCodePromo.getPourcentageByCodePromo(Integer.parseInt(codePromo));
+            if (pourcentageStr != null) {
+                int pourcentage = Integer.parseInt(pourcentageStr.replace("%", ""));
+                RemiseLabel.setText("Réduction: " + pourcentage + "%");
+                float prixFloat = Float.parseFloat(MTtotalLabel.getText());
+                float nouveauPrix = prixFloat - (prixFloat * (pourcentage / 100.0f));
+                MTtotalLabel.setText(String.valueOf(nouveauPrix));
+            } else {
+                RemiseLabel.setText("Code promo invalide");
+            }
         } else {
-            // Le code promo n'est pas valide, afficher un message d'erreur
-            RemiseLabel.setText("Code promo invalide");
+            // Le code promo n'est pas valide ou a expiré, afficher une alerte
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur de saisie");
+            alert.setContentText("Le code promo saisi n'est pas valide ou a expiré !");
+            alert.showAndWait();
         }
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {

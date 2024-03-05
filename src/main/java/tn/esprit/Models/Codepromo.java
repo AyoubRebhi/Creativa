@@ -1,11 +1,14 @@
 package tn.esprit.Models;
 
+import java.util.Date;
+
 public class Codepromo {
     private int id;
     private int code_promo;
     private String pourcentage;
+    private Date date_expiration;;
 
-
+    private Date date;
 
     public int getId() {
         return id;
@@ -31,12 +34,34 @@ public class Codepromo {
         this.pourcentage = pourcentage;
     }
 
-    public Codepromo(int id, int code_promo, String pourcentage) {
+    public Date getDate_expiration() {
+        return date_expiration;
+    }
+
+    public void setDate_expiration(Date date_expiration) {
+        this.date_expiration = date_expiration;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Codepromo(int id, int code_promo, String pourcentage,Date date,Date date_expiration) {
         this.id = id;
         this.code_promo = code_promo;
         this.pourcentage = pourcentage;
+        this.date = date;
+        this.date_expiration = date_expiration;
+
     }
+
+
     public Codepromo() {}
+
 
     @Override
     public String toString() {
@@ -44,6 +69,8 @@ public class Codepromo {
                 "id=" + id +
                 ", code_promo=" + code_promo +
                 ", pourcentage='" + pourcentage + '\'' +
+                ", date_expiration=" + date_expiration +
+                ", date=" + date +
                 '}';
     }
 }
