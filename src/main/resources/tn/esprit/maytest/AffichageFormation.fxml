@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="416.0" prefWidth="855.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.maytest.Controllers.AffichageFormationController">
+   <children>
+      <TableView fx:id="id_liste" layoutX="236.0" layoutY="51.0" opacity="0.8" prefHeight="371.0" prefWidth="666.0" stylesheets="@tableView.css">
+         <columns>
+            <TableColumn fx:id="id_titre" prefWidth="120.00007629394531" text="Titre" />
+            <TableColumn fx:id="id_description" prefWidth="209.5999755859375" text="Description" />
+            <TableColumn fx:id="id_image" prefWidth="137.5999755859375" text="Media" />
+            <TableColumn fx:id="id_places" prefWidth="95.199951171875" text="Places" />
+            <TableColumn fx:id="id_prix" prefWidth="104.0" text="Prix" />
+         </columns>
+      </TableView>
+      <Button fx:id="id_liste_post" layoutX="247.0" layoutY="6.0" mnemonicParsing="false" onAction="#listPost" prefHeight="16.0" prefWidth="15.0">
+         <font>
+            <Font name="Arial Bold" size="3.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="156.0" fitWidth="236.0" layoutY="306.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../maytest/images/logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="198.0" fitWidth="236.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../maytest/images/2.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="213.0" fitWidth="236.0" layoutY="183.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../maytest/images/4.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="id_del" layoutX="303.0" layoutY="6.0" mnemonicParsing="false" onAction="#deleteFormation" prefHeight="16.0" prefWidth="15.0">
+         <font>
+            <Font name="Arial Bold" size="3.0" />
+         </font>
+      </Button>
+      <Button fx:id="id_ajout" layoutX="366.0" layoutY="6.0" mnemonicParsing="false" onAction="#ajouterFormation" prefHeight="16.0" prefWidth="15.0">
+         <font>
+            <Font name="Arial Bold" size="3.0" />
+         </font>
+      </Button>
+      <Button fx:id="id_update" layoutX="425.0" layoutY="6.0" mnemonicParsing="false" onAction="#UpdateFormation" prefHeight="16.0" prefWidth="15.0">
+         <font>
+            <Font name="Arial Bold" size="3.0" />
+         </font>
+      </Button>
+      <Button fx:id="id_clear" layoutX="487.0" layoutY="6.0" mnemonicParsing="false" onAction="#clear" prefHeight="16.0" prefWidth="15.0">
+         <font>
+            <Font name="Arial Bold" size="3.0" />
+         </font>
+      </Button>
+      <Button fx:id="id_pdf" layoutX="542.0" layoutY="6.0" mnemonicParsing="false" onAction="#pdf" prefHeight="16.0" prefWidth="15.0">
+         <font>
+            <Font name="Arial Bold" size="3.0" />
+         </font>
+      </Button>
+      <TextField fx:id="rech" layoutX="596.0" layoutY="9.0" onKeyReleased="#FiltrerKeyReleased3" prefHeight="26.0" prefWidth="112.0" />
+      <Button layoutX="55.0" layoutY="165.0" mnemonicParsing="false" onAction="#inscrire" opacity="0.9" prefHeight="26.0" prefWidth="126.0" stylesheets="@style_1.css" text="Inscrire !" />
+      <Button fx:id="id_listInscrit" layoutX="721.0" layoutY="6.0" mnemonicParsing="false" onAction="#listerInscriptions" prefHeight="31.0" prefWidth="166.0" stylesheets="@Label.css" text="affiche les inscriptions">
+         <font>
+            <Font name="Arial Bold" size="10.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

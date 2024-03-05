@@ -1,0 +1,48 @@
+/* Couleur de fond de la table principale */
+.table-view {
+    -fx-background-color: #f8f9fa;
+}
+
+/* Style de la ligne principale */
+.table-header {
+    -fx-background-color: #f0ad4e; /* Marron clair */
+}
+
+/* Couleur du texte dans la ligne principale */
+.table-header .label {
+    -fx-text-fill: #ffffff; /* Blanc */
+    -fx-font-weight: bold;
+}
+
+/* Couleur de fond des cellules */
+.table-row-cell {
+    -fx-background-color: #ffffff; /* Fond blanc pour les lignes de données */
+}
+
+/* Couleur de fond des cellules sélectionnées */
+.table-row-cell:selected {
+    -fx-background-color: #cce5ff; /* Couleur de fond pour les lignes sélectionnées */
+}
+
+/* Couleur de fond des cellules au survol */
+.table-row-cell:hover {
+    -fx-background-color: #f0f0f0; /* Couleur de fond au survol de la souris */
+}
+
+/* Style du texte dans les cellules */
+.table-cell {
+    -fx-alignment: center-left;
+    -fx-text-fill: #333333; /* Couleur du texte */
+    -fx-font-size: 14px; /* Taille de la police */
+}
+
+/* Style de fond des colonnes */
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: #4CAF50; /* Marron clair */
+}
+
+/* Couleur du texte des colonnes */
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff; /* Blanc */
+    -fx-font-weight: bold;
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="327.0" prefWidth="699.0" stylesheets="@../maytest/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.maytest.Controllers.UpdateController">
+   <children>
+      <ImageView fitHeight="360.0" fitWidth="699.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../maytest/images/logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="447.0" layoutY="62.0" stylesheets="@Label.css" text="selectionner une image">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="iv_gallerie_update" fitHeight="111.0" fitWidth="132.0" layoutX="460.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="id_update_im_" layoutX="605.0" layoutY="108.0" mnemonicParsing="false" onAction="#AddImage" prefHeight="23.0" prefWidth="18.0" textAlignment="CENTER">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <TextField fx:id="tf_titre_update" layoutX="61.0" layoutY="35.0" prefWidth="238.0" promptText="Titre" text="Titre" />
+      <TextField fx:id="tf_description_update" layoutX="61.0" layoutY="94.0" prefWidth="238.0" text="Description" />
+      <TextField fx:id="tf_places_update" layoutX="81.0" layoutY="159.0" prefHeight="37.0" prefWidth="112.0" text="Place disponible" />
+      <TextField fx:id="tf_prix_update" layoutX="80.0" layoutY="223.0" prefHeight="37.0" prefWidth="112.0" text="Prix" />
+      <Button fx:id="id_add_formation" layoutX="314.0" layoutY="262.0" mnemonicParsing="false" onAction="#update_formation" prefHeight="38.0" prefWidth="112.0" text="Modifier">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <stylesheets>
+            <URL value="@style.css" />
+            <URL value="@style_1.css" />
+         </stylesheets>
+      </Button>
+      <Label fx:id="id" layoutX="636.0" layoutY="25.0" prefHeight="17.0" prefWidth="18.0" />
+      <Button fx:id="id_abondonner" layoutX="279.0" layoutY="300.0" mnemonicParsing="false" onAction="#abodonner" prefHeight="12.0" prefWidth="198.0" stylesheets="@Label.css" text="abondonner la modification" textFill="#e81a1a">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

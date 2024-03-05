@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="490.0" prefWidth="661.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.maytest.Controllers.ListInscriptionController">
+   <children>
+      <TableView fx:id="id_liste" layoutX="1.0" layoutY="133.0" prefHeight="394.0" prefWidth="658.0" stylesheets="@tableView.css">
+         <columns>
+            <TableColumn fx:id="id_nom" prefWidth="128.79998779296875" text="Nom" />
+            <TableColumn fx:id="id_prenom" prefWidth="135.20001220703125" text="Prenom" />
+            <TableColumn fx:id="id_email" prefWidth="222.4000244140625" text="Email" />
+            <TableColumn fx:id="id_date" prefWidth="168.80007934570312" text="Date d'inscription" />
+         </columns>
+      </TableView>
+      <Button fx:id="id_liste_inscrit" layoutX="26.0" layoutY="93.0" mnemonicParsing="false" onAction="#listPost" prefHeight="30.0" prefWidth="30.0">
+         <font>
+            <Font name="Arial Bold" size="3.0" />
+         </font>
+      </Button>
+      <Label fx:id="id" layoutX="51.0" layoutY="41.0" prefHeight="18.0" prefWidth="9.0" />
+      <Button fx:id="id_del" layoutX="82.0" layoutY="92.0" mnemonicParsing="false" onAction="#deleteInscription" prefHeight="30.0" prefWidth="147.0" stylesheets="@Label.css" text="Annulé inscription">
+         <font>
+            <Font name="Arial Bold" size="10.0" />
+         </font>
+      </Button>
+      <Button fx:id="id_clear" layoutX="239.0" layoutY="92.0" mnemonicParsing="false" onAction="#clear" prefHeight="31.0" prefWidth="202.0" stylesheets="@Label.css" text="annuler toutes les inscription">
+         <font>
+            <Font name="Arial Bold" size="10.0" />
+         </font>
+      </Button>
+      <Label layoutX="256.0" layoutY="11.0" prefHeight="60.0" prefWidth="147.0" stylesheets="@Label.css" text="List des inscriptions">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Button fx:id="id_abondonner" layoutX="441.0" layoutY="92.0" mnemonicParsing="false" onAction="#abodonner" prefHeight="31.0" prefWidth="174.0" stylesheets="@Label.css" text="Autres Formations" textFill="#e81a1a">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
