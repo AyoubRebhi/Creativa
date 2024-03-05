@@ -74,5 +74,4 @@ public class CarteListController {
         alert.setContentText(content);
         alert.showAndWait();
     }
-    // ... Autres méthodes de votre contrôleur
 }

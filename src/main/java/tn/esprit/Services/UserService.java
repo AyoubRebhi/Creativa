@@ -436,11 +436,12 @@ public class  UserService implements InterfaceCRUD<User> {
 
     public List<User> searchUsers(String keyword) {
         List<User> users = new ArrayList<>();
-        String req = "SELECT * FROM user WHERE username LIKE ? OR email LIKE ?";
+        String req = "SELECT * FROM user WHERE username LIKE ? OR email LIKE ? OR role LIKE ?";
 
         try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
             preparedStatement.setString(1, "%" + keyword + "%");
             preparedStatement.setString(2, "%" + keyword + "%");
+            preparedStatement.setString(3, "%" + keyword + "%");
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {

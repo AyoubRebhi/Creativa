@@ -62,8 +62,10 @@ public class UserListContoller implements LocalUserStateObserver {
                 userController.setLocalObserver(this);
                 userController.setUserListController(this);
                 userController.updateButtonState(user.isBlocked());
-
+                userController.setRole(user.getRole().name().toLowerCase());
                 // Update the labels with user data
+                userController.setUserPhoto(user.getRole());
+
                 userController.setUsername1Label(user.getUsername());
                 userController.setEmailLabel(user.getEmail());
                 userController.setNumLabel(String.valueOf(user.getNumTel()));
@@ -107,6 +109,8 @@ public class UserListContoller implements LocalUserStateObserver {
                 userController.setLocalObserver(this);
                 userController.setUserListController(this);
                 userController.updateButtonState(user.isBlocked());
+                userController.setRole(user.getRole().name().toLowerCase());
+                userController.setUserPhoto(user.getRole());
 
                 // Update the labels with user data
                 userController.setUsername1Label(user.getUsername());

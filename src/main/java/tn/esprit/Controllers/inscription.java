@@ -1,5 +1,6 @@
 package tn.esprit.Controllers;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,7 +54,10 @@ public class inscription {
     private Button inscriptionButton;
    public String verificationCode1;
     private UserService userService = new UserService(); // Injection du service
-
+    @FXML
+    private ProgressBar loadingIndicator;
+    @FXML
+    private ProgressIndicator progressIndicator;
     public void adduser(ActionEvent event) {
         // Vérification de la saisie
         if (nom.getText().isEmpty() || prenom.getText().isEmpty() || mdp.getText().isEmpty() || mdp1.getText().isEmpty()
@@ -64,56 +68,40 @@ public class inscription {
             showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Les mots de passe ne correspondent pas.");
         } else if (!isNumeric(numtel.getText()) || numtel.getText().length() != 8) {
             showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Le numéro de téléphone doit être numérique et contenir 8 chiffres.");
-        } else {
-            String role = "";
-            if (clientRadioButton.isSelected()) {
-                role = "CLIENT";
-            } else if (artisteRadioButton.isSelected()) {
-                role = "ARTIST";
-            }
+        } else if (clientRadioButton.isSelected() && artisteRadioButton.isSelected()) {
+            showAlert(Alert.AlertType.ERROR, "Erreur de sélection", "Veuillez choisir un seul rôle.");}
+        else {
+            // Show the loading indicator
+            loadingIndicator.setVisible(true);
 
-            if (mdp.getText().length() < 8) {
-                showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Le mot de passe doit contenir au moins 8 caractères.");
-                return;
-            }
+            // Move email sending to a separate thread
+            new Thread(() -> {
+               String x=generateVerificationCode();
+                sendVerificationEmail(email.getText(),x);
+                // Update UI on the JavaFX Application thread after email sending is complete
+                Platform.runLater(() -> {
+                    // Hide the loading indicator
+                    loadingIndicator.setVisible(false);
 
-            // Vérification de l'adresse e-mail avec une regex
-            if (!validateEmail(email.getText())) {
-                showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Adresse e-mail invalide.");
-                return;
-            }
+                    // Continue with the rest of your logic
+                    if (openVerificationWindow(email.getText(),x) ){
+                        // Verification window opened successfully
+                        userService.ajouter4(new User(nom.getText(), prenom.getText(), username.getText(), mdp.getText(),
+                                Role.valueOf(getSelectedRole()), "", "", "", email.getText(), Integer.parseInt(numtel.getText())));
 
-            if (userService.emailExists(email.getText())) {
-                showAlert(Alert.AlertType.ERROR, "Erreur", "L'adresse e-mail existe déjà.");
-                return;
-            }
-
-            // Vérification si le username existe déjà dans la base de données
-            if (userService.usernameExists(username.getText())) {
-                showAlert(Alert.AlertType.ERROR, "Erreur", "Le nom d'utilisateur existe déjà.");
-                return;
-            }
-
-            String verificationCode = generateVerificationCode();
-             verificationCode1 = verificationCode;
-
-
-            // Ouvrir la fenêtre de vérification
-            if (openVerificationWindow(email.getText(), verificationCode)) {
-                // La vérification du code est réussie, ajouter l'utilisateur
-                userService.ajouter4(new User(nom.getText(), prenom.getText(), username.getText(), mdp.getText(),
-                        Role.valueOf(role), "", "", "", email.getText(), Integer.parseInt(numtel.getText())));
-
-                // Afficher une confirmation
-                redirectToLoginPage(event);
-                EmailsUtils.envoyerEmailConfirmation(new User(nom.getText(), prenom.getText(), username.getText(), mdp.getText(),
-                        Role.valueOf(role), "", "", "", email.getText(), Integer.parseInt(numtel.getText())));
-            } else {
-                // La vérification du code a échoué, afficher un message d'erreur
-                showAlert(Alert.AlertType.ERROR, "Erreur", "Code de vérification incorrect.");
-            }
+                        // Afficher une confirmation
+                        redirectToLoginPage(event);
+                        EmailsUtils.envoyerEmailConfirmation(new User(nom.getText(), prenom.getText(), username.getText(), mdp.getText(),
+                                Role.valueOf(getSelectedRole()), "", "", "", email.getText(), Integer.parseInt(numtel.getText())));
+                    } else {
+                        // Verification window failed to open, show an error message or take appropriate action
+                        showAlert(Alert.AlertType.ERROR, "Erreur", "Code de vérification incorrect.");
+                    }
+                });
+            }).start();
         }
     }
+
 
     private boolean isNumeric(String str) {
         return str.matches("\\d+");
@@ -135,7 +123,6 @@ public class inscription {
 
             // Obtenez le contrôleur de la fenêtre de vérification
             VerificationController verificationController = loader.getController();
-            sendVerificationEmail(email.getText(), verificationCode1);
             // Passez les informations nécessaires au contrôleur de la fenêtre de vérification
             verificationController.setUserEmail(userEmail);
             verificationController.setVerificationCode(verificationCode);
@@ -221,4 +208,9 @@ public class inscription {
             // Gérer les erreurs de chargement de la page de connexion
         }
     }
+
+    private String getSelectedRole() {
+        return clientRadioButton.isSelected() ? "CLIENT" : (artisteRadioButton.isSelected() ? "ARTIST" : "");
+    }
+
 }

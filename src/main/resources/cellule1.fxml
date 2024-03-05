@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 <HBox prefHeight="14.0" prefWidth="493.0" spacing="10" style="-fx-background-color: #f0f0f0; -fx-border-color: #c0c0c0; -fx-border-width: 1; -fx-border-radius: 5; -fx-padding: 10; -fx-margin-bottom: 0; -fx-margin-top: 0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.usercellule">
-   <ImageView fitHeight="120.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="userPhoto" fitHeight="120.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@images/UserIcon.png" />
       </image>
@@ -31,6 +31,11 @@
                <Font name="System Bold" size="19.0" />
             </font>
          </Label>
+         <Label text="Role:" textFill="#997575">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font>
+         </Label>
       </children>
    </VBox>
    <VBox prefHeight="86.0" prefWidth="183.0">
@@ -48,6 +53,11 @@
          <Label fx:id="num" prefHeight="28.0" prefWidth="140.0" text="55">
             <font>
                <Font size="21.0" />
+            </font>
+         </Label>
+         <Label fx:id="role" text="Label">
+            <font>
+               <Font size="18.0" />
             </font>
          </Label>
       </children>

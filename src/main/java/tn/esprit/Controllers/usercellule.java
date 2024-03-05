@@ -6,8 +6,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import tn.esprit.Interfaces.LocalUserStateObserver;
 import tn.esprit.Services.UserService;
+import tn.esprit.Utils.EmailsUtils;
+import tn.esprit.Models.Role;
 
 import java.sql.Timestamp;
 import java.util.Optional;
@@ -41,6 +45,17 @@ public class usercellule {
 
     @FXML
     private Label num;
+
+    public Label getRole() {
+        return role;
+    }
+
+    public void setRole(String roles) {
+       role.setText(roles);
+    }
+
+    @FXML
+    private Label role;
 
     @FXML
     private Button bloquer;
@@ -133,6 +148,8 @@ public class usercellule {
         onUserStateChangedLocally(true);
         // Update the button state
         updateButtonState(true);
+        EmailsUtils.sendBlockConfirmationEmail(dureeEnMinutes,id);
+
     }
 
     // Debloquer utilisateur button click event
@@ -178,5 +195,25 @@ public class usercellule {
         alerte.setHeaderText(null);
         alerte.setContentText(contenu);
         alerte.showAndWait();
+    }
+
+
+    @FXML
+    private ImageView userPhoto;  // Add ImageView for displaying user photo
+
+    // ... Existing code ...
+
+    // Setter method to set user photo based on the role
+    public void setUserPhoto(Role userRole) {
+        if (userRole == Role.ARTIST) {
+            // Set artist photo
+            userPhoto.setImage(new Image(getClass().getResource("/images/Artist1.png").toExternalForm()));
+        } else {
+            if (userRole == Role.CLIENT)
+            // Set default photo for other roles
+            {  userPhoto.setImage(new Image(getClass().getResource("/images/img_4.png").toExternalForm()));}
+            else {userPhoto.setImage(new Image(getClass().getResource("/images/UserIcon.png").toExternalForm()));}
+
+        }
     }
 }

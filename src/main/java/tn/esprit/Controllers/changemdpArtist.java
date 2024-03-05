@@ -94,7 +94,7 @@ public class changemdpArtist {
     public void directTomdp(ActionEvent event) {
         try {
             // Charger la page de connexion à partir du fichier FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileArtist.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/chagermdpArtist.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène

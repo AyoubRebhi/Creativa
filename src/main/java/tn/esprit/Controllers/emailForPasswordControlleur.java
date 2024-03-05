@@ -1,11 +1,13 @@
 package tn.esprit.Controllers;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -17,6 +19,8 @@ import java.io.IOException;
 public class emailForPasswordControlleur {
     @FXML
     private TextField emailField;
+    @FXML
+    private ProgressBar loadingIndicator;
 
     private UserService userService = new UserService();
 
@@ -26,13 +30,25 @@ public class emailForPasswordControlleur {
         } else if (!userService.emailExists(emailField.getText())) {
             showAlert(Alert.AlertType.ERROR, "Erreur", "L'adresse e-mail n'existe pas dans notre système.");
         } else {
-            String resetPasswordToken = generateResetPasswordToken();
+            // Show the loading indicator
+            loadingIndicator.setVisible(true);
 
-            // Generate and send reset password token
-            EmailsUtils.sendResetPasswordToken(emailField.getText(), resetPasswordToken);
+            // Move email sending to a separate thread
+            new Thread(() -> {
+                String resetPasswordToken = generateResetPasswordToken();
 
-            showAlert(Alert.AlertType.INFORMATION, "Succès", "Un e-mail de réinitialisation a été envoyé à votre adresse.");
-            loadVerificationPage(emailField.getText(), resetPasswordToken, actionEvent);
+                // Generate and send reset password token
+                EmailsUtils.sendResetPasswordToken(emailField.getText(), resetPasswordToken);
+
+                // Update UI on the JavaFX Application thread after email sending is complete
+                Platform.runLater(() -> {
+                    // Hide the loading indicator
+                    loadingIndicator.setVisible(false);
+
+                    showAlert(Alert.AlertType.INFORMATION, "Succès", "Un e-mail de réinitialisation a été envoyé à votre adresse.");
+                    loadVerificationPage(emailField.getText(), resetPasswordToken, actionEvent);
+                });
+            }).start();
         }
     }
 

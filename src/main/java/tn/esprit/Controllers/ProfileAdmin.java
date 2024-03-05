@@ -101,7 +101,7 @@ public class ProfileAdmin implements UpdateListener {
     public void directTomdp(ActionEvent event) {
         try {
             // Charger la page de connexion à partir du fichier FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ChangermdpClient.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ChangermdpAdmin.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène
