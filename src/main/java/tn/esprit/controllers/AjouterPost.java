@@ -2,6 +2,7 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import tn.esprit.Models.POST;
@@ -9,9 +10,12 @@ import tn.esprit.Models.TOPIC;
 import tn.esprit.services.PostService;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
 
 public class AjouterPost {
     private int t_id;
+    private TOPIC t1;
     private String media;
     @FXML
     private TextField desc;
@@ -38,6 +42,7 @@ public class AjouterPost {
         assert editeur != null : "fx:id=\"editeur\" was not injected: check your FXML file 'AjouterPost.fxml'.";
         assert titre != null : "fx:id=\"titre\" was not injected: check your FXML file 'AjouterPost.fxml'.";
 t_id=t.getId();
+this.t1=t;
     }
     @FXML
     void Ajouter(ActionEvent event) {
@@ -49,5 +54,16 @@ t_id=t.getId();
         p.setMedia(this.media);
         p.setTopic_id(t_id);
         post.ajouter(p);
+    }
+    @FXML
+    void Precedent(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader((Objects.requireNonNull(getClass().getResource("/ModifierTopic.fxml"))));
+        try {
+            desc.getScene().setRoot(fxmlLoader.load());
+MODTOPIC controller=fxmlLoader.getController();
+controller.initialize(t1);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -7,10 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -54,11 +51,45 @@ public class MODTOPIC {
         }
     }
     @FXML
+    void Supprimer(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation de suppression");
+        alert.setHeaderText(null);
+        alert.setContentText("Êtes-vous sûr de vouloir supprimer ce média ?");
+
+        // Gérer la réponse de l'utilisateur à la boîte de dialogue de confirmation
+        ButtonType buttonTypeYes = new ButtonType("Oui", ButtonBar.ButtonData.YES);
+        ButtonType buttonTypeNo = new ButtonType("Non", ButtonBar.ButtonData.NO);
+        alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+        // Action lorsque l'utilisateur clique sur "Oui"
+        alert.resultProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == buttonTypeYes) {
+                TopicService t= new TopicService();
+                t.supprimer(this.topic.getId());
+            } else {
+                // L'utilisateur a annulé la suppression
+                // Gérer ce cas selon vos besoins
+            }
+        });
+        alert.showAndWait();
+        // Afficher la boîte de dialogue de confirmation lorsque l'utilisateur clique sur le bouton de suppression
+
+    }
+    @FXML
     void Modifer(ActionEvent event) {
-        TopicService test = new TopicService();
-        this.topic.setSubject(desc.getText());
-        this.topic.setNom(nom.getText());
-        test.modifier(this.topic);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierTopic1.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ModifierTopic controller = loader.getController();
+        controller.initialize(topic);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
     public void initData(TOPIC topic) {
         this.topic = topic;
@@ -118,7 +149,16 @@ public class MODTOPIC {
             });
         }
     }
+    @FXML
+    void AfficherList(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader((Objects.requireNonNull(getClass().getResource("/AfficherTopic.fxml"))));
+        try {
+            desc.getScene().setRoot(fxmlLoader.load());
 
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 

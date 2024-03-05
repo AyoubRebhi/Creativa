@@ -16,7 +16,7 @@ public class TopicService implements InterfaceCRUD<TOPIC>{
     public void ajouter (TOPIC topic){
         try {
             PreparedStatement pr = connexion.getConn().prepareStatement("INSERT INTO `topic`(`Catego_ID`, `Nom`, `Subject`, `Image`) VALUES (?,?,?,?)");
-            pr.setInt(1,topic.getCatego_ID());
+            pr.setString(1,topic.getCatego_ID());
             pr.setString(2, topic.getNom());
             pr.setString(3, topic.getSubject());
             pr.setString(4, topic.getImage());
@@ -59,7 +59,7 @@ while (res.next()){
     System.out.println(res);
     TOPIC t=new TOPIC();
     t.setId(res.getInt(1));
-    t.setCatego_ID(res.getInt(2));
+    t.setCatego_ID(res.getString(2));
     t.setNom(res.getString(3));
     t.setSubject(res.getString(4));
     t.setImage(res.getString(5));

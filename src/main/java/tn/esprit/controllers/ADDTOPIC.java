@@ -40,7 +40,7 @@ private String Images;
         TopicService test= new TopicService();
         TOPIC t2= new TOPIC();
         t2.setNom(Nom_u.getText());
-        t2.setCatego_ID(Integer.parseInt(catego_id.getText()));
+        t2.setCatego_ID(catego_id.getText());
         t2.setSubject(Desc_top.getText());
         t2.setImage(this.Images);
         test.ajouter(t2);

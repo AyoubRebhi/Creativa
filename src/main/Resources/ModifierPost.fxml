@@ -4,12 +4,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierPost">
-   <children>
-      <TextField fx:id="editeur" layoutX="226.0" layoutY="45.0" />
-      <TextField fx:id="titre" layoutX="226.0" layoutY="131.0" />
-      <TextField fx:id="desc" layoutX="226.0" layoutY="207.0" />
-      <Button layoutX="244.0" layoutY="259.0" mnemonicParsing="false" onAction="#SelectMedia" text="ChangerMedia" />
-      <Button layoutX="265.0" layoutY="320.0" mnemonicParsing="false" onAction="#Modifier" text="Modifier" />
-   </children>
+<AnchorPane prefHeight="455.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierPost">
+   <fx:include source="sidebarArtist.fxml" />
+
+   <AnchorPane layoutX="179.0" layoutY="54.0" prefHeight="346.0" prefWidth="452.0"><children>
+      <TextField fx:id="editeur" layoutX="226.0" layoutY="66.0" stylesheets="@Test.css" />
+      <TextField fx:id="titre" layoutX="226.0" layoutY="131.0" stylesheets="@Test.css" />
+      <TextField fx:id="desc" layoutX="226.0" layoutY="207.0" stylesheets="@Test.css" />
+      <Button layoutX="265.0" layoutY="260.0" mnemonicParsing="false" onAction="#SelectMedia" stylesheets="@Test.css" text="ChangerMedia" textFill="WHITE" />
+      <Button layoutX="281.0" layoutY="320.0" mnemonicParsing="false" onAction="#Modifier" stylesheets="@Test.css" text="Modifier" textFill="WHITE" />
+   </children></AnchorPane>
+
 </AnchorPane>

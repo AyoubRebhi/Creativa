@@ -20,19 +20,20 @@
       <Pane layoutX="221.0" layoutY="49.0" prefHeight="54.0" prefWidth="428.0" styleClass="Pane" stylesheets="@Style.css">
          <children>
             <Button layoutX="332.0" layoutY="44.0" mnemonicParsing="false" onAction="#Add_Post" stylesheets="@Test.css" text="Ajouter Post" textFill="WHITE" />
-            <Text fx:id="nom" fill="#faf6f6" layoutX="124.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="89.33673095703125">
+            <Text fx:id="nom" fill="#faf6f6" layoutX="76.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="170.4000000000001">
                   <font>
-                     <Font name="System Bold" size="25.0" />
+                     <Font name="System Bold" size="18.0" />
                   </font></Text>
-            <Text fx:id="desc" fill="#f7f6f6" layoutX="281.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="100.53668212890625">
+            <Text fx:id="desc" fill="#f7f6f6" layoutX="222.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="100.53668212890625">
                   <font>
-                     <Font name="System Bold" size="25.0" />
+                     <Font name="System Bold" size="18.0" />
                   </font></Text>
                <ImageView fx:id="Img_Topic" fitHeight="33.0" fitWidth="62.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children></AnchorPane>
-<Button layoutX="493.0" layoutY="379.0" mnemonicParsing="false" stylesheets="@Test.css" text="Supprimer" textFill="WHITE" />
+<Button layoutX="493.0" layoutY="379.0" mnemonicParsing="false" onAction="#Supprimer" stylesheets="@Test.css" text="Supprimer" textFill="WHITE" />
 <Button layoutX="294.0" layoutY="379.0" mnemonicParsing="false" onAction="#Modifer" stylesheets="@Test.css" text="Modifier" textFill="WHITE" />
+   <Button layoutX="505.0" layoutY="415.0" mnemonicParsing="false" onAction="#AfficherList" stylesheets="@Test.css" text="Retourner à la liste des sujets" textFill="WHITE" />
 
 </AnchorPane>

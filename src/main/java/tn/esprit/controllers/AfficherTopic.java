@@ -2,6 +2,7 @@ package tn.esprit.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -13,10 +14,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import tn.esprit.Models.POST;
 import tn.esprit.Models.TOPIC;
 import tn.esprit.services.TopicService;
 
+import javax.management.Notification;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
@@ -26,7 +30,19 @@ public class AfficherTopic {
 
     @FXML
     private ListView<TOPIC> List_id;
-
+    @FXML
+    void AjouterSujet(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/TOPIC.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 
 
     @FXML
@@ -84,6 +100,7 @@ public class AfficherTopic {
                         Stage stage = new Stage();
                         stage.setScene(new Scene(root));
                         stage.show();
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -92,6 +109,10 @@ public class AfficherTopic {
 
             return cell;
         });
+
+
+        // Create and show the notification with the owning window as the owner
+
 
     }
 

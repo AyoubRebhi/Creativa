@@ -10,9 +10,9 @@
    <AnchorPane prefHeight="455.0" prefWidth="688.0"> <fx:include source="sidebarArtist.fxml" />
       <AnchorPane layoutX="118.0" layoutY="50.0" prefHeight="356.0" prefWidth="452.0">
          <children>
-         <TextField fx:id="editeur" layoutX="226.0" layoutY="56.0" stylesheets="@Test.css" />
-         <TextField fx:id="titre" layoutX="226.0" layoutY="147.0" stylesheets="@Test.css" />
-         <TextField fx:id="desc" layoutX="227.0" layoutY="230.0" stylesheets="@Test.css" />
+         <TextField fx:id="editeur" alignment="CENTER" layoutX="226.0" layoutY="56.0" promptText="Editeur" stylesheets="@Test.css" />
+         <TextField fx:id="titre" alignment="CENTER" layoutX="226.0" layoutY="147.0" promptText="TItre" stylesheets="@Test.css" />
+         <TextField fx:id="desc" alignment="CENTER" layoutX="227.0" layoutY="230.0" promptText="Description" stylesheets="@Test.css" />
          <Button layoutX="250.0" layoutY="277.0" mnemonicParsing="false" onAction="#select_media" stylesheets="@Test.css" text="Selection media" textFill="WHITE" />
          <Button layoutX="267.0" layoutY="329.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="26.0" prefWidth="66.0" stylesheets="@Test.css" text="Ajouter" textFill="WHITE" />
             <Text fill="#ab824e" layoutX="250.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter un post" wrappingWidth="143.57421875">
@@ -22,6 +22,7 @@
             </Text>
       </children>
       </AnchorPane>
+      <Button layoutX="557.0" layoutY="415.0" mnemonicParsing="false" onAction="#Precedent" stylesheets="@Test.css" text="Retourner au sujet" textFill="WHITE" />
    </AnchorPane>
 
 </AnchorPane>

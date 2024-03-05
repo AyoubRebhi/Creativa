@@ -2,21 +2,21 @@ package tn.esprit.Models;
 
 public class TOPIC {
 int id;
-int catego_ID;
+String catego_ID;
 String Nom;
 String Subject,Image;
 
     public TOPIC() {
     }
 
-    public TOPIC(int catego_ID, String nom, String subject,String image) {
+    public TOPIC(String catego_ID, String nom, String subject,String image) {
         this.catego_ID = catego_ID;
         Nom = nom;
         Subject = subject;
 Image=image;
     }
 
-    public TOPIC(int id, int catego_ID, String nom, String subject,String image) {
+    public TOPIC(int id, String catego_ID, String nom, String subject,String image) {
         this.id = id;
         this.catego_ID = catego_ID;
         Nom = nom;
@@ -32,11 +32,11 @@ Image=image;
         this.id = id;
     }
 
-    public int getCatego_ID() {
+    public String getCatego_ID() {
         return catego_ID;
     }
 
-    public void setCatego_ID(int catego_ID) {
+    public void setCatego_ID(String catego_ID) {
         this.catego_ID = catego_ID;
     }
 
@@ -60,7 +60,7 @@ public void setImage(String image){Image=image;}
     @Override
     public String toString() {
         return
-               "                              "+Nom + "    " +Subject  ;
+               "                     "+Nom + "    " +Subject  ;
 
     }
 }
