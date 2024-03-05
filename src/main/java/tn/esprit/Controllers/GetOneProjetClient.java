@@ -16,7 +16,7 @@ import tn.esprit.Services.ProjetServices;
 import java.io.File;
 import java.io.IOException;
 
-public class AfficherProjetClient {
+public class GetOneProjetClient {
     @FXML
     private Label categorieLabel;
 
@@ -48,6 +48,7 @@ public class AfficherProjetClient {
     public void setProjet(Projet projet) {
         this.projet = projet;
     }
+
     public void redirectVersAfficherProjets(MouseEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarClient.fxml"));
@@ -58,9 +59,10 @@ public class AfficherProjetClient {
             e.printStackTrace();
         }
     }
+
     public void redirectVersProjets(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarClient.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProjetCardList.fxml"));
             Parent root = loader.load();
             sidebarClients controller = loader.getController();
             labelFX.getScene().setRoot(root);
@@ -70,10 +72,7 @@ public class AfficherProjetClient {
     }
 
 
-
-
-
-    void setParametre(int id, Projet projet){
+    void setParametre(int id, Projet projet) {
         DropShadow shadow = new DropShadow();
         retourIcon.setOnMouseEntered(event -> {
             retourIcon.setEffect(shadow);
@@ -87,29 +86,35 @@ public class AfficherProjetClient {
             redirectVersAfficherProjets(event);
         });
 
-        this.projet=projet;
+        this.projet = projet;
         this.id = id;
         ProjetServices ps = new ProjetServices();
         titreLabel.setText(projet.getTitre());
         descriptionLabel.setText(projet.getDescription());
-        prixLabel.setText(String.valueOf(projet.getPrix())+"Dt");
-        createdAtLablel.setText("Ajouté le:"+String.valueOf(projet.getCreatedAt()));
-        categorieLabel.setText("#"+ps.afficherTitreCategorie(projet.getCategorie()));
+        prixLabel.setText(String.valueOf(projet.getPrix()) + "Dt");
+        createdAtLablel.setText("Ajouté le:" + String.valueOf(projet.getCreatedAt()));
+        categorieLabel.setText("#" + ps.afficherTitreCategorie(projet.getCategorie()));
+
         // Récupérer le chemin du média depuis le projet
         String media = projet.getMedia();
 
-        // Créer un objet File avec le chemin du média
-        File file = new File(media);
-        Image image;
-        if (file != null && file.exists()) {
-            // Si le fichier n'est pas null et existe, charger l'image à partir du fichier
-             image = new Image(file.toURI().toString());
+        if (media != null && !media.isEmpty()) {
+            // Créer un objet File avec le chemin du média
+            File file = new File(media);
+            Image image;
+            if (file.exists()) {
+                // Si le fichier existe, charger l'image à partir du fichier
+                image = new Image(file.toURI().toString());
+            } else {
+                // Si le fichier n'existe pas, charger une image par défaut
+                image = new Image(getClass().getResourceAsStream("/images/imageVideIcon.png"));
+            }
+            // Définir l'image de projetImage avec l'image créée
+            projetImage.setImage(image);
         } else {
-            // Si le fichier est null ou n'existe pas, charger une image par défaut
-             image = new Image(getClass().getResourceAsStream("/images/imageVideIcon.png"));
+            // Si le chemin du média est null ou vide, charger une image par défaut
+            Image image = new Image(getClass().getResourceAsStream("/images/imageVideIcon.png"));
+            projetImage.setImage(image);
         }
-
-        // Définir l'image de projetImage avec l'image créée
-        projetImage.setImage(image);
     }
 }

@@ -125,7 +125,7 @@ public class sidebarClients {
         try {
             System.out.println("test");
             Parent root = loader.load();
-            AfficherProjetClient controller = loader.getController();
+            GetOneProjetClient controller = loader.getController();
             System.out.println("test");
             controller.setParametre(projetId,ps.afficherProjetParId(projetId));
             System.out.println("test");

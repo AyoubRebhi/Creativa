@@ -19,7 +19,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class sidebarClients2 {
+public class ProjetCardList {
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -125,12 +125,11 @@ public class sidebarClients2 {
     }
 
 
-
     public void redirectVersProjets(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarClient.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProjetCardList.fxml"));
             Parent root = loader.load();
-            sidebarClients2 controller = loader.getController();
+            ProjetCardList controller = loader.getController();
             labelFX.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();

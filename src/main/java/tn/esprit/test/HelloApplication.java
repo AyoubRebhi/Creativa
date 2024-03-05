@@ -13,7 +13,7 @@ public class HelloApplication extends Application {
     //
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/sidebarClient2.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/ProjetCardList.fxml"));
         //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherCategoriesAdmin2.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Projets");
