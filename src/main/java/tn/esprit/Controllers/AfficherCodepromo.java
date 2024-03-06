@@ -40,7 +40,7 @@ public class AfficherCodepromo implements Initializable {
     }
     @FXML
     void Retour(ActionEvent event) throws SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/InterfaceAdmin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/InterfaceAdmin.fxml"));
         try {
             listView.getScene().setRoot(loader.load());
         } catch (IOException e) {
@@ -50,7 +50,7 @@ public class AfficherCodepromo implements Initializable {
 }
 
     public void ajoutercode(ActionEvent actionEvent) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AjouterCodepromo.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCodepromo.fxml"));
         try {
             labelFX.getScene().setRoot(loader.load());
         } catch (IOException e) {

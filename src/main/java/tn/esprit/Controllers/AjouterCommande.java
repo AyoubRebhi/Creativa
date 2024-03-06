@@ -159,7 +159,7 @@ public class AjouterCommande implements Initializable{
         }
 
         // Si tous les champs sont remplis, passer à la scène d'ajout de livraison
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AjouterLivraison.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterLivraison.fxml"));
         try {
             datePicker2.getScene().setRoot(loader.load());
         } catch (IOException e) {

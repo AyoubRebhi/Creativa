@@ -96,7 +96,7 @@ public class ModifierLivraison implements Initializable {
 
     @FXML
     void Retour(ActionEvent event) throws SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherLivraison.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherLivraison.fxml"));
         try {
             moyenLivTF.getScene().setRoot(loader.load());
         } catch (IOException e) {

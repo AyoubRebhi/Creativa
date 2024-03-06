@@ -10,7 +10,6 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import tn.esprit.Models.Commande;
 import tn.esprit.Services.ServiceCommande;
 
@@ -224,7 +223,7 @@ public class AfficherCommande implements Initializable {
 
     @FXML
     void back(ActionEvent event) throws SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/InterfaceAdmin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/InterfaceAdmin.fxml"));
         try {
             EMPHBox.getScene().setRoot(loader.load());
         } catch (IOException e) {

@@ -136,7 +136,7 @@ public class ModifierCommande implements Initializable{
 
     @FXML
     void Retour(ActionEvent event) throws SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherCommande.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCommande.fxml"));
         try {
             mt_totalTF.getScene().setRoot(loader.load());
         } catch (IOException e) {

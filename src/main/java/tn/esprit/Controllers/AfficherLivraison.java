@@ -63,7 +63,7 @@ public class AfficherLivraison implements Initializable{
         Livraison selectedLivraison = listView.getSelectionModel().getSelectedItem();
         int idCmd = selectedLivraison.getId_cmd();
         int idLiv = selectedLivraison.getId_liv();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/ModifierLivraison.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierLivraison.fxml"));
         try {
             Parent root = loader.load();
             ModifierLivraison controller = loader.getController();
@@ -122,7 +122,7 @@ public class AfficherLivraison implements Initializable{
 
     @FXML
     void Retour(ActionEvent event) throws SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/sidebarAdmin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarAdmin.fxml"));
         try {
             listView.getScene().setRoot(loader.load());
         } catch (IOException e) {

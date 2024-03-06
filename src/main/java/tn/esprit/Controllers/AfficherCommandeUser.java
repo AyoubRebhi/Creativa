@@ -83,7 +83,7 @@ public class AfficherCommandeUser implements Initializable{
 
     @FXML
     void Retour(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/InterfaceUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/InterfaceUser.fxml"));
         try {
             retourBTN.getScene().setRoot(loader.load());
         } catch (IOException e) {

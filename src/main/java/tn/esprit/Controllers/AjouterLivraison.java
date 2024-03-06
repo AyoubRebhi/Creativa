@@ -1,24 +1,15 @@
 package tn.esprit.Controllers;
-import com.twilio.Twilio;
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
-import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 import tn.esprit.Models.Livraison;
 import tn.esprit.Services.ServiceLivraison;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 
-public class AjouterLivraison implements Initializable {
+public class AjouterLivraison  {
     @FXML
     private TextField adresseTF;
     @FXML
@@ -73,7 +64,7 @@ public class AjouterLivraison implements Initializable {
 
     @FXML
     void AfficherLivraison(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherLivraisonUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherLivraisonUser.fxml"));
         try {
             moyenLivTF.getScene().setRoot(loader.load());
         } catch (IOException e) {
@@ -134,7 +125,7 @@ public class AjouterLivraison implements Initializable {
 
     @FXML
     void Retour(ActionEvent event) throws SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AjouterCommande.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCommande.fxml"));
         try {
             moyenLivTF.getScene().setRoot(loader.load());
         } catch (IOException e) {
@@ -142,11 +133,12 @@ public class AjouterLivraison implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    public void initialize(int id_cm) {
         statusTF.setText("En cours");
         fraisTF.setText("8dt");
-
+System.out.println(id_cm);
+        id_cmdTF.setText(String.valueOf(id_cm));
     }
 
 }

@@ -77,7 +77,7 @@ public class AjouterCodepromo {
         notificationBTN(null);
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/Time.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Time.fxml"));
             Parent root = loader.load();
             Time timeController = loader.getController();
             Stage stage = new Stage();
@@ -113,7 +113,7 @@ public class AjouterCodepromo {
 
     @FXML
     void Retour(ActionEvent event) throws SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherCodepromo.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCodepromo.fxml"));
         try {
             pourcentageTF.getScene().setRoot(loader.load());
         } catch (IOException e) {

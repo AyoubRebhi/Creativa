@@ -35,7 +35,7 @@ public class InterfaceUser implements Initializable {
 
     @FXML
     void AfficherC(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherCommandeUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCommandeUser.fxml"));
         try {
             Parent root = loader.load();
             AfficherCommandeUser controller = loader.getController();
@@ -47,7 +47,7 @@ public class InterfaceUser implements Initializable {
 
     @FXML
     void AjouterC(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AjouterCommande.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCommande.fxml"));
         try {
             Parent root = loader.load();
             AjouterCommande controller = loader.getController();

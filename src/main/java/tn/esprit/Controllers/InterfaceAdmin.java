@@ -24,7 +24,7 @@ public class InterfaceAdmin {
 
     @FXML
     void AfficherCode(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherCodepromo.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCodepromo.fxml"));
         try {
             Parent root = loader.load();
             AfficherCodepromo controller = loader.getController();
@@ -36,7 +36,7 @@ public class InterfaceAdmin {
 
     @FXML
     void AfficherCommande(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherCommande.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCommande.fxml"));
         try {
             Parent root = loader.load();
             AfficherCommande Controller = loader.getController();
@@ -48,7 +48,7 @@ public class InterfaceAdmin {
 
     @FXML
     void AfficherLivraison(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherLivraison.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherLivraison.fxml"));
         try {
             Parent root = loader.load();
             AfficherLivraison controller = loader.getController();
