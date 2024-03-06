@@ -80,6 +80,14 @@ public class AfficherListeProjetsArtiste  {
     }
 
     public void ajouterProjet(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterProjet.fxml"));
+            Parent root = loader.load();
+            AjouterProjet controller = loader.getController();
+            labelFX.getScene().setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void redirectVersAcceuil(ActionEvent event) {

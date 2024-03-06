@@ -14,8 +14,8 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherListeProjetsClient.fxml"));
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherListeProjetsAdmin.fxml"));
-        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherListeProjetsArtiste.fxml"));
+        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherListeProjetsAdmin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherListeProjetsArtiste.fxml"));
         //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherListeCategoriesAdmin.fxml"));
 
         //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherListeCategoriesAdmin.fxml"));

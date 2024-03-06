@@ -132,4 +132,9 @@ public class AjouterProjet {
     }
 
 
+    public void redirectVersAcceuil(ActionEvent event) {
+    }
+
+    public void redirectVersAfficherProjets(ActionEvent event) {
+    }
 }

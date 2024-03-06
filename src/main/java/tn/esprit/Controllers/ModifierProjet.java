@@ -107,4 +107,9 @@ public class ModifierProjet {
         return new Projet(id, nouveauTitre, nouvelleDescription, null, nouveauPrix, idCategorie);
     }
 
+    public void redirectVersAcceuil(ActionEvent event) {
+    }
+
+    public void redirectVersAfficherProjets(ActionEvent event) {
+    }
 }
