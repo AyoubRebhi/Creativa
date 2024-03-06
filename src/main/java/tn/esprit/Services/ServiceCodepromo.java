@@ -127,7 +127,7 @@ public class ServiceCodepromo implements InterfaceCodePromo<Codepromo> {
         return null;
 
     }
-//pour calculer le pourcentage
+    //pour calculer le pourcentage
     public String getPourcentageByCodePromo(int codePromo) {
         String pourcentage = null;
         String req = "SELECT pourcentage FROM code_promo WHERE code_promo = ?";

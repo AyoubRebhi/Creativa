@@ -223,12 +223,12 @@ public class AfficherCommande implements Initializable {
 
 
     @FXML
-    void back(ActionEvent event) {
+    void back(ActionEvent event) throws SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/InterfaceAdmin.fxml"));
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/interfaceAdmin.fxml"));
-            loader.load();
+            EMPHBox.getScene().setRoot(loader.load());
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }

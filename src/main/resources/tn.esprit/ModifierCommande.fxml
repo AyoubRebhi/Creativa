@@ -9,34 +9,38 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DFDEDE;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.ModifierCommande">
-    <children>
-        <Label fx:id="modifier_commandes" layoutX="202.0" layoutY="12.0" text="Modifier Commandes" textFill="#764949">
+<AnchorPane prefHeight="492.0" prefWidth="766.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.ModifierCommande">
+    <fx:include source="sidebarAdmin2.fxml" />
+    <AnchorPane layoutX="108.0" layoutY="34.0" prefHeight="458.0" prefWidth="604.0">
+        <children>
+        <Label fx:id="modifier_commandes" layoutX="268.0" layoutY="22.0" text="Modifier Commandes" textFill="#764949">
             <font>
                 <Font name="System Bold Italic" size="27.0" />
             </font>
         </Label>
-        <TextField fx:id="mt_totalTF" layoutX="26.0" layoutY="308.0" maxWidth="250.0" prefHeight="30.0" promptText="Montant total" />
-
-        <TextField fx:id="code_promoTF" layoutX="428.0" layoutY="293.0" prefHeight="30.0" prefWidth="90.0" promptText="Code promo" />
-        <Text fill="#0000005c" layoutX="414.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avez-vous un code promo?" />
-        <TextField fx:id="id_userTF" layoutX="28.0" layoutY="133.0" promptText="id user" />
-      <Button layoutX="494.0" layoutY="348.0" mnemonicParsing="false" onAction="#modifierBTN" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #2F5AE9;" text="Modifier" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font></Button>
-      <TextField fx:id="id_cmdTF" layoutX="27.0" layoutY="93.0" promptText="id commande" />
-      <Button fx:id="retourBTN" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Retour" prefHeight="30.0" prefWidth="74.0" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE">
+        <TextField fx:id="mt_totalTF" layoutX="175.0" layoutY="379.0" maxWidth="250.0" prefHeight="30.0" promptText="Montant total" />
+        <TextField fx:id="id_userTF" layoutX="175.0" layoutY="188.0" promptText="id user" />
+      <TextField fx:id="id_cmdTF" layoutX="175.0" layoutY="117.0" promptText="id commande" />
+      <Button fx:id="retourBTN" layoutX="106.0" layoutY="13.0" mnemonicParsing="false" onAction="#Retour" prefHeight="38.0" prefWidth="90.0" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <TextField fx:id="statusTF" layoutX="26.0" layoutY="265.0" promptText="status" />
-      <ComboBox fx:id="idCombobox" layoutX="379.0" layoutY="93.0" prefHeight="30.0" prefWidth="219.0" promptText="Titre du projet" />
-        <DatePicker fx:id="datePicker" layoutX="22.0" layoutY="197.0" prefHeight="26.0" prefWidth="158.0" />
-        <DatePicker fx:id="datePicker2" layoutX="202.0" layoutY="197.0" prefHeight="26.0" prefWidth="158.0" />
-        <Text fill="#0000005c" layoutX="22.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de la commande" />
-        <Text fill="#0000005c" layoutX="201.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date estimée de la livraison" wrappingWidth="150.39999999999986" />
+      <TextField fx:id="statusTF" layoutX="175.0" layoutY="327.0" promptText="status" />
+      <ComboBox fx:id="idCombobox" layoutX="393.0" layoutY="116.0" prefHeight="30.0" prefWidth="219.0" promptText="Titre du projet" />
+        <DatePicker fx:id="datePicker" layoutX="175.0" layoutY="269.0" prefHeight="26.0" prefWidth="158.0" />
+        <DatePicker fx:id="datePicker2" layoutX="405.0" layoutY="269.0" prefHeight="26.0" prefWidth="158.0" />
+        <Text fill="#0000005c" layoutX="175.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de la commande" />
+        <Text fill="#0000005c" layoutX="409.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date estimée de la livraison" wrappingWidth="150.39999999999986" />
 
     </children>
+</AnchorPane>
+<Button layoutX="713.0" layoutY="448.0" mnemonicParsing="false" onAction="#modifierBTN" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #2F5AE9;" text="Modifier" textFill="WHITE">
+   <font>
+      <Font size="16.0" />
+   </font>
+   </Button>
+
+  <TextField fx:id="code_promoTF" layoutX="668.0" layoutY="394.0" prefHeight="30.0" prefWidth="90.0" promptText="Code promo" />
+  <Text fill="#0000005c" layoutX="660.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avez-vous un code promo?" />
 </AnchorPane>

@@ -40,7 +40,7 @@ public class AfficherCodepromo implements Initializable {
     }
     @FXML
     void Retour(ActionEvent event) throws SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/sidebarAdmin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/InterfaceAdmin.fxml"));
         try {
             listView.getScene().setRoot(loader.load());
         } catch (IOException e) {

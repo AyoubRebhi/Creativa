@@ -106,13 +106,16 @@ public class ModifierLivraison implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Définir le statut par défaut et le coût de livraison par défaut
         statusTF.setText("En cours");
         fraisTF.setText("8dt");
     }
+
     public void setIdCommande(int idCmd) {
         id_cmdTF.setText(String.valueOf(idCmd));
     }
     public void setIdlivraison(int idLiv) {
         idLivTF.setText(String.valueOf(idLiv));
     }
+
 }

@@ -42,7 +42,7 @@ public class AfficherLivraison implements Initializable{
 
         // Remplir le ComboBox avec les états de livraison
         ObservableList<String> etatsLivraison = FXCollections.observableArrayList(
-                "En_cours",
+                "En cours",
                 "Livrée",
                 "Annulée"
         );

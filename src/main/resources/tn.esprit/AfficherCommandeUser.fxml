@@ -5,11 +5,14 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherCommandeUser">
-   <children>
-      <Label fx:id="label" layoutX="208.0" layoutY="14.0" prefHeight="38.0" prefWidth="184.0" text="Vos Commandes" />
-      <ListView fx:id="listView" layoutX="100.0" layoutY="70.0" prefHeight="230.0" prefWidth="422.0" />
-      <Button fx:id="retourBTN" layoutX="22.0" layoutY="21.0" mnemonicParsing="false" onAction="#Retour" text="Retour" />
-      <Button fx:id="annulerBTN" layoutX="448.0" layoutY="333.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="38.0" prefWidth="73.0" text="Annuler" />
-   </children>
+<AnchorPane prefHeight="100.0" prefWidth="200.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherCommandeUser">
+   <fx:include source="sidebarAdmin2.fxml" />
+   <AnchorPane layoutX="-14.0" layoutY="-17.0" prefHeight="519.0" prefWidth="628.0">
+      <children>
+         <Label fx:id="label" layoutX="427.0" layoutY="84.0" prefHeight="38.0" prefWidth="220.0" text="Vos Commandes" />
+         <ListView fx:id="listView" layoutX="314.0" layoutY="135.0" prefHeight="230.0" prefWidth="422.0" />
+         <Button fx:id="retourBTN" layoutX="245.0" layoutY="84.0" mnemonicParsing="false" onAction="#Retour" prefHeight="0.0" prefWidth="84.0" text="Retour" />
+      </children>
+   </AnchorPane>
+   <Button fx:id="annulerBTN" layoutX="712.0" layoutY="440.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="38.0" prefWidth="73.0" text="Annuler" />
 </AnchorPane>

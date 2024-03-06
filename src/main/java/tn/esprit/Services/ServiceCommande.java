@@ -3,8 +3,6 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.*;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import tn.esprit.Interfaces.InterfaceCRUD;
 import tn.esprit.Models.Commande;
 import tn.esprit.Utils.MaConnexion;
@@ -301,8 +299,6 @@ public Commande getCommandeByotherFields(int idUser, int idProjet, Date date, St
 
         return searchResults;
     }
-
-
 
 
 }

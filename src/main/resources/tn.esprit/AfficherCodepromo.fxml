@@ -6,15 +6,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #DFDEDE;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherCodepromo">
-    <children>
-        <ListView fx:id="listView" layoutX="32.0" layoutY="36.0" prefHeight="311.0" prefWidth="536.0" />
-        <Label fx:id="labelFX" layoutX="179.0" prefHeight="39.0" prefWidth="283.0" text="Liste des codes promo" textAlignment="CENTER" textFill="#764949">
+<AnchorPane prefHeight="480.0" prefWidth="810.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherCodepromo">
+    <fx:include source="sidebarAdmin2.fxml" />
+    <AnchorPane layoutX="2.0" layoutY="-9.0" prefHeight="506.0" prefWidth="806.0">
+        <children>
+        <ListView fx:id="listView" layoutX="269.0" layoutY="104.0" prefHeight="311.0" prefWidth="536.0" />
+        <Label fx:id="labelFX" layoutX="395.0" layoutY="58.0" prefHeight="39.0" prefWidth="283.0" text="Liste des codes promo" textAlignment="CENTER" textFill="#764949">
             <font>
                 <Font name="System Bold Italic" size="27.0" />
             </font>
         </Label>
-        <Button fx:id="retourBTN" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#Retour" prefHeight="8.0" prefWidth="118.0" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE" />
-      <Button fx:id="ajouterBTN" layoutX="462.0" layoutY="354.0" mnemonicParsing="false" onAction="#ajoutercode" prefHeight="18.0" prefWidth="125.0" style="-fx-background-color: #999999;" text="Ajouter code promo" textFill="WHITE" />
+        <Button fx:id="retourBTN" layoutX="210.0" layoutY="58.0" mnemonicParsing="false" onAction="#Retour" prefHeight="8.0" prefWidth="118.0" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE" />
+      <Button fx:id="ajouterBTN" layoutX="543.0" layoutY="430.0" mnemonicParsing="false" onAction="#ajoutercode" prefHeight="42.0" prefWidth="190.0" style="-fx-background-color: #999999;" text="Ajouter code promo" textFill="WHITE" />
     </children>
+</AnchorPane>
 </AnchorPane>

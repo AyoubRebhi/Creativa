@@ -7,18 +7,21 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjouterCodepromo">
+<AnchorPane prefHeight="321.0" prefWidth="820.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjouterCodepromo">
+    <fx:include source="sidebarAdmin2.fxml" />
+   <AnchorPane layoutX="195.0" layoutY="36.0" prefHeight="458.0" prefWidth="604.0">
    <children>
-      <Label fx:id="label" layoutX="163.0" layoutY="14.0" prefHeight="42.0" prefWidth="258.0" text="Ajouter code promo" />
-      <TextField fx:id="codepromoTF" layoutX="42.0" layoutY="122.0" promptText="code promo" />
-      <TextField fx:id="pourcentageTF" layoutX="43.0" layoutY="223.0" promptText="pourcentage" />
-      <Button fx:id="ajouterBTN" layoutX="474.0" layoutY="335.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="40.0" prefWidth="96.0" style="-fx-background-color: #999999;" text="Ajouter" textFill="WHITE" />
-      <ImageView fitHeight="202.0" fitWidth="209.0" layoutX="398.0" pickOnBounds="true" preserveRatio="true">
+      <Label fx:id="label" layoutX="171.0" layoutY="60.0" prefHeight="42.0" prefWidth="258.0" text="Ajouter code promo" />
+      <TextField fx:id="codepromoTF" layoutX="92.0" layoutY="149.0" promptText="code promo" />
+      <TextField fx:id="pourcentageTF" layoutX="92.0" layoutY="245.0" promptText="pourcentage" />
+      <Button fx:id="ajouterBTN" layoutX="508.0" layoutY="386.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="33.0" prefWidth="96.0" style="-fx-background-color: #999999;" text="Ajouter" textFill="WHITE" />
+      <ImageView fitHeight="148.0" fitWidth="135.0" layoutX="489.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/pngtree-promo-code-banner-label-clipart-png-image_9068054.png" />
          </image>
       </ImageView>
-      <Button fx:id="retourBTN" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#Retour" prefHeight="42.0" prefWidth="86.0" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE" />
+      <Button fx:id="retourBTN" layoutX="38.0" layoutY="28.0" mnemonicParsing="false" onAction="#Retour" prefHeight="19.0" prefWidth="86.0" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE" />
 
    </children>
+</AnchorPane>
 </AnchorPane>

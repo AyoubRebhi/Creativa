@@ -58,7 +58,7 @@ public class AfficherLivraisonUser implements Initializable {
 
     @FXML
     void Retour(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/sidebarClient.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AjouterLivraison.fxml"));
         try {
             retourBTN.getScene().setRoot(loader.load());
         } catch (IOException e) {

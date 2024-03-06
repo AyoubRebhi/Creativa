@@ -7,24 +7,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherLivraison">
-    <children>
-        <ListView fx:id="listView" layoutX="171.0" layoutY="28.0" prefHeight="319.0" prefWidth="397.0" />
-        <Label fx:id="labelFX" layoutX="210.0" layoutY="-4.0" prefHeight="36.0" prefWidth="216.0" text="Liste des Livraisons" textAlignment="CENTER" textFill="#764949">
+<AnchorPane prefHeight="100.0" prefWidth="200.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherLivraison">
+    <fx:include source="sidebarAdmin2.fxml" />
+    <AnchorPane layoutX="-28.0" layoutY="-11.0" prefHeight="507.0" prefWidth="838.0">    <children>
+        <ListView fx:id="listView" layoutX="426.0" layoutY="110.0" prefHeight="319.0" prefWidth="397.0" />
+        <Label fx:id="labelFX" layoutX="383.0" layoutY="51.0" prefHeight="36.0" prefWidth="216.0" text="Liste des Livraisons" textAlignment="CENTER" textFill="#764949">
             <font>
                 <Font name="System Bold Italic" size="22.0" />
             </font>
         </Label>
 
-        <Button fx:id="updateBTN" layoutX="469.0" layoutY="357.0" mnemonicParsing="false" onAction="#ModifierLivraison" prefHeight="38.0" prefWidth="98.0" style="-fx-background-color: #2F5AE9;" text="Modifier" textFill="WHITE">
+        <Button fx:id="updateBTN" layoutX="725.0" layoutY="448.0" mnemonicParsing="false" onAction="#ModifierLivraison" prefHeight="15.0" prefWidth="98.0" style="-fx-background-color: #2F5AE9;" text="Modifier" textFill="WHITE">
+            <font>
+                <Font size="17.0" />
+            </font></Button>
+        <Button fx:id="suppBTN" layoutX="599.0" layoutY="448.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: #6BDBE8;" text="Annuler" textFill="WHITE">
             <font>
                 <Font size="16.0" />
             </font></Button>
-        <Button fx:id="suppBTN" layoutX="356.0" layoutY="357.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="38.0" prefWidth="98.0" style="-fx-background-color: #6BDBE8;" text="Annuler" textFill="WHITE">
-            <font>
-                <Font size="16.0" />
-            </font></Button>
-        <Button fx:id="retourBTN" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#Retour" prefHeight="26.0" prefWidth="69.0" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE" />
-        <ComboBox fx:id="comboboxId" layoutX="14.0" layoutY="71.0" onAction="#comboboxId" prefHeight="30.0" prefWidth="148.0" promptText="Toutes les livraisons" />
+        <Button fx:id="retourBTN" layoutX="236.0" layoutY="50.0" mnemonicParsing="false" onAction="#Retour" prefHeight="1.0" prefWidth="78.0" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE" />
+        <ComboBox fx:id="comboboxId" layoutX="236.0" layoutY="138.0" onAction="#comboboxId" prefHeight="35.0" prefWidth="168.0" promptText="Toutes les livraisons" />
     </children>
+</AnchorPane>
 </AnchorPane>

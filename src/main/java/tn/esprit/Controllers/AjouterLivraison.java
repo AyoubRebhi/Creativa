@@ -18,7 +18,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AjouterLivraison implements Initializable{
+public class AjouterLivraison implements Initializable {
     @FXML
     private TextField adresseTF;
     @FXML
@@ -58,7 +58,6 @@ public class AjouterLivraison implements Initializable{
 
 
     @FXML
-
     void handleRB1(ActionEvent event) {
         if (RB1.isSelected()) {
             moyenLivTF.setText("Standard"); // mettre à jour le bouton en Standard
@@ -74,17 +73,18 @@ public class AjouterLivraison implements Initializable{
 
     @FXML
     void AfficherLivraison(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherLivraison.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn.esprit/AfficherLivraisonUser.fxml"));
         try {
             moyenLivTF.getScene().setRoot(loader.load());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
     @FXML
     void AjouterLivraison(ActionEvent event) throws SQLException {
         // Vérification de la saisie
-        if (id_cmdTF.getText().isEmpty() || id_userTF.getText().isEmpty() || statusTF.getText().isEmpty() ||
+        if (id_userTF.getText().isEmpty() || statusTF.getText().isEmpty() ||
                 adresseTF.getText().isEmpty() || fraisTF.getText().isEmpty() || moyenLivTF.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");
@@ -97,7 +97,6 @@ public class AjouterLivraison implements Initializable{
         ServiceLivraison serviceLivraison = new ServiceLivraison();
         Livraison l = new Livraison();
 
-        l.setId_cmd(Integer.parseInt(id_cmdTF.getText()));
         l.setId_user(serviceLivraison.getIdUtilisateurParNomComplet(id_userTF.getText()));
         l.setStatus(statusTF.getText());
         l.setAdresse(adresseTF.getText());
@@ -113,6 +112,8 @@ public class AjouterLivraison implements Initializable{
         alert.setContentText("La livraison a été ajoutée avec succès !");
         alert.showAndWait();
 
+
+
        /* // Envoi du message Twilio
         String messageText = "Nous sommes heureux de vous informer que votre commande est actuellement en cours de traitement.\nNotre équipe s'affaire à préparer vos articles avec le plus grand soin afin de vous garantir une satisfaction totale.";
         final String ACCOUNT_SID = "AC54e9aa0a574aae8b664854b28ca0cab2";
@@ -126,7 +127,7 @@ public class AjouterLivraison implements Initializable{
         System.out.println(message.getSid());
 
 */
-    }
+}
 
 
 

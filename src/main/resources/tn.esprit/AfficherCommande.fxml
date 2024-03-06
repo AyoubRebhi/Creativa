@@ -10,26 +10,28 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="690.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherCommande" stylesheets="@styles.css">
+<AnchorPane prefHeight="100.0" prefWidth="200.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherCommande">
+   <fx:include source="sidebarAdmin.fxml" />
+   <AnchorPane layoutX="-28.0" layoutY="-11.0" prefHeight="565.0" prefWidth="839.0">
    <children>
-      <ScrollPane layoutX="94.0" layoutY="131.0" prefHeight="252.0" prefWidth="758.0">
+      <ScrollPane layoutX="252.0" layoutY="139.0" prefHeight="228.0" prefWidth="504.0">
          <content>
-            <HBox fx:id="EMPHBox" prefHeight="232.0" prefWidth="1039.0" styleClass="hBox_main"  />
+            <HBox fx:id="EMPHBox" prefHeight="238.0" prefWidth="506.0" styleClass="hBox_main" />
          </content>
       </ScrollPane>
-      <TextField fx:id="searchBarEvents" layoutX="637.0" layoutY="52.0" prefHeight="29.0" prefWidth="236.0" styleClass="pane_navBar" stylesheets="@styles.css" />
-      <Label layoutX="573.0" layoutY="59.0" text="Rechercher" />
-      <DatePicker fx:id="date1" disable="true" layoutX="32.0" layoutY="555.0" />
-      <DatePicker fx:id="date222" disable="true" layoutX="222.0" layoutY="555.0" />
-      <TextField fx:id="text1" disable="true" layoutX="423.0" layoutY="555.0" />
-      <TextField fx:id="text2" disable="true" layoutX="583.0" layoutY="555.0" />
-      <TextField fx:id="text3" layoutX="755.0" layoutY="555.0" />
-      <Text layoutX="45.0" layoutY="546.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
-      <Text layoutX="231.0" layoutY="546.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Estimée" />
-      <Text layoutX="427.0" layoutY="546.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant Total" />
-      <Text layoutX="583.0" layoutY="546.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Code Promo" />
-      <Text layoutX="760.0" layoutY="546.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" />
-      <Button fx:id="modifierBTN" layoutX="804.0" layoutY="621.0" mnemonicParsing="false" onAction="#ModifyResUserBtn" text="Modifier" />
+      <TextField fx:id="searchBarEvents" layoutX="585.0" layoutY="82.0" prefHeight="41.0" prefWidth="191.0" styleClass="pane_navBar" stylesheets="@styles.css" />
+      <Label layoutX="504.0" layoutY="95.0" text="Rechercher" />
+      <DatePicker fx:id="date1" disable="true" layoutX="241.0" layoutY="484.0" />
+      <DatePicker fx:id="date222" disable="true" layoutX="241.0" layoutY="536.0" />
+      <TextField fx:id="text1" disable="true" layoutX="430.0" layoutY="481.0" prefHeight="30.0" prefWidth="126.0" />
+      <TextField fx:id="text2" disable="true" layoutX="571.0" layoutY="481.0" prefHeight="30.0" prefWidth="125.0" />
+      <TextField fx:id="text3" layoutX="702.0" layoutY="481.0" prefHeight="30.0" prefWidth="126.0" />
+      <Text layoutX="254.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+      <Text layoutX="254.0" layoutY="533.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Estimée" />
+      <Text layoutX="448.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant Total" />
+      <Text layoutX="574.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Code Promo" />
+      <Text layoutX="717.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" />
+      <Button fx:id="modifierBTN" layoutX="745.0" layoutY="528.0" mnemonicParsing="false" onAction="#ModifyResUserBtn" text="Modifier" />
       <TextField fx:id="id_user" layoutX="33.0" layoutY="609.0" visible="false" />
       <TextField fx:id="id_projet" layoutX="255.0" layoutY="609.0" visible="false" />
       <Text layoutX="46.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" />
@@ -37,17 +39,18 @@
       <TextField fx:id="prix1" layoutX="486.0" layoutY="609.0" visible="false" />
       <TextField fx:id="frais" layoutX="643.0" layoutY="608.0" visible="false" />
       <TextField fx:id="id_cmd" layoutX="45.0" layoutY="437.0" visible="false" />
-      <Text fx:id="commandes" layoutX="341.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Les commandes" wrappingWidth="175.19999999999993">
+      <Text fx:id="commandes" layoutX="366.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Les commandes" wrappingWidth="175.19999999999993">
          <font>
             <Font name="System Bold Italic" size="23.0" />
          </font>
       </Text>
-      <Text fx:id="modifier" layoutX="72.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Commande">
+      <Text fx:id="modifier" layoutX="233.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Commande">
          <font>
             <Font name="System Bold Italic" size="23.0" />
          </font>
       </Text>
-      <Button fx:id="back" layoutX="20.0" layoutY="24.0" mnemonicParsing="false" onAction="#back" text="Retour" />
+      <Button fx:id="back" layoutX="244.0" layoutY="47.0" mnemonicParsing="false" onAction="#back" text="Retour" />
    </children>
 
+</AnchorPane>
 </AnchorPane>

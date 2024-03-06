@@ -1,22 +1,8 @@
 package tn.esprit;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Properties;
 
-import tn.esprit.Models.Codepromo;
-import tn.esprit.Models.Commande;
-
-import tn.esprit.Models.Livraison;
-import tn.esprit.Services.ServiceCodepromo;
 import tn.esprit.Services.ServiceCommande;
-import tn.esprit.Services.ServiceLivraison;
 import tn.esprit.Utils.MaConnexion;
-
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-
 
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -29,9 +15,8 @@ public class Main {
         /*ServiceCodepromo serviceCodepromo = new ServiceCodepromo();
         System.out.println(ServiceCodepromo.codePromoValide(9510));*/
         //ajouter commande
-        /*0ServiceCommande serviceCommande = new ServiceCommande();
-
-        Commande c = new Commande(2, 3, new Date(123, 9, 26), "8dt",  new Date(123,9,15),1600,"en_cours", 20F, 8F);
+        /*ServiceCommande serviceCommande = new ServiceCommande();
+                Commande c = new Commande(2, 3, new Date(123, 9, 26), "8dt",  new Date(123,9,15),1600,"en_cours", 20F, 8F);
 
         serviceCommande.ajouter(c); }
 */
