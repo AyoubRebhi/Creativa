@@ -1,29 +1,9 @@
 package tn.esprit;
 
-import com.theokanning.openai.OpenAiResponse;
-import com.theokanning.openai.OpenAiService;
-import com.theokanning.openai.completion.CompletionRequest;
-import com.theokanning.openai.completion.CompletionResult;
-
 import tn.esprit.Models.Comments;
 import tn.esprit.Utils.MaConnexion;
-import tn.esprit.services.CommentService;
-import tn.esprit.services.PostService;
-import tn.esprit.services.TopicService;
-import tn.esprit.Models.TOPIC;
-import tn.esprit.Models.POST;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.sql.Blob;
-import java.sql.ResultSet;
+import tn.esprit.Services.CommentService;
+
 import java.util.List;
 
 

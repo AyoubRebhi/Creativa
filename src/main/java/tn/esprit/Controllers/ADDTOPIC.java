@@ -1,17 +1,15 @@
-package tn.esprit.controllers;
+package tn.esprit.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import tn.esprit.Models.TOPIC;
-import tn.esprit.services.TopicService;
+import tn.esprit.Services.TopicService;
 
-import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;

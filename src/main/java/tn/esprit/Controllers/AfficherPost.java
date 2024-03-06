@@ -1,4 +1,4 @@
-package tn.esprit.controllers;
+package tn.esprit.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,11 +15,8 @@ import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import tn.esprit.Models.POST;
-import tn.esprit.Models.TOPIC;
-import tn.esprit.services.PostService;
-import tn.esprit.services.TopicService;
+import tn.esprit.Services.PostService;
 
-import java.io.File;
 import java.io.IOException;
 
 public class AfficherPost {

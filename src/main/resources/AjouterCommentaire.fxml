@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterCommentaire">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjouterCommentaire">
    <children>
       <TextField fx:id="Editeur" alignment="CENTER" layoutX="211.0" layoutY="67.0" promptText="Content" stylesheets="@Test.css" />
       <TextField fx:id="Content" alignment="CENTER" layoutX="211.0" layoutY="125.0" promptText="Editeur" stylesheets="@Test.css" />

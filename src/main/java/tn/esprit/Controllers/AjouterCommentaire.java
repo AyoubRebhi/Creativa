@@ -1,25 +1,16 @@
-package tn.esprit.controllers;
+package tn.esprit.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import tn.esprit.Models.Comments;
-import tn.esprit.Models.TOPIC;
-import tn.esprit.services.CommentService;
+import tn.esprit.Services.CommentService;
 
-import java.io.IOException;
 import java.util.List;
 
 public class AjouterCommentaire {

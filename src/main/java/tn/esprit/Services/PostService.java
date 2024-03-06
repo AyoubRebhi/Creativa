@@ -1,8 +1,6 @@
-package tn.esprit.services;
+package tn.esprit.Services;
 import tn.esprit.Interfaces.InterfaceCRUD;
 
-import java.io.FileNotFoundException;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,12 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import tn.esprit.Models.POST;
-import tn.esprit.Models.TOPIC;
 import tn.esprit.Utils.MaConnexion;
 
-import javax.swing.plaf.nimbus.State;
-import java.io.File;
-import java.io.FileInputStream;
 public class PostService implements InterfaceCRUD<POST> {
     MaConnexion connexion = (MaConnexion) MaConnexion.getInstance();
     @Override

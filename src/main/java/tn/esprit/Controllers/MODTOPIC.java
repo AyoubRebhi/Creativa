@@ -1,4 +1,4 @@
-package tn.esprit.controllers;
+package tn.esprit.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,13 +14,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tn.esprit.Models.POST;
 import tn.esprit.Models.TOPIC;
-import tn.esprit.services.PostService;
-import tn.esprit.services.TopicService;
-import tn.esprit.Utils.MaConnexion;
+import tn.esprit.Services.PostService;
+import tn.esprit.Services.TopicService;
 
 import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 

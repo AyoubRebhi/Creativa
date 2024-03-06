@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="455.0" prefWidth="690.0" styleClass="root" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.MODTOPIC">
+<AnchorPane prefHeight="455.0" prefWidth="690.0" styleClass="root" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.MODTOPIC">
    <fx:include source="sidebarArtist.fxml" />
    <AnchorPane><children>
       <ListView fx:id="PostsList" layoutX="221.0" layoutY="154.0" prefHeight="200.0" prefWidth="428.0" stylesheets="@Style.css">

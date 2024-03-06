@@ -1,4 +1,4 @@
-package tn.esprit.controllers;
+package tn.esprit.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,21 +9,14 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import org.controlsfx.control.Notifications;
-import tn.esprit.Models.POST;
 import tn.esprit.Models.TOPIC;
-import tn.esprit.services.TopicService;
+import tn.esprit.Services.TopicService;
 
-import javax.management.Notification;
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
 public class AfficherTopic {
 

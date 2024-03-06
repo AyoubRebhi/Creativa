@@ -1,11 +1,11 @@
-package tn.esprit.controllers;
+package tn.esprit.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import tn.esprit.Models.POST;
-import tn.esprit.services.PostService;
+import tn.esprit.Services.PostService;
 
 import java.io.File;
 
