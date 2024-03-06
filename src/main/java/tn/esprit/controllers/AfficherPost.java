@@ -36,6 +36,21 @@ private POST p;
     @FXML
     private Button buttonReset;
     @FXML
+    void AjouterCommentaire(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCommentaire.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        AjouterCommentaire controller = loader.getController();
+        controller.initialize();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+    @FXML
     void Supprimer(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation de suppression");

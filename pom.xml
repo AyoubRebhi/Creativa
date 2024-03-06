@@ -43,8 +43,25 @@
             <artifactId>controlsfx</artifactId>
             <version>11.1.0</version> <!-- Use the appropriate version -->
         </dependency>
-    </dependencies>
 
+        <dependency>
+            <groupId>com.theokanning.openai-gpt3-java</groupId>
+            <artifactId>api</artifactId>
+            <version>0.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.theokanning.openai-gpt3-java</groupId>
+            <artifactId>client</artifactId>
+            <version>0.3.0</version>
+        </dependency>
+
+    </dependencies>
+    <repositories>
+        <repository>
+            <id>openai-gpt3-java-mvn-repo</id>
+            <url>https://raw.github.com/theokanning/openai-java/mvn-repo</url>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>
@@ -76,6 +93,8 @@
                 </executions>
             </plugin>
         </plugins>
+
     </build>
+
 
 </project>

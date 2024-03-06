@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <!-- This module was also published with a richer model, Gradle metadata,  -->
+    <!-- which should be used instead. Do not delete the following line which  -->
+    <!-- is to indicate to Gradle or any Gradle module metadata file consumer  -->
+    <!-- that they should prefer consuming it instead. -->
+    <!-- do_not_remove: published-with-gradle-metadata -->
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.theokanning.openai-gpt3-java</groupId>
+    <artifactId>client</artifactId>
+    <version>0.18.2</version>
+    <name>client</name>
+    <description>Basic retrofit client for OpenAI's GPT APIs</description>
+    <url>https://github.com/theokanning/openai-java</url>
+    <licenses>
+        <license>
+            <name>The MIT License</name>
+            <url>https://www.mit.edu/~amini/LICENSE.md</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>theokanning</id>
+            <name>Theo Kanning</name>
+        </developer>
+    </developers>
+    <scm>
+        <connection>https://github.com/theokanning/openai-java.git</connection>
+        <developerConnection>https://github.com/theokanning/openai-java.git</developerConnection>
+        <url>https://github.com/theokanning/openai-java</url>
+    </scm>
+    <dependencies>
+        <dependency>
+            <groupId>com.theokanning.openai-gpt3-java</groupId>
+            <artifactId>api</artifactId>
+            <version>0.18.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>retrofit</artifactId>
+            <version>2.9.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>adapter-rxjava2</artifactId>
+            <version>2.9.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-jackson</artifactId>
+            <version>2.9.0</version>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+</project>

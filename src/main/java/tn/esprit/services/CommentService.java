@@ -75,6 +75,7 @@ public class CommentService {
     }
     public void changeSeen(Comments comment){
         try {
+            comment.setSeen(1);
             PreparedStatement preparedStatement = connexion.getConn().prepareStatement("UPDATE `comments` SET `Post_id`=?,`Editeur`=?,`Content`=?,`Seen`=? WHERE Id=?");
              // Définit la valeur de la colonne `Seen` sur true
             preparedStatement.setInt(1, comment.getPost_id());

@@ -9,7 +9,10 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
+import tn.esprit.Models.Comments;
+import tn.esprit.services.CommentService;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -25,14 +28,17 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
+        CommentService commentService= new CommentService();
+        List<Comments> comments=commentService.Affichernotification(2);
+        for(Comments c:comments){
         Notifications notifications = Notifications.create();
         notifications.owner(stage); // Set the owning window
-        notifications.text("PATATI PATATA");
-        notifications.title("Success");
+        notifications.text(c.getContent());
+        notifications.title("New notification");
         notifications.hideAfter(Duration.seconds(5));
         notifications.darkStyle();
         notifications.show();
+        commentService.changeSeen(c);}
 
     }
 

@@ -16,5 +16,6 @@
       <Slider fx:id="slider" layoutX="2.0" layoutY="285.0" onMousePressed="#seeking" prefHeight="14.0" prefWidth="600.0" stylesheets="@Style.css" />
       <ImageView fx:id="Img" fitHeight="282.0" fitWidth="323.0" layoutX="149.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
       <Button layoutX="31.0" layoutY="346.0" mnemonicParsing="false" onAction="#Supprimer" stylesheets="@Test.css" text="Supprimer" textFill="WHITE" />
+      <Button layoutX="230.0" layoutY="346.0" mnemonicParsing="false" onAction="#AjouterCommentaire" stylesheets="@Test.css" text="AjouterCommentaire" textFill="WHITE" />
    </children>
 </AnchorPane>

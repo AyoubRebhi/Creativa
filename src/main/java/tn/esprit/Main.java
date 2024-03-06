@@ -1,5 +1,10 @@
 package tn.esprit;
 
+import com.theokanning.openai.OpenAiResponse;
+import com.theokanning.openai.OpenAiService;
+import com.theokanning.openai.completion.CompletionRequest;
+import com.theokanning.openai.completion.CompletionResult;
+
 import tn.esprit.Models.Comments;
 import tn.esprit.Utils.MaConnexion;
 import tn.esprit.services.CommentService;
@@ -7,7 +12,16 @@ import tn.esprit.services.PostService;
 import tn.esprit.services.TopicService;
 import tn.esprit.Models.TOPIC;
 import tn.esprit.Models.POST;
-
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.Blob;
 import java.sql.ResultSet;
 import java.util.List;
@@ -53,16 +67,25 @@ public class Main {
         //   System.out.println(p.toString());
         //}
         CommentService com= new CommentService();
-        Comments comment=new Comments(2,4,"test",1);
-        Comments comment1=new Comments(2,2,"test0",0);
-        Comments comm2=new Comments(1,3,"11",1);
+        //Comments comment=new Comments(2,4,"test",1);
+        //Comments comment1=new Comments(2,2,"test0",0);
+        //Comments comm2=new Comments(1,3,"11",1);
 
 
-     List<Comments> comments=com.Affichernotification(1);
+    List<Comments> comments=com.Affichernotification(2);
 
-     for(Comments c:comments){
+    for(Comments c:comments){
         System.out.println(c.toString());
      }
 
-        }
+
+        // Example prompt for generating text
+
+
     }
+
+
+}
+
+
+

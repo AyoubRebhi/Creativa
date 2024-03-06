@@ -1,7 +1,5 @@
 package tn.esprit.Models;
 
-import java.sql.Date;
-
 public class Comments {
 private int id,Post_id,Editeur;
 private String Content;
