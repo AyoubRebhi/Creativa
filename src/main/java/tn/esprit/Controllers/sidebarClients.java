@@ -120,12 +120,12 @@ public class sidebarClients {
         String[] parts = selectedProjet.split(",");
         int projetId = Integer.parseInt(parts[0].trim());
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GetOneProjectByIdClient.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherUnProjetParIdClient.fxml"));
 
         try {
             System.out.println("test");
             Parent root = loader.load();
-            GetOneProjetClient controller = loader.getController();
+            AfficherUnProjetParIdClient controller = loader.getController();
             System.out.println("test");
             controller.setParametre(projetId,ps.afficherProjetParId(projetId));
             System.out.println("test");

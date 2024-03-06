@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane style="-fx-background-color: FFFFFF; -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.CardProjetAdmin">
+   <children>
+<HBox fx:id="box" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="186.0" prefWidth="587.0">
+   <children>
+      <ImageView fx:id="imageProjet" fitHeight="151.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/imageVideIcon.png" />
+         </image>
+         <HBox.margin>
+            <Insets bottom="10.0" left="5.0" top="10.0" />
+         </HBox.margin>
+      </ImageView>
+      <VBox prefHeight="186.0" prefWidth="412.0" spacing="15.0">
+         <HBox.margin>
+            <Insets left="15.0" right="10.0" />
+         </HBox.margin>
+         <children>
+            <Label fx:id="boxTitre" prefHeight="27.0" prefWidth="336.0" text="Titre">
+               <font>
+                  <Font name="Berlin Sans FB" size="24.0" />
+               </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+            </Label>
+                  <Label fx:id="categorieLabel" prefHeight="27.0" prefWidth="249.0" text="#Catégorie">
+                     <font>
+                        <Font name="Berlin Sans FB" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="prixLabel" prefHeight="27.0" prefWidth="214.0" text="Prix">
+                     <font>
+                        <Font name="Berlin Sans FB" size="18.0" />
+                     </font>
+                  </Label>
+            <HBox prefHeight="38.0" prefWidth="219.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/likeIcon.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="5.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label fx:id="nbJaimeNB" prefHeight="30.0" prefWidth="32.0" text="nb">
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="10.0" top="2.0" />
+                     </HBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                  </Label>
+                  <Label fx:id="labelFX" prefHeight="30.0" prefWidth="55.0" text="Likes">
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="3.0" top="2.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Berlin Sans FB" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+            <ImageView fx:id="viewMoreBTN" fitHeight="50.0" fitWidth="72.0" onDragDetected="#afficherProjetById" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/ViewDetailsIcon.png" />
+               </image>
+               <HBox.margin>
+                  <Insets right="15.0" top="55.0" />
+               </HBox.margin>
+            </ImageView>
+   </children>
+</HBox>
+   </children>
+        </AnchorPane>

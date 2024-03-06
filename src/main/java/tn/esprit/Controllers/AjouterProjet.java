@@ -31,7 +31,7 @@ public class AjouterProjet {
     private ChoiceBox<String> categorieChoiceBox;
 
     @FXML
-    private TextField descriptionTF;
+    private TextArea descriptionTA;
 
     @FXML
     private Button mediaBTN;
@@ -49,7 +49,7 @@ public class AjouterProjet {
 
     @FXML
     void afficherProjets(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/sidebarArtisteProjets.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherListeProjetsArtiste.fxml"));
         try {
             titreTF.getScene().setRoot(fxmlLoader.load());
         } catch (IOException e) {
@@ -74,7 +74,7 @@ public class AjouterProjet {
     void ajouterProjet(ActionEvent event) {
         String titre = titreTF.getText();
         Double prix = Double.parseDouble(prixTF.getText());
-        String description = descriptionTF.getText();
+        String description = descriptionTA.getText();
         int idCategorie = categorieChoiceBox.getSelectionModel().getSelectedIndex() + 1; // L'indice de la liste commence à partir de 0
 
         if (titre.isEmpty() || description.isEmpty() ) {
@@ -97,7 +97,7 @@ public class AjouterProjet {
 
     public void refreshProjetsList() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarArtisteProjets.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherListeProjetsArtiste.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) titreTF.getScene().getWindow(); // Récupérer la fenêtre actuelle
@@ -117,7 +117,7 @@ public class AjouterProjet {
     @FXML
     void initialize() {
         assert categorieChoiceBox != null : "fx:id=\"categorieChoiceBox\" was not injected: check your FXML file 'AjouterProjet.fxml'.";
-        assert descriptionTF != null : "fx:id=\"descriptionTF\" was not injected: check your FXML file 'AjouterProjet.fxml'.";
+        assert descriptionTA != null : "fx:id=\"descriptionTA\" was not injected: check your FXML file 'AjouterProjet.fxml'.";
         assert mediaBTN != null : "fx:id=\"mediaBTN\" was not injected: check your FXML file 'AjouterProjet.fxml'.";
         assert modifier_categories != null : "fx:id=\"modifier_categories\" was not injected: check your FXML file 'AjouterProjet.fxml'.";
         assert prixTF != null : "fx:id=\"prixTF\" was not injected: check your FXML file 'AjouterProjet.fxml'.";

@@ -49,7 +49,7 @@ public class ModifierProjet {
     }
     @FXML
     void afficherProjets(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/sidebarArtisteProjets.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherListeProjetsArtiste.fxml"));
         try {
             titreTF.getScene().setRoot(fxmlLoader.load());
         } catch (IOException e) {
@@ -69,7 +69,7 @@ public class ModifierProjet {
     }
     public void refreshProjetsList() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarArtisteProjets.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherListeProjetsArtiste.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) titreTF.getScene().getWindow(); // Récupérer la fenêtre actuelle

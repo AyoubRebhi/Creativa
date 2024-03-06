@@ -3,6 +3,8 @@ package tn.esprit.Controllers;
 import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -10,7 +12,7 @@ import javafx.scene.image.ImageView;
 import tn.esprit.Models.Categorie;
 import tn.esprit.Services.CategorieServices;
 
-public class CategorieController {
+public class CardCategorie {
 
     @FXML
     private ResourceBundle resources;
@@ -28,7 +30,7 @@ public class CategorieController {
     private Label titreCatLabel;
     private Categorie categorie;
     private CategorieServices cs;
-    public CategorieController() {
+    public CardCategorie() {
         this.cs = new CategorieServices(); // Initialisation de cs
     }
     public void setParametre(Categorie categorie,int id){
@@ -42,4 +44,9 @@ public class CategorieController {
         imageCatLabel.setImage(image);
     }
 
+    public void modifierCategorie(ActionEvent event) {
+    }
+
+    public void supprimerCategorie(ActionEvent event) {
+    }
 }

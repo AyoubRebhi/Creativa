@@ -1,6 +1,6 @@
 package tn.esprit.Controllers;
 
-
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,13 +10,14 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import tn.esprit.Models.Projet;
 import tn.esprit.Services.ProjetServices;
 
 import java.io.File;
 import java.io.IOException;
 
-public class GetOneProjetClient {
+public class AfficherUnProjetParIdArtiste {
     @FXML
     private Label categorieLabel;
 
@@ -48,29 +49,16 @@ public class GetOneProjetClient {
     public void setProjet(Projet projet) {
         this.projet = projet;
     }
-
     public void redirectVersAfficherProjets(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarClient.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherListeProjetsArtiste.fxml"));
             Parent root = loader.load();
-            sidebarClients controller = loader.getController();
+            AfficherListeProjetsArtiste controller = loader.getController();
             labelFX.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    public void redirectVersProjets(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProjetCardList.fxml"));
-            Parent root = loader.load();
-            sidebarClients controller = loader.getController();
-            labelFX.getScene().setRoot(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     void setParametre(int id, Projet projet) {
         DropShadow shadow = new DropShadow();
@@ -116,5 +104,17 @@ public class GetOneProjetClient {
             Image image = new Image(getClass().getResourceAsStream("/images/imageVideIcon.png"));
             projetImage.setImage(image);
         }
+    }
+
+    public void redirectVersAcceuil(ActionEvent event) {
+    }
+
+    public void redirectVersAfficherProjets(ActionEvent event) {
+    }
+
+    public void modifierProjet(ActionEvent event) {
+    }
+
+    public void supprimerProjet(ActionEvent event) {
     }
 }

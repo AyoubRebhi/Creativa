@@ -23,7 +23,7 @@ public class sidebarArtiste {
     @FXML
     void redirectVersAfficherProjets(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarArtisteProjets.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherListeProjetsArtiste.fxml"));
             Parent root = loader.load();
             sidebarArtiste controller = loader.getController();
             labelFX.getScene().setRoot(root);
@@ -47,5 +47,12 @@ public class sidebarArtiste {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void getFiltre(ActionEvent event) {
+
+    }
+
+    public void ajouterProjet(ActionEvent event) {
     }
 }

@@ -2,9 +2,7 @@ package tn.esprit.Controllers;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,7 +31,7 @@ public class AjouterCategorie {
 
     @FXML
     void afficherCategories(ActionEvent event){
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherCategoriesAdmin2.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/AfficherListeCategoriesAdmin.fxml"));
         try {
             titreTF.getScene().setRoot(fxmlLoader.load());
         } catch (IOException e) {
@@ -71,7 +69,7 @@ public class AjouterCategorie {
 
     private void refreshCategoriesList() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCategoriesAdmin2.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherListeCategoriesAdmin.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) titreTF.getScene().getWindow(); // Récupérer la fenêtre actuelle

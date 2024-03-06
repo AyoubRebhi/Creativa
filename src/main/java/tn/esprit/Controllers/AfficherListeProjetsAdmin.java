@@ -1,5 +1,6 @@
 package tn.esprit.Controllers;
 
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 import tn.esprit.Models.Projet;
 import tn.esprit.Services.ProjetServices;
 
@@ -19,7 +21,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ProjetCardList {
+public class AfficherListeProjetsAdmin {
+
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -37,7 +40,6 @@ public class ProjetCardList {
     private RadioButton rButton3;
     @FXML
     private ToggleGroup filtrage;
-
     private List<Projet> projetsFiltres;
 
     public void getFiltre(ActionEvent event){
@@ -54,15 +56,15 @@ public class ProjetCardList {
         try {
 
             projets = projetsFiltres;
-            projets = projets.stream()
-                    .filter(Projet::getIsVisible)
-                    .collect(Collectors.toList());
+            //projets = projets.stream()
+              //      .filter(Projet::getIsVisible)
+                //    .collect(Collectors.toList());
 
             for (int i=0;i<projets.size();i++){
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/ProjetCard.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/CardProjetAdmin.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
-                ProjetCard cardController = fxmlLoader.getController();
+                CardProjetAdmin cardController = fxmlLoader.getController();
                 int id= projets.get(i).getId();
                 cardController.setData(projets.get(i),id);
                 if(col==1){
@@ -84,56 +86,70 @@ public class ProjetCardList {
             System.err.println(e.getMessage());
         }
     }
-
     @FXML
     void initialize() {
-       ProjetServices projetServices = new ProjetServices();
-       int col=0;
-       int row=1;
-       try {
+        ProjetServices projetServices = new ProjetServices();
+        int col=0;
+        int row=1;
+        try {
 
-           projets = projetServices.afficher();
-           projets = projets.stream()
-                   .filter(Projet::getIsVisible)
-                   .collect(Collectors.toList());
+            projets = projetServices.afficher();
+            //projets = projets.stream()
+            //      .filter(Projet::getIsVisible)
+            //      .collect(Collectors.toList());
 
-           for (int i=0;i<projets.size();i++){
-               FXMLLoader fxmlLoader = new FXMLLoader();
-               fxmlLoader.setLocation(getClass().getResource("/ProjetCard.fxml"));
-               AnchorPane anchorPane = fxmlLoader.load();
-               ProjetCard cardController = fxmlLoader.getController();
-               int id= projets.get(i).getId();
-               cardController.setData(projets.get(i),id);
-               if(col==1){
-                   col=0;
-                   row++;
-               }
-               grid.add(anchorPane,col++,row);
-               //Set projet grid width
-               grid.setMinWidth(Region.USE_COMPUTED_SIZE);
-               grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
-               grid.setMaxWidth(Region.USE_PREF_SIZE);
-               //Set projet grid height
-               grid.setMinHeight(Region.USE_COMPUTED_SIZE);
-               grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
-               grid.setMaxHeight(Region.USE_PREF_SIZE);
-               GridPane.setMargin(anchorPane,new Insets(25));
-           }
-       } catch (SQLException | IOException e  ) {
-           System.err.println(e.getMessage());
-       }
+            for (int i=0;i<projets.size();i++){
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/CardProjetAdmin.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+                CardProjetAdmin cardController = fxmlLoader.getController();
+                int id= projets.get(i).getId();
+                cardController.setData(projets.get(i),id);
+                if(col==1){
+                    col=0;
+                    row++;
+                }
+                grid.add(anchorPane,col++,row);
+                //Set projet grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+                //Set projet grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+                GridPane.setMargin(anchorPane,new Insets(25));
+            }
+        } catch (SQLException |IOException e  ) {
+            System.err.println(e.getMessage());
+        }
     }
-
 
     public void redirectVersProjets(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProjetCardList.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherListeProjetsAdmin.fxml"));
             Parent root = loader.load();
-            ProjetCardList controller = loader.getController();
+            AfficherListeProjetsAdmin controller = loader.getController();
             labelFX.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public void redirectVersAfficherCategories(ActionEvent event) {
+    }
+
+    public void redirectVersAfficherProjets(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherListeProjetsAdmin.fxml"));
+            Parent root = loader.load();
+            AfficherListeProjetsAdmin controller = loader.getController();
+            labelFX.getScene().setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void redirectVersAcceuil(ActionEvent event) {
+    }
 }

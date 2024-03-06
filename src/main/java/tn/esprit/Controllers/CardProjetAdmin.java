@@ -1,6 +1,5 @@
 package tn.esprit.Controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,15 +8,13 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.TextFlow;
 import tn.esprit.Models.Projet;
 import tn.esprit.Services.ProjetServices;
 
 import java.io.File;
 import java.io.IOException;
 
-public class ProjetCard {
+public class CardProjetAdmin {
 
 
     @FXML
@@ -41,7 +38,7 @@ public class ProjetCard {
 
 
     private ProjetServices ps;
-    public ProjetCard(){
+    public CardProjetAdmin(){
         this.ps = new ProjetServices();
     }
 
@@ -56,7 +53,7 @@ public class ProjetCard {
         });
 
         viewMoreBTN.setOnMouseClicked(this::afficherProjetById);
-        
+
         this.projet = projet;
         boxTitre.setText(projet.getTitre());
         ps.calculerNombreJaimePourProjet(projet);
@@ -88,9 +85,9 @@ public class ProjetCard {
     @FXML
     void afficherProjetById(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GetOneProjectByIdClient.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherUnProjetParIdAdmin.fxml"));
             Parent root = loader.load();
-            GetOneProjetClient controller = loader.getController();
+            AfficherUnProjetParIdAdmin controller = loader.getController();
             controller.setParametre(projet.getId(), projet); // Pass the selected project's data
             labelFX.getScene().setRoot(root);
         } catch (IOException e) {

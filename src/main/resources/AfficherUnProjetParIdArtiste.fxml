@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="544.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.sidebarAdmin">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="1013.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherUnProjetParIdArtiste">
     <children>
         <AnchorPane prefHeight="200.0" prefWidth="200.0">
             <children>
@@ -25,7 +26,7 @@
                                                 <Image url="@images/teamIcon.png" />
                                             </image>
                                         </ImageView>
-                                        <Label layoutX="51.0" layoutY="9.0" text="Creativa Admin" />
+                                        <Label layoutX="51.0" layoutY="9.0" text="Creativa Artistes" />
                                         <Button layoutX="550.0" layoutY="2.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="47.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                                             <graphic>
                                                 <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
@@ -56,7 +57,7 @@
                                     <children>
                                         <ImageView fitHeight="44.0" fitWidth="36.0" layoutX="85.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@images/AdminIcon.png" />
+                                                <Image url="@images/Artiste.png" />
                                             </image>
                                         </ImageView>
                                         <Label fx:id="labelFX" layoutX="61.0" layoutY="57.0" text="Bienvenue," textFill="WHITE">
@@ -88,11 +89,11 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Button layoutX="11.0" layoutY="194.0" mnemonicParsing="false" onAction="#redirectVersAfficherCategories" prefHeight="30.0" prefWidth="180.0" text="Catégories">
+                                        <Button layoutX="11.0" layoutY="194.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text="Formations">
                                             <graphic>
                                                 <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
-                                                        <Image url="@images/Categories.png" />
+                                                        <Image url="@images/Formations.png" />
                                                     </image>
                                                 </ImageView>
                                             </graphic>
@@ -106,7 +107,7 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Button layoutX="11.0" layoutY="467.0" mnemonicParsing="false">
+                                        <Button layoutX="7.0" layoutY="459.0" mnemonicParsing="false">
                                             <graphic>
                                                 <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
@@ -115,36 +116,100 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Label layoutX="47.0" layoutY="471.0" text="Se déconnecter " textFill="WHITE" />
-                                        <Button layoutX="11.0" layoutY="268.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text="Commandes">
-                                            <graphic>
-                                                <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@images/commande.png" />
-                                                    </image>
-                                                </ImageView>
-                                            </graphic>
-                                        </Button>
-                                        <Button layoutX="10.0" layoutY="304.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text="Livraisons">
-                                            <graphic>
-                                                <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@images/livraison.png" />
-                                                    </image>
-                                                </ImageView>
-                                            </graphic>
-                                        </Button>
+                                        <Label layoutX="43.0" layoutY="463.0" text="Se déconnecter " textFill="WHITE" />
                                     </children>
                                 </AnchorPane>
                             </children>
                         </AnchorPane>
                     </left>
                     <center>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: 000000;" BorderPane.alignment="CENTER">
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                             <children>
-                                <AnchorPane layoutX="21.0" layoutY="39.0" prefHeight="514.0" prefWidth="732.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                    <fx:include source="AfficherProjetsParAdmin.fxml" />
-                                </AnchorPane>
+                                <AnchorPane layoutX="21.0" layoutY="39.0" prefHeight="366.4" prefWidth="398.4" style="-fx-background-color: ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label fx:id="titreLabel" alignment="TOP_LEFT" layoutX="38.0" layoutY="91.0" prefHeight="71.0" prefWidth="453.0" text="Titre">
+                                            <font>
+                                                <Font name="Berlin Sans FB" size="27.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                            </padding>
+                                        </Label>
+                                        <Label fx:id="descriptionLabel" alignment="TOP_LEFT" layoutX="38.0" layoutY="173.0" prefHeight="236.0" prefWidth="451.0" text="Description">
+                                            <font>
+                                                <Font name="Berlin Sans FB" size="20.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                            </padding>
+                                        </Label>
+                                        <ImageView fx:id="projetImage" fitHeight="179.0" fitWidth="180.0" layoutX="590.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/imageVideIcon.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label fx:id="createdAtLablel" alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="55.0" prefWidth="262.0" text="Created At : ">
+                                            <font>
+                                                <Font name="Berlin Sans FB" size="13.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                            </padding>
+                                        </Label>
+                                        <Label fx:id="categorieLabel" alignment="TOP_LEFT" layoutX="272.0" layoutY="14.0" prefHeight="43.0" prefWidth="162.0" text="#Categorie">
+                                            <font>
+                                                <Font name="Berlin Sans FB" size="13.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                            </padding>
+                                        </Label>
+                                        <Label fx:id="prixLabel" alignment="TOP_LEFT" layoutX="555.0" layoutY="271.0" prefHeight="68.0" prefWidth="194.0" text="Prix :">
+                                            <font>
+                                                <Font name="Berlin Sans FB" size="20.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                            </padding>
+                                        </Label>
+                                        <ImageView fx:id="retourIcon" fitHeight="28.0" fitWidth="28.0" layoutX="731.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/retourIcon.png" />
+                                            </image>
+                                        </ImageView>
+                              <Label fx:id="prixLabel1" alignment="TOP_LEFT" layoutX="537.0" layoutY="339.0" prefHeight="73.0" prefWidth="238.0" text="Nombre des Jaimes:">
+                                 <font>
+                                    <Font name="Berlin Sans FB" size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </Label>
+                              <Button fx:id="updateBTN" layoutX="535.0" layoutY="447.0" mnemonicParsing="false" onAction="#modifierProjet" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #4a85c4;" text="Modifier" textFill="#fffefe">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="22.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/editIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="suppBTN" layoutX="323.0" layoutY="447.0" mnemonicParsing="false" onAction="#supprimerProjet" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #C62111;" text="Supprimer" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold Italic" size="12.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="22.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/deleteIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                                    </children></AnchorPane>
                             </children>
                         </AnchorPane>
                     </center>

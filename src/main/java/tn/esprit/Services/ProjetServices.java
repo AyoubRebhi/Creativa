@@ -187,6 +187,38 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
         }
         return projets;
     }
+    public List<Projet> chercherProjet(String ch) {
+        List<Projet> projets = new ArrayList<>();
+        String req = "SELECT p.*, c.titre AS categorie_titre FROM projet p " +
+                "JOIN categorie c ON p.id_categorie = c.id_categorie " +
+                "WHERE p.titre LIKE ? OR c.titre LIKE ? OR p.description LIKE ?";
+        try (PreparedStatement ps = conn.prepareStatement(req)) {
+            String searchPattern = "%" + ch + "%";
+            ps.setString(1, searchPattern);
+            ps.setString(2, searchPattern);
+            ps.setString(3, searchPattern);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Projet projet = new Projet();
+                    projet.setId(rs.getInt("id_projet"));
+                    projet.setTitre(rs.getString("titre"));
+                    projet.setDescription(rs.getString("description"));
+                    projet.setCategorie(rs.getInt("id_categorie"));
+                    projet.setPrix(rs.getDouble("prix"));
+                    projet.setVisible(rs.getBoolean("isVisible"));
+                    projet.setCreatedAt(rs.getTimestamp("createdAt"));
+                    projet.setUpdatedAt(rs.getTimestamp("updatedAt"));
+
+                    // Add project to the list
+                    projets.add(projet);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return projets;
+    }
+
     //Fonctions de filtrage
     public List<Projet> afficherProjetParNbJaime() {
         List<Projet> projets = new ArrayList<>();

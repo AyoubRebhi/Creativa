@@ -123,6 +123,50 @@ public class CategorieServices implements InterfaceCRUD<Categorie> {
         }
         return nbProjetsParCategorie;
     }
-
+    public List<Categorie> afficheCategorieParNbProjet() {
+        List<Categorie> categories = new ArrayList<>();
+        try {
+            String req = "SELECT c.*, COUNT(p.id_projet) AS nb_projets " +
+                    "FROM categorie c " +
+                    "LEFT JOIN projet p ON c.id_categorie = p.id_categorie " +
+                    "GROUP BY c.id_categorie " +
+                    "ORDER BY nb_projets ASC";
+            PreparedStatement ps = conn.prepareStatement(req);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id_categorie");
+                String titre = rs.getString("titre");
+                String image = rs.getString("image");
+                String categorieDescription = rs.getString("description");
+                // No need to add nbProjets to the Categorie object
+                // Construct Categorie objects without setting nbProjets
+                Categorie categorie = new Categorie(id, titre, image, categorieDescription);
+                categories.add(categorie);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return categories;
+    }
+    public List<Categorie> afficherCategorieParTitre() {
+        List<Categorie> categories = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM categorie ORDER BY titre";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                int id = rs.getInt("id_categorie");
+                String titre = rs.getString("titre");
+                String image = rs.getString("image");
+                String categorieDescription = rs.getString("description");
+                // Construct Categorie objects without setting createdAt
+                Categorie categorie = new Categorie(id, titre, image, categorieDescription);
+                categories.add(categorie);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return categories;
+    }
 }
 
