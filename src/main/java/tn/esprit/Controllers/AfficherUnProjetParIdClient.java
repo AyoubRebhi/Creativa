@@ -93,6 +93,9 @@ public class AfficherUnProjetParIdClient {
         commdeBTN.setOnMouseExited(event ->{
             commdeBTN.setEffect(null);
         });
+        commdeBTN.setOnMouseClicked(event->{
+
+        });
         jaimeIcon.setOnMouseEntered(event->{
             jaimeIcon.setEffect(shadow);
         });
@@ -137,4 +140,5 @@ public class AfficherUnProjetParIdClient {
 
     public void insererJaime(MouseEvent mouseEvent) {
     }
+
 }

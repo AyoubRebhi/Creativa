@@ -39,6 +39,8 @@ public class AfficherUnProjetParIdAdmin {
     private ImageView projetImage;
     @FXML
     private ImageView archiverIcon;
+    @FXML
+    private ImageView desarchiverIcon;
 
     @FXML
     private Label titreLabel;
@@ -86,11 +88,21 @@ public class AfficherUnProjetParIdAdmin {
 
     void setParametre(int id, Projet projet) {
         DropShadow shadow = new DropShadow();
+        if (projet.getIsVisible()) {
+            archiverIcon.setDisable(false); // Activer archiverIcon
+            desarchiverIcon.setDisable(true); // Désactiver desarchiverIcon
+        } else {
+            archiverIcon.setDisable(true); // Désactiver archiverIcon
+            desarchiverIcon.setDisable(false); // Activer desarchiverIcon
+        }
         retourIcon.setOnMouseEntered(event -> {
             retourIcon.setEffect(shadow);
         });
         archiverIcon.setOnMouseEntered(event ->{
             archiverIcon.setEffect(shadow);
+        });
+        desarchiverIcon.setOnMouseEntered(event->{
+            desarchiverIcon.setEffect(shadow);
         });
 
         retourIcon.setOnMouseExited(event -> {
@@ -99,12 +111,17 @@ public class AfficherUnProjetParIdAdmin {
         archiverIcon.setOnMouseExited(event ->{
             archiverIcon.setEffect(null);
         });
-
+        desarchiverIcon.setOnMouseExited(event->{
+            desarchiverIcon.setEffect(null);
+        });
         retourIcon.setOnMouseClicked(event -> {
             redirectVersAfficherProjets(event);
         });
         archiverIcon.setOnMouseClicked(event ->{
             archiverProjet(event);
+        });
+        desarchiverIcon.setOnMouseClicked(event->{
+            desarchiverProjet(event);
         });
 
 
@@ -185,6 +202,29 @@ public class AfficherUnProjetParIdAdmin {
     }
 
 
+    public void desarchiverProjet(MouseEvent event) {
+        ProjetServices projetServices = new ProjetServices();
 
+        Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationDialog.setTitle("Confirmation d'archivage");
+        confirmationDialog.setHeaderText("Êtes-vous sûr de vouloir archiver cette catégorie ?");
+        confirmationDialog.initModality(Modality.APPLICATION_MODAL);
 
+        // Ajouter les boutons Oui et Annuler
+        confirmationDialog.getButtonTypes().setAll(ButtonType.YES, ButtonType.CANCEL);
+
+        confirmationDialog.showAndWait().ifPresent(buttonType -> {
+            if (buttonType == ButtonType.YES) {
+                try {
+                    projetServices.modifierVisibilite(id, true);
+                    showAlert("Opération réussie", "Le projet a été d avec succès.");
+
+                    redirectVersAfficherProjets(event);
+                } catch (SQLException e) {
+                    showAlert("Erreur", "Une erreur s'est produite lors de l'archivage du projet.");
+                }
+
+            }
+        });
+    }
 }

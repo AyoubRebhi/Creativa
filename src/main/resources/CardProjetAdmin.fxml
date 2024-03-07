@@ -7,11 +7,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-color: FFFFFF; -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.CardProjetAdmin">
+<AnchorPane prefHeight="186.0" prefWidth="641.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.CardProjetAdmin">
    <children>
-<HBox fx:id="box" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="186.0" prefWidth="587.0">
+<HBox fx:id="box" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="186.4" prefWidth="641.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
    <children>
       <ImageView fx:id="imageProjet" fitHeight="151.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -21,7 +22,7 @@
             <Insets bottom="10.0" left="5.0" top="10.0" />
          </HBox.margin>
       </ImageView>
-      <VBox prefHeight="186.0" prefWidth="412.0" spacing="15.0">
+      <VBox prefHeight="186.0" prefWidth="386.0" spacing="15.0">
          <HBox.margin>
             <Insets left="15.0" right="10.0" />
          </HBox.margin>
@@ -74,6 +75,11 @@
             </HBox>
          </children>
       </VBox>
+            <Circle fx:id="chechOutVisibility" fill="#ff4c1f" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </Circle>
             <ImageView fx:id="viewMoreBTN" fitHeight="50.0" fitWidth="72.0" onDragDetected="#afficherProjetById" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/ViewDetailsIcon.png" />

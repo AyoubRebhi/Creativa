@@ -8,6 +8,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Circle;
 import tn.esprit.Models.Projet;
 import tn.esprit.Services.ProjetServices;
 
@@ -21,6 +22,8 @@ public class CardProjetAdmin {
     private Label prixLabel;
     @FXML
     private Label categorieLabel;
+    @FXML
+    private Circle chechOutVisibility;
 
     @FXML
     private Label boxTitre;
@@ -79,6 +82,11 @@ public class CardProjetAdmin {
         } else {
             // If media path is null or empty, load a default image
             imageProjet.setImage(new Image(getClass().getResourceAsStream("/images/imageVideIcon.png")));
+        }
+        if (projet.getIsVisible()) {
+            chechOutVisibility.setFill(javafx.scene.paint.Color.web("#11C613")); // Couleur verte si isVisible est true
+        } else {
+            chechOutVisibility.setFill(javafx.scene.paint.Color.web("#C62111")); // Couleur rouge si isVisible est false
         }
 
     }

@@ -208,7 +208,7 @@
                                                 <Image url="@images/retourIcon.png" />
                                             </image>
                                         </ImageView>
-                              <Label fx:id="prixLabel11" alignment="TOP_LEFT" layoutX="579.0" layoutY="426.0" prefHeight="68.0" prefWidth="161.0" text="Archiver">
+                              <Label fx:id="prixLabel11" alignment="TOP_LEFT" layoutX="573.0" layoutY="426.0" prefHeight="68.0" prefWidth="174.0" text="Désarchiver">
                                  <font>
                                     <Font name="Berlin Sans FB" size="20.0" />
                                  </font>
@@ -216,9 +216,9 @@
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </padding>
                               </Label>
-                              <ImageView fx:id="archiverIcon1" fitHeight="45.0" fitWidth="45.0" layoutX="676.0" layoutY="437.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="desarchiverIcon" fitHeight="45.0" fitWidth="45.0" layoutX="695.0" layoutY="433.0" onDragDetected="#desarchiverProjet" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@images/invisibleIcon.png" />
+                                    <Image url="@images/viewIcon.png" />
                                  </image>
                               </ImageView>
                                     </children></AnchorPane>
