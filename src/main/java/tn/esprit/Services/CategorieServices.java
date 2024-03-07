@@ -100,6 +100,22 @@ public class CategorieServices implements InterfaceCRUD<Categorie> {
         }
         return categorie;
     }
+    public int retournerIdCategorie(String titreCategorie){
+        int idCategorie = 0;
+        try {
+            String req = "SELECT id_categorie FROM categorie WHERE titre = ?";
+            PreparedStatement ps = conn.prepareStatement(req);
+            ps.setString(1, titreCategorie);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                idCategorie = rs.getInt("id_categorie");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return idCategorie;
+    }
+
 
 
     public Map<String, Integer> calculerNbProjets(int id) {

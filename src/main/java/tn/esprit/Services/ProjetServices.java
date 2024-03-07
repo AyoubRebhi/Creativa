@@ -49,8 +49,8 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
             ps.setString(3, projet.getMedia());
             ps.setDouble(4, projet.getPrix());
             ps.setInt(5, projet.getCategorie());
-            ps.setInt(6, projet.getId());
-            ps.setInt(7,projet.getId_user());
+            ps.setInt(7, projet.getId());
+            ps.setInt(6,projet.getId_user());
 
             ps.executeUpdate();
             System.out.println("Projet modifié avec succès");
@@ -326,9 +326,24 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
 
 
     //Utilisé pour la forme AjouterProjet.fxml
+    /*public String afficherTitreCategorie(int id) {
+        String titreCategorie="";
+        String req = "SELECT c.titre FROM projet p JOIN categorie c ON p.id_categorie = c.id_categorie WHERE p.id_projet = ?";
+        try (PreparedStatement ps = conn.prepareStatement(req)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    titreCategorie = rs.getString("titre");
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return titreCategorie;
+    }*/
     public String afficherTitreCategorie(int id) {
         String titreCategorie = null;
-        String req = "SELECT c.titre FROM projet p JOIN categorie c ON p.id_categorie = c.id_categorie WHERE p.id_projet = ?";
+        String req = "SELECT titre FROM categorie WHERE id_categorie = ?";
         try (PreparedStatement ps = conn.prepareStatement(req)) {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {

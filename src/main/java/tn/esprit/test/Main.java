@@ -78,7 +78,7 @@ public class Main {
             System.out.println( c.getTitre());
         }*/
         //ps.modifierVisibilite(3,true);
-        Jaime jaime = new Jaime();
+        /*Jaime jaime = new Jaime();
         jaime.setId_user(1);
         jaime.setId_projet(5);
 
@@ -93,7 +93,10 @@ public class Main {
             System.out.println("ID: " + projet.getId());
             System.out.println("Titre: " + projet.getTitre());
             System.out.println("jaimes " + projet.getNombreJaime());
-        }
+        }*/
+
+        String ch = ps.afficherTitreCategorie(3);
+        System.out.println("aaaaaaaa"+ch);
 
     }
 }

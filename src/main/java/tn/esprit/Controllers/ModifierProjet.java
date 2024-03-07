@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import tn.esprit.Models.Projet;
+import tn.esprit.Services.CategorieServices;
 import tn.esprit.Services.ProjetServices;
 import tn.esprit.test.HelloApplication;
 
@@ -43,6 +44,7 @@ public class ModifierProjet {
     private TextField titreTF;
     private ListView<String> listView;
     private Projet projet;
+
 
     public void setProjet(Projet projet) {
         this.projet = projet;
@@ -97,28 +99,29 @@ public class ModifierProjet {
         titreTF.setText( projet.getTitre());
         descriptionTF.setText( projet.getDescription());
         prixTF.setText(String.valueOf(projet.getPrix()));
-        categorieChoiceBox.getSelectionModel().select(projet.getCategorie());
+        categorieChoiceBox.getSelectionModel().select(projet.getCategorie() -1);
     }
 
     private Projet getProjet(){
+        CategorieServices categorieServices = new CategorieServices();
         String nouveauTitre = titreTF.getText();
         String nouvelleDescription = descriptionTF.getText();
         String prixText = prixTF.getText();
         int nouveauidCategorie = categorieChoiceBox.getSelectionModel().getSelectedIndex() + 1;
+        System.out.println(nouveauidCategorie);
         if (nouveauTitre.isEmpty() || nouvelleDescription.isEmpty() || prixText.isEmpty()) {
             showAlert("Erreur", "Tous les champs sont obligatoires !");
 
         }
-        double nouveauPrix = 0;
+        double prix = 0;
         try {
-            nouveauPrix = Double.parseDouble(prixText);
+            prix = Double.parseDouble(prixText);
         } catch (NumberFormatException e) {
             showAlert("Erreur", "Le prix doit être un nombre !");
-
         }
         String media = projet.getMedia();
 
-        return new Projet(id, nouveauTitre, nouvelleDescription, media, nouveauPrix, nouveauidCategorie,2);
+        return new Projet(id, nouveauTitre, nouvelleDescription, media, prix, nouveauidCategorie,2);
     }
 
     public void redirectVersAcceuil(ActionEvent event) {

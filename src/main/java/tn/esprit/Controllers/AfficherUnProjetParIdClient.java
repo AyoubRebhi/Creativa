@@ -39,6 +39,8 @@ public class AfficherUnProjetParIdClient {
     private Label titreLabel;
     @FXML
     private ImageView retourIcon;
+    @FXML
+    private ImageView commdeBTN;
     private Projet projet;
     private int id;
     @FXML
@@ -85,6 +87,21 @@ public class AfficherUnProjetParIdClient {
         retourIcon.setOnMouseClicked(event -> {
             redirectVersAfficherProjets(event);
         });
+        commdeBTN.setOnMouseEntered(event ->{
+            commdeBTN.setEffect(shadow);
+        });
+        commdeBTN.setOnMouseExited(event ->{
+            commdeBTN.setEffect(null);
+        });
+        jaimeIcon.setOnMouseEntered(event->{
+            jaimeIcon.setEffect(shadow);
+        });
+        jaimeIcon.setOnMouseExited(event->{
+            jaimeIcon.setEffect(null);
+        });
+        jaimeIcon.setOnMouseClicked(event->{
+            
+        });
 
         this.projet = projet;
         this.id = id;
@@ -116,5 +133,8 @@ public class AfficherUnProjetParIdClient {
             Image image = new Image(getClass().getResourceAsStream("/images/imageVideIcon.png"));
             projetImage.setImage(image);
         }
+    }
+
+    public void insererJaime(MouseEvent mouseEvent) {
     }
 }
