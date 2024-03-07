@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -22,6 +23,11 @@ import java.util.stream.Collectors;
 
 public class AfficherListeProjetsArtiste  {
     public Button checherBTN;
+    @FXML
+    private Button AjouterBTN;
+
+    @FXML
+    private TextField ChercherTF;
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -97,5 +103,45 @@ public class AfficherListeProjetsArtiste  {
     }
 
     public void chercherProjet(ActionEvent event) {
+        try {
+            String searchText = ChercherTF.getText(); // Récupérer le texte de recherche depuis le champ texte
+            ProjetServices projetServices = new ProjetServices();
+            projets = projetServices.chercherProjet(searchText); // Utiliser la méthode chercherProjet pour obtenir les projets correspondants
+
+            // Réinitialiser la grille
+            grid.getChildren().clear();
+
+            // Réinitialiser les lignes et les colonnes
+            int col = 0;
+            int row = 1;
+
+            // Parcourir les projets et mettre à jour la grille avec les projets correspondants
+            for (Projet projet : projets) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/CardProjetArtiste.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+                CardProjetArtiste cardController = fxmlLoader.getController();
+                int id = projet.getId();
+                cardController.setData(projet, id);
+                if (col == 1) {
+                    col = 0;
+                    row++;
+                }
+                grid.add(anchorPane, col++, row);
+                // Set projet grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+                // Set projet grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+                GridPane.setMargin(anchorPane, new Insets(25));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Gérer les erreurs liées à la recherche de projet
+        }
     }
+
 }
