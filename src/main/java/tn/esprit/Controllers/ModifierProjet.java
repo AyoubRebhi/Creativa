@@ -60,13 +60,14 @@ public class ModifierProjet {
 
     @FXML
     void modifierProjet(ActionEvent event) {
+        // Modifier le projet
         Projet nouveauProjet = getProjet();
         ProjetServices projetServices = new ProjetServices();
         projetServices.modifier(nouveauProjet);
         showAlert("Succès", "Le projet a été modifié avec succès.");
         refreshProjetsList();
-
     }
+
     public void refreshProjetsList() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherListeProjetsArtiste.fxml"));
@@ -102,9 +103,22 @@ public class ModifierProjet {
     private Projet getProjet(){
         String nouveauTitre = titreTF.getText();
         String nouvelleDescription = descriptionTF.getText();
-        double nouveauPrix = Double.parseDouble(prixTF.getText());
-        int idCategorie = categorieChoiceBox.getSelectionModel().getSelectedIndex() + 1;
-        return new Projet(id, nouveauTitre, nouvelleDescription, null, nouveauPrix, idCategorie);
+        String prixText = prixTF.getText();
+        int nouveauidCategorie = categorieChoiceBox.getSelectionModel().getSelectedIndex() + 1;
+        if (nouveauTitre.isEmpty() || nouvelleDescription.isEmpty() || prixText.isEmpty()) {
+            showAlert("Erreur", "Tous les champs sont obligatoires !");
+
+        }
+        double nouveauPrix = 0;
+        try {
+            nouveauPrix = Double.parseDouble(prixText);
+        } catch (NumberFormatException e) {
+            showAlert("Erreur", "Le prix doit être un nombre !");
+
+        }
+        String media = projet.getMedia();
+
+        return new Projet(id, nouveauTitre, nouvelleDescription, media, nouveauPrix, nouveauidCategorie,2);
     }
 
     public void redirectVersAcceuil(ActionEvent event) {

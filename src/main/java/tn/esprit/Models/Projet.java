@@ -13,25 +13,36 @@ public class Projet {
     private Date createdAt = new Date();
     private Date updatedAt = createdAt;
     private int nombreJaime;
+    private int id_user;
 
 
-    public Projet(int id, String titre, String description, String media, double prix, int id_categorie) {
+    public Projet(int id,String titre, String description, String media, double prix, int id_categorie,int id_user) {
         this.id_projet = id;
         this.titre = titre;
         this.description = description;
         this.media = media;
         this.prix = prix;
         this.id_categorie = id_categorie;
+        this.id_user=id_user;
         //this.nombreJaime=nombreJaime;
         //this.isVisible = true;
     }
 
-    public Projet(String titre, String description, String media, double prix, int id_categorie) {
+    public Projet(String titre, String description, String media, double prix, int id_categorie, int id_user) {
         this.titre = titre;
         this.description = description;
         this.media = media;
         this.prix = prix;
         this.id_categorie = id_categorie;
+        this.id_user=id_user;
+    }
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
     }
 
     public int getCategorie() {
@@ -119,6 +130,7 @@ public class Projet {
     public String toString() {
         return "Projet{" +
                 "id=" + id_projet +
+                "Created by="+ id_user+
                 "titre="+titre +
                 ", description='" + description + '\'' +
                 ", media=" + media +

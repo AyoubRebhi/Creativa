@@ -30,7 +30,8 @@ public class AfficherUnProjetParIdArtiste {
 
     @FXML
     private Label descriptionLabel;
-
+    @FXML
+    private Label NbJaimeLabel;
     @FXML
     private ImageView jaimeIcon;
 
@@ -86,6 +87,8 @@ public class AfficherUnProjetParIdArtiste {
         prixLabel.setText(String.valueOf(projet.getPrix()) + "Dt");
         createdAtLablel.setText("Ajouté le:" + String.valueOf(projet.getCreatedAt()));
         categorieLabel.setText("#" + ps.afficherTitreCategorie(projet.getCategorie()));
+        ps.calculerNombreJaimePourProjet(projet);
+        NbJaimeLabel.setText(String.valueOf(projet.getNombreJaime())+" Jaimes");
 
         // Récupérer le chemin du média depuis le projet
         String media = projet.getMedia();

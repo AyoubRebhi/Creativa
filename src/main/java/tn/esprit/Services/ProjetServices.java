@@ -20,13 +20,14 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
     @Override
     public void ajouter(Projet projet) {
         try {
-            String req = "INSERT INTO `projet`(`titre`, `description`, `media`, `prix`, `id_categorie`) VALUES (?, ?, ?, ?, ?)";
+            String req = "INSERT INTO `projet`(`titre`, `description`, `media`, `prix`, `id_categorie`,`id_user`) VALUES (?, ?, ?, ?, ?,?)";
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setString(1, projet.getTitre());
             ps.setString(2, projet.getDescription());
             ps.setString(3, projet.getMedia());
             ps.setDouble(4, projet.getPrix());
             ps.setInt(5, projet.getCategorie());
+            ps.setInt(6,projet.getId_user());
 
             ps.executeUpdate();
             System.out.println("Projet ajouté avec succès");
@@ -41,7 +42,7 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
     @Override
     public void modifier(Projet projet) {
         try {
-            String req = "UPDATE `projet` SET `titre`= ?, `description`= ?, `media`= ?, `prix`= ?, `id_categorie`=?, `updatedAt`=CURRENT_TIMESTAMP WHERE `id_projet`= ?";
+            String req = "UPDATE `projet` SET `titre`= ?, `description`= ?, `media`= ?, `prix`= ?, `id_categorie`=?, `updatedAt`=CURRENT_TIMESTAMP,`id_user`=? WHERE `id_projet`= ?";
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setString(1, projet.getTitre());
             ps.setString(2, projet.getDescription());
@@ -49,6 +50,7 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
             ps.setDouble(4, projet.getPrix());
             ps.setInt(5, projet.getCategorie());
             ps.setInt(6, projet.getId());
+            ps.setInt(7,projet.getId_user());
 
             ps.executeUpdate();
             System.out.println("Projet modifié avec succès");
@@ -112,6 +114,32 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
         }
         return projets;
     }
+    public List<Projet> afficherProjetByUser(int id_user) {
+        List<Projet> projets = new ArrayList<>();
+        String req = "SELECT * FROM projet WHERE id_user = ?";
+        try (PreparedStatement ps = conn.prepareStatement(req)) {
+            ps.setInt(1, id_user);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Projet projet = new Projet();
+                    projet.setId(rs.getInt("id_projet"));
+                    projet.setTitre(rs.getString("titre"));
+                    projet.setDescription(rs.getString("description"));
+                    projet.setPrix(rs.getDouble("prix"));
+                    projet.setCategorie(rs.getInt("id_categorie"));
+                    projet.setMedia(rs.getString("media"));
+                    projet.setVisible(rs.getBoolean("isVisible"));
+                    projet.setCreatedAt(rs.getTimestamp("createdAt"));
+                    projet.setUpdatedAt(rs.getTimestamp("updatedAt"));
+                    projets.add(projet);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return projets;
+    }
+
 
     public Projet afficherProjetParId(int id) {
         Projet projet = null;
@@ -187,16 +215,17 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
         }
         return projets;
     }
-    public List<Projet> chercherProjet(String ch) {
+    public List<Projet> chercherProjet(String ch, int id_user) {
         List<Projet> projets = new ArrayList<>();
         String req = "SELECT p.*, c.titre AS categorie_titre FROM projet p " +
                 "JOIN categorie c ON p.id_categorie = c.id_categorie " +
-                "WHERE p.titre LIKE ? OR c.titre LIKE ? OR p.description LIKE ?";
+                "WHERE p.id_user = ? AND (p.titre LIKE ? OR c.titre LIKE ? OR p.description LIKE ?)";
         try (PreparedStatement ps = conn.prepareStatement(req)) {
             String searchPattern = "%" + ch + "%";
-            ps.setString(1, searchPattern);
+            ps.setInt(1, id_user);
             ps.setString(2, searchPattern);
             ps.setString(3, searchPattern);
+            ps.setString(4, searchPattern);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     Projet projet = new Projet();
@@ -209,7 +238,7 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
                     projet.setCreatedAt(rs.getTimestamp("createdAt"));
                     projet.setUpdatedAt(rs.getTimestamp("updatedAt"));
 
-                    // Add project to the list
+                    // Ajouter le projet à la liste
                     projets.add(projet);
                 }
             }
@@ -218,6 +247,7 @@ public class ProjetServices implements InterfaceCRUD <Projet> {
         }
         return projets;
     }
+
 
     //Fonctions de filtrage
     public List<Projet> afficherProjetParNbJaime() {

@@ -34,6 +34,9 @@ public class AfficherListeProjetsArtiste  {
     private GridPane grid;
     @FXML
     private Label labelFX;
+    private int idUser1=1;
+    private int idUser2=2;
+
     private List<Projet> projets;
 
     @FXML
@@ -43,7 +46,7 @@ public class AfficherListeProjetsArtiste  {
         int row=1;
         try {
 
-            projets = projetServices.afficher();
+            projets = projetServices.afficherProjetByUser(idUser2);
             projets = projets.stream()
                     .filter(Projet::getIsVisible)
                     .collect(Collectors.toList());
@@ -70,7 +73,7 @@ public class AfficherListeProjetsArtiste  {
                 grid.setMaxHeight(Region.USE_PREF_SIZE);
                 GridPane.setMargin(anchorPane,new Insets(25));
             }
-        } catch (SQLException | IOException e  ) {
+        } catch (IOException e  ) {
             System.err.println(e.getMessage());
         }
     }
@@ -106,8 +109,10 @@ public class AfficherListeProjetsArtiste  {
         try {
             String searchText = ChercherTF.getText(); // Récupérer le texte de recherche depuis le champ texte
             ProjetServices projetServices = new ProjetServices();
-            projets = projetServices.chercherProjet(searchText); // Utiliser la méthode chercherProjet pour obtenir les projets correspondants
-
+            projets = projetServices.chercherProjet(searchText, idUser2); // Utiliser la méthode chercherProjet pour obtenir les projets correspondants à l'utilisateur idUser2
+            projets = projets.stream()
+                    .filter(Projet::getIsVisible)
+                    .collect(Collectors.toList());
             // Réinitialiser la grille
             grid.getChildren().clear();
 

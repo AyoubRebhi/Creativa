@@ -164,7 +164,7 @@
                                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                             </padding>
                                         </Label>
-                                        <Label fx:id="prixLabel" alignment="TOP_LEFT" layoutX="555.0" layoutY="271.0" prefHeight="68.0" prefWidth="194.0" text="Prix :">
+                                        <Label fx:id="prixLabel" alignment="TOP_LEFT" layoutX="570.0" layoutY="271.0" prefHeight="68.0" prefWidth="180.0" text="Prix :">
                                             <font>
                                                 <Font name="Berlin Sans FB" size="20.0" />
                                             </font>
@@ -177,7 +177,7 @@
                                                 <Image url="@images/retourIcon.png" />
                                             </image>
                                         </ImageView>
-                              <Label fx:id="prixLabel1" alignment="TOP_LEFT" layoutX="537.0" layoutY="339.0" prefHeight="73.0" prefWidth="238.0" text="Nombre des Jaimes:">
+                              <Label fx:id="NbJaimeLabel" alignment="TOP_LEFT" layoutX="570.0" layoutY="339.0" prefHeight="68.0" prefWidth="180.0" text="Nb jaimes">
                                  <font>
                                     <Font name="Berlin Sans FB" size="20.0" />
                                  </font>

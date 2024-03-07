@@ -73,27 +73,39 @@ public class AjouterProjet {
     @FXML
     void ajouterProjet(ActionEvent event) {
         String titre = titreTF.getText();
-        Double prix = Double.parseDouble(prixTF.getText());
         String description = descriptionTA.getText();
+        String prixText = prixTF.getText();
         int idCategorie = categorieChoiceBox.getSelectionModel().getSelectedIndex() + 1; // L'indice de la liste commence à partir de 0
 
-        if (titre.isEmpty() || description.isEmpty() ) {
-            showAlert("Erreur", "Vous devez remplir le formulaire !");
-        } else {
-            // Récupérer le média depuis le projet
-            String media = projet.getMedia();
-
-            // Créer le projet avec le média récupéré
-            Projet projet = new Projet(titre, description, media, prix, idCategorie);
-
-            // Ajouter le projet
-            ProjetServices projetServices = new ProjetServices();
-            projetServices.ajouter(projet);
-
-            showAlert("Succès", "Le projet a été ajouté avec succès.");
+        // Vérifier si les champs obligatoires sont vides
+        if (titre.isEmpty() || description.isEmpty() || prixText.isEmpty()) {
+            showAlert("Erreur", "Tous les champs sont obligatoires !");
+            return;
         }
+
+        // Vérifier si le prix est un nombre valide
+        double prix;
+        try {
+            prix = Double.parseDouble(prixText);
+        } catch (NumberFormatException e) {
+            showAlert("Erreur", "Le prix doit être un nombre !");
+            return;
+        }
+
+        // Récupérer le média depuis le projet
+        String media = projet.getMedia();
+
+        // Créer le projet avec le média récupéré
+        Projet projet = new Projet(titre, description, media, prix, idCategorie,2);
+
+        // Ajouter le projet
+        ProjetServices projetServices = new ProjetServices();
+        projetServices.ajouter(projet);
+
+        showAlert("Succès", "Le projet a été ajouté avec succès.");
         refreshProjetsList();
     }
+
 
     public void refreshProjetsList() {
         try {
