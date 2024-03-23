@@ -1,5 +1,6 @@
 package tn.esprit.Controllers;
 
+import com.twilio.rest.api.v2010.account.Notification;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,15 +11,19 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import tn.esprit.Models.Comments;
 import tn.esprit.Models.session;
+import tn.esprit.Services.CommentService;
 import tn.esprit.Services.UserService;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+import org.controlsfx.control.Notifications;
 public class  LoginController {
 
 
@@ -113,7 +118,7 @@ public class  LoginController {
     private void redirectToCLIENTPage(ActionEvent event) {
         try {
             // Charger la page de connexion à partir du fichier FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Cartefedilite.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileClient.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène
@@ -125,6 +130,9 @@ public class  LoginController {
             // Changer la scène actuelle vers la nouvelle scène de connexion
             stage.setScene(scene);
             stage.show();
+            profileUser controller=loader.getController();
+            controller.setStage(stage);
+
         } catch (IOException e) {
             e.printStackTrace();
             // Gérer les erreurs de chargement de la page de connexion
@@ -134,7 +142,7 @@ public class  LoginController {
     private void redirectToAdminPage(ActionEvent event) {
         try {
             // Charger la page de connexion à partir du fichier FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarAdmin.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProfileAdmin.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène

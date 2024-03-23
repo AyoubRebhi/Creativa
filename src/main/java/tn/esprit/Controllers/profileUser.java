@@ -9,12 +9,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import tn.esprit.Interfaces.UpdateListener;
+import tn.esprit.Models.Comments;
 import tn.esprit.Models.User;
 import tn.esprit.Models.session;
+import tn.esprit.Services.CommentService;
 import tn.esprit.Services.UserService;
 
 import java.io.IOException;
+import java.util.List;
 
 public class profileUser implements UpdateListener {
 
@@ -30,6 +35,7 @@ public class profileUser implements UpdateListener {
     private Label username;
     @FXML
     private Label adresse;
+    private  Stage stage;
 
     // Vous devez injecter le UserService dans votre contrôleur
     public UserService userService=new UserService();
@@ -39,6 +45,22 @@ public class profileUser implements UpdateListener {
     public void initialize() {
         // Assurez-vous que le userService est initialisé avant d'appeler cette méthode
         updateLabels();
+
+      CommentService commentService=new CommentService();
+        List<Comments> comments=commentService.Affichernotification(session.id_utilisateur);
+        for(Comments c:comments){
+            Notifications notifications = Notifications.create();
+            notifications.owner(stage); // Set the owning window
+           notifications.text(c.getContent());
+            notifications.title("New notification");
+            notifications.hideAfter(Duration.seconds(5));
+            notifications.darkStyle();
+            notifications.show();
+            commentService.changeSeen(c);
+        }
+    }
+    public void setStage(Stage stage){
+        this.stage=stage;
     }
 
     // Méthode pour mettre à jour les labels avec les données du UserService

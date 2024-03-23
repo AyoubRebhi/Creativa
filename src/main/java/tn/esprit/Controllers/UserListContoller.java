@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import tn.esprit.Interfaces.LocalUserStateObserver;
@@ -138,5 +139,9 @@ public class UserListContoller implements LocalUserStateObserver {
     @Override
     public void onUserStateChanged(int userId, boolean isBlocked) {
         System.out.println("Local state changed for user " + userId + ". Blocked: " + isBlocked);
+    }
+
+    public void reload(MouseEvent mouseEvent) {
+        updateListView();
     }
 }

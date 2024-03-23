@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="450.0" prefWidth="791.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.ModifierLivraison">
+    <fx:include source="sidebarAdmin.fxml" />
+    <AnchorPane layoutX="144.0" layoutY="33.0" prefHeight="424.0" prefWidth="647.0">
+    <children>
+        <TextField fx:id="id_cmdTF" disable="true" layoutX="153.0" layoutY="167.0" promptText="id cmd" />
+        <TextField fx:id="adresseTF" layoutX="409.0" layoutY="163.0" promptText="adresse" />
+        <TextField fx:id="id_userTF" layoutX="402.0" layoutY="98.0" promptText="Nom et prénom" />
+        <TextField fx:id="statusTF" layoutX="153.0" layoutY="230.0" promptText="status" />
+        <TextField fx:id="fraisTF" disable="true" layoutX="153.0" layoutY="305.0" promptText="Frais livraison" />
+        <TextField fx:id="moyenLivTF" layoutX="409.0" layoutY="230.0" promptText="Moyen livraison" />
+        <Label fx:id="modifierL" layoutX="274.0" layoutY="47.0" prefHeight="39.0" prefWidth="239.0" text="Modifier livraison" textFill="#764949">
+         <font>
+            <Font name="System Bold Italic" size="27.0" />
+         </font></Label>
+        <RadioButton fx:id="RB1" layoutX="412.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleRB1" text="Standard">
+         <font>
+            <Font size="13.0" />
+         </font></RadioButton>
+        <RadioButton fx:id="RB2" layoutX="514.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleRB2" text="Express">
+         <font>
+            <Font size="13.0" />
+         </font></RadioButton>
+      <TextField fx:id="idLivTF" disable="true" layoutX="153.0" layoutY="98.0" promptText="id liv" />
+      <Button fx:id="retourBTN" layoutX="74.0" layoutY="21.0" mnemonicParsing="false" onAction="#Retour" prefHeight="38.0" prefWidth="102.0" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+        <Button fx:id="ModifierLivraison" layoutX="540.0" layoutY="331.0" mnemonicParsing="false" onAction="#ModifierLivraison" style="-fx-background-color: #2F5AE9;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+         </Button>
+
+
+    </children>
+</AnchorPane>
+</AnchorPane>

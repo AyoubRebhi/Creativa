@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="100.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherCommande">
+   <fx:include source="sidebarAdmin.fxml" />
+   <AnchorPane layoutX="200.0" layoutY="-179.0" prefHeight="633.0" prefWidth="793.0">
+   <children>
+      <TextField fx:id="searchBarEvents" layoutX="415.0" layoutY="217.0" prefHeight="16.0" prefWidth="166.0" styleClass="pane_navBar" />
+      <Label layoutX="345.0" layoutY="216.0" text="Rechercher">
+            <font>
+               <Font name="System Bold" size="10.0" />
+            </font></Label>
+      <DatePicker fx:id="date1" disable="true" layoutX="33.0" layoutY="554.0" />
+      <DatePicker fx:id="date222" disable="true" layoutX="33.0" layoutY="596.0" />
+      <TextField fx:id="text1" disable="true" layoutX="255.0" layoutY="538.0" prefHeight="30.0" prefWidth="126.0" />
+      <TextField fx:id="text2" disable="true" layoutX="414.0" layoutY="537.0" prefHeight="30.0" prefWidth="125.0" />
+      <TextField fx:id="text3" layoutX="300.0" layoutY="594.0" prefHeight="30.0" prefWidth="89.0" />
+      <Text layoutX="40.0" layoutY="542.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+      <Text layoutX="37.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Estimée" />
+      <Text layoutX="255.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant Total" />
+      <Text layoutX="419.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Code Promo" />
+      <Text layoutX="302.0" layoutY="591.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" />
+      <Button fx:id="modifierBTN" layoutX="470.0" layoutY="582.0" mnemonicParsing="false" onAction="#ModifyResUserBtn" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #999999;" text="Modifier" textFill="WHITE" />
+      <TextField fx:id="id_user" layoutX="33.0" layoutY="609.0" visible="false" />
+      <TextField fx:id="id_projet" layoutX="255.0" layoutY="609.0" visible="false" />
+      <Text layoutX="46.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text layoutX="266.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <TextField fx:id="prix1" layoutX="486.0" layoutY="609.0" visible="false" />
+      <TextField fx:id="frais" layoutX="643.0" layoutY="608.0" visible="false" />
+      <TextField fx:id="id_cmd" layoutX="45.0" layoutY="437.0" visible="false" />
+      <Text fx:id="commandes" fill="#764949" layoutX="157.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Les commandes" wrappingWidth="175.19999999999993">
+         <font>
+            <Font name="System Bold Italic" size="19.0" />
+         </font>
+      </Text>
+      <Text fx:id="modifier" fill="#764949" layoutX="63.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Commande">
+         <font>
+            <Font name="System Bold Italic" size="19.0" />
+         </font>
+      </Text>
+      <Button fx:id="back" layoutY="217.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE" />
+      <HBox fx:id="EMPHBox" layoutX="72.0" layoutY="234.0" prefHeight="202.0" prefWidth="338.0" styleClass="hBox_main">
+            <children>
+            <ScrollPane prefHeight="147.0" prefWidth="351.0" />
+            </children>
+         </HBox>
+   </children>
+
+</AnchorPane>
+</AnchorPane>

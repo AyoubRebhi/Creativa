@@ -19,7 +19,7 @@
                     <top>
                         <AnchorPane prefHeight="33.0" prefWidth="600.0" style="-fx-background-color: rgb(190,162,135);" BorderPane.alignment="CENTER">
                             <children>
-                                <AnchorPane layoutX="112.0" layoutY="-67.0" prefHeight="34.0" prefWidth="687.0" style="-fx-background-color: rgb(217,202,176);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-87.0" AnchorPane.topAnchor="0.0">
+                                <AnchorPane layoutX="112.0" layoutY="-67.0" prefHeight="34.0" prefWidth="908.0" style="-fx-background-color: rgb(217,202,176);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-308.0" AnchorPane.topAnchor="0.0">
                                     <children>
                                         <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="10.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -53,7 +53,7 @@
                     <left>
                         <AnchorPane prefHeight="366.0" prefWidth="199.0" BorderPane.alignment="CENTER">
                             <children>
-                                <AnchorPane layoutX="-2.0" layoutY="-2.0" prefHeight="366.4" prefWidth="202.4" style="-fx-background-color: #bea287;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <AnchorPane layoutX="-2.0" layoutY="-2.0" prefHeight="438.0" prefWidth="202.0" style="-fx-background-color: #bea287;" AnchorPane.bottomAnchor="-16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
                                         <ImageView fitHeight="44.0" fitWidth="36.0" layoutX="85.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -71,16 +71,7 @@
                                             </font>
                                         </Label>
                                         <Line endX="104.99998474121094" endY="-7.62939453125E-6" layoutX="95.0" layoutY="115.0" startX="-100.0" />
-                                        <Button fx:id="acceuil" layoutX="11.0" layoutY="123.0" mnemonicParsing="false" onAction="#redirectAcceuil" prefHeight="30.0" prefWidth="180.0" text="Acceuil">
-                                            <graphic>
-                                                <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@images/HomeIcon.png" />
-                                                    </image>
-                                                </ImageView>
-                                            </graphic>
-                                        </Button>
-                                        <Button layoutX="11.0" layoutY="158.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text=" Projets">
+                                        <Button layoutX="11.0" layoutY="134.0" mnemonicParsing="false" onAction="#directToProjet" prefHeight="30.0" prefWidth="180.0" text=" Projets">
                                             <graphic>
                                                 <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
@@ -89,7 +80,7 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Button layoutX="11.0" layoutY="194.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text="Formations">
+                                        <Button layoutX="11.0" layoutY="175.0" mnemonicParsing="false" onAction="#DirecttoFormations" prefHeight="30.0" prefWidth="180.0" text="Formations">
                                             <graphic>
                                                 <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
@@ -98,7 +89,7 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Button layoutX="11.0" layoutY="231.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text="Postes">
+                                        <Button layoutX="8.0" layoutY="219.0" mnemonicParsing="false" onAction="#DirectTopost" prefHeight="30.0" prefWidth="180.0" text="Postes">
                                             <graphic>
                                                 <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
@@ -116,7 +107,7 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Button layoutX="11.0" layoutY="268.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text="Commandes">
+                                        <Button fx:id="commande" layoutX="7.0" layoutY="259.0" mnemonicParsing="false" onAction="#directTOcommande" prefHeight="30.0" prefWidth="180.0" text="Commandes">
                                             <graphic>
                                                 <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
@@ -125,7 +116,7 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                              <Button fx:id="profile" layoutX="13.0" layoutY="307.0" mnemonicParsing="false" onAction="#directToProfile" prefHeight="30.0" prefWidth="180.0" text="profile">
+                              <Button fx:id="profile" layoutX="8.0" layoutY="305.0" mnemonicParsing="false" onAction="#directToProfile" prefHeight="30.0" prefWidth="180.0" text="profile">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -134,7 +125,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button fx:id="carte" layoutX="13.0" layoutY="345.0" mnemonicParsing="false" onAction="#directToCard" prefHeight="30.0" prefWidth="180.0" text="carte de fidelité">
+                              <Button fx:id="carte" layoutX="7.0" layoutY="345.0" mnemonicParsing="false" onAction="#directToCard" prefHeight="30.0" prefWidth="180.0" text="carte de fidelité">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -143,7 +134,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Hyperlink fx:id="out" layoutX="44.0" layoutY="386.0" onAction="#redirecttoLogin" prefHeight="24.0" prefWidth="103.0" text="se déconnecter" />
+                              <Hyperlink fx:id="out" layoutX="49.0" layoutY="386.0" onAction="#redirecttoLogin" prefHeight="24.0" prefWidth="103.0" text="se déconnecter" />
                                     </children>
                                 </AnchorPane>
                             </children>
@@ -152,7 +143,7 @@
                     <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                             <children>
-                                <AnchorPane layoutX="21.0" layoutY="39.0" prefHeight="421.0" prefWidth="486.0" style="-fx-background-color: #d9d9d9;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-88.0" AnchorPane.topAnchor="0.0" />
+                                <AnchorPane layoutX="21.0" layoutY="39.0" prefHeight="438.0" prefWidth="705.0" style="-fx-background-color: #d9d9d9;" AnchorPane.bottomAnchor="-16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-307.0" AnchorPane.topAnchor="0.0" />
                             </children>
                         </AnchorPane>
                     </center>

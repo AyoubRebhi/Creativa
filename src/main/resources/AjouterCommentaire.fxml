@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjouterCommentaire">
+   <children>
+      <TextField fx:id="Content" alignment="CENTER" layoutX="211.0" layoutY="80.0" prefHeight="85.0" prefWidth="172.0" promptText="Contenu" stylesheets="@Test.css" />
+      <Button layoutX="269.0" layoutY="187.0" mnemonicParsing="false" onAction="#Ajouter" stylesheets="@Test.css" text="Ajouter" textFill="WHITE" />
+      <Text fx:id="Post" layoutX="297.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <ListView fx:id="List_id" layoutX="28.0" layoutY="218.0" prefHeight="167.0" prefWidth="538.0" styleClass="post-list" />
+   </children>
+</AnchorPane>

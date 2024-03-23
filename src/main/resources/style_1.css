@@ -1,0 +1,35 @@
+/* Style pour les boutons */
+
+
+/* Style pour les labels */
+/* Style pour les champs de texte */
+.text-field {
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-background-color: transparent; /* Couleur de fond transparente */
+    -fx-border-width: 0 0 1 0; /* Bordure basse uniquement */
+    -fx-border-color: #ccc; /* Couleur de la bordure */
+    -fx-padding: 8px 0; /* Marge intérieure haut et bas */
+    -fx-text-fill: #000000; /* Couleur noire pour le texte du placeholder */
+    -fx-font-style: italic;}
+
+/* Style pour les champs de texte en état de focus */
+.text-field:focused {
+    -fx-border-color: #4b8ee0; /* Couleur de la bordure lorsque le champ est en focus */
+}
+.button {
+    /*-fx-background-color:#11C613 ; !* Couleur de fond *!*/
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-padding: 8px 16px; /* Marge intérieure */
+    -fx-border-radius: 5px; /* Bord arrondi */
+}
+
+/* Style pour les labels */
+/* Style pour les labels */
+/* Style pour les labels */
+.label {
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-font-weight: bold; /* Gras */
+    -fx-text-fill: #333; /* Couleur du texte */
+}
+

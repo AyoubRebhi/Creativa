@@ -101,6 +101,28 @@ public class  UserService implements InterfaceCRUD<User> {
         // Retourner une valeur par défaut en cas d'échec de l'authentification
         return null;
     }
+    public String getUtilisateurRole(int identifiant) {
+        String req = "SELECT role FROM user WHERE id_user=?";
+
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setInt(1, identifiant);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    // Récupérer le mot de passe haché de la base de données
+
+                    // Vérifier si le mot de passe fourni correspond au mot de passe haché
+                    // Retourner le rôle si la vérification du mot de passe est réussie
+                    return resultSet.getString("role");
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // Retourner une valeur par défaut en cas d'échec de l'authentification
+        return null;
+    }
 
 
     public boolean emailExists(String email) {
@@ -515,7 +537,7 @@ public class  UserService implements InterfaceCRUD<User> {
                 utilisateur.setEmail(resultSet.getString("email"));
                 utilisateur.setNumTel(resultSet.getInt("numTel"));
                 utilisateur.setBlocked(resultSet.getBoolean("blocked"));
-utilisateur.setBlockEndDate(resultSet.getTimestamp("block_end_date"));
+               utilisateur.setBlockEndDate(resultSet.getTimestamp("block_end_date"));
                 blockedUsers.add(utilisateur);
             }
         } catch (SQLException e) {

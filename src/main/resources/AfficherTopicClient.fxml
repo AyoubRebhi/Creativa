@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherTopic">
+   <children>
+   <fx:include source="sidebarClient.fxml" />
+   <AnchorPane layoutX="212.0" layoutY="42.0" prefHeight="402.0" prefWidth="623.0">      <ListView fx:id="List_id" layoutX="75.0" layoutY="56.0" prefHeight="311.0" prefWidth="398.0" styleClass="post-list" />
+         <Text fill="#faaf5d" layoutX="124.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des sujets" wrappingWidth="196.69879150390625">
+            <font>
+               <Font name="System Bold" size="24.0" />
+            </font>
+         </Text>
+         <Button layoutX="541.0" layoutY="383.0" mnemonicParsing="false" onAction="#AjouterSujet" stylesheets="@Test.css" text="AjouterSujet" textFill="WHITE" />
+   </AnchorPane>
+
+   </children>
+</AnchorPane>

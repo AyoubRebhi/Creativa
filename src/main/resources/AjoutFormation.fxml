@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="455.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjoutFormationController">
+   <fx:include source="sidebarArtiste.fxml" />
+   <AnchorPane layoutX="200.0" layoutY="60.0" prefHeight="288.0" prefWidth="578.0" style="-fx-background-color: #ececec;">
+   <children>
+      <ImageView fitHeight="320.0" fitWidth="572.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/logo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="id_add_im" layoutX="460.0" layoutY="68.0" mnemonicParsing="false" onAction="#AddImage" prefHeight="23.0" prefWidth="60.0" text="Image" textAlignment="CENTER">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <TextField fx:id="tf_titre" layoutX="34.0" layoutY="38.0" prefWidth="238.0" promptText="Titre" stylesheets="@style.css">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="tf_description" layoutX="34.0" layoutY="89.0" prefWidth="238.0" promptText="Description" stylesheets="@style.css">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="tf_places" layoutX="34.0" layoutY="143.0" prefHeight="33.0" prefWidth="154.0" promptText="Places Disponibles " stylesheets="@style.css">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="tf_prix" layoutX="76.0" layoutY="208.0" prefHeight="33.0" prefWidth="154.0" promptText="Prix" stylesheets="@style.css">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></TextField>
+      <Button fx:id="id_add_f" layoutX="241.0" layoutY="234.0" mnemonicParsing="false" onAction="#add_for" prefHeight="40.0" prefWidth="99.0" stylesheets="@style_1.css" text="Ajouter">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Label fx:id="label_titre_control_saisir" layoutX="21.0" layoutY="71.0" prefHeight="18.0" prefWidth="184.0" />
+      <Label fx:id="label_description_control_saisir" layoutX="21.0" layoutY="141.0" prefHeight="18.0" prefWidth="226.0" />
+      <Label fx:id="label_titre_nb_place_saisir" layoutX="34.0" layoutY="225.0" prefHeight="18.0" prefWidth="184.0" />
+      <Label fx:id="label_prix_place_saisir" layoutX="21.0" layoutY="290.0" prefHeight="18.0" prefWidth="184.0" />
+      <Button fx:id="id_abondonner" layoutX="453.0" layoutY="-2.0" mnemonicParsing="false" onAction="#abodonner" prefHeight="31.0" prefWidth="112.0" stylesheets="@Label.css" text="Abondonner" textFill="#e81a1a">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
+</AnchorPane>

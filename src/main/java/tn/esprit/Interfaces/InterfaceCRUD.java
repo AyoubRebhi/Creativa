@@ -1,5 +1,7 @@
 package tn.esprit.Interfaces;
 
+import java.sql.SQLException;
+import java.sql.SQLXML;
 import java.util.List;
 
 public interface InterfaceCRUD <T>{
@@ -11,5 +13,4 @@ public interface InterfaceCRUD <T>{
     void supprimer(int id);
 
     List<T> afficher();
-
 }

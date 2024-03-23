@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="459.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherCodepromo">
+    <fx:include source="sidebarAdmin.fxml" />
+    <AnchorPane layoutX="200.0" layoutY="4.0" prefHeight="450.0" prefWidth="590.0">
+        <children>
+        <ListView fx:id="listView" layoutX="32.0" layoutY="93.0" prefHeight="292.0" prefWidth="534.0" />
+        <Label fx:id="labelFX" layoutX="240.0" layoutY="32.0" prefHeight="39.0" prefWidth="283.0" text="Liste des codes promo" textAlignment="CENTER" textFill="#764949">
+            <font>
+                <Font name="System Bold Italic" size="27.0" />
+            </font>
+        </Label>
+        <Button fx:id="retourBTN" layoutX="32.0" layoutY="39.0" mnemonicParsing="false" onAction="#Retour" prefHeight="8.0" prefWidth="118.0" style="-fx-background-color: #999999;" text="Retour" textFill="WHITE" />
+      <Button fx:id="ajouterBTN" layoutX="382.0" layoutY="407.0" mnemonicParsing="false" onAction="#ajoutercode" prefHeight="42.0" prefWidth="190.0" style="-fx-background-color: #999999;" text="Ajouter code promo" textFill="WHITE" />
+    </children>
+</AnchorPane>
+</AnchorPane>

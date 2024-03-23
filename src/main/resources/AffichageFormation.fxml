@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="416.0" prefWidth="855.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AffichageFormationController">
+   <fx:include source="sidebarArtiste.fxml" />
+   <AnchorPane layoutX="206.0" layoutY="69.0" prefHeight="340.0" prefWidth="731.0" style="-fx-background-color: #ececec;">
+   <children>
+      <TableView fx:id="id_liste" layoutX="247.0" layoutY="61.0" opacity="0.8" prefHeight="183.0" prefWidth="469.0" stylesheets="@tableView.css">
+         <columns>
+            <TableColumn fx:id="id_titre" minWidth="8.0" prefWidth="120.00007629394531" text="Titre" />
+            <TableColumn fx:id="id_description" minWidth="8.0" prefWidth="90.0" text="Description" />
+            <TableColumn fx:id="id_image" maxWidth="4000.0" minWidth="8.0" prefWidth="100.0" text="Media" />
+            <TableColumn fx:id="id_places" text="Places" />
+            <TableColumn fx:id="id_prix" prefWidth="104.0" text="Prix" />
+         </columns>
+      </TableView>
+      <Button fx:id="id_liste_post" layoutX="247.0" layoutY="6.0" mnemonicParsing="false" onAction="#listPost" prefHeight="26.0" prefWidth="26.0">
+         <font>
+            <Font name="Arial Bold" size="3.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="183.0" fitWidth="237.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/2.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="127.0" fitWidth="237.0" layoutY="183.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/4.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="id_del" layoutX="303.0" layoutY="6.0" mnemonicParsing="false" onAction="#deleteFormation" prefHeight="26.0" prefWidth="26.0">
+         <font>
+            <Font name="Arial Bold" size="3.0" />
+         </font>
+      </Button>
+      <Button fx:id="id_ajout" layoutX="366.0" layoutY="6.0" mnemonicParsing="false" onAction="#ajouterFormation" prefHeight="26.0" prefWidth="26.0">
+         <font>
+            <Font name="Arial Bold" size="3.0" />
+         </font>
+      </Button>
+      <Button fx:id="id_update" layoutX="425.0" layoutY="6.0" mnemonicParsing="false" onAction="#UpdateFormation" prefHeight="26.0" prefWidth="26.0">
+         <font>
+            <Font name="Arial Bold" size="3.0" />
+         </font>
+      </Button>
+      <Button fx:id="id_clear" layoutX="487.0" layoutY="6.0" mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="26.0">
+         <font>
+            <Font name="Arial Bold" size="3.0" />
+         </font>
+      </Button>
+      <Button fx:id="id_pdf" layoutX="542.0" layoutY="6.0" mnemonicParsing="false" onAction="#pdf" prefHeight="26.0" prefWidth="37.0">
+         <font>
+            <Font name="Arial Bold" size="3.0" />
+         </font>
+      </Button>
+      <TextField fx:id="rech" layoutX="610.0" layoutY="9.0" onKeyReleased="#FiltrerKeyReleased3" prefHeight="26.0" prefWidth="78.0" />
+         <Button layoutX="641.0" layoutY="313.0" mnemonicParsing="false" onAction="#listerInscriptions" text="afficher inscriptions" />
+   </children>
+</AnchorPane>
+</AnchorPane>

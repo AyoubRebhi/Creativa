@@ -1,0 +1,27 @@
+/* Style pour les labels */
+/* Style pour les labels */
+.label {
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-font-weight: bold; /* Gras */
+    -fx-text-fill: #333; /* Couleur du texte */
+}
+/* Style pour les boutons comme des liens */
+/* Style pour les boutons comme des liens */
+/* Style pour les boutons comme des liens */
+.button {
+    -fx-background-color: transparent; /* Fond transparent */
+    -fx-border-color: transparent; /* Pas de bordure */
+    -fx-text-fill: red; /* Couleur du texte rouge */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-font-weight: normal; /* Normal */
+    -fx-underline: true; /* Soulignement du texte */
+}
+
+/* Style pour les boutons au survol de la souris */
+.button:hover {
+    -fx-text-fill: #ff0000; /* Couleur du texte rouge au survol */
+    -fx-cursor: hand; /* Curseur de la main */
+}
+
+
+

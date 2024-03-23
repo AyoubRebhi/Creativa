@@ -1,0 +1,48 @@
+.list-view {
+    -fx-spacing: 10px;
+    -fx-background-color: #dfdfdf/* Ajoute un espacement de 10px entre chaque cellule de la ListView */
+}
+.post-list {
+    -fx-background-color:#dfdfdf ; /* Couleur de fond */
+
+}
+.image-view {
+    -fx-fit-width: 100%;
+    -fx-fit-height: 100%;
+}
+.Pane{
+    -fx-background-color:#ab824e ;
+}
+.media-view {
+    -fx-fit-width: 800px; /* Largeur */
+    -fx-fit-height: 600px; /* Hauteur */
+}
+/* Style pour chaque cellule de la ListView */
+.post-list .list-cell {
+    -fx-background-color:#dfdfdf ;
+    -fx-border-width: 2px; /* Épaisseur de la bordure */
+    -fx-border-color: #764949; /* Couleur de la bordure */
+    -fx-border-radius: 10px;
+    -fx-end-margin: 40px;
+    /* Couleur de fond de la cellule */
+    -fx-background-insets: 5; /* Supprimer les marges de fond */
+    -fx-font-size: 14px;
+    -fx-font-family: Arial, sans-serif; /* Famille de police */
+    /* Taille de la police */
+    -fx-font-weight: bold;
+
+}
+.list-cell:empty {
+    -fx-padding: 0; /* Ajuster le padding pour réduire la taille de la cellule */
+    -fx-min-height: 0; /* Définir la hauteur minimale à 0 */
+    -fx-max-height: 0; /* Définir la hauteur maximale à 0 */
+    -fx-opacity: 0; /* Rendre la cellule invisible */
+    -fx-fill-height: false; /* Ne pas remplir l'espace disponible avec la cellule invisible */
+}
+.slider{
+    -fx-color: #764949;
+}
+/* Style pour chaque cellule de la ListView lorsqu'elle est sélectionnée */
+.post-list .list-cell:selected {
+    -fx-background-color: #764949; /* Couleur de fond lorsque sélectionnée */
+}

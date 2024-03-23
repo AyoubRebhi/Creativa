@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class MaConnexion {
 
     public static MaConnexion instance;
-    private final String URL="jdbc:mysql://localhost:3306/creativa";
+    private final String URL="jdbc:mysql://localhost:3306/creativapidev";
     private final String USER="root";
     private final String PASSWORD="";
 

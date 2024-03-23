@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -16,4 +18,9 @@
          <Font name="System Bold" size="12.0" />
       </font>
    </Label>
+   <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="729.0" layoutY="39.0" onMouseClicked="#reload" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@images/refreshIcone.png" />
+      </image>
+   </ImageView>
 </AnchorPane>

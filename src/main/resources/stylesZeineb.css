@@ -1,0 +1,81 @@
+/* Style de l'AnchorPane principal */
+#mainAnchorPane {
+    -fx-background-color: #f0f0f0; /* Couleur de fond */
+}
+
+/* Style du Label avec l'identifiant 'ajouter_commandes' */
+#ajouter_commandes {
+    -fx-font-size: 18px; /* Taille de la police */
+    -fx-font-weight: bold; /* Poids de la police */
+    -fx-text-fill: #d0784f; /* Couleur du texte */
+}
+
+/* Style des TextField avec les identifiants 'code_promoTF', 'id_userTF' et 'statusTF' */
+#code_promoTF, #id_userTF, #statusTF {
+    -fx-background-color: #ffffff; /* Couleur de fond */
+    -fx-border-color: #cccccc; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-border-radius: 4px; /* Rayon des coins de la bordure */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-prompt-text-fill: #999999; /* Couleur du texte d'invite */
+}
+
+/* Style des Buttons avec les identifiants 'continuerBTN', 'PasserLiv' et 'retourBTN' */
+#continuerBTN{
+    -fx-background-color: #bb6060; /* Couleur de fond */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-font-size: 13px; /* Taille de la police */
+    -fx-padding: 8px 16px; /* Remplissage */
+    -fx-background-radius: 4px; /* Rayon des coins */
+}
+
+/* Style des Buttons lorsque survolés */
+#continuerBTN:hover{
+    -fx-background-color: #a45454; /* Couleur de fond */
+}
+#retourBTN{
+    -fx-background-color: #ababab; /* Couleur de fond */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-font-size: 12px; /* Taille de la police */
+    -fx-padding: 8px 16px; /* Remplissage */
+    -fx-background-radius: 4px; /* Rayon des coins */
+}
+
+
+/* Style du ComboBox avec l'identifiant 'idCombobox' */
+#idCombobox {
+    -fx-background-color: #ffffff; /* Couleur de fond */
+    -fx-border-color: #cccccc; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-border-radius: 4px; /* Rayon des coins de la bordure */
+    -fx-font-size: 14px; /* Taille de la police */
+}
+
+/* Style du Pane avec le styleClass 'cadre' */
+.cadre {
+    -fx-background-color: #f9f9f9; /* Couleur de fond */
+    -fx-border-color: #dcdcdc; /* Couleur de la bordure */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-border-radius: 8px; /* Rayon des coins de la bordure */
+    -fx-padding: 10px; /* Espacement intérieur */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0); /* Ombre portée */
+}
+
+/* Style des Text avec les identifiants 'MTtext1', 'MTtext2', 'MTtext3' */
+#MTtext1, #MTtext2, #MTtext3 {
+    -fx-fill: #555555; /* Couleur du texte */
+    -fx-font-size: 12px; /* Taille de la police */
+}
+
+/* Style des Labels avec les identifiants 'prixProduitLabel', 'fraisLivLabel', 'MTtotalLabel' et 'RemiseLabel' */
+#prixProduitLabel, #fraisLivLabel, #MTtotalLabel, #RemiseLabel {
+    -fx-font-size: 13px; /* Taille de la police */
+    -fx-text-fill: #333333; /* Couleur du texte */
+}
+#appliquerID{
+    -fx-background-color: #5274f5; /* Couleur de fond */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-font-size: 13px; /* Taille de la police */
+    -fx-padding: 8px 16px; /* Remplissage */
+    -fx-background-radius: 4px; /* Rayon des coins */
+}

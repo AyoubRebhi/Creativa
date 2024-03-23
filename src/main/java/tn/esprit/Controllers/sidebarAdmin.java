@@ -29,9 +29,9 @@ UserService userService=new UserService();
     @FXML
     void redirectVersAfficherCategories(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarAdminCategories.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherListeCategoriesAdmin.fxml"));
             Parent root = loader.load();
-            sidebarAdmin controller = loader.getController();
+            AfficherListeCategoriesAdmin controller = loader.getController();
             labelFX.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
@@ -41,9 +41,9 @@ UserService userService=new UserService();
     @FXML
     void redirectVersAfficherProjets(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidebarAdminProjets.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherListeProjetsAdmin.fxml"));
             Parent root = loader.load();
-            sidebarAdmin controller = loader.getController();
+            AfficherListeProjetsAdmin controller = loader.getController();
             labelFX.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
@@ -66,28 +66,28 @@ UserService userService=new UserService();
             e.printStackTrace();
         }
     }
-    @FXML
-    public void diectutuilisateur(ActionEvent event) {
-        try {
-            // Charger la page de connexion à partir du fichier FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/listUserOriginale.fxml"));
-            Parent root = loader.load();
+        @FXML
+        public void diectutuilisateur(ActionEvent event) {
+            try {
+                // Charger la page de connexion à partir du fichier FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/listUserOriginale.fxml"));
+                Parent root = loader.load();
 
-            // Créer une nouvelle scène
-            Scene scene = new Scene(root);
+                // Créer une nouvelle scène
+                Scene scene = new Scene(root);
 
-            // Obtenir la scène actuelle à partir de l'événement
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+                // Obtenir la scène actuelle à partir de l'événement
+                Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
 
-            // Changer la scène actuelle vers la nouvelle scène de connexion
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Gérer les erreurs de chargement de la page de connexion
+                // Changer la scène actuelle vers la nouvelle scène de connexion
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Gérer les erreurs de chargement de la page de connexion
+            }
+
         }
-
-    }
 
     public void ProfileClient(MouseEvent mouseEvent) {
         try {
@@ -121,6 +121,53 @@ UserService userService=new UserService();
 
     }
 
+    public void directTocommande(ActionEvent event) {
+        try {
+            // Charger la page de connexion à partir du fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/InterfaceAdmin.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Obtenir la scène actuelle à partir de l'événement
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+            // Changer la scène actuelle vers la nouvelle scène de connexion
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement de la page de connexion
+        }
+
+
     }
+
+    public void directToLogin(ActionEvent event) {
+        try {
+            // Charger la page de connexion à partir du fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/log.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Obtenir la scène actuelle à partir de l'événement
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+            // Changer la scène actuelle vers la nouvelle scène de connexion
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement de la page de connexion
+        }
+        session.id_utilisateur = 0; // Assurez-vous de réinitialiser la session ou l'utilisateur approprié
+
+    }
+
+
+}
 
 

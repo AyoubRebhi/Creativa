@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="419.0" prefWidth="758.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherCommandeUser">
+   <fx:include source="sidebarClient.fxml" />
+   <AnchorPane layoutX="4.0" layoutY="-17.0" prefHeight="465.0" prefWidth="744.0">
+      <children>
+         <Label fx:id="label" layoutX="427.0" layoutY="84.0" prefHeight="38.0" prefWidth="220.0" text="Vos Commandes" />
+         <ListView fx:id="listView" layoutX="314.0" layoutY="135.0" prefHeight="236.0" prefWidth="454.0" />
+         <Button fx:id="retourBTN" layoutX="245.0" layoutY="84.0" mnemonicParsing="false" onAction="#Retour" prefHeight="0.0" prefWidth="84.0" text="Retour" />
+         <Button fx:id="annulerBTN" layoutX="677.0" layoutY="411.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="38.0" prefWidth="73.0" text="Annuler" />
+      </children>
+   </AnchorPane>
+</AnchorPane>
